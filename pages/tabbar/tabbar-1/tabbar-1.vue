@@ -19,7 +19,6 @@ export default {
 <style>
 .content {
 	text-align: center;
-	height: 400upx;
-	margin-top: 200upx;
+
 }
 </style>

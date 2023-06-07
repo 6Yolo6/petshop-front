@@ -1,5 +1,25 @@
 <template>
 	<view class="content">
+		<!-- 导航栏 -->
+		<!-- <u-navbar :is-back="false" :is-fixed="true" title="" title-color="white" :background="background" :border-bottom="false"/> -->
+		<u-navbar :is-back="false" title="" title-color="white" :background="background" :border-bottom="false">
+			<view class="slot-wrap">
+				 
+				<view class="map-wrap"></view>		
+				<view class="search-wrap" ></view>
+				<view class="navbar-right" >
+					<view class="message-box right-item">
+						<u-icon name="bell" size="38"></u-icon>
+						<u-badge count="18" size="mini" :offset="[-15, -15]"></u-badge>
+					</view>
+					<view class="dot-box right-item">
+						<u-icon name="setting" size="38"></u-icon>
+						<u-badge size="mini" :is-dot="true" :offset="[-6, -6]"></u-badge>
+					</view>
+				</view>
+				
+			</view>
+		</u-navbar>
 		
 		
 		<!-- 用户背景 -->
@@ -256,7 +276,7 @@
 	}
 	
 	.vip-card{
-		background-image: url(../../../static/vip-card.png);
+		background-image: url(../../static/vip-card.png);
 		background-size: cover;
 		color: #f6e5a3;
 		width: 90vw;
