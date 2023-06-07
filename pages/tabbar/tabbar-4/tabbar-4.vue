@@ -5,11 +5,11 @@
 		<u-tag text="沆瀣一气" mode="light" />
 		<u-tag text="狼狈为奸" mode="plain" />
 	</view>
-</template>
+</template> 
 
 <script>
 	export default {
-		data() {
+		data() { 
 			return {
 				title: 'Hello'
 			}
