@@ -1,0 +1,21 @@
+
+.refresh-view.data-v-e1c2f572 {
+	width: 750rpx;
+	height: 80px;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+.list.data-v-e1c2f572 {
+	flex: 1;
+	background-color: #ebebeb;
+}
+.list-item.data-v-e1c2f572 {
+	margin-left: 12px;
+	margin-right: 12px;
+	margin-top: 12px;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 5px;
+}
+

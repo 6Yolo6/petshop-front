@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的订单",
+  "usingComponents": {
+    "swiper-page": "/pages/home/order/nvue-swiper-page"
+  }
+}

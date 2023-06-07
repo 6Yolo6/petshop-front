@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "u-tag": "/uview-ui/components/u-tag/u-tag"
+  }
+}

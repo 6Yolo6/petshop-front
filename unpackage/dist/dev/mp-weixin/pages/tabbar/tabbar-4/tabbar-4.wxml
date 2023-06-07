@@ -1,0 +1,1 @@
+<view class="content">页面 - 4<u-tag vue-id="10bee80f-1" text="一丘之貉" mode="dark" bind:__l="__l"></u-tag><u-tag vue-id="10bee80f-2" text="沆瀣一气" mode="light" bind:__l="__l"></u-tag><u-tag vue-id="10bee80f-3" text="狼狈为奸" mode="plain" bind:__l="__l"></u-tag></view>
