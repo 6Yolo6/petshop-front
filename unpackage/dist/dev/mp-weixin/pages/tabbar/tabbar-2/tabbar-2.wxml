@@ -1,1 +1,0 @@
-<view class="content data-v-23ec5197">页面 - 2<u-tabs vue-id="599e624f-1" name="cate_name" list="{{list}}" is-scroll="{{false}}" current="{{current}}" data-event-opts="{{[['^change',[['change']]]]}}" bind:change="__e" class="data-v-23ec5197" bind:__l="__l"></u-tabs>111</view>
