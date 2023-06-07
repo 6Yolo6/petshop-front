@@ -1,4 +1,7 @@
 {
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
 	"pages": [
 		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
@@ -34,6 +37,12 @@
 		{
 			"path": "pages/tabbar-3-detial/tabbar-3-qa/tabbar-3-qa",
 			"style": {}
+		}, {
+			"path": "pages/home/order/order",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+
 		}
 	],
 	"globalStyle": {
@@ -84,7 +93,7 @@
 				"pagePath": "pages/tabbar/tabbar-5/tabbar-5",
 				"iconPath": "static/img/tabbar/me.png",
 				"selectedIconPath": "static/img/tabbar/meactive.png",
-				"text": "我"
+				"text": "我的"
 			}
 		]
 	}
