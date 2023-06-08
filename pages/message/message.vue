@@ -1,5 +1,6 @@
 <template>
-	<view class="myinfo">
+	<view>
+		message
 	</view>
 </template>
 
@@ -14,9 +15,9 @@
 		methods: {
 
 		}
-	};
+	}
 </script>
 
-<style lang="scss">
+<style>
 
 </style>

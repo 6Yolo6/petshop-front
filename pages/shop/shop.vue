@@ -1,11 +1,15 @@
 <template>
-	<view class="myinfo">
+	<view>
+		shop
+		<text class="iconfont icon-shop_fill"></text>
 	</view>
 </template>
 
 <script>
 	export default {
-		components: {},
+		components: {
+
+		},
 		data() {
 			return {
 
@@ -14,9 +18,9 @@
 		methods: {
 
 		}
-	};
+	}
 </script>
 
-<style lang="scss">
+<style>
 
 </style>
