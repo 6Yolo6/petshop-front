@@ -1,6 +1,7 @@
 <template>
-	<view class="myinfo">
+	<view>
 		<navbar></navbar>
+		666
 	</view>
 </template>
 
@@ -12,17 +13,12 @@
 		},
 		data() {
 			return {
-
-			}
-		},
-		methods: {
-			
+				
+			};
 		}
-	};
+	}
 </script>
 
 <style lang="scss">
 
 </style>
-
-
