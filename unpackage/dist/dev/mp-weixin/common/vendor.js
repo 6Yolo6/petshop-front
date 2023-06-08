@@ -9600,10 +9600,100 @@ function normalizeComponent (
 
 
 /***/ }),
-/* 33 */
-/*!***********************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/index.js ***!
-  \***********************************************************/
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */,
+/* 123 */
+/*!***********************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/index.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9616,20 +9706,20 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _mixin = _interopRequireDefault(__webpack_require__(/*! ./libs/mixin/mixin.js */ 34));
-var _mpMixin = _interopRequireDefault(__webpack_require__(/*! ./libs/mixin/mpMixin.js */ 35));
-var _luchRequest = _interopRequireDefault(__webpack_require__(/*! ./libs/luch-request */ 36));
-var _route = _interopRequireDefault(__webpack_require__(/*! ./libs/util/route.js */ 54));
-var _colorGradient = _interopRequireDefault(__webpack_require__(/*! ./libs/function/colorGradient.js */ 58));
-var _test = _interopRequireDefault(__webpack_require__(/*! ./libs/function/test.js */ 59));
-var _debounce = _interopRequireDefault(__webpack_require__(/*! ./libs/function/debounce.js */ 60));
-var _throttle = _interopRequireDefault(__webpack_require__(/*! ./libs/function/throttle.js */ 61));
-var _index = _interopRequireDefault(__webpack_require__(/*! ./libs/function/index.js */ 62));
-var _config = _interopRequireDefault(__webpack_require__(/*! ./libs/config/config.js */ 65));
-var _props = _interopRequireDefault(__webpack_require__(/*! ./libs/config/props.js */ 66));
-var _zIndex = _interopRequireDefault(__webpack_require__(/*! ./libs/config/zIndex.js */ 156));
-var _color = _interopRequireDefault(__webpack_require__(/*! ./libs/config/color.js */ 114));
-var _platform = _interopRequireDefault(__webpack_require__(/*! ./libs/function/platform */ 157));
+var _mixin = _interopRequireDefault(__webpack_require__(/*! ./libs/mixin/mixin.js */ 124));
+var _mpMixin = _interopRequireDefault(__webpack_require__(/*! ./libs/mixin/mpMixin.js */ 125));
+var _luchRequest = _interopRequireDefault(__webpack_require__(/*! ./libs/luch-request */ 126));
+var _route = _interopRequireDefault(__webpack_require__(/*! ./libs/util/route.js */ 144));
+var _colorGradient = _interopRequireDefault(__webpack_require__(/*! ./libs/function/colorGradient.js */ 148));
+var _test = _interopRequireDefault(__webpack_require__(/*! ./libs/function/test.js */ 149));
+var _debounce = _interopRequireDefault(__webpack_require__(/*! ./libs/function/debounce.js */ 150));
+var _throttle = _interopRequireDefault(__webpack_require__(/*! ./libs/function/throttle.js */ 151));
+var _index = _interopRequireDefault(__webpack_require__(/*! ./libs/function/index.js */ 152));
+var _config = _interopRequireDefault(__webpack_require__(/*! ./libs/config/config.js */ 155));
+var _props = _interopRequireDefault(__webpack_require__(/*! ./libs/config/props.js */ 156));
+var _zIndex = _interopRequireDefault(__webpack_require__(/*! ./libs/config/zIndex.js */ 246));
+var _color = _interopRequireDefault(__webpack_require__(/*! ./libs/config/color.js */ 204));
+var _platform = _interopRequireDefault(__webpack_require__(/*! ./libs/function/platform */ 247));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 // 看到此报错，是因为没有配置vue.config.js的【transpileDependencies】，详见：https://www.uviewui.com/components/npmSetting.html#_5-cli模式额外配置
@@ -9689,10 +9779,10 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 34 */
-/*!**********************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/mixin/mixin.js ***!
-  \**********************************************************************/
+/* 124 */
+/*!**********************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/mixin/mixin.js ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9857,10 +9947,10 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 35 */
-/*!************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/mixin/mpMixin.js ***!
-  \************************************************************************/
+/* 125 */
+/*!************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/mixin/mpMixin.js ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9880,10 +9970,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 36 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/luch-request/index.js ***!
-  \*****************************************************************************/
+/* 126 */
+/*!*****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/luch-request/index.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9895,15 +9985,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _Request = _interopRequireDefault(__webpack_require__(/*! ./core/Request */ 37));
+var _Request = _interopRequireDefault(__webpack_require__(/*! ./core/Request */ 127));
 var _default = _Request.default;
 exports.default = _default;
 
 /***/ }),
-/* 37 */
-/*!************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/luch-request/core/Request.js ***!
-  \************************************************************************************/
+/* 127 */
+/*!************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/luch-request/core/Request.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9918,12 +10008,12 @@ exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
 var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
-var _dispatchRequest = _interopRequireDefault(__webpack_require__(/*! ./dispatchRequest */ 38));
-var _InterceptorManager = _interopRequireDefault(__webpack_require__(/*! ./InterceptorManager */ 46));
-var _mergeConfig = _interopRequireDefault(__webpack_require__(/*! ./mergeConfig */ 47));
-var _defaults = _interopRequireDefault(__webpack_require__(/*! ./defaults */ 48));
-var _utils = __webpack_require__(/*! ../utils */ 41);
-var _clone = _interopRequireDefault(__webpack_require__(/*! ../utils/clone */ 49));
+var _dispatchRequest = _interopRequireDefault(__webpack_require__(/*! ./dispatchRequest */ 128));
+var _InterceptorManager = _interopRequireDefault(__webpack_require__(/*! ./InterceptorManager */ 136));
+var _mergeConfig = _interopRequireDefault(__webpack_require__(/*! ./mergeConfig */ 137));
+var _defaults = _interopRequireDefault(__webpack_require__(/*! ./defaults */ 138));
+var _utils = __webpack_require__(/*! ../utils */ 131);
+var _clone = _interopRequireDefault(__webpack_require__(/*! ../utils/clone */ 139));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var Request = /*#__PURE__*/function () {
@@ -10106,10 +10196,10 @@ var Request = /*#__PURE__*/function () {
 exports.default = Request;
 
 /***/ }),
-/* 38 */
-/*!********************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/luch-request/core/dispatchRequest.js ***!
-  \********************************************************************************************/
+/* 128 */
+/*!********************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/luch-request/core/dispatchRequest.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10121,17 +10211,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _index = _interopRequireDefault(__webpack_require__(/*! ../adapters/index */ 39));
+var _index = _interopRequireDefault(__webpack_require__(/*! ../adapters/index */ 129));
 var _default = function _default(config) {
   return (0, _index.default)(config);
 };
 exports.default = _default;
 
 /***/ }),
-/* 39 */
-/*!**************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/luch-request/adapters/index.js ***!
-  \**************************************************************************************/
+/* 129 */
+/*!**************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/luch-request/adapters/index.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10144,10 +10234,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _buildURL = _interopRequireDefault(__webpack_require__(/*! ../helpers/buildURL */ 40));
-var _buildFullPath = _interopRequireDefault(__webpack_require__(/*! ../core/buildFullPath */ 42));
-var _settle = _interopRequireDefault(__webpack_require__(/*! ../core/settle */ 45));
-var _utils = __webpack_require__(/*! ../utils */ 41);
+var _buildURL = _interopRequireDefault(__webpack_require__(/*! ../helpers/buildURL */ 130));
+var _buildFullPath = _interopRequireDefault(__webpack_require__(/*! ../core/buildFullPath */ 132));
+var _settle = _interopRequireDefault(__webpack_require__(/*! ../core/settle */ 135));
+var _utils = __webpack_require__(/*! ../utils */ 131);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 /**
@@ -10209,10 +10299,10 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 40 */
-/*!****************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/luch-request/helpers/buildURL.js ***!
-  \****************************************************************************************/
+/* 130 */
+/*!****************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/luch-request/helpers/buildURL.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10224,7 +10314,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = buildURL;
-var utils = _interopRequireWildcard(__webpack_require__(/*! ../utils */ 41));
+var utils = _interopRequireWildcard(__webpack_require__(/*! ../utils */ 131));
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function encode(val) {
@@ -10279,10 +10369,10 @@ function buildURL(url, params) {
 }
 
 /***/ }),
-/* 41 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/luch-request/utils.js ***!
-  \*****************************************************************************/
+/* 131 */
+/*!*****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/luch-request/utils.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10432,10 +10522,10 @@ function isUndefined(val) {
 }
 
 /***/ }),
-/* 42 */
-/*!******************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/luch-request/core/buildFullPath.js ***!
-  \******************************************************************************************/
+/* 132 */
+/*!******************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/luch-request/core/buildFullPath.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10447,8 +10537,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = buildFullPath;
-var _isAbsoluteURL = _interopRequireDefault(__webpack_require__(/*! ../helpers/isAbsoluteURL */ 43));
-var _combineURLs = _interopRequireDefault(__webpack_require__(/*! ../helpers/combineURLs */ 44));
+var _isAbsoluteURL = _interopRequireDefault(__webpack_require__(/*! ../helpers/isAbsoluteURL */ 133));
+var _combineURLs = _interopRequireDefault(__webpack_require__(/*! ../helpers/combineURLs */ 134));
 /**
  * Creates a new URL by combining the baseURL with the requestedURL,
  * only when the requestedURL is not already an absolute URL.
@@ -10466,10 +10556,10 @@ function buildFullPath(baseURL, requestedURL) {
 }
 
 /***/ }),
-/* 43 */
-/*!*********************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/luch-request/helpers/isAbsoluteURL.js ***!
-  \*********************************************************************************************/
+/* 133 */
+/*!*********************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/luch-request/helpers/isAbsoluteURL.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10494,10 +10584,10 @@ function isAbsoluteURL(url) {
 }
 
 /***/ }),
-/* 44 */
-/*!*******************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/luch-request/helpers/combineURLs.js ***!
-  \*******************************************************************************************/
+/* 134 */
+/*!*******************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/luch-request/helpers/combineURLs.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10520,10 +10610,10 @@ function combineURLs(baseURL, relativeURL) {
 }
 
 /***/ }),
-/* 45 */
-/*!***********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/luch-request/core/settle.js ***!
-  \***********************************************************************************/
+/* 135 */
+/*!***********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/luch-request/core/settle.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10552,10 +10642,10 @@ function settle(resolve, reject, response) {
 }
 
 /***/ }),
-/* 46 */
-/*!***********************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/luch-request/core/InterceptorManager.js ***!
-  \***********************************************************************************************/
+/* 136 */
+/*!***********************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/luch-request/core/InterceptorManager.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10616,10 +10706,10 @@ var _default = InterceptorManager;
 exports.default = _default;
 
 /***/ }),
-/* 47 */
-/*!****************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/luch-request/core/mergeConfig.js ***!
-  \****************************************************************************************/
+/* 137 */
+/*!****************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/luch-request/core/mergeConfig.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10632,7 +10722,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _utils = __webpack_require__(/*! ../utils */ 41);
+var _utils = __webpack_require__(/*! ../utils */ 131);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 /**
@@ -10692,10 +10782,10 @@ var _default = function _default(globalsConfig) {
 exports.default = _default;
 
 /***/ }),
-/* 48 */
-/*!*************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/luch-request/core/defaults.js ***!
-  \*************************************************************************************/
+/* 138 */
+/*!*************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/luch-request/core/defaults.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10724,10 +10814,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 49 */
-/*!***********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/luch-request/utils/clone.js ***!
-  \***********************************************************************************/
+/* 139 */
+/*!***********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/luch-request/utils/clone.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10973,10 +11063,10 @@ var clone = function () {
 }();
 var _default = clone;
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../Program Files/HBuilderX.3.7.11.20230427/HBuilderX/plugins/uniapp-cli/node_modules/buffer/index.js */ 50).Buffer))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../Program Files/HBuilderX.3.7.11.20230427/HBuilderX/plugins/uniapp-cli/node_modules/buffer/index.js */ 140).Buffer))
 
 /***/ }),
-/* 50 */
+/* 140 */
 /*!**************************************!*\
   !*** ./node_modules/buffer/index.js ***!
   \**************************************/
@@ -10994,9 +11084,9 @@ exports.default = _default;
 
 
 
-var base64 = __webpack_require__(/*! base64-js */ 51)
-var ieee754 = __webpack_require__(/*! ieee754 */ 52)
-var isArray = __webpack_require__(/*! isarray */ 53)
+var base64 = __webpack_require__(/*! base64-js */ 141)
+var ieee754 = __webpack_require__(/*! ieee754 */ 142)
+var isArray = __webpack_require__(/*! isarray */ 143)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -12777,7 +12867,7 @@ function isnan (val) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ 3)))
 
 /***/ }),
-/* 51 */
+/* 141 */
 /*!*****************************************!*\
   !*** ./node_modules/base64-js/index.js ***!
   \*****************************************/
@@ -12938,7 +13028,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 52 */
+/* 142 */
 /*!***************************************!*\
   !*** ./node_modules/ieee754/index.js ***!
   \***************************************/
@@ -13033,7 +13123,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 53 */
+/* 143 */
 /*!***************************************!*\
   !*** ./node_modules/isarray/index.js ***!
   \***************************************/
@@ -13048,10 +13138,10 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 54 */
-/*!*********************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/util/route.js ***!
-  \*********************************************************************/
+/* 144 */
+/*!*********************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/util/route.js ***!
+  \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13063,8 +13153,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 55));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 57));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 145));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 147));
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
 var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
 /**
@@ -13236,7 +13326,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 55 */
+/* 145 */
 /*!************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/@babel/runtime/regenerator/index.js ***!
   \************************************************************************************************/
@@ -13245,11 +13335,11 @@ exports.default = _default;
 
 // TODO(Babel 8): Remove this file.
 
-var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 56)();
+var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 146)();
 module.exports = runtime;
 
 /***/ }),
-/* 56 */
+/* 146 */
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/regeneratorRuntime.js ***!
   \*******************************************************************/
@@ -13570,7 +13660,7 @@ function _regeneratorRuntime() {
 module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 57 */
+/* 147 */
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
   \*****************************************************************/
@@ -13610,10 +13700,10 @@ function _asyncToGenerator(fn) {
 module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 58 */
-/*!*********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/function/colorGradient.js ***!
-  \*********************************************************************************/
+/* 148 */
+/*!*********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/function/colorGradient.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13765,10 +13855,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 59 */
-/*!************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/function/test.js ***!
-  \************************************************************************/
+/* 149 */
+/*!************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/function/test.js ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14070,10 +14160,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 60 */
-/*!****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/function/debounce.js ***!
-  \****************************************************************************/
+/* 150 */
+/*!****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/function/debounce.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14117,10 +14207,10 @@ var _default = debounce;
 exports.default = _default;
 
 /***/ }),
-/* 61 */
-/*!****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/function/throttle.js ***!
-  \****************************************************************************/
+/* 151 */
+/*!****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/function/throttle.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14166,10 +14256,10 @@ var _default = throttle;
 exports.default = _default;
 
 /***/ }),
-/* 62 */
-/*!*************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/function/index.js ***!
-  \*************************************************************************/
+/* 152 */
+/*!*************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/function/index.js ***!
+  \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14183,8 +14273,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ 5));
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
-var _test = _interopRequireDefault(__webpack_require__(/*! ./test.js */ 59));
-var _digit = __webpack_require__(/*! ./digit.js */ 63);
+var _test = _interopRequireDefault(__webpack_require__(/*! ./test.js */ 149));
+var _digit = __webpack_require__(/*! ./digit.js */ 153);
 /**
  * @description 如果value小于min，取min；如果value大于max，取max
  * @param {number} min
@@ -14967,10 +15057,10 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 63 */
-/*!*************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/function/digit.js ***!
-  \*************************************************************************/
+/* 153 */
+/*!*************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/function/digit.js ***!
+  \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14988,7 +15078,7 @@ exports.minus = minus;
 exports.plus = plus;
 exports.round = round;
 exports.times = times;
-var _toArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toArray */ 64));
+var _toArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toArray */ 154));
 var _boundaryCheckingState = true; // 是否进行越界检查的全局开关
 
 /**
@@ -15169,7 +15259,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 64 */
+/* 154 */
 /*!********************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/toArray.js ***!
   \********************************************************/
@@ -15186,10 +15276,10 @@ function _toArray(arr) {
 module.exports = _toArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 65 */
-/*!************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/config.js ***!
-  \************************************************************************/
+/* 155 */
+/*!************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/config.js ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15230,10 +15320,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 66 */
-/*!***********************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props.js ***!
-  \***********************************************************************/
+/* 156 */
+/*!***********************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props.js ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15246,95 +15336,95 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _config = _interopRequireDefault(__webpack_require__(/*! ./config */ 65));
-var _actionSheet = _interopRequireDefault(__webpack_require__(/*! ./props/actionSheet.js */ 67));
-var _album = _interopRequireDefault(__webpack_require__(/*! ./props/album.js */ 68));
-var _alert = _interopRequireDefault(__webpack_require__(/*! ./props/alert.js */ 69));
-var _avatar = _interopRequireDefault(__webpack_require__(/*! ./props/avatar */ 70));
-var _avatarGroup = _interopRequireDefault(__webpack_require__(/*! ./props/avatarGroup */ 71));
-var _backtop = _interopRequireDefault(__webpack_require__(/*! ./props/backtop */ 72));
-var _badge = _interopRequireDefault(__webpack_require__(/*! ./props/badge */ 73));
-var _button = _interopRequireDefault(__webpack_require__(/*! ./props/button */ 74));
-var _calendar = _interopRequireDefault(__webpack_require__(/*! ./props/calendar */ 75));
-var _carKeyboard = _interopRequireDefault(__webpack_require__(/*! ./props/carKeyboard */ 76));
-var _cell = _interopRequireDefault(__webpack_require__(/*! ./props/cell */ 77));
-var _cellGroup = _interopRequireDefault(__webpack_require__(/*! ./props/cellGroup */ 78));
-var _checkbox = _interopRequireDefault(__webpack_require__(/*! ./props/checkbox */ 79));
-var _checkboxGroup = _interopRequireDefault(__webpack_require__(/*! ./props/checkboxGroup */ 80));
-var _circleProgress = _interopRequireDefault(__webpack_require__(/*! ./props/circleProgress */ 81));
-var _code = _interopRequireDefault(__webpack_require__(/*! ./props/code */ 82));
-var _codeInput = _interopRequireDefault(__webpack_require__(/*! ./props/codeInput */ 83));
-var _col = _interopRequireDefault(__webpack_require__(/*! ./props/col */ 84));
-var _collapse = _interopRequireDefault(__webpack_require__(/*! ./props/collapse */ 85));
-var _collapseItem = _interopRequireDefault(__webpack_require__(/*! ./props/collapseItem */ 86));
-var _columnNotice = _interopRequireDefault(__webpack_require__(/*! ./props/columnNotice */ 87));
-var _countDown = _interopRequireDefault(__webpack_require__(/*! ./props/countDown */ 88));
-var _countTo = _interopRequireDefault(__webpack_require__(/*! ./props/countTo */ 89));
-var _datetimePicker = _interopRequireDefault(__webpack_require__(/*! ./props/datetimePicker */ 90));
-var _divider = _interopRequireDefault(__webpack_require__(/*! ./props/divider */ 91));
-var _empty = _interopRequireDefault(__webpack_require__(/*! ./props/empty */ 92));
-var _form = _interopRequireDefault(__webpack_require__(/*! ./props/form */ 93));
-var _formItem = _interopRequireDefault(__webpack_require__(/*! ./props/formItem */ 94));
-var _gap = _interopRequireDefault(__webpack_require__(/*! ./props/gap */ 95));
-var _grid = _interopRequireDefault(__webpack_require__(/*! ./props/grid */ 96));
-var _gridItem = _interopRequireDefault(__webpack_require__(/*! ./props/gridItem */ 97));
-var _icon = _interopRequireDefault(__webpack_require__(/*! ./props/icon */ 98));
-var _image = _interopRequireDefault(__webpack_require__(/*! ./props/image */ 99));
-var _indexAnchor = _interopRequireDefault(__webpack_require__(/*! ./props/indexAnchor */ 100));
-var _indexList = _interopRequireDefault(__webpack_require__(/*! ./props/indexList */ 101));
-var _input = _interopRequireDefault(__webpack_require__(/*! ./props/input */ 102));
-var _keyboard = _interopRequireDefault(__webpack_require__(/*! ./props/keyboard */ 103));
-var _line = _interopRequireDefault(__webpack_require__(/*! ./props/line */ 104));
-var _lineProgress = _interopRequireDefault(__webpack_require__(/*! ./props/lineProgress */ 105));
-var _link = _interopRequireDefault(__webpack_require__(/*! ./props/link */ 106));
-var _list = _interopRequireDefault(__webpack_require__(/*! ./props/list */ 107));
-var _listItem = _interopRequireDefault(__webpack_require__(/*! ./props/listItem */ 108));
-var _loadingIcon = _interopRequireDefault(__webpack_require__(/*! ./props/loadingIcon */ 109));
-var _loadingPage = _interopRequireDefault(__webpack_require__(/*! ./props/loadingPage */ 110));
-var _loadmore = _interopRequireDefault(__webpack_require__(/*! ./props/loadmore */ 111));
-var _modal = _interopRequireDefault(__webpack_require__(/*! ./props/modal */ 112));
-var _navbar = _interopRequireDefault(__webpack_require__(/*! ./props/navbar */ 113));
-var _noNetwork = _interopRequireDefault(__webpack_require__(/*! ./props/noNetwork */ 115));
-var _noticeBar = _interopRequireDefault(__webpack_require__(/*! ./props/noticeBar */ 116));
-var _notify = _interopRequireDefault(__webpack_require__(/*! ./props/notify */ 117));
-var _numberBox = _interopRequireDefault(__webpack_require__(/*! ./props/numberBox */ 118));
-var _numberKeyboard = _interopRequireDefault(__webpack_require__(/*! ./props/numberKeyboard */ 119));
-var _overlay = _interopRequireDefault(__webpack_require__(/*! ./props/overlay */ 120));
-var _parse = _interopRequireDefault(__webpack_require__(/*! ./props/parse */ 121));
-var _picker = _interopRequireDefault(__webpack_require__(/*! ./props/picker */ 122));
-var _popup = _interopRequireDefault(__webpack_require__(/*! ./props/popup */ 123));
-var _radio = _interopRequireDefault(__webpack_require__(/*! ./props/radio */ 124));
-var _radioGroup = _interopRequireDefault(__webpack_require__(/*! ./props/radioGroup */ 125));
-var _rate = _interopRequireDefault(__webpack_require__(/*! ./props/rate */ 126));
-var _readMore = _interopRequireDefault(__webpack_require__(/*! ./props/readMore */ 127));
-var _row = _interopRequireDefault(__webpack_require__(/*! ./props/row */ 128));
-var _rowNotice = _interopRequireDefault(__webpack_require__(/*! ./props/rowNotice */ 129));
-var _scrollList = _interopRequireDefault(__webpack_require__(/*! ./props/scrollList */ 130));
-var _search = _interopRequireDefault(__webpack_require__(/*! ./props/search */ 131));
-var _section = _interopRequireDefault(__webpack_require__(/*! ./props/section */ 132));
-var _skeleton = _interopRequireDefault(__webpack_require__(/*! ./props/skeleton */ 133));
-var _slider = _interopRequireDefault(__webpack_require__(/*! ./props/slider */ 134));
-var _statusBar = _interopRequireDefault(__webpack_require__(/*! ./props/statusBar */ 135));
-var _steps = _interopRequireDefault(__webpack_require__(/*! ./props/steps */ 136));
-var _stepsItem = _interopRequireDefault(__webpack_require__(/*! ./props/stepsItem */ 137));
-var _sticky = _interopRequireDefault(__webpack_require__(/*! ./props/sticky */ 138));
-var _subsection = _interopRequireDefault(__webpack_require__(/*! ./props/subsection */ 139));
-var _swipeAction = _interopRequireDefault(__webpack_require__(/*! ./props/swipeAction */ 140));
-var _swipeActionItem = _interopRequireDefault(__webpack_require__(/*! ./props/swipeActionItem */ 141));
-var _swiper = _interopRequireDefault(__webpack_require__(/*! ./props/swiper */ 142));
-var _swipterIndicator = _interopRequireDefault(__webpack_require__(/*! ./props/swipterIndicator */ 143));
-var _switch2 = _interopRequireDefault(__webpack_require__(/*! ./props/switch */ 144));
-var _tabbar = _interopRequireDefault(__webpack_require__(/*! ./props/tabbar */ 145));
-var _tabbarItem = _interopRequireDefault(__webpack_require__(/*! ./props/tabbarItem */ 146));
-var _tabs = _interopRequireDefault(__webpack_require__(/*! ./props/tabs */ 147));
-var _tag = _interopRequireDefault(__webpack_require__(/*! ./props/tag */ 148));
-var _text = _interopRequireDefault(__webpack_require__(/*! ./props/text */ 149));
-var _textarea = _interopRequireDefault(__webpack_require__(/*! ./props/textarea */ 150));
-var _toast = _interopRequireDefault(__webpack_require__(/*! ./props/toast */ 151));
-var _toolbar = _interopRequireDefault(__webpack_require__(/*! ./props/toolbar */ 152));
-var _tooltip = _interopRequireDefault(__webpack_require__(/*! ./props/tooltip */ 153));
-var _transition = _interopRequireDefault(__webpack_require__(/*! ./props/transition */ 154));
-var _upload = _interopRequireDefault(__webpack_require__(/*! ./props/upload */ 155));
+var _config = _interopRequireDefault(__webpack_require__(/*! ./config */ 155));
+var _actionSheet = _interopRequireDefault(__webpack_require__(/*! ./props/actionSheet.js */ 157));
+var _album = _interopRequireDefault(__webpack_require__(/*! ./props/album.js */ 158));
+var _alert = _interopRequireDefault(__webpack_require__(/*! ./props/alert.js */ 159));
+var _avatar = _interopRequireDefault(__webpack_require__(/*! ./props/avatar */ 160));
+var _avatarGroup = _interopRequireDefault(__webpack_require__(/*! ./props/avatarGroup */ 161));
+var _backtop = _interopRequireDefault(__webpack_require__(/*! ./props/backtop */ 162));
+var _badge = _interopRequireDefault(__webpack_require__(/*! ./props/badge */ 163));
+var _button = _interopRequireDefault(__webpack_require__(/*! ./props/button */ 164));
+var _calendar = _interopRequireDefault(__webpack_require__(/*! ./props/calendar */ 165));
+var _carKeyboard = _interopRequireDefault(__webpack_require__(/*! ./props/carKeyboard */ 166));
+var _cell = _interopRequireDefault(__webpack_require__(/*! ./props/cell */ 167));
+var _cellGroup = _interopRequireDefault(__webpack_require__(/*! ./props/cellGroup */ 168));
+var _checkbox = _interopRequireDefault(__webpack_require__(/*! ./props/checkbox */ 169));
+var _checkboxGroup = _interopRequireDefault(__webpack_require__(/*! ./props/checkboxGroup */ 170));
+var _circleProgress = _interopRequireDefault(__webpack_require__(/*! ./props/circleProgress */ 171));
+var _code = _interopRequireDefault(__webpack_require__(/*! ./props/code */ 172));
+var _codeInput = _interopRequireDefault(__webpack_require__(/*! ./props/codeInput */ 173));
+var _col = _interopRequireDefault(__webpack_require__(/*! ./props/col */ 174));
+var _collapse = _interopRequireDefault(__webpack_require__(/*! ./props/collapse */ 175));
+var _collapseItem = _interopRequireDefault(__webpack_require__(/*! ./props/collapseItem */ 176));
+var _columnNotice = _interopRequireDefault(__webpack_require__(/*! ./props/columnNotice */ 177));
+var _countDown = _interopRequireDefault(__webpack_require__(/*! ./props/countDown */ 178));
+var _countTo = _interopRequireDefault(__webpack_require__(/*! ./props/countTo */ 179));
+var _datetimePicker = _interopRequireDefault(__webpack_require__(/*! ./props/datetimePicker */ 180));
+var _divider = _interopRequireDefault(__webpack_require__(/*! ./props/divider */ 181));
+var _empty = _interopRequireDefault(__webpack_require__(/*! ./props/empty */ 182));
+var _form = _interopRequireDefault(__webpack_require__(/*! ./props/form */ 183));
+var _formItem = _interopRequireDefault(__webpack_require__(/*! ./props/formItem */ 184));
+var _gap = _interopRequireDefault(__webpack_require__(/*! ./props/gap */ 185));
+var _grid = _interopRequireDefault(__webpack_require__(/*! ./props/grid */ 186));
+var _gridItem = _interopRequireDefault(__webpack_require__(/*! ./props/gridItem */ 187));
+var _icon = _interopRequireDefault(__webpack_require__(/*! ./props/icon */ 188));
+var _image = _interopRequireDefault(__webpack_require__(/*! ./props/image */ 189));
+var _indexAnchor = _interopRequireDefault(__webpack_require__(/*! ./props/indexAnchor */ 190));
+var _indexList = _interopRequireDefault(__webpack_require__(/*! ./props/indexList */ 191));
+var _input = _interopRequireDefault(__webpack_require__(/*! ./props/input */ 192));
+var _keyboard = _interopRequireDefault(__webpack_require__(/*! ./props/keyboard */ 193));
+var _line = _interopRequireDefault(__webpack_require__(/*! ./props/line */ 194));
+var _lineProgress = _interopRequireDefault(__webpack_require__(/*! ./props/lineProgress */ 195));
+var _link = _interopRequireDefault(__webpack_require__(/*! ./props/link */ 196));
+var _list = _interopRequireDefault(__webpack_require__(/*! ./props/list */ 197));
+var _listItem = _interopRequireDefault(__webpack_require__(/*! ./props/listItem */ 198));
+var _loadingIcon = _interopRequireDefault(__webpack_require__(/*! ./props/loadingIcon */ 199));
+var _loadingPage = _interopRequireDefault(__webpack_require__(/*! ./props/loadingPage */ 200));
+var _loadmore = _interopRequireDefault(__webpack_require__(/*! ./props/loadmore */ 201));
+var _modal = _interopRequireDefault(__webpack_require__(/*! ./props/modal */ 202));
+var _navbar = _interopRequireDefault(__webpack_require__(/*! ./props/navbar */ 203));
+var _noNetwork = _interopRequireDefault(__webpack_require__(/*! ./props/noNetwork */ 205));
+var _noticeBar = _interopRequireDefault(__webpack_require__(/*! ./props/noticeBar */ 206));
+var _notify = _interopRequireDefault(__webpack_require__(/*! ./props/notify */ 207));
+var _numberBox = _interopRequireDefault(__webpack_require__(/*! ./props/numberBox */ 208));
+var _numberKeyboard = _interopRequireDefault(__webpack_require__(/*! ./props/numberKeyboard */ 209));
+var _overlay = _interopRequireDefault(__webpack_require__(/*! ./props/overlay */ 210));
+var _parse = _interopRequireDefault(__webpack_require__(/*! ./props/parse */ 211));
+var _picker = _interopRequireDefault(__webpack_require__(/*! ./props/picker */ 212));
+var _popup = _interopRequireDefault(__webpack_require__(/*! ./props/popup */ 213));
+var _radio = _interopRequireDefault(__webpack_require__(/*! ./props/radio */ 214));
+var _radioGroup = _interopRequireDefault(__webpack_require__(/*! ./props/radioGroup */ 215));
+var _rate = _interopRequireDefault(__webpack_require__(/*! ./props/rate */ 216));
+var _readMore = _interopRequireDefault(__webpack_require__(/*! ./props/readMore */ 217));
+var _row = _interopRequireDefault(__webpack_require__(/*! ./props/row */ 218));
+var _rowNotice = _interopRequireDefault(__webpack_require__(/*! ./props/rowNotice */ 219));
+var _scrollList = _interopRequireDefault(__webpack_require__(/*! ./props/scrollList */ 220));
+var _search = _interopRequireDefault(__webpack_require__(/*! ./props/search */ 221));
+var _section = _interopRequireDefault(__webpack_require__(/*! ./props/section */ 222));
+var _skeleton = _interopRequireDefault(__webpack_require__(/*! ./props/skeleton */ 223));
+var _slider = _interopRequireDefault(__webpack_require__(/*! ./props/slider */ 224));
+var _statusBar = _interopRequireDefault(__webpack_require__(/*! ./props/statusBar */ 225));
+var _steps = _interopRequireDefault(__webpack_require__(/*! ./props/steps */ 226));
+var _stepsItem = _interopRequireDefault(__webpack_require__(/*! ./props/stepsItem */ 227));
+var _sticky = _interopRequireDefault(__webpack_require__(/*! ./props/sticky */ 228));
+var _subsection = _interopRequireDefault(__webpack_require__(/*! ./props/subsection */ 229));
+var _swipeAction = _interopRequireDefault(__webpack_require__(/*! ./props/swipeAction */ 230));
+var _swipeActionItem = _interopRequireDefault(__webpack_require__(/*! ./props/swipeActionItem */ 231));
+var _swiper = _interopRequireDefault(__webpack_require__(/*! ./props/swiper */ 232));
+var _swipterIndicator = _interopRequireDefault(__webpack_require__(/*! ./props/swipterIndicator */ 233));
+var _switch2 = _interopRequireDefault(__webpack_require__(/*! ./props/switch */ 234));
+var _tabbar = _interopRequireDefault(__webpack_require__(/*! ./props/tabbar */ 235));
+var _tabbarItem = _interopRequireDefault(__webpack_require__(/*! ./props/tabbarItem */ 236));
+var _tabs = _interopRequireDefault(__webpack_require__(/*! ./props/tabs */ 237));
+var _tag = _interopRequireDefault(__webpack_require__(/*! ./props/tag */ 238));
+var _text = _interopRequireDefault(__webpack_require__(/*! ./props/text */ 239));
+var _textarea = _interopRequireDefault(__webpack_require__(/*! ./props/textarea */ 240));
+var _toast = _interopRequireDefault(__webpack_require__(/*! ./props/toast */ 241));
+var _toolbar = _interopRequireDefault(__webpack_require__(/*! ./props/toolbar */ 242));
+var _tooltip = _interopRequireDefault(__webpack_require__(/*! ./props/tooltip */ 243));
+var _transition = _interopRequireDefault(__webpack_require__(/*! ./props/transition */ 244));
+var _upload = _interopRequireDefault(__webpack_require__(/*! ./props/upload */ 245));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var color = _config.default.color;
@@ -15342,10 +15432,10 @@ var _default = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSp
 exports.default = _default;
 
 /***/ }),
-/* 67 */
-/*!***********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/actionSheet.js ***!
-  \***********************************************************************************/
+/* 157 */
+/*!***********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/actionSheet.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15386,10 +15476,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 68 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/album.js ***!
-  \*****************************************************************************/
+/* 158 */
+/*!*****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/album.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15430,10 +15520,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 69 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/alert.js ***!
-  \*****************************************************************************/
+/* 159 */
+/*!*****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/alert.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15469,10 +15559,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 70 */
-/*!******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/avatar.js ***!
-  \******************************************************************************/
+/* 160 */
+/*!******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/avatar.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15514,10 +15604,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 71 */
-/*!***********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/avatarGroup.js ***!
-  \***********************************************************************************/
+/* 161 */
+/*!***********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/avatarGroup.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15556,10 +15646,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 72 */
-/*!*******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/backtop.js ***!
-  \*******************************************************************************/
+/* 162 */
+/*!*******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/backtop.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15602,10 +15692,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 73 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/badge.js ***!
-  \*****************************************************************************/
+/* 163 */
+/*!*****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/badge.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15648,10 +15738,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 74 */
-/*!******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/button.js ***!
-  \******************************************************************************/
+/* 164 */
+/*!******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/button.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15707,10 +15797,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 75 */
-/*!********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/calendar.js ***!
-  \********************************************************************************/
+/* 165 */
+/*!********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/calendar.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15770,10 +15860,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 76 */
-/*!***********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/carKeyboard.js ***!
-  \***********************************************************************************/
+/* 166 */
+/*!***********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/carKeyboard.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15802,10 +15892,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 77 */
-/*!****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/cell.js ***!
-  \****************************************************************************/
+/* 167 */
+/*!****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/cell.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15854,10 +15944,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 78 */
-/*!*********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/cellGroup.js ***!
-  \*********************************************************************************/
+/* 168 */
+/*!*********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/cellGroup.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15888,10 +15978,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 79 */
-/*!********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/checkbox.js ***!
-  \********************************************************************************/
+/* 169 */
+/*!********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/checkbox.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15932,10 +16022,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 80 */
-/*!*************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/checkboxGroup.js ***!
-  \*************************************************************************************/
+/* 170 */
+/*!*************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/checkboxGroup.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15980,10 +16070,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 81 */
-/*!**************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/circleProgress.js ***!
-  \**************************************************************************************/
+/* 171 */
+/*!**************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/circleProgress.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16012,10 +16102,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 82 */
-/*!****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/code.js ***!
-  \****************************************************************************/
+/* 172 */
+/*!****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/code.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16049,10 +16139,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 83 */
-/*!*********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/codeInput.js ***!
-  \*********************************************************************************/
+/* 173 */
+/*!*********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/codeInput.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16095,10 +16185,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 84 */
-/*!***************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/col.js ***!
-  \***************************************************************************/
+/* 174 */
+/*!***************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/col.js ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16131,10 +16221,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 85 */
-/*!********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/collapse.js ***!
-  \********************************************************************************/
+/* 175 */
+/*!********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/collapse.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16165,10 +16255,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 86 */
-/*!************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/collapseItem.js ***!
-  \************************************************************************************/
+/* 176 */
+/*!************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/collapseItem.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16207,10 +16297,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 87 */
-/*!************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/columnNotice.js ***!
-  \************************************************************************************/
+/* 177 */
+/*!************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/columnNotice.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16248,10 +16338,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 88 */
-/*!*********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/countDown.js ***!
-  \*********************************************************************************/
+/* 178 */
+/*!*********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/countDown.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16283,10 +16373,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 89 */
-/*!*******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/countTo.js ***!
-  \*******************************************************************************/
+/* 179 */
+/*!*******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/countTo.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16325,10 +16415,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 90 */
-/*!**************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/datetimePicker.js ***!
-  \**************************************************************************************/
+/* 180 */
+/*!**************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/datetimePicker.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16380,10 +16470,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 91 */
-/*!*******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/divider.js ***!
-  \*******************************************************************************/
+/* 181 */
+/*!*******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/divider.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16419,10 +16509,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 92 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/empty.js ***!
-  \*****************************************************************************/
+/* 182 */
+/*!*****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/empty.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16461,10 +16551,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 93 */
-/*!****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/form.js ***!
-  \****************************************************************************/
+/* 183 */
+/*!****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/form.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16506,10 +16596,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 94 */
-/*!********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/formItem.js ***!
-  \********************************************************************************/
+/* 184 */
+/*!********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/formItem.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16546,10 +16636,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 95 */
-/*!***************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/gap.js ***!
-  \***************************************************************************/
+/* 185 */
+/*!***************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/gap.js ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16582,10 +16672,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 96 */
-/*!****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/grid.js ***!
-  \****************************************************************************/
+/* 186 */
+/*!****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/grid.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16616,10 +16706,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 97 */
-/*!********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/gridItem.js ***!
-  \********************************************************************************/
+/* 187 */
+/*!********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/gridItem.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16649,10 +16739,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 98 */
-/*!****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/icon.js ***!
-  \****************************************************************************/
+/* 188 */
+/*!****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/icon.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16664,7 +16754,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 65));
+var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 155));
 /*
  * @Author       : LQ
  * @Description  :
@@ -16701,10 +16791,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 99 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/image.js ***!
-  \*****************************************************************************/
+/* 189 */
+/*!*****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/image.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16748,10 +16838,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 100 */
-/*!***********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/indexAnchor.js ***!
-  \***********************************************************************************/
+/* 190 */
+/*!***********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/indexAnchor.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16784,10 +16874,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 101 */
-/*!*********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/indexList.js ***!
-  \*********************************************************************************/
+/* 191 */
+/*!*********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/indexList.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16822,10 +16912,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 102 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/input.js ***!
-  \*****************************************************************************/
+/* 192 */
+/*!*****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/input.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16887,10 +16977,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 103 */
-/*!********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/keyboard.js ***!
-  \********************************************************************************/
+/* 193 */
+/*!********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/keyboard.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16934,10 +17024,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 104 */
-/*!****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/line.js ***!
-  \****************************************************************************/
+/* 194 */
+/*!****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/line.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16971,10 +17061,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 105 */
-/*!************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/lineProgress.js ***!
-  \************************************************************************************/
+/* 195 */
+/*!************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/lineProgress.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17007,10 +17097,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 106 */
-/*!****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/link.js ***!
-  \****************************************************************************/
+/* 196 */
+/*!****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/link.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17022,7 +17112,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 65));
+var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 155));
 /*
  * @Author       : LQ
  * @Description  :
@@ -17049,10 +17139,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 107 */
-/*!****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/list.js ***!
-  \****************************************************************************/
+/* 197 */
+/*!****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/list.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17094,10 +17184,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 108 */
-/*!********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/listItem.js ***!
-  \********************************************************************************/
+/* 198 */
+/*!********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/listItem.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17126,10 +17216,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 109 */
-/*!***********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/loadingIcon.js ***!
-  \***********************************************************************************/
+/* 199 */
+/*!***********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/loadingIcon.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17141,7 +17231,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 65));
+var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 155));
 /*
  * @Author       : LQ
  * @Description  :
@@ -17172,10 +17262,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 110 */
-/*!***********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/loadingPage.js ***!
-  \***********************************************************************************/
+/* 200 */
+/*!***********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/loadingPage.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17212,10 +17302,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 111 */
-/*!********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/loadmore.js ***!
-  \********************************************************************************/
+/* 201 */
+/*!********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/loadmore.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17261,10 +17351,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 112 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/modal.js ***!
-  \*****************************************************************************/
+/* 202 */
+/*!*****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/modal.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17308,10 +17398,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 113 */
-/*!******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/navbar.js ***!
-  \******************************************************************************/
+/* 203 */
+/*!******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/navbar.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17323,7 +17413,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _color = _interopRequireDefault(__webpack_require__(/*! ../color */ 114));
+var _color = _interopRequireDefault(__webpack_require__(/*! ../color */ 204));
 /*
  * @Author       : LQ
  * @Description  :
@@ -17357,10 +17447,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 114 */
-/*!***********************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/color.js ***!
-  \***********************************************************************/
+/* 204 */
+/*!***********************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/color.js ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17390,10 +17480,10 @@ var _default = color;
 exports.default = _default;
 
 /***/ }),
-/* 115 */
-/*!*********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/noNetwork.js ***!
-  \*********************************************************************************/
+/* 205 */
+/*!*********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/noNetwork.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17424,10 +17514,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 116 */
-/*!*********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/noticeBar.js ***!
-  \*********************************************************************************/
+/* 206 */
+/*!*********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/noticeBar.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17470,10 +17560,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 117 */
-/*!******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/notify.js ***!
-  \******************************************************************************/
+/* 207 */
+/*!******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/notify.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17509,10 +17599,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 118 */
-/*!*********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/numberBox.js ***!
-  \*********************************************************************************/
+/* 208 */
+/*!*********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/numberBox.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17561,10 +17651,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 119 */
-/*!**************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/numberKeyboard.js ***!
-  \**************************************************************************************/
+/* 209 */
+/*!**************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/numberKeyboard.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17595,10 +17685,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 120 */
-/*!*******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/overlay.js ***!
-  \*******************************************************************************/
+/* 210 */
+/*!*******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/overlay.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17630,10 +17720,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 121 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/parse.js ***!
-  \*****************************************************************************/
+/* 211 */
+/*!*****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/parse.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17669,10 +17759,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 122 */
-/*!******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/picker.js ***!
-  \******************************************************************************/
+/* 212 */
+/*!******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/picker.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17719,10 +17809,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 123 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/popup.js ***!
-  \*****************************************************************************/
+/* 213 */
+/*!*****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/popup.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17765,10 +17855,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 124 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/radio.js ***!
-  \*****************************************************************************/
+/* 214 */
+/*!*****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/radio.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17809,10 +17899,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 125 */
-/*!**********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/radioGroup.js ***!
-  \**********************************************************************************/
+/* 215 */
+/*!**********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/radioGroup.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17856,10 +17946,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 126 */
-/*!****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/rate.js ***!
-  \****************************************************************************/
+/* 216 */
+/*!****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/rate.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17899,10 +17989,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 127 */
-/*!********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/readMore.js ***!
-  \********************************************************************************/
+/* 217 */
+/*!********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/readMore.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17938,10 +18028,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 128 */
-/*!***************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/row.js ***!
-  \***************************************************************************/
+/* 218 */
+/*!***************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/row.js ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17972,10 +18062,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 129 */
-/*!*********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/rowNotice.js ***!
-  \*********************************************************************************/
+/* 219 */
+/*!*********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/rowNotice.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18010,10 +18100,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 130 */
-/*!**********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/scrollList.js ***!
-  \**********************************************************************************/
+/* 220 */
+/*!**********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/scrollList.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18047,10 +18137,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 131 */
-/*!******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/search.js ***!
-  \******************************************************************************/
+/* 221 */
+/*!******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/search.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18105,10 +18195,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 132 */
-/*!*******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/section.js ***!
-  \*******************************************************************************/
+/* 222 */
+/*!*******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/section.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18146,10 +18236,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 133 */
-/*!********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/skeleton.js ***!
-  \********************************************************************************/
+/* 223 */
+/*!********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/skeleton.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18188,10 +18278,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 134 */
-/*!******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/slider.js ***!
-  \******************************************************************************/
+/* 224 */
+/*!******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/slider.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18230,10 +18320,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 135 */
-/*!*********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/statusBar.js ***!
-  \*********************************************************************************/
+/* 225 */
+/*!*********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/statusBar.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18262,10 +18352,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 136 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/steps.js ***!
-  \*****************************************************************************/
+/* 226 */
+/*!*****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/steps.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18300,10 +18390,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 137 */
-/*!*********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/stepsItem.js ***!
-  \*********************************************************************************/
+/* 227 */
+/*!*********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/stepsItem.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18335,10 +18425,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 138 */
-/*!******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/sticky.js ***!
-  \******************************************************************************/
+/* 228 */
+/*!******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/sticky.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18372,10 +18462,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 139 */
-/*!**********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/subsection.js ***!
-  \**********************************************************************************/
+/* 229 */
+/*!**********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/subsection.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18412,10 +18502,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 140 */
-/*!***********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/swipeAction.js ***!
-  \***********************************************************************************/
+/* 230 */
+/*!***********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/swipeAction.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18444,10 +18534,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 141 */
-/*!***************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/swipeActionItem.js ***!
-  \***************************************************************************************/
+/* 231 */
+/*!***************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/swipeActionItem.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18482,10 +18572,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 142 */
-/*!******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/swiper.js ***!
-  \******************************************************************************/
+/* 232 */
+/*!******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/swiper.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18539,10 +18629,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 143 */
-/*!****************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/swipterIndicator.js ***!
-  \****************************************************************************************/
+/* 233 */
+/*!****************************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/swipterIndicator.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18575,10 +18665,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 144 */
-/*!******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/switch.js ***!
-  \******************************************************************************/
+/* 234 */
+/*!******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/switch.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18616,10 +18706,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 145 */
-/*!******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/tabbar.js ***!
-  \******************************************************************************/
+/* 235 */
+/*!******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/tabbar.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18655,10 +18745,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 146 */
-/*!**********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/tabbarItem.js ***!
-  \**********************************************************************************/
+/* 236 */
+/*!**********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/tabbarItem.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18692,10 +18782,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 147 */
-/*!****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/tabs.js ***!
-  \****************************************************************************/
+/* 237 */
+/*!****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/tabs.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18749,10 +18839,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 148 */
-/*!***************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/tag.js ***!
-  \***************************************************************************/
+/* 238 */
+/*!***************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/tag.js ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18795,10 +18885,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 149 */
-/*!****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/text.js ***!
-  \****************************************************************************/
+/* 239 */
+/*!****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/text.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18851,10 +18941,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 150 */
-/*!********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/textarea.js ***!
-  \********************************************************************************/
+/* 240 */
+/*!********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/textarea.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18904,10 +18994,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 151 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/toast.js ***!
-  \*****************************************************************************/
+/* 241 */
+/*!*****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/toast.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18950,10 +19040,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 152 */
-/*!*******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/toolbar.js ***!
-  \*******************************************************************************/
+/* 242 */
+/*!*******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/toolbar.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18987,10 +19077,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 153 */
-/*!*******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/tooltip.js ***!
-  \*******************************************************************************/
+/* 243 */
+/*!*******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/tooltip.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19031,10 +19121,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 154 */
-/*!**********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/transition.js ***!
-  \**********************************************************************************/
+/* 244 */
+/*!**********************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/transition.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19066,10 +19156,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 155 */
-/*!******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/props/upload.js ***!
-  \******************************************************************************/
+/* 245 */
+/*!******************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/props/upload.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19125,10 +19215,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 156 */
-/*!************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/config/zIndex.js ***!
-  \************************************************************************/
+/* 246 */
+/*!************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/config/zIndex.js ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19161,10 +19251,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 157 */
-/*!****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/function/platform.js ***!
-  \****************************************************************************/
+/* 247 */
+/*!****************************************************************************************!*\
+  !*** D:/uniapp/pet_front/petshop-front/uni_modules/uview-ui/libs/function/platform.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19189,1912 +19279,6 @@ platform = 'weixin';
 platform = 'mp';
 var _default = platform;
 exports.default = _default;
-
-/***/ }),
-/* 158 */,
-/* 159 */,
-/* 160 */,
-/* 161 */,
-/* 162 */,
-/* 163 */,
-/* 164 */,
-/* 165 */,
-/* 166 */,
-/* 167 */,
-/* 168 */,
-/* 169 */,
-/* 170 */,
-/* 171 */,
-/* 172 */,
-/* 173 */,
-/* 174 */,
-/* 175 */,
-/* 176 */,
-/* 177 */,
-/* 178 */,
-/* 179 */,
-/* 180 */,
-/* 181 */,
-/* 182 */,
-/* 183 */,
-/* 184 */,
-/* 185 */,
-/* 186 */,
-/* 187 */,
-/* 188 */,
-/* 189 */,
-/* 190 */,
-/* 191 */,
-/* 192 */,
-/* 193 */,
-/* 194 */,
-/* 195 */,
-/* 196 */,
-/* 197 */,
-/* 198 */,
-/* 199 */,
-/* 200 */,
-/* 201 */,
-/* 202 */,
-/* 203 */,
-/* 204 */,
-/* 205 */,
-/* 206 */,
-/* 207 */,
-/* 208 */,
-/* 209 */,
-/* 210 */,
-/* 211 */,
-/* 212 */,
-/* 213 */,
-/* 214 */,
-/* 215 */,
-/* 216 */,
-/* 217 */,
-/* 218 */,
-/* 219 */,
-/* 220 */,
-/* 221 */,
-/* 222 */,
-/* 223 */,
-/* 224 */,
-/* 225 */,
-/* 226 */,
-/* 227 */,
-/* 228 */,
-/* 229 */,
-/* 230 */,
-/* 231 */,
-/* 232 */,
-/* 233 */,
-/* 234 */,
-/* 235 */,
-/* 236 */,
-/* 237 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-tabs/props.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    // 滑块的移动过渡时间，单位ms
-    duration: {
-      type: Number,
-      default: uni.$u.props.tabs.duration
-    },
-    // tabs标签数组
-    list: {
-      type: Array,
-      default: uni.$u.props.tabs.list
-    },
-    // 滑块颜色
-    lineColor: {
-      type: String,
-      default: uni.$u.props.tabs.lineColor
-    },
-    // 菜单选择中时的样式
-    activeStyle: {
-      type: [String, Object],
-      default: uni.$u.props.tabs.activeStyle
-    },
-    // 菜单非选中时的样式
-    inactiveStyle: {
-      type: [String, Object],
-      default: uni.$u.props.tabs.inactiveStyle
-    },
-    // 滑块长度
-    lineWidth: {
-      type: [String, Number],
-      default: uni.$u.props.tabs.lineWidth
-    },
-    // 滑块高度
-    lineHeight: {
-      type: [String, Number],
-      default: uni.$u.props.tabs.lineHeight
-    },
-    // 滑块背景显示大小，当滑块背景设置为图片时使用
-    lineBgSize: {
-      type: String,
-      default: uni.$u.props.tabs.lineBgSize
-    },
-    // 菜单item的样式
-    itemStyle: {
-      type: [String, Object],
-      default: uni.$u.props.tabs.itemStyle
-    },
-    // 菜单是否可滚动
-    scrollable: {
-      type: Boolean,
-      default: uni.$u.props.tabs.scrollable
-    },
-    // 当前选中标签的索引
-    current: {
-      type: [Number, String],
-      default: uni.$u.props.tabs.current
-    },
-    // 默认读取的键名
-    keyName: {
-      type: String,
-      default: uni.$u.props.tabs.keyName
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 238 */,
-/* 239 */,
-/* 240 */,
-/* 241 */,
-/* 242 */,
-/* 243 */,
-/* 244 */,
-/* 245 */
-/*!****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-tag/props.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    // 标签类型info、primary、success、warning、error
-    type: {
-      type: String,
-      default: uni.$u.props.tag.type
-    },
-    // 不可用
-    disabled: {
-      type: [Boolean, String],
-      default: uni.$u.props.tag.disabled
-    },
-    // 标签的大小，large，medium，mini
-    size: {
-      type: String,
-      default: uni.$u.props.tag.size
-    },
-    // tag的形状，circle（两边半圆形）, square（方形，带圆角）
-    shape: {
-      type: String,
-      default: uni.$u.props.tag.shape
-    },
-    // 标签文字
-    text: {
-      type: [String, Number],
-      default: uni.$u.props.tag.text
-    },
-    // 背景颜色，默认为空字符串，即不处理
-    bgColor: {
-      type: String,
-      default: uni.$u.props.tag.bgColor
-    },
-    // 标签字体颜色，默认为空字符串，即不处理
-    color: {
-      type: String,
-      default: uni.$u.props.tag.color
-    },
-    // 标签的边框颜色
-    borderColor: {
-      type: String,
-      default: uni.$u.props.tag.borderColor
-    },
-    // 关闭按钮图标的颜色
-    closeColor: {
-      type: String,
-      default: uni.$u.props.tag.closeColor
-    },
-    // 点击时返回的索引值，用于区分例遍的数组哪个元素被点击了
-    name: {
-      type: [String, Number],
-      default: uni.$u.props.tag.name
-    },
-    // // 模式选择，dark|light|plain
-    // mode: {
-    // 	type: String,
-    // 	default: 'light'
-    // },
-    // 镂空时是否填充背景色
-    plainFill: {
-      type: Boolean,
-      default: uni.$u.props.tag.plainFill
-    },
-    // 是否镂空
-    plain: {
-      type: Boolean,
-      default: uni.$u.props.tag.plain
-    },
-    // 是否可关闭
-    closable: {
-      type: Boolean,
-      default: uni.$u.props.tag.closable
-    },
-    // 是否显示
-    show: {
-      type: Boolean,
-      default: uni.$u.props.tag.show
-    },
-    // 内置图标，或绝对路径的图片
-    icon: {
-      type: String,
-      default: uni.$u.props.tag.icon
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 246 */,
-/* 247 */,
-/* 248 */,
-/* 249 */,
-/* 250 */,
-/* 251 */,
-/* 252 */,
-/* 253 */
-/*!***********************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/mixin/button.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    lang: String,
-    sessionFrom: String,
-    sendMessageTitle: String,
-    sendMessagePath: String,
-    sendMessageImg: String,
-    showMessageCard: Boolean,
-    appParameter: String,
-    formType: String,
-    openType: String
-  }
-};
-exports.default = _default;
-
-/***/ }),
-/* 254 */
-/*!*************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/libs/mixin/openType.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    openType: String
-  },
-  methods: {
-    onGetUserInfo: function onGetUserInfo(event) {
-      this.$emit('getuserinfo', event.detail);
-    },
-    onContact: function onContact(event) {
-      this.$emit('contact', event.detail);
-    },
-    onGetPhoneNumber: function onGetPhoneNumber(event) {
-      this.$emit('getphonenumber', event.detail);
-    },
-    onError: function onError(event) {
-      this.$emit('error', event.detail);
-    },
-    onLaunchApp: function onLaunchApp(event) {
-      this.$emit('launchapp', event.detail);
-    },
-    onOpenSetting: function onOpenSetting(event) {
-      this.$emit('opensetting', event.detail);
-    }
-  }
-};
-exports.default = _default;
-
-/***/ }),
-/* 255 */
-/*!*******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-button/props.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/*
- * @Author       : LQ
- * @Description  :
- * @version      : 1.0
- * @Date         : 2021-08-16 10:04:04
- * @LastAuthor   : LQ
- * @lastTime     : 2021-08-16 10:04:24
- * @FilePath     : /u-view2.0/uview-ui/components/u-button/props.js
- */
-var _default = {
-  props: {
-    // 是否细边框
-    hairline: {
-      type: Boolean,
-      default: uni.$u.props.button.hairline
-    },
-    // 按钮的预置样式，info，primary，error，warning，success
-    type: {
-      type: String,
-      default: uni.$u.props.button.type
-    },
-    // 按钮尺寸，large，normal，small，mini
-    size: {
-      type: String,
-      default: uni.$u.props.button.size
-    },
-    // 按钮形状，circle（两边为半圆），square（带圆角）
-    shape: {
-      type: String,
-      default: uni.$u.props.button.shape
-    },
-    // 按钮是否镂空
-    plain: {
-      type: Boolean,
-      default: uni.$u.props.button.plain
-    },
-    // 是否禁止状态
-    disabled: {
-      type: Boolean,
-      default: uni.$u.props.button.disabled
-    },
-    // 是否加载中
-    loading: {
-      type: Boolean,
-      default: uni.$u.props.button.loading
-    },
-    // 加载中提示文字
-    loadingText: {
-      type: [String, Number],
-      default: uni.$u.props.button.loadingText
-    },
-    // 加载状态图标类型
-    loadingMode: {
-      type: String,
-      default: uni.$u.props.button.loadingMode
-    },
-    // 加载图标大小
-    loadingSize: {
-      type: [String, Number],
-      default: uni.$u.props.button.loadingSize
-    },
-    // 开放能力，具体请看uniapp稳定关于button组件部分说明
-    // https://uniapp.dcloud.io/component/button
-    openType: {
-      type: String,
-      default: uni.$u.props.button.openType
-    },
-    // 用于 <form> 组件，点击分别会触发 <form> 组件的 submit/reset 事件
-    // 取值为submit（提交表单），reset（重置表单）
-    formType: {
-      type: String,
-      default: uni.$u.props.button.formType
-    },
-    // 打开 APP 时，向 APP 传递的参数，open-type=launchApp时有效
-    // 只微信小程序、QQ小程序有效
-    appParameter: {
-      type: String,
-      default: uni.$u.props.button.appParameter
-    },
-    // 指定是否阻止本节点的祖先节点出现点击态，微信小程序有效
-    hoverStopPropagation: {
-      type: Boolean,
-      default: uni.$u.props.button.hoverStopPropagation
-    },
-    // 指定返回用户信息的语言，zh_CN 简体中文，zh_TW 繁体中文，en 英文。只微信小程序有效
-    lang: {
-      type: String,
-      default: uni.$u.props.button.lang
-    },
-    // 会话来源，open-type="contact"时有效。只微信小程序有效
-    sessionFrom: {
-      type: String,
-      default: uni.$u.props.button.sessionFrom
-    },
-    // 会话内消息卡片标题，open-type="contact"时有效
-    // 默认当前标题，只微信小程序有效
-    sendMessageTitle: {
-      type: String,
-      default: uni.$u.props.button.sendMessageTitle
-    },
-    // 会话内消息卡片点击跳转小程序路径，open-type="contact"时有效
-    // 默认当前分享路径，只微信小程序有效
-    sendMessagePath: {
-      type: String,
-      default: uni.$u.props.button.sendMessagePath
-    },
-    // 会话内消息卡片图片，open-type="contact"时有效
-    // 默认当前页面截图，只微信小程序有效
-    sendMessageImg: {
-      type: String,
-      default: uni.$u.props.button.sendMessageImg
-    },
-    // 是否显示会话内消息卡片，设置此参数为 true，用户进入客服会话会在右下角显示"可能要发送的小程序"提示，
-    // 用户点击后可以快速发送小程序消息，open-type="contact"时有效
-    showMessageCard: {
-      type: Boolean,
-      default: uni.$u.props.button.showMessageCard
-    },
-    // 额外传参参数，用于小程序的data-xxx属性，通过target.dataset.name获取
-    dataName: {
-      type: String,
-      default: uni.$u.props.button.dataName
-    },
-    // 节流，一定时间内只能触发一次
-    throttleTime: {
-      type: [String, Number],
-      default: uni.$u.props.button.throttleTime
-    },
-    // 按住后多久出现点击态，单位毫秒
-    hoverStartTime: {
-      type: [String, Number],
-      default: uni.$u.props.button.hoverStartTime
-    },
-    // 手指松开后点击态保留时间，单位毫秒
-    hoverStayTime: {
-      type: [String, Number],
-      default: uni.$u.props.button.hoverStayTime
-    },
-    // 按钮文字，之所以通过props传入，是因为slot传入的话
-    // nvue中无法控制文字的样式
-    text: {
-      type: [String, Number],
-      default: uni.$u.props.button.text
-    },
-    // 按钮图标
-    icon: {
-      type: String,
-      default: uni.$u.props.button.icon
-    },
-    // 按钮图标
-    iconColor: {
-      type: String,
-      default: uni.$u.props.button.icon
-    },
-    // 按钮颜色，支持传入linear-gradient渐变色
-    color: {
-      type: String,
-      default: uni.$u.props.button.color
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 256 */,
-/* 257 */,
-/* 258 */,
-/* 259 */,
-/* 260 */,
-/* 261 */,
-/* 262 */,
-/* 263 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-list/props.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    // 控制是否出现滚动条，仅nvue有效
-    showScrollbar: {
-      type: Boolean,
-      default: uni.$u.props.list.showScrollbar
-    },
-    // 距底部多少时触发scrolltolower事件
-    lowerThreshold: {
-      type: [String, Number],
-      default: uni.$u.props.list.lowerThreshold
-    },
-    // 距顶部多少时触发scrolltoupper事件，非nvue有效
-    upperThreshold: {
-      type: [String, Number],
-      default: uni.$u.props.list.upperThreshold
-    },
-    // 设置竖向滚动条位置
-    scrollTop: {
-      type: [String, Number],
-      default: uni.$u.props.list.scrollTop
-    },
-    // 控制 onscroll 事件触发的频率，仅nvue有效
-    offsetAccuracy: {
-      type: [String, Number],
-      default: uni.$u.props.list.offsetAccuracy
-    },
-    // 启用 flexbox 布局。开启后，当前节点声明了display: flex就会成为flex container，并作用于其孩子节点，仅微信小程序有效
-    enableFlex: {
-      type: Boolean,
-      default: uni.$u.props.list.enableFlex
-    },
-    // 是否按分页模式显示List，默认值false
-    pagingEnabled: {
-      type: Boolean,
-      default: uni.$u.props.list.pagingEnabled
-    },
-    // 是否允许List滚动
-    scrollable: {
-      type: Boolean,
-      default: uni.$u.props.list.scrollable
-    },
-    // 值应为某子元素id（id不能以数字开头）
-    scrollIntoView: {
-      type: String,
-      default: uni.$u.props.list.scrollIntoView
-    },
-    // 在设置滚动条位置时使用动画过渡
-    scrollWithAnimation: {
-      type: Boolean,
-      default: uni.$u.props.list.scrollWithAnimation
-    },
-    // iOS点击顶部状态栏、安卓双击标题栏时，滚动条返回顶部，只对微信小程序有效
-    enableBackToTop: {
-      type: Boolean,
-      default: uni.$u.props.list.enableBackToTop
-    },
-    // 列表的高度
-    height: {
-      type: [String, Number],
-      default: uni.$u.props.list.height
-    },
-    // 列表宽度
-    width: {
-      type: [String, Number],
-      default: uni.$u.props.list.width
-    },
-    // 列表前后预渲染的屏数，1代表一个屏幕的高度，1.5代表1个半屏幕高度
-    preLoadScreen: {
-      type: [String, Number],
-      default: uni.$u.props.list.preLoadScreen
-    }
-    // vue下，是否开启虚拟列表
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 264 */,
-/* 265 */,
-/* 266 */,
-/* 267 */,
-/* 268 */,
-/* 269 */,
-/* 270 */,
-/* 271 */
-/*!**********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-list-item/props.js ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    // 用于滚动到指定item
-    anchor: {
-      type: [String, Number],
-      default: uni.$u.props.listItem.anchor
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 272 */,
-/* 273 */,
-/* 274 */,
-/* 275 */,
-/* 276 */,
-/* 277 */,
-/* 278 */,
-/* 279 */
-/*!*********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-collapse/props.js ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    // 当前展开面板的name，非手风琴模式：[<string | number>]，手风琴模式：string | number
-    value: {
-      type: [String, Number, Array, null],
-      default: uni.$u.props.collapse.value
-    },
-    // 是否手风琴模式
-    accordion: {
-      type: Boolean,
-      default: uni.$u.props.collapse.accordion
-    },
-    // 是否显示外边框
-    border: {
-      type: Boolean,
-      default: uni.$u.props.collapse.border
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 280 */,
-/* 281 */,
-/* 282 */,
-/* 283 */,
-/* 284 */,
-/* 285 */,
-/* 286 */,
-/* 287 */
-/*!**************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-collapse-item/props.js ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    // 标题
-    title: {
-      type: String,
-      default: uni.$u.props.collapseItem.title
-    },
-    // 标题右侧内容
-    value: {
-      type: String,
-      default: uni.$u.props.collapseItem.value
-    },
-    // 标题下方的描述信息
-    label: {
-      type: String,
-      default: uni.$u.props.collapseItem.label
-    },
-    // 是否禁用折叠面板
-    disabled: {
-      type: Boolean,
-      default: uni.$u.props.collapseItem.disabled
-    },
-    // 是否展示右侧箭头并开启点击反馈
-    isLink: {
-      type: Boolean,
-      default: uni.$u.props.collapseItem.isLink
-    },
-    // 是否开启点击反馈
-    clickable: {
-      type: Boolean,
-      default: uni.$u.props.collapseItem.clickable
-    },
-    // 是否显示内边框
-    border: {
-      type: Boolean,
-      default: uni.$u.props.collapseItem.border
-    },
-    // 标题的对齐方式
-    align: {
-      type: String,
-      default: uni.$u.props.collapseItem.align
-    },
-    // 唯一标识符
-    name: {
-      type: [String, Number],
-      default: uni.$u.props.collapseItem.name
-    },
-    // 标题左侧图片，可为绝对路径的图片或内置图标
-    icon: {
-      type: String,
-      default: uni.$u.props.collapseItem.icon
-    },
-    // 面板展开收起的过渡时间，单位ms
-    duration: {
-      type: Number,
-      default: uni.$u.props.collapseItem.duration
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 288 */,
-/* 289 */,
-/* 290 */,
-/* 291 */,
-/* 292 */,
-/* 293 */,
-/* 294 */,
-/* 295 */
-/*!***********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-cell-group/props.js ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    // 分组标题
-    title: {
-      type: String,
-      default: uni.$u.props.cellGroup.title
-    },
-    // 是否显示外边框
-    border: {
-      type: Boolean,
-      default: uni.$u.props.cellGroup.border
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 296 */,
-/* 297 */,
-/* 298 */,
-/* 299 */,
-/* 300 */,
-/* 301 */,
-/* 302 */,
-/* 303 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-cell/props.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default2 = {
-  props: {
-    // 标题
-    title: {
-      type: [String, Number],
-      default: uni.$u.props.cell.title
-    },
-    // 标题下方的描述信息
-    label: {
-      type: [String, Number],
-      default: uni.$u.props.cell.label
-    },
-    // 右侧的内容
-    value: {
-      type: [String, Number],
-      default: uni.$u.props.cell.value
-    },
-    // 左侧图标名称，或者图片链接(本地文件建议使用绝对地址)
-    icon: {
-      type: String,
-      default: uni.$u.props.cell.icon
-    },
-    // 是否禁用cell
-    disabled: {
-      type: Boolean,
-      default: uni.$u.props.cell.disabled
-    },
-    // 是否显示下边框
-    border: {
-      type: Boolean,
-      default: uni.$u.props.cell.border
-    },
-    // 内容是否垂直居中(主要是针对右侧的value部分)
-    center: {
-      type: Boolean,
-      default: uni.$u.props.cell.center
-    },
-    // 点击后跳转的URL地址
-    url: {
-      type: String,
-      default: uni.$u.props.cell.url
-    },
-    // 链接跳转的方式，内部使用的是uView封装的route方法，可能会进行拦截操作
-    linkType: {
-      type: String,
-      default: uni.$u.props.cell.linkType
-    },
-    // 是否开启点击反馈(表现为点击时加上灰色背景)
-    clickable: {
-      type: Boolean,
-      default: uni.$u.props.cell.clickable
-    },
-    // 是否展示右侧箭头并开启点击反馈
-    isLink: {
-      type: Boolean,
-      default: uni.$u.props.cell.isLink
-    },
-    // 是否显示表单状态下的必填星号(此组件可能会内嵌入input组件)
-    required: {
-      type: Boolean,
-      default: uni.$u.props.cell.required
-    },
-    // 右侧的图标箭头
-    rightIcon: {
-      type: String,
-      default: uni.$u.props.cell.rightIcon
-    },
-    // 右侧箭头的方向，可选值为：left，up，down
-    arrowDirection: {
-      type: String,
-      default: uni.$u.props.cell.arrowDirection
-    },
-    // 左侧图标样式
-    iconStyle: {
-      type: [Object, String],
-      default: function _default() {
-        return uni.$u.props.cell.iconStyle;
-      }
-    },
-    // 右侧箭头图标的样式
-    rightIconStyle: {
-      type: [Object, String],
-      default: function _default() {
-        return uni.$u.props.cell.rightIconStyle;
-      }
-    },
-    // 标题的样式
-    titleStyle: {
-      type: [Object, String],
-      default: function _default() {
-        return uni.$u.props.cell.titleStyle;
-      }
-    },
-    // 单位元的大小，可选值为large
-    size: {
-      type: String,
-      default: uni.$u.props.cell.size
-    },
-    // 点击cell是否阻止事件传播
-    stop: {
-      type: Boolean,
-      default: uni.$u.props.cell.stop
-    },
-    // 标识符，cell被点击时返回
-    name: {
-      type: [Number, String],
-      default: uni.$u.props.cell.name
-    }
-  }
-};
-exports.default = _default2;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 304 */,
-/* 305 */,
-/* 306 */,
-/* 307 */,
-/* 308 */,
-/* 309 */,
-/* 310 */,
-/* 311 */,
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */,
-/* 317 */,
-/* 318 */
-/*!******************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-badge/props.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    // 是否显示圆点
-    isDot: {
-      type: Boolean,
-      default: uni.$u.props.badge.isDot
-    },
-    // 显示的内容
-    value: {
-      type: [Number, String],
-      default: uni.$u.props.badge.value
-    },
-    // 是否显示
-    show: {
-      type: Boolean,
-      default: uni.$u.props.badge.show
-    },
-    // 最大值，超过最大值会显示 '{max}+'
-    max: {
-      type: [Number, String],
-      default: uni.$u.props.badge.max
-    },
-    // 主题类型，error|warning|success|primary
-    type: {
-      type: String,
-      default: uni.$u.props.badge.type
-    },
-    // 当数值为 0 时，是否展示 Badge
-    showZero: {
-      type: Boolean,
-      default: uni.$u.props.badge.showZero
-    },
-    // 背景颜色，优先级比type高，如设置，type参数会失效
-    bgColor: {
-      type: [String, null],
-      default: uni.$u.props.badge.bgColor
-    },
-    // 字体颜色
-    color: {
-      type: [String, null],
-      default: uni.$u.props.badge.color
-    },
-    // 徽标形状，circle-四角均为圆角，horn-左下角为直角
-    shape: {
-      type: String,
-      default: uni.$u.props.badge.shape
-    },
-    // 设置数字的显示方式，overflow|ellipsis|limit
-    // overflow会根据max字段判断，超出显示`${max}+`
-    // ellipsis会根据max判断，超出显示`${max}...`
-    // limit会依据1000作为判断条件，超出1000，显示`${value/1000}K`，比如2.2k、3.34w，最多保留2位小数
-    numberType: {
-      type: String,
-      default: uni.$u.props.badge.numberType
-    },
-    // 设置badge的位置偏移，格式为 [x, y]，也即设置的为top和right的值，absolute为true时有效
-    offset: {
-      type: Array,
-      default: uni.$u.props.badge.offset
-    },
-    // 是否反转背景和字体颜色
-    inverted: {
-      type: Boolean,
-      default: uni.$u.props.badge.inverted
-    },
-    // 是否绝对定位
-    absolute: {
-      type: Boolean,
-      default: uni.$u.props.badge.absolute
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 319 */,
-/* 320 */,
-/* 321 */,
-/* 322 */,
-/* 323 */,
-/* 324 */,
-/* 325 */,
-/* 326 */
-/*!***********************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-transition/props.js ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    // 是否展示组件
-    show: {
-      type: Boolean,
-      default: uni.$u.props.transition.show
-    },
-    // 使用的动画模式
-    mode: {
-      type: String,
-      default: uni.$u.props.transition.mode
-    },
-    // 动画的执行时间，单位ms
-    duration: {
-      type: [String, Number],
-      default: uni.$u.props.transition.duration
-    },
-    // 使用的动画过渡函数
-    timingFunction: {
-      type: String,
-      default: uni.$u.props.transition.timingFunction
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 327 */
-/*!****************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-transition/transition.js ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 55));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 57));
-var _nvueAniMap = _interopRequireDefault(__webpack_require__(/*! ./nvue.ani-map.js */ 328));
-// 定义一个一定时间后自动成功的promise，让调用nextTick方法处，进入下一个then方法
-var nextTick = function nextTick() {
-  return new Promise(function (resolve) {
-    return setTimeout(resolve, 1000 / 50);
-  });
-};
-// nvue动画模块实现细节抽离在外部文件
-
-// 定义类名，通过给元素动态切换类名，赋予元素一定的css动画样式
-var getClassNames = function getClassNames(name) {
-  return {
-    enter: "u-".concat(name, "-enter u-").concat(name, "-enter-active"),
-    'enter-to': "u-".concat(name, "-enter-to u-").concat(name, "-enter-active"),
-    leave: "u-".concat(name, "-leave u-").concat(name, "-leave-active"),
-    'leave-to': "u-".concat(name, "-leave-to u-").concat(name, "-leave-active")
-  };
-};
-var _default = {
-  methods: {
-    // 组件被点击发出事件
-    clickHandler: function clickHandler() {
-      this.$emit('click');
-    },
-    // vue版本的组件进场处理
-    vueEnter: function vueEnter() {
-      var _this = this;
-      // 动画进入时的类名
-      var classNames = getClassNames(this.mode);
-      // 定义状态和发出动画进入前事件
-      this.status = 'enter';
-      this.$emit('beforeEnter');
-      this.inited = true;
-      this.display = true;
-      this.classes = classNames.enter;
-      this.$nextTick( /*#__PURE__*/(0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
-        return _regenerator.default.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                // 标识动画尚未结束
-                _this.$emit('enter');
-                _this.transitionEnded = false;
-                // 组件动画进入后触发的事件
-                _this.$emit('afterEnter');
-                // 赋予组件enter-to类名
-                _this.classes = classNames['enter-to'];
-              case 4:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      })));
-    },
-    // 动画离场处理
-    vueLeave: function vueLeave() {
-      var _this2 = this;
-      // 如果不是展示状态，无需执行逻辑
-      if (!this.display) return;
-      var classNames = getClassNames(this.mode);
-      // 标记离开状态和发出事件
-      this.status = 'leave';
-      this.$emit('beforeLeave');
-      // 获得类名
-      this.classes = classNames.leave;
-      this.$nextTick(function () {
-        // 动画正在离场的状态
-        _this2.transitionEnded = false;
-        _this2.$emit('leave');
-        // 组件执行动画，到了执行的执行时间后，执行一些额外处理
-        setTimeout(_this2.onTransitionEnd, _this2.duration);
-        _this2.classes = classNames['leave-to'];
-      });
-    },
-    // 完成过渡后触发
-    onTransitionEnd: function onTransitionEnd() {
-      // 如果已经是结束的状态，无需再处理
-      if (this.transitionEnded) return;
-      this.transitionEnded = true;
-      // 发出组件动画执行后的事件
-      this.$emit(this.status === 'leave' ? 'afterLeave' : 'afterEnter');
-      if (!this.show && this.display) {
-        this.display = false;
-        this.inited = false;
-      }
-    }
-  }
-};
-exports.default = _default;
-
-/***/ }),
-/* 328 */
-/*!******************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-transition/nvue.ani-map.js ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  fade: {
-    enter: {
-      opacity: 0
-    },
-    'enter-to': {
-      opacity: 1
-    },
-    leave: {
-      opacity: 1
-    },
-    'leave-to': {
-      opacity: 0
-    }
-  },
-  'fade-up': {
-    enter: {
-      opacity: 0,
-      transform: 'translateY(100%)'
-    },
-    'enter-to': {
-      opacity: 1,
-      transform: 'translateY(0)'
-    },
-    leave: {
-      opacity: 1,
-      transform: 'translateY(0)'
-    },
-    'leave-to': {
-      opacity: 0,
-      transform: 'translateY(100%)'
-    }
-  },
-  'fade-down': {
-    enter: {
-      opacity: 0,
-      transform: 'translateY(-100%)'
-    },
-    'enter-to': {
-      opacity: 1,
-      transform: 'translateY(0)'
-    },
-    leave: {
-      opacity: 1,
-      transform: 'translateY(0)'
-    },
-    'leave-to': {
-      opacity: 0,
-      transform: 'translateY(-100%)'
-    }
-  },
-  'fade-left': {
-    enter: {
-      opacity: 0,
-      transform: 'translateX(-100%)'
-    },
-    'enter-to': {
-      opacity: 1,
-      transform: 'translateY(0)'
-    },
-    leave: {
-      opacity: 1,
-      transform: 'translateY(0)'
-    },
-    'leave-to': {
-      opacity: 0,
-      transform: 'translateX(-100%)'
-    }
-  },
-  'fade-right': {
-    enter: {
-      opacity: 0,
-      transform: 'translateX(100%)'
-    },
-    'enter-to': {
-      opacity: 1,
-      transform: 'translateY(0)'
-    },
-    leave: {
-      opacity: 1,
-      transform: 'translateY(0)'
-    },
-    'leave-to': {
-      opacity: 0,
-      transform: 'translateX(100%)'
-    }
-  },
-  'slide-up': {
-    enter: {
-      transform: 'translateY(100%)'
-    },
-    'enter-to': {
-      transform: 'translateY(0)'
-    },
-    leave: {
-      transform: 'translateY(0)'
-    },
-    'leave-to': {
-      transform: 'translateY(100%)'
-    }
-  },
-  'slide-down': {
-    enter: {
-      transform: 'translateY(-100%)'
-    },
-    'enter-to': {
-      transform: 'translateY(0)'
-    },
-    leave: {
-      transform: 'translateY(0)'
-    },
-    'leave-to': {
-      transform: 'translateY(-100%)'
-    }
-  },
-  'slide-left': {
-    enter: {
-      transform: 'translateX(-100%)'
-    },
-    'enter-to': {
-      transform: 'translateY(0)'
-    },
-    leave: {
-      transform: 'translateY(0)'
-    },
-    'leave-to': {
-      transform: 'translateX(-100%)'
-    }
-  },
-  'slide-right': {
-    enter: {
-      transform: 'translateX(100%)'
-    },
-    'enter-to': {
-      transform: 'translateY(0)'
-    },
-    leave: {
-      transform: 'translateY(0)'
-    },
-    'leave-to': {
-      transform: 'translateX(100%)'
-    }
-  },
-  zoom: {
-    enter: {
-      transform: 'scale(0.95)'
-    },
-    'enter-to': {
-      transform: 'scale(1)'
-    },
-    leave: {
-      transform: 'scale(1)'
-    },
-    'leave-to': {
-      transform: 'scale(0.95)'
-    }
-  },
-  'fade-zoom': {
-    enter: {
-      opacity: 0,
-      transform: 'scale(0.95)'
-    },
-    'enter-to': {
-      opacity: 1,
-      transform: 'scale(1)'
-    },
-    leave: {
-      opacity: 1,
-      transform: 'scale(1)'
-    },
-    'leave-to': {
-      opacity: 0,
-      transform: 'scale(0.95)'
-    }
-  }
-};
-exports.default = _default;
-
-/***/ }),
-/* 329 */,
-/* 330 */,
-/* 331 */,
-/* 332 */,
-/* 333 */,
-/* 334 */,
-/* 335 */,
-/* 336 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-icon/icons.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  'uicon-level': "\uE693",
-  'uicon-column-line': "\uE68E",
-  'uicon-checkbox-mark': "\uE807",
-  'uicon-folder': "\uE7F5",
-  'uicon-movie': "\uE7F6",
-  'uicon-star-fill': "\uE669",
-  'uicon-star': "\uE65F",
-  'uicon-phone-fill': "\uE64F",
-  'uicon-phone': "\uE622",
-  'uicon-apple-fill': "\uE881",
-  'uicon-chrome-circle-fill': "\uE885",
-  'uicon-backspace': "\uE67B",
-  'uicon-attach': "\uE632",
-  'uicon-cut': "\uE948",
-  'uicon-empty-car': "\uE602",
-  'uicon-empty-coupon': "\uE682",
-  'uicon-empty-address': "\uE646",
-  'uicon-empty-favor': "\uE67C",
-  'uicon-empty-permission': "\uE686",
-  'uicon-empty-news': "\uE687",
-  'uicon-empty-search': "\uE664",
-  'uicon-github-circle-fill': "\uE887",
-  'uicon-rmb': "\uE608",
-  'uicon-person-delete-fill': "\uE66A",
-  'uicon-reload': "\uE788",
-  'uicon-order': "\uE68F",
-  'uicon-server-man': "\uE6BC",
-  'uicon-search': "\uE62A",
-  'uicon-fingerprint': "\uE955",
-  'uicon-more-dot-fill': "\uE630",
-  'uicon-scan': "\uE662",
-  'uicon-share-square': "\uE60B",
-  'uicon-map': "\uE61D",
-  'uicon-map-fill': "\uE64E",
-  'uicon-tags': "\uE629",
-  'uicon-tags-fill': "\uE651",
-  'uicon-bookmark-fill': "\uE63B",
-  'uicon-bookmark': "\uE60A",
-  'uicon-eye': "\uE613",
-  'uicon-eye-fill': "\uE641",
-  'uicon-mic': "\uE64A",
-  'uicon-mic-off': "\uE649",
-  'uicon-calendar': "\uE66E",
-  'uicon-calendar-fill': "\uE634",
-  'uicon-trash': "\uE623",
-  'uicon-trash-fill': "\uE658",
-  'uicon-play-left': "\uE66D",
-  'uicon-play-right': "\uE610",
-  'uicon-minus': "\uE618",
-  'uicon-plus': "\uE62D",
-  'uicon-info': "\uE653",
-  'uicon-info-circle': "\uE7D2",
-  'uicon-info-circle-fill': "\uE64B",
-  'uicon-question': "\uE715",
-  'uicon-error': "\uE6D3",
-  'uicon-close': "\uE685",
-  'uicon-checkmark': "\uE6A8",
-  'uicon-android-circle-fill': "\uE67E",
-  'uicon-android-fill': "\uE67D",
-  'uicon-ie': "\uE87B",
-  'uicon-IE-circle-fill': "\uE889",
-  'uicon-google': "\uE87A",
-  'uicon-google-circle-fill': "\uE88A",
-  'uicon-setting-fill': "\uE872",
-  'uicon-setting': "\uE61F",
-  'uicon-minus-square-fill': "\uE855",
-  'uicon-plus-square-fill': "\uE856",
-  'uicon-heart': "\uE7DF",
-  'uicon-heart-fill': "\uE851",
-  'uicon-camera': "\uE7D7",
-  'uicon-camera-fill': "\uE870",
-  'uicon-more-circle': "\uE63E",
-  'uicon-more-circle-fill': "\uE645",
-  'uicon-chat': "\uE620",
-  'uicon-chat-fill': "\uE61E",
-  'uicon-bag-fill': "\uE617",
-  'uicon-bag': "\uE619",
-  'uicon-error-circle-fill': "\uE62C",
-  'uicon-error-circle': "\uE624",
-  'uicon-close-circle': "\uE63F",
-  'uicon-close-circle-fill': "\uE637",
-  'uicon-checkmark-circle': "\uE63D",
-  'uicon-checkmark-circle-fill': "\uE635",
-  'uicon-question-circle-fill': "\uE666",
-  'uicon-question-circle': "\uE625",
-  'uicon-share': "\uE631",
-  'uicon-share-fill': "\uE65E",
-  'uicon-shopping-cart': "\uE621",
-  'uicon-shopping-cart-fill': "\uE65D",
-  'uicon-bell': "\uE609",
-  'uicon-bell-fill': "\uE640",
-  'uicon-list': "\uE650",
-  'uicon-list-dot': "\uE616",
-  'uicon-zhihu': "\uE6BA",
-  'uicon-zhihu-circle-fill': "\uE709",
-  'uicon-zhifubao': "\uE6B9",
-  'uicon-zhifubao-circle-fill': "\uE6B8",
-  'uicon-weixin-circle-fill': "\uE6B1",
-  'uicon-weixin-fill': "\uE6B2",
-  'uicon-twitter-circle-fill': "\uE6AB",
-  'uicon-twitter': "\uE6AA",
-  'uicon-taobao-circle-fill': "\uE6A7",
-  'uicon-taobao': "\uE6A6",
-  'uicon-weibo-circle-fill': "\uE6A5",
-  'uicon-weibo': "\uE6A4",
-  'uicon-qq-fill': "\uE6A1",
-  'uicon-qq-circle-fill': "\uE6A0",
-  'uicon-moments-circel-fill': "\uE69A",
-  'uicon-moments': "\uE69B",
-  'uicon-qzone': "\uE695",
-  'uicon-qzone-circle-fill': "\uE696",
-  'uicon-baidu-circle-fill': "\uE680",
-  'uicon-baidu': "\uE681",
-  'uicon-facebook-circle-fill': "\uE68A",
-  'uicon-facebook': "\uE689",
-  'uicon-car': "\uE60C",
-  'uicon-car-fill': "\uE636",
-  'uicon-warning-fill': "\uE64D",
-  'uicon-warning': "\uE694",
-  'uicon-clock-fill': "\uE638",
-  'uicon-clock': "\uE60F",
-  'uicon-edit-pen': "\uE612",
-  'uicon-edit-pen-fill': "\uE66B",
-  'uicon-email': "\uE611",
-  'uicon-email-fill': "\uE642",
-  'uicon-minus-circle': "\uE61B",
-  'uicon-minus-circle-fill': "\uE652",
-  'uicon-plus-circle': "\uE62E",
-  'uicon-plus-circle-fill': "\uE661",
-  'uicon-file-text': "\uE663",
-  'uicon-file-text-fill': "\uE665",
-  'uicon-pushpin': "\uE7E3",
-  'uicon-pushpin-fill': "\uE86E",
-  'uicon-grid': "\uE673",
-  'uicon-grid-fill': "\uE678",
-  'uicon-play-circle': "\uE647",
-  'uicon-play-circle-fill': "\uE655",
-  'uicon-pause-circle-fill': "\uE654",
-  'uicon-pause': "\uE8FA",
-  'uicon-pause-circle': "\uE643",
-  'uicon-eye-off': "\uE648",
-  'uicon-eye-off-outline': "\uE62B",
-  'uicon-gift-fill': "\uE65C",
-  'uicon-gift': "\uE65B",
-  'uicon-rmb-circle-fill': "\uE657",
-  'uicon-rmb-circle': "\uE677",
-  'uicon-kefu-ermai': "\uE656",
-  'uicon-server-fill': "\uE751",
-  'uicon-coupon-fill': "\uE8C4",
-  'uicon-coupon': "\uE8AE",
-  'uicon-integral': "\uE704",
-  'uicon-integral-fill': "\uE703",
-  'uicon-home-fill': "\uE964",
-  'uicon-home': "\uE965",
-  'uicon-hourglass-half-fill': "\uE966",
-  'uicon-hourglass': "\uE967",
-  'uicon-account': "\uE628",
-  'uicon-plus-people-fill': "\uE626",
-  'uicon-minus-people-fill': "\uE615",
-  'uicon-account-fill': "\uE614",
-  'uicon-thumb-down-fill': "\uE726",
-  'uicon-thumb-down': "\uE727",
-  'uicon-thumb-up': "\uE733",
-  'uicon-thumb-up-fill': "\uE72F",
-  'uicon-lock-fill': "\uE979",
-  'uicon-lock-open': "\uE973",
-  'uicon-lock-opened-fill': "\uE974",
-  'uicon-lock': "\uE97A",
-  'uicon-red-packet-fill': "\uE690",
-  'uicon-photo-fill': "\uE98B",
-  'uicon-photo': "\uE98D",
-  'uicon-volume-off-fill': "\uE659",
-  'uicon-volume-off': "\uE644",
-  'uicon-volume-fill': "\uE670",
-  'uicon-volume': "\uE633",
-  'uicon-red-packet': "\uE691",
-  'uicon-download': "\uE63C",
-  'uicon-arrow-up-fill': "\uE6B0",
-  'uicon-arrow-down-fill': "\uE600",
-  'uicon-play-left-fill': "\uE675",
-  'uicon-play-right-fill': "\uE676",
-  'uicon-rewind-left-fill': "\uE679",
-  'uicon-rewind-right-fill': "\uE67A",
-  'uicon-arrow-downward': "\uE604",
-  'uicon-arrow-leftward': "\uE601",
-  'uicon-arrow-rightward': "\uE603",
-  'uicon-arrow-upward': "\uE607",
-  'uicon-arrow-down': "\uE60D",
-  'uicon-arrow-right': "\uE605",
-  'uicon-arrow-left': "\uE60E",
-  'uicon-arrow-up': "\uE606",
-  'uicon-skip-back-left': "\uE674",
-  'uicon-skip-forward-right': "\uE672",
-  'uicon-rewind-right': "\uE66F",
-  'uicon-rewind-left': "\uE671",
-  'uicon-arrow-right-double': "\uE68D",
-  'uicon-arrow-left-double': "\uE68C",
-  'uicon-wifi-off': "\uE668",
-  'uicon-wifi': "\uE667",
-  'uicon-empty-data': "\uE62F",
-  'uicon-empty-history': "\uE684",
-  'uicon-empty-list': "\uE68B",
-  'uicon-empty-page': "\uE627",
-  'uicon-empty-order': "\uE639",
-  'uicon-man': "\uE697",
-  'uicon-woman': "\uE69C",
-  'uicon-man-add': "\uE61C",
-  'uicon-man-add-fill': "\uE64C",
-  'uicon-man-delete': "\uE61A",
-  'uicon-man-delete-fill': "\uE66A",
-  'uicon-zh': "\uE70A",
-  'uicon-en': "\uE692"
-};
-exports.default = _default;
-
-/***/ }),
-/* 337 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-icon/props.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    // 图标类名
-    name: {
-      type: String,
-      default: uni.$u.props.icon.name
-    },
-    // 图标颜色，可接受主题色
-    color: {
-      type: String,
-      default: uni.$u.props.icon.color
-    },
-    // 字体大小，单位px
-    size: {
-      type: [String, Number],
-      default: uni.$u.props.icon.size
-    },
-    // 是否显示粗体
-    bold: {
-      type: Boolean,
-      default: uni.$u.props.icon.bold
-    },
-    // 点击图标的时候传递事件出去的index（用于区分点击了哪一个）
-    index: {
-      type: [String, Number],
-      default: uni.$u.props.icon.index
-    },
-    // 触摸图标时的类名
-    hoverClass: {
-      type: String,
-      default: uni.$u.props.icon.hoverClass
-    },
-    // 自定义扩展前缀，方便用户扩展自己的图标库
-    customPrefix: {
-      type: String,
-      default: uni.$u.props.icon.customPrefix
-    },
-    // 图标右边或者下面的文字
-    label: {
-      type: [String, Number],
-      default: uni.$u.props.icon.label
-    },
-    // label的位置，只能右边或者下边
-    labelPos: {
-      type: String,
-      default: uni.$u.props.icon.labelPos
-    },
-    // label的大小
-    labelSize: {
-      type: [String, Number],
-      default: uni.$u.props.icon.labelSize
-    },
-    // label的颜色
-    labelColor: {
-      type: String,
-      default: uni.$u.props.icon.labelColor
-    },
-    // label与图标的距离
-    space: {
-      type: [String, Number],
-      default: uni.$u.props.icon.space
-    },
-    // 图片的mode
-    imgMode: {
-      type: String,
-      default: uni.$u.props.icon.imgMode
-    },
-    // 用于显示图片小图标时，图片的宽度
-    width: {
-      type: [String, Number],
-      default: uni.$u.props.icon.width
-    },
-    // 用于显示图片小图标时，图片的高度
-    height: {
-      type: [String, Number],
-      default: uni.$u.props.icon.height
-    },
-    // 用于解决某些情况下，让图标垂直居中的用途
-    top: {
-      type: [String, Number],
-      default: uni.$u.props.icon.top
-    },
-    // 是否阻止事件传播
-    stop: {
-      type: Boolean,
-      default: uni.$u.props.icon.stop
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 338 */,
-/* 339 */,
-/* 340 */,
-/* 341 */,
-/* 342 */,
-/* 343 */,
-/* 344 */,
-/* 345 */
-/*!*************************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-loading-icon/props.js ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    // 是否显示组件
-    show: {
-      type: Boolean,
-      default: uni.$u.props.loadingIcon.show
-    },
-    // 颜色
-    color: {
-      type: String,
-      default: uni.$u.props.loadingIcon.color
-    },
-    // 提示文字颜色
-    textColor: {
-      type: String,
-      default: uni.$u.props.loadingIcon.textColor
-    },
-    // 文字和图标是否垂直排列
-    vertical: {
-      type: Boolean,
-      default: uni.$u.props.loadingIcon.vertical
-    },
-    // 模式选择，circle-圆形，spinner-花朵形，semicircle-半圆形
-    mode: {
-      type: String,
-      default: uni.$u.props.loadingIcon.mode
-    },
-    // 图标大小，单位默认px
-    size: {
-      type: [String, Number],
-      default: uni.$u.props.loadingIcon.size
-    },
-    // 文字大小
-    textSize: {
-      type: [String, Number],
-      default: uni.$u.props.loadingIcon.textSize
-    },
-    // 文字内容
-    text: {
-      type: [String, Number],
-      default: uni.$u.props.loadingIcon.text
-    },
-    // 动画模式
-    timingFunction: {
-      type: String,
-      default: uni.$u.props.loadingIcon.timingFunction
-    },
-    // 动画执行周期时间
-    duration: {
-      type: [String, Number],
-      default: uni.$u.props.loadingIcon.duration
-    },
-    // mode=circle时的暗边颜色
-    inactiveColor: {
-      type: String,
-      default: uni.$u.props.loadingIcon.inactiveColor
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 346 */,
-/* 347 */,
-/* 348 */,
-/* 349 */,
-/* 350 */,
-/* 351 */,
-/* 352 */,
-/* 353 */
-/*!*****************************************************************************!*\
-  !*** D:/uniapp/pet_front/petshop-front/uview-ui/components/u-line/props.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    color: {
-      type: String,
-      default: uni.$u.props.line.color
-    },
-    // 长度，竖向时表现为高度，横向时表现为长度，可以为百分比，带px单位的值等
-    length: {
-      type: [String, Number],
-      default: uni.$u.props.line.length
-    },
-    // 线条方向，col-竖向，row-横向
-    direction: {
-      type: String,
-      default: uni.$u.props.line.direction
-    },
-    // 是否显示细边框
-    hairline: {
-      type: Boolean,
-      default: uni.$u.props.line.hairline
-    },
-    // 线条与上下左右元素的间距，字符串形式，如"30px"、"20px 30px"
-    margin: {
-      type: [String, Number],
-      default: uni.$u.props.line.margin
-    },
-    // 是否虚线，true-虚线，false-实线
-    dashed: {
-      type: Boolean,
-      default: uni.$u.props.line.dashed
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ })
 ]]);

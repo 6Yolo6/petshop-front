@@ -105,11 +105,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"uview-ui/components/u-tabs/u-tabs":1,"uview-ui/components/u-tag/u-tag":1,"uview-ui/components/u-button/u-button":1,"uview-ui/components/u-cell-group/u-cell-group":1,"uview-ui/components/u-cell/u-cell":1,"uview-ui/components/u-collapse-item/u-collapse-item":1,"uview-ui/components/u-collapse/u-collapse":1,"uview-ui/components/u-list-item/u-list-item":1,"uview-ui/components/u-list/u-list":1,"pages/home/order/nvue-swiper-page":1,"uview-ui/components/u-badge/u-badge":1,"uview-ui/components/u-icon/u-icon":1,"uview-ui/components/u-transition/u-transition":1,"uview-ui/components/u-loading-icon/u-loading-icon":1,"uview-ui/components/u-line/u-line":1};
+/******/ 		var cssChunks = {"pages/home/order/nvue-swiper-page":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"uview-ui/components/u-tabs/u-tabs":"uview-ui/components/u-tabs/u-tabs","uview-ui/components/u-tag/u-tag":"uview-ui/components/u-tag/u-tag","uview-ui/components/u-button/u-button":"uview-ui/components/u-button/u-button","uview-ui/components/u-cell-group/u-cell-group":"uview-ui/components/u-cell-group/u-cell-group","uview-ui/components/u-cell/u-cell":"uview-ui/components/u-cell/u-cell","uview-ui/components/u-collapse-item/u-collapse-item":"uview-ui/components/u-collapse-item/u-collapse-item","uview-ui/components/u-collapse/u-collapse":"uview-ui/components/u-collapse/u-collapse","uview-ui/components/u-list-item/u-list-item":"uview-ui/components/u-list-item/u-list-item","uview-ui/components/u-list/u-list":"uview-ui/components/u-list/u-list","pages/home/order/nvue-swiper-page":"pages/home/order/nvue-swiper-page","uview-ui/components/u-badge/u-badge":"uview-ui/components/u-badge/u-badge","uview-ui/components/u-icon/u-icon":"uview-ui/components/u-icon/u-icon","uview-ui/components/u-transition/u-transition":"uview-ui/components/u-transition/u-transition","uview-ui/components/u-loading-icon/u-loading-icon":"uview-ui/components/u-loading-icon/u-loading-icon","uview-ui/components/u-line/u-line":"uview-ui/components/u-line/u-line"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"pages/home/order/nvue-swiper-page":"pages/home/order/nvue-swiper-page"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

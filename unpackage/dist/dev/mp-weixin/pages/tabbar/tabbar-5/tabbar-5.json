@@ -1,12 +1,12 @@
 {
   "usingComponents": {
-    "u-button": "/uview-ui/components/u-button/u-button",
-    "u-list": "/uview-ui/components/u-list/u-list",
-    "u-list-item": "/uview-ui/components/u-list-item/u-list-item",
-    "u-tag": "/uview-ui/components/u-tag/u-tag",
-    "u-collapse": "/uview-ui/components/u-collapse/u-collapse",
-    "u-collapse-item": "/uview-ui/components/u-collapse-item/u-collapse-item",
-    "u-cell-group": "/uview-ui/components/u-cell-group/u-cell-group",
-    "u-cell": "/uview-ui/components/u-cell/u-cell"
+    "u-button": "/suni_modeles/uview-ui/components/u-button/u-button",
+    "u-list": "/suni_modeles/uview-ui/components/u-list/u-list",
+    "u-list-item": "/suni_modeles/uview-ui/components/u-list-item/u-list-item",
+    "u-tag": "/suni_modeles/uview-ui/components/u-tag/u-tag",
+    "u-collapse": "/suni_modeles/uview-ui/components/u-collapse/u-collapse",
+    "u-collapse-item": "/suni_modeles/uview-ui/components/u-collapse-item/u-collapse-item",
+    "u-cell-group": "/suni_modeles/uview-ui/components/u-cell-group/u-cell-group",
+    "u-cell": "/suni_modeles/uview-ui/components/u-cell/u-cell"
   }
 }
