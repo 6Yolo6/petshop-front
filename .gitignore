@@ -1,4 +1,5 @@
 uni_modules/
 unpackage/
 .hbuilderx
-
+uniCloud/
+node_modules/
