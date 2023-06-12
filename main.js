@@ -2,6 +2,11 @@ import App from './App.vue'
 
 // #ifndef VUE3
 import Vue from 'vue'
+
+import uView from '@/uni_modules/uview-ui'
+import './static/assets/iconfont.css'
+Vue.use(uView)
+
 Vue.config.productionTip = false
 App.mpType = 'app'
 const app = new Vue({
@@ -17,7 +22,7 @@ import {
 export function createApp() {
 	const app = createSSRApp(App)
 	return {
-		app
+		app;
 	}
 }
 // #endif

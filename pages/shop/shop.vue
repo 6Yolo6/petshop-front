@@ -1,19 +1,27 @@
 <template>
 	<view>
-		商城宠物周边
+		shop
+		<text class="iconfont icon-shop_fill"></text>
 	</view>
 </template>
 
 <script>
 	export default {
+		components: {
+
+		},
 		data() {
 			return {
-				
-			};
+
+			}
+		},
+		methods: {
+
 		}
 	}
 </script>
 
 <style lang="scss">
+
 
 </style>
