@@ -1,5 +1,6 @@
 <template>
 	<view class="order">
+		<u-navbar title="个人中心" :autoBack="true"></u-navbar>
 		<u-tabs :list="list1" @click="click"></u-tabs>
 	</view>
 </template>
@@ -14,7 +15,7 @@
 					name: '推荐',
 				}, {
 					name: '电影'
-				
+
 				}]
 			}
 		},

@@ -50,9 +50,17 @@
 				"navigationStyle": "custom"
 			}
 
+		}, {
+			"path": "pages/index/pet_category",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
 		}
+
 	    ,{
-            "path" : "pages/index/pet_category",
+            "path" : "pages/myinfo/my_address",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
