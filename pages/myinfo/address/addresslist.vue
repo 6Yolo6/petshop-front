@@ -54,7 +54,7 @@
 		getAddressByUserId,
 		updateDefaultById,
 		deleteById
-	} from '@/api/modeules/user_address.js'
+	} from '@/api/modules/user_address.js'
 	export default {
 
 		data() {

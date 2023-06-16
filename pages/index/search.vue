@@ -45,7 +45,7 @@
 </template>
 
 <script>
-	import { searchByKey } from '@/api/modeules/search.js'
+	import { searchByKey } from '@/api/modules/search.js'
 	export default {
 		data() {
 			return {

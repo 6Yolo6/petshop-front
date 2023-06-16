@@ -35,7 +35,7 @@
 </template>
 
 <script>
-	import { getAllCate } from '@/api/modeules/pet_category.js'
+	import { getAllCate } from '@/api/modules/pet_category.js'
 	export default {
 		components: {},
 		data() {

@@ -3,7 +3,7 @@
 		<view class="header">
 			<u-navbar title="我的空间" :autoBack="true" leftIcon="">
 				<view slot="right">
-					<uni-data-select :localdata="range" placeholder=""></uni-data-select>
+					<uni-data-select :localdata="range" placeholder="" class="select"></uni-data-select>
 				</view>
 			</u-navbar>
 		</view>
@@ -109,6 +109,10 @@
 	};
 </script>
 <style lang="scss" scoped>
+	.select {
+		width: 200rpx;
+	}
+
 	.header {
 		width: 100%;
 		display: flex;
