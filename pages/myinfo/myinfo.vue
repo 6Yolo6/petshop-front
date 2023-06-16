@@ -84,7 +84,8 @@
 			};
 		},
 		mounted() {
-
+			var token = this.$store.state.token;
+			console.log(token)
 		},
 		methods: {},
 	};
