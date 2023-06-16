@@ -2,9 +2,9 @@ import { getStore } from '@/libs/storage'
 import axios from 'axios'
 import qs from 'qs'
 
-// const baseURL = 'http://localhost:8899/petshop'
+const baseURL = 'http://localhost:8899/petshop'
 // 宿舍
-const baseURL = 'http://192.168.2.205:8899/petshop'
+// const baseURL = 'http://192.168.2.205:8899/petshop'
 // const baseURL = 'http://localhost:8899/vuebackend'
 
 function interceptors(response) {

@@ -1,10 +1,10 @@
 <template>
 	<view>
 		<view class="header">
-			<uni-data-select v-model="selected_value" @change="change"></uni-data-select>
 			<u-search :clearabled="true" shape="round" :value="inp_value" :placeholder="tip" class="search"
-				bgColor="linear-gradient(to right, #70e1f5, #ffd194)"></u-search>
-			<uni-icons type="location" size="30" class="location"></uni-icons>
+				bgColor="linear-gradient(to right, #70e1f5, #ffd194)" @focus="handleFocus"
+				:showAction="false"></u-search>
+			<uni-icons type="location" size="30" class="location" @click="toLocation"></uni-icons>
 		</view>
 		<!-- 轮播图 -->
 		<view class="swiper">
@@ -30,6 +30,7 @@
 				</view>
 			</uni-col>
 		</uni-row>
+		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
@@ -39,7 +40,6 @@
 		components: {},
 		data() {
 			return {
-				selected_value: '',
 				category_list: [],
 				inp_value: "",
 				tip: "请输入关键字",
@@ -65,21 +65,35 @@
 			this.getAllCate()
 		},
 		methods: {
+			// 点击位置
+			toLocation() {
+				this.$refs.uToast.show({
+					type: "error",
+					message: "暂未开放"
+				})
+				// this.$u.toast('暂未开放')
+			},
+			// 搜索框聚焦后跳转
+			handleFocus() {
+				uni.navigateTo({
+					url: '/pages/index/search'
+				});
+			},
+			// 点击轮播图(待定)
 			clickSwiper() {
 				console.log("click")
 			},
+			// 点击类别
 			clickCategory(index) {
 				console.log(index)
 				uni.navigateTo({
-					url: '/pages/index/pet_category?index=' + index
+					url: '/pages/index/pet_category?index=' + (index + 1)
 				});
 			},
+			// 获取全部类别
 			getAllCate() {
 				getAllCate().then((res) => {
-					// console.log(res)
 					this.category_list = res.data.data
-					console.log(this.category_list)
-					console.log(this.category_list[1].name)
 				}).catch((err) => {
 					console.log('错误')
 				})

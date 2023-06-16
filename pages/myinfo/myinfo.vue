@@ -2,6 +2,9 @@
 	<view class="page">
 		<view class="header">
 			<u-navbar title="我的空间" :autoBack="true" leftIcon="">
+				<view slot="right">
+					<uni-data-select :localdata="range" placeholder=""></uni-data-select>
+				</view>
 			</u-navbar>
 		</view>
 		<view class="top">
@@ -28,10 +31,10 @@
 			</view>
 		</view>
 		<view class="list-card">
-			<view class="card">
+			<view class="card" @click="toAddress">
 				<view class="item item-bottom-solid">
 					<view class="left flex-center">
-						<image src="../../static/myIcon/qiu.png" mode="aspectFit"></image>
+						<u-icon class="icon" name="map" size="30px"></u-icon>
 					</view>
 					<view class="center">
 						<text>我的地址</text>
@@ -42,9 +45,9 @@
 				</view>
 			</view>
 			<view class="card">
-				<view class="item item-bottom-solid">
+				<view class="item item-bottom-solid" @click="toStar">
 					<view class="left flex-center">
-						<image src="../../static/myIcon/1.png" mode="aspectFit"></image>
+						<u-icon class="icon" name="star" size="30px"></u-icon>
 					</view>
 					<view class="center">
 						<text>我的收藏</text>
@@ -57,7 +60,7 @@
 			<view class="card">
 				<view class="item">
 					<view class="left flex-center">
-						<image src="../../static/myIcon/2.png" mode="aspectFit"></image>
+						<u-icon class="icon" name="order" size="30px"></u-icon>
 					</view>
 					<view class="center">
 						<text>我的订单</text>
@@ -73,20 +76,36 @@
 				退出登录
 			</view>
 		</view>
+		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 <script>
-	//import {  } from "@/common/api/{$}.js";
 	export default {
 		data() {
 			return {
-				name
+				range: [
+					{ value: 0, text: "退出登录" },
+					{ value: 1, text: "足球" },
+					{ value: 2, text: "游泳" },
+				],
 			};
 		},
 		mounted() {
 
 		},
-		methods: {},
+		methods: {
+			toAddress() {
+				uni.navigateTo({
+					url: '/pages/myinfo/address/addresslist'
+				})
+			},
+			toStar() {
+				this.$refs.uToast.show({
+					type: "error",
+					message: "敬请期待"
+				})
+			}
+		},
 	};
 </script>
 <style lang="scss" scoped>

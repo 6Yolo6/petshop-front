@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="box-bg">
-			<uni-nav-bar shadow left-icon="left" title="宠物名" @clickLeft="back" />
+			<uni-nav-bar shadow left-icon="left" title="宠物名" @clickLeft="back" :border="false" />
 		</view>、
 		<u-swiper :list="list1"></u-swiper>
 		<uni-card title="宠物名" :isFull="true" sub-title="品类" extra="价格">
