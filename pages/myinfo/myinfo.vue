@@ -59,7 +59,7 @@
 					<view class="left flex-center">
 						<image src="../../static/myIcon/2.png" mode="aspectFit"></image>
 					</view>
-					<view class="center">
+					<view class="center" @click="toOrder()">
 						<text>我的订单</text>
 					</view>
 					<view class="right flex-center">
@@ -80,13 +80,20 @@
 	export default {
 		data() {
 			return {
-				name
+				name: '',
+				status: 0
 			};
 		},
 		mounted() {
 
 		},
-		methods: {},
+		methods: {
+			toOrder() {
+				uni.navigateTo({
+					url: '/pages/order/order?status=' + this.status
+				});
+			}
+		},
 	};
 </script>
 <style lang="scss" scoped>
@@ -103,6 +110,7 @@
 	.top {
 		height: 250rpx;
 		position: relative;
+
 		.background {
 			background-color: #5199ff;
 			border-bottom-left-radius: 22px;
@@ -241,4 +249,3 @@
 		align-items: center;
 	}
 </style>
-
