@@ -1,6 +1,7 @@
 <template>
 	<view>
 		<view class="header">
+			<uni-data-select v-model="selected_value" @change="change"></uni-data-select>
 			<u-search :clearabled="true" shape="round" :value="inp_value" :placeholder="tip" class="search"
 				bgColor="linear-gradient(to right, #70e1f5, #ffd194)"></u-search>
 			<uni-icons type="location" size="30" class="location"></uni-icons>
@@ -21,10 +22,10 @@
 		<uni-row class="demo-uni-row">
 			<uni-col :span="12" v-for="(item, index) in 4" :index="index" :key="index">
 				<view class="demo-uni-col dark">
-					<uni-card title="基础卡片" sub-title="副标题" extra="额外信息" padding="10px 0">
-						<image style="width: 100%;" src="https://cdn.uviewui.com/uview/swiper/swiper1.png"></image>
+					<uni-card title="基础卡片" sub-title="副标题" extra="额外信息" padding="10px 0"
+						cover="https://cdn.uviewui.com/uview/swiper/swiper1.png" class="card">
 						<text
-							class="uni-body uni-mt-5">卡片组件通用来显示完整独立的一段信息，同时让用户理解他的作用。例如一篇文章的预览图、作者信息、时间等，卡片通常是更复杂和更详细信息的入口点。</text>
+							class="uni-body uni-mt-5 ">卡片组件通用来显示完整独立的一段信息，同时让用户理解他的作用。例如一篇文章的预览图、作者信息、时间等，卡片通常是更复杂和更详细信息的入口点。</text>
 					</uni-card>
 				</view>
 			</uni-col>
@@ -38,6 +39,7 @@
 		components: {},
 		data() {
 			return {
+				selected_value: '',
 				category_list: [],
 				inp_value: "",
 				tip: "请输入关键字",
@@ -60,15 +62,7 @@
 			};
 		},
 		mounted() {
-			// getAllCate()
-			getAllCate().then((res) => {
-				// console.log(res)
-				this.category_list = res.data.data
-				console.log(this.category_list)
-				console.log(this.category_list[1].name)
-			}).catch((err) => {
-				console.log('错误')
-			})
+			this.getAllCate()
 		},
 		methods: {
 			clickSwiper() {
@@ -76,6 +70,9 @@
 			},
 			clickCategory(index) {
 				console.log(index)
+				uni.navigateTo({
+					url: '/pages/index/pet_category?index=' + index
+				});
 			},
 			getAllCate() {
 				getAllCate().then((res) => {
@@ -91,7 +88,12 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+	.uni-select input-text {
+		width: 20px;
+	}
+
+
 	.header {
 		width: 100%;
 		display: flex;
@@ -102,6 +104,29 @@
 		background-color: white;
 	}
 
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
+
+	// 文本省略
+	text {
+		/* 使用省略号来表示文本截断部分（适用于Opera浏览器） */
+		text-overflow: -o-ellipsis-lastline;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		/* 使用WebKit引擎的盒子布局模型 */
+		display: -webkit-box;
+		/* 设置显示的行数为3行 */
+		-webkit-line-clamp: 3;
+		/* 设置显示的行数为3行 */
+		line-clamp: 3;
+		/* 设置盒子内文本垂直排列 */
+		-webkit-box-orient: vertical;
+	}
+
 	.swiper {
 		margin-top: 32px;
 		margin-bottom: 15px;
@@ -110,6 +135,7 @@
 	.categories {
 		height: 100%;
 		min-width: 20%;
+		margin: 10px;
 	}
 
 	uni-image {

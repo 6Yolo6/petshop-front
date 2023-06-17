@@ -43,7 +43,12 @@
 			}
 		},
 		methods: {
-
+			back() {
+				// 返回上一个页面
+				uni.navigateBack({
+					delta: 1, // 返回的层数，1表示返回上一个页面
+				});
+			}
 		}
 	}
 </script>
