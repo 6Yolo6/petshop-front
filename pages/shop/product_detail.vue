@@ -16,7 +16,7 @@
 			</view>
 			<view class="content">
 				<uni-card :title="product.name" :sub-title="product.etc.shopName" :extra="product.etc.cateName"
-					:thumbnail="product.price">
+					:thumbnail="toString(product.price)">
 					<text class="uni-body">{{product.description}}</text>
 				</uni-card>
 			</view>
@@ -47,7 +47,7 @@
 				}, {
 					icon: 'cart',
 					text: '购物车',
-					info: 2
+					info: this.totalProductNum
 				}, {
 					icon: 'cart',
 					text: '收藏',
@@ -65,12 +65,22 @@
 					}
 				],
 				product: {},
+				userId: 4,
+				totalProductNum: 0,
 
 
 			}
 		},
 		mounted() {
 			this.getById(Number(this.$route.query.id))
+		},
+		computed: {
+			totalProductNum() {
+				let total = this.carts.reduce((total, shopCart) =>
+					total + shopCart.productNum, 0);
+				this.totalProductNum = total
+				return total
+			}
 		},
 		methods: {
 			// 根据id获取周边详情
@@ -87,21 +97,46 @@
 			// 收藏
 			favor(id) {
 				console.log("product_id", id)
-				this.etc.isFavor = !this.etc.isFavor
+				// this.etc.isFavor = !this.etc.isFavor
 				this.$forceUpdate()
 			},
 			onClick(e) {
 				uni.showToast({
 					title: `点击${e.content.text}`,
-					icon: 'none'
 				})
+				if (e.content.text == "购物车") {
+					uni.switchTab({
+						url: '/pages/cart/cart'
+					})
+				} else if (e.content.text == "收藏") {
+					uni.switchTab({
+						url: '/pages/favor/favor'
+					});
+				}
 			},
 			buttonClick(e) {
 				// console.log(e)
-				if (e.content.text == "加入购物车")
+				if (e.content.text == "加入购物车") {
+					add({
+						// userId: this.userId,
+						// count: 1,
+						productId: this.product.id
+					}).then(res => {
+						console.log(res.data)
+						uni.showToast({
+							title: '加购成功'
+						})
+						this.totalProductNum = this.carts.reduce((total, shopCart) =>
+							total + shopCart.productNum, 0);
+						this.$store.commit('updateTotalProductNum', this.totalProductNum);
+						this.$forceUpdate()
+					}).catch(error => {
+						console.log(error)
+					})
+				} else {
 					this.options[2].info++
-				else
-					this.options[3].info++
+				}
+
 			}
 		}
 	}

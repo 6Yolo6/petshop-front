@@ -17,7 +17,7 @@
 				<view class="bottom">
 					<view class="left">
 						<view class="user-text">
-							名字
+							名字{{}}
 						</view>
 						<view class="user-phone"> 171****4133 </view>
 					</view>
@@ -85,8 +85,8 @@
 			};
 		},
 		mounted() {
-			var token = this.$store.state.token;
-			console.log(token)
+			// var token = this.$store.state.token;
+			// console.log(token)
 		},
 		methods: {
 			toOrder() {

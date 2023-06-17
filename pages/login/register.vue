@@ -27,7 +27,7 @@
 	import wButton from '../../components/watch-login/watch-button.vue' //button
 	import {
 		register
-	} from '@/api/modeules/user.js'
+	} from '@/api/modules/user.js'
 	export default {
 		data() {
 			return {

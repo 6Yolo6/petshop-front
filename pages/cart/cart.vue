@@ -56,169 +56,148 @@
 </template>
 
 <script>
+	import {
+		add,
+		sub,
+		getAll,
+		update,
+		updateAll,
+		deleteById
+	} from '@/api/modules/cart.js'
 	export default {
 		data() {
 			return {
 				userId: 4,
 				allchecked: false,
 				carts: [],
+				totalProductNum: 0
 			}
 		},
 		onLoad: function() {
+
+		},
+		mounted() {
 			this.allchecked = this.Allchecked()
-			uni.request({
-				url: 'http://localhost:8899/petshop/cart/getAll?' + 'userId=' + this.userId,
-				method: 'GET',
-				data: {},
-				success: res => {
-					console.log(res);
-					this.carts = res.data.data;
-				},
-				fail: () => {},
-				complete: () => {}
-			});
+			this.getAll()
 		},
 		methods: {
+			getAll() {
+				getAll().then(res => {
+					console.log(res.data)
+					this.carts = res.data.data
+					this.Allchecked()
+					this.totalProductNum = this.carts.reduce((total, shopCart) =>
+						total + shopCart.productNum, 0);
+					this.$store.commit('updateTotalProductNum', this.totalProductNum);
+					console.log("总数", this.totalProductNum);
+				}).catch(error => {
+					console.log(error)
+				})
+			},
 			selected(product) {
 				product.checked = !product.checked
-				uni.request({
-					url: 'http://localhost:8899/petshop/cart/update',
-					method: 'POST',
-					data: {
-						"id": product.id,
-						"userId": product.userId,
-						"checked": product.checked
-					},
-					success: res => {},
-					fail: () => {},
-					complete: () => {}
+				update({
+					productId: product.productId
+				}).then(res => {
+					console.log(res.data)
+					this.getAll()
+					this.Allchecked()
+				}).catch(error => {
+					console.log(error)
 				})
-				if (product.checked == false) {
-					this.allchecked = false
 
-				} else {
-					this.allchecked = this.Allchecked()
-				}
 			},
 			selectcarts() {
 				this.allchecked = !this.allchecked
-				if (this.allchecked) {
-					this.carts.map(shopCart => {
-						let products = shopCart.products;
-						products.map(product => {
-							product.checked = true;
-							uni.request({
-								url: 'http://localhost:8899/petshop/cart/update',
-								method: 'POST',
-								data: {
-									"id": product.id,
-									"userId": product.userId,
-									"checked": product.checked
-								},
-								success: res => {
-									console.log(res);
-									this.carts = res.data.data;
-								},
-								fail: () => {},
-								complete: () => {}
-							});
-						});
+				let ids = []
+				this.carts.forEach(shopCart => {
+					shopCart.products.forEach(product => {
+						const productId = product.productId.toString();
+						ids.push(productId);
 					});
-				} else {
-					this.checked = false;
-					this.carts.map(shopCart => {
-						let products = shopCart.products;
-						products.map(product => {
-							product.checked = false;
-							uni.request({
-								url: 'http://localhost:8899/petshop/cart/update',
-								method: 'POST',
-								data: {
-									"id": product.id,
-									"userId": product.userId,
-									"checked": product.checked
-								},
-								success: res => {},
-								fail: () => {},
-								complete: () => {}
-							});
-						});
-					});
-				}
-			},
-			del(product, index) {
-				this.carts.splice(index, 1)
-				uni.request({
-					url: 'http://localhost:8899/petshop/cart/delete?' + 'id=' + product.id,
-					method: 'POST',
-					data: {},
-					success: res => {},
-					fail: () => {},
-					complete: () => {}
 				});
+				updateAll({
+					ids: ids.join(',')
+				}).then(res => {
+					this.getAll()
+				}).catch(error => {
+
+				})
+
+			},
+			del(product) {
+				// this.carts.splice(index, 1)
+				deleteById({
+					productId: product.productId
+				}).then(res => {
+					console.log(res.data)
+					this.getAll()
+					uni.showToast({
+						title: "删除成功"
+					})
+				}).catch(error => {
+					console.log(error)
+				})
 			},
 			reduce(product) {
 				let count = product.count
-				if (count > 1) {
-					count -= 1
-				} else if (count = 1) {
+				if (count == 1) {
 					uni.showToast({
 						title: "该宝贝不能减少了哟~"
 					})
+				} else {
+					sub({
+						productId: product.productId
+					}).then(res => {
+						console.log(res.data)
+						this.getAll()
+					}).catch(error => {
+						console.log(error)
+					})
 				}
-				product.count = count
-				uni.request({
-					url: 'http://localhost:8899/petshop/cart/update',
-					method: 'POST',
-					data: {
-						"id": product.id,
-						"userId": product.userId,
-						"count": product.count
-					},
-					success: res => {},
-					fail: () => {},
-					complete: () => {}
-				});
 			},
 			Allchecked() {
-				const a = this.carts.forEach((product) => {
-					if (product.checked == false) {
-						return false;
-					}
-					return true;
-				})
+				// 将多层嵌套的 carts 数组展开，并筛选出未勾选的产品 flatMap可以嵌套多次
+				const uncheckedProducts = this.carts.flatMap(shopCart =>
+					shopCart.products).filter(p =>
+					!p.checked);
+				this.allchecked = uncheckedProducts.length == 0; // 更新全选按钮状态
 			},
 			add(product) {
-				let count = product.count
-				product.count = count + 1
-				uni.request({
-					url: 'http://localhost:8899/petshop/cart/update',
-					method: 'POST',
-					data: {
-						"id": product.id,
-						"userId": product.userId,
-						"count": product.count
-					},
-					success: res => {},
-					fail: () => {},
-					complete: () => {}
-				});
+				// let count = product.count
+				// product.count = count + 1
+				add({
+					productId: product.productId
+				}).then(res => {
+					console.log(res.data)
+					// product.count = res.data.count
+					this.getAll()
+				}).catch(error => {
+					console.log(error)
+				})
 			}
 		},
 		computed: {
 			totalNum() {
 				let totalNum = 0;
-				this.carts.map(product => {
-					product.checked ? totalNum += product.count : totalNum += 0
-				})
+				this.carts.map(shopCart => {
+					let products = shopCart.products;
+					products.map(product => {
+						product.checked ? totalNum += product.count : totalNum += 0
+					});
+				});
 				return totalNum
 			},
 
 			totalPrice() {
 				let totalPrice = 0;
-				this.carts.map(product => {
-					product.checked ? totalPrice += product.count * product.productPrice : totalPrice += 0
-				})
+				this.carts.map(shopCart => {
+					let products = shopCart.products;
+					products.map(product => {
+						product.checked ? totalPrice += product.count * product.productPrice :
+							totalPrice += 0
+					});
+				});
 				return totalPrice
 			}
 		}

@@ -40,7 +40,7 @@
 	import wButton from '../../components/watch-login/watch-button.vue' //button
 	import {
 		login
-	} from '@/api/modeules/user.js'
+	} from '@/api/modules/user.js'
 	export default {
 		data() {
 			return {
@@ -48,7 +48,8 @@
 				logoImage: '',
 				userName: '', //用户/电话
 				passData: '', //密码
-				isFocus: true // 是否聚焦
+				isFocus: true, // 是否聚焦
+				user: {},
 			};
 		},
 		components: {
@@ -98,12 +99,18 @@
 					username: this.userName,
 					password: this.passData,
 				}).then(res => {
+					console.log(res.data.data)
+					this.user = res.data.data.user
+					uni.setStorageSync("username", this.user.username)
+					uni.setStorageSync("token", res.data.data.token)
+					// localStorage.setItem("username", user.username)
+					// localStorage.setItem("token", user.token)
 					uni.switchTab({
 						url: '/pages/myinfo/myinfo'
 					})
 
 				}).catch(err => {
-
+					console.log(err)
 				})
 
 			},

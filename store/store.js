@@ -1,20 +1,23 @@
-import {
-	createStore
-} from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-const store = createStore({
+Vue.use(Vuex);
+
+export default new Vuex.Store({
 	state: {
-		// 定义状态属性
+		// 在这里定义你的状态
+		totalProductNum: 0
 	},
 	mutations: {
-		// 定义状态变更方法
+		// 在这里定义你的mutations
+		updateTotalProductNum(state, num) {
+			state.totalProductNum = num;
+		}
 	},
 	actions: {
-		// 定义异步操作方法
+		// 在这里定义你的actions
 	},
 	getters: {
-		// 定义计算属性
+		getTotalProductNum: state => state.totalProductNum
 	}
-})
-
-export default store
+});
