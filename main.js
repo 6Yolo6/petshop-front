@@ -1,13 +1,17 @@
-import App from './App.vue'
-
-// #ifndef VUE3
+// 导入需要的模块
 import Vue from 'vue'
-
+import App from './App.vue'
 import uView from '@/uni_modules/uview-ui'
 import './static/assets/iconfont.css'
+
+// 注册uView插件
 Vue.use(uView)
 
+// 关闭生产提示
 Vue.config.productionTip = false
+
+// 判断当前环境，选择不同的渲染方式
+// #ifndef VUE3
 App.mpType = 'app'
 const app = new Vue({
 	...App
@@ -19,6 +23,7 @@ app.$mount()
 import {
 	createSSRApp
 } from 'vue'
+
 export function createApp() {
 	const app = createSSRApp(App)
 	return {
