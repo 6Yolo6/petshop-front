@@ -80,6 +80,7 @@
 	</view>
 </template>
 <script>
+	import config from '../../uni_modules/uview-ui/libs/config/config';
 	export default {
 		data() {
 			return {
@@ -91,7 +92,7 @@
 			};
 		},
 		mounted() {
-			var token = this.$store.state.token;
+			// var token = ;
 			console.log(token)
 		},
 		methods: {

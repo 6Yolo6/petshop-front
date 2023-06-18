@@ -40,7 +40,8 @@
 	import wButton from '../../components/watch-login/watch-button.vue' //button
 	import {
 		login
-	} from '@/api/modeules/user.js'
+	} from '@/api/modules/user.js'
+	import { setStore, removeStore } from '@/libs/storage'
 	export default {
 		data() {
 			return {
@@ -61,20 +62,7 @@
 		},
 		methods: {
 			isLogin() {
-				//判断缓存中是否登录过，直接登录
-				// try {
-				// 	const value = uni.getStorageSync('setUserData');
-				// 	if (value) {
-				// 		//有登录信息
-				// 		console.log("已登录用户：",value);
-				// 		this.$store.dispatch("setUserData",value); //存入状态
-				// 		uni.reLaunch({
-				// 			url: '../../../pages/index',
-				// 		});
-				// 	}
-				// } catch (e) {
-				// 	// error
-				// }
+
 			},
 			startLogin() {
 				//登录
@@ -98,9 +86,13 @@
 					username: this.userName,
 					password: this.passData,
 				}).then(res => {
+					let token = res.data.data.token
+					uni.setStorageSync('token', token)
 					uni.switchTab({
 						url: '/pages/myinfo/myinfo'
 					})
+
+					console.log()
 
 				}).catch(err => {
 
@@ -128,7 +120,7 @@
 				uni.showToast({
 					icon: 'none',
 					position: 'bottom',
-					title: '...'
+					title: '...',
 				});
 			}
 		}

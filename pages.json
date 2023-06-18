@@ -96,13 +96,6 @@
 			}
 
 		}, {
-			"path": "pages/myinfo/my_address",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
 			"path": "pages/login/login",
 			"style": {
 				"navigationBarTitleText": "",

@@ -72,6 +72,8 @@
 			// 获取地址数据
 			this.getaddressList()
 			this.onReorder()
+			// console.log()
+
 		},
 
 

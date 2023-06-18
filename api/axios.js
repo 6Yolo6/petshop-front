@@ -1,6 +1,4 @@
-import {
-	getStore
-} from '@/libs/storage'
+import { getStore } from '@/libs/storage'
 import axios from 'axios'
 import qs from 'qs'
 
@@ -16,9 +14,7 @@ function interceptors(response) {
 		return Promise.resolve(result)
 	} else if (result.statusCode === 600) {
 		// 页面跳转
-		uni.navigateTo({
-			url: '/'
-		})
+		uni.navigateTo({ url: '/' })
 		return Promise.reject('need login!')
 	} else if (result.statusCode === 400) {
 		return Promise.reject(result.message)
@@ -28,17 +24,16 @@ function interceptors(response) {
 }
 
 export function get(url, params) {
-	const token = getStore('token')
+	const token = uni.getStorageSync('token')
 	return new Promise((resolve, reject) => {
 		uni.request({
 			method: 'GET',
 			url: `${baseURL}/${url}`,
 			data: params,
-			header: {
-				'Authorization': token
-			},
+			header: { 'Authorization': token },
 			success: res => {
-				resolve(res)
+				const result = interceptors(res)
+				resolve(result)
 			},
 			fail: err => {
 				reject(err)
@@ -48,20 +43,19 @@ export function get(url, params) {
 }
 
 export function post(url, params) {
-	const token = getStore('token')
+	const token = uni.getStorageSync('token')
 	return new Promise((resolve, reject) => {
 		uni.request({
 			method: 'POST',
 			url: `${baseURL}/${url}`,
-			data: qs.stringify(params, {
-				allowDots: true
-			}),
+			data: qs.stringify(params, { allowDots: true }),
 			header: {
 				'Authorization': token,
 				'Content-Type': 'application/x-www-form-urlencoded',
 			},
 			success: res => {
-				resolve(res)
+				const result = interceptors(res)
+				resolve(result)
 			},
 			fail: err => {
 				reject(err)
@@ -71,7 +65,7 @@ export function post(url, params) {
 }
 
 export function postJson(url, params) {
-	const token = getStore('token')
+	const token = uni.getStorageSync('token')
 	return new Promise((resolve, reject) => {
 		uni.request({
 			method: 'POST',
@@ -82,7 +76,8 @@ export function postJson(url, params) {
 				'Content-Type': 'application/json',
 			},
 			success: res => {
-				resolve(res)
+				const result = interceptors(res)
+				resolve(result)
 			},
 			fail: err => {
 				reject(err)
