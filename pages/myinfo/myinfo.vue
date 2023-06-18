@@ -93,7 +93,7 @@
 			return {
 				name: "",
 				status: 0,
-				isLogin: true,
+				isLogin: false,
 				isActive: false,
 				range: [{
 						value: 0,

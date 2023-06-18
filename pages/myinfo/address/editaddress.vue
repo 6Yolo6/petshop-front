@@ -138,9 +138,14 @@
 
 		},
 		methods: {
+			back() {
+				// uni.$emit('refreshData')
+			},
 			// 修改时获取收货地址信息
 			getAddressById(id) {
-				getAddressById({ addressId: id }).then(res => {
+				getAddressById({
+					addressId: id
+				}).then(res => {
 					let list = res.data.data
 					this.form = list
 					// 标签选中
@@ -177,9 +182,14 @@
 						...this.form
 					}).then(res => {
 						console.log(res.data)
-					}).catch(err => {
-
-					})
+						// uni.redirectTo({
+						// 	url: '/pages/myinfo/address/addresslist',
+						// });
+						uni.navigateBack({
+							delta: 1
+						})
+						uni.$emit('refreshData')
+					}).catch(err => {})
 
 					this.form.name = ''
 					this.form.phoneNumber = ''
@@ -187,9 +197,11 @@
 					this.form.area = '请选择地区'
 					this.isDefault = false
 					this.tag = ''
-					uni.redirectTo({
-						url: '/pages/myinfo/address/addresslist',
-					});
+
+					// uni.navigateTo({
+					// 	url: '/pages/myinfo/address/addresslist',
+					// });
+					// uni.$emit('refreshData')
 				}).catch(err => {
 					console.log('表单错误信息：', err);
 				})
@@ -242,7 +254,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	page {
 		background: #f7f8fa;
 	}

@@ -180,9 +180,14 @@
 				// console.log(this.totalPrice)
 				let price = this.totalPrice
 				uni.navigateTo({
-					url: '/pages/order/confirm?totalPrice=' + price
+					url: '/pages/order/confirm'
 				})
 			},
+			toDetail(id) {
+				uni.navigateTo({
+					url: '/pages/shop/product_detail?id=' + id
+				});
+			}
 		},
 		computed: {
 			totalNum() {

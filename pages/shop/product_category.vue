@@ -29,7 +29,9 @@
 		data() {
 			return {
 				category: 0,
-				categoryList: [],
+				categoryList: [{
+					name: '全部'
+				}],
 				productList: [],
 
 			}
@@ -43,7 +45,7 @@
 			// 获取全部类别
 			this.getAllCate()
 			// 根据id获取该类别下的所有周边
-			this.getByCategory(this.category + 1)
+			this.getByCategory(this.category)
 
 		},
 		methods: {
@@ -80,7 +82,7 @@
 			changeCate(index) {
 				this.category = index.index
 				console.log("category", index)
-				this.getByCategory(index.index + 1)
+				this.getByCategory(index.index)
 			},
 			toDetail(id) {
 				uni.navigateTo({
@@ -91,7 +93,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.tabs {
 		margin-top: 80rpx;
 	}

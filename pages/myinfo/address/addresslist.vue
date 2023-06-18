@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="header">
-			<u-navbar title="收货地址" :autoBack="true">
+			<u-navbar title="收货地址" :autoBack="true" @leftClick="back()">
 			</u-navbar>
 		</view>
 		<view class="addres-list">
@@ -51,7 +51,7 @@
 
 <script>
 	import {
-		getAddressByUserId,
+		getAddress,
 		updateDefaultById,
 		deleteById
 	} from '@/api/modules/user_address.js'
@@ -68,16 +68,23 @@
 			}
 		},
 
-		onShow() {
+		onLoad() {
 			// 获取地址数据
 			this.getaddressList()
 			this.onReorder()
 			// console.log()
-
+			uni.$on('refreshData', () => {
+				this.getaddressList()
+				this.onReorder()
+			})
 		},
-
-
 		methods: {
+			back() {
+				uni.$emit('refreshData')
+				// uni.navigateBack({
+				// 	delta: 1
+				// })
+			},
 			clickOverlay() {
 				this.showConform = false
 			},
@@ -85,7 +92,9 @@
 				this.showConform = false
 			},
 			confirmYes() {
-				deleteById({ addressId: this.deleteId }).then(res => {
+				deleteById({
+					addressId: this.deleteId
+				}).then(res => {
 					console.log(res)
 					this.getaddressList()
 				}).catch(err => {
@@ -95,9 +104,7 @@
 			},
 			// 获取收货地址
 			getaddressList() {
-				getAddressByUserId({
-					userId: 1
-				}).then(res => {
+				getAddress().then(res => {
 					this.addressList = res.data.data
 					// for (let i in this.addressList) {
 					// 	console.log(this.addressList[i].isDefault)
@@ -132,7 +139,10 @@
 				this.deleteId = addressId
 			},
 			updateDefaultById(id, isDefault) {
-				updateDefaultById({ addressId: id, isDefault: isDefault }).then(res => {
+				updateDefaultById({
+					addressId: id,
+					isDefault: isDefault
+				}).then(res => {
 					// 重新获取收货地址
 					this.getaddressList()
 				}).catch(err => {
