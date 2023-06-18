@@ -12,7 +12,7 @@
 		</view>
 		<view>
 			<view v-for="(item,index) in pet_list" :key="index">
-				<uni-card :title="item.name" :isFull="true" :sub-title="item.breed" :extra="''+item.price"
+				<uni-card :title="item.name" :isFull="true" :sub-title="item.breed" :extra="''+item.price+'￥'"
 					@click="toDetail(item.id)">
 				</uni-card>
 			</view>
@@ -31,7 +31,7 @@
 		data() {
 			return {
 				selected_value: '',
-				category_list: [],
+				category_list: [{ name: '全部' }],
 				pet_list: [],
 				inp_value: '',
 				tip: '请输入关键字',
@@ -42,13 +42,20 @@
 			}
 		},
 		onLoad() {
-			// url中获取类别id
-			this.current = this.$route.query.index
+			// 判断路由栈是否存在页面
+			if (getCurrentPages().length > 1) {
+				// url中获取类别id
+				this.current = this.$route.query.index
+			} else {
+				//默认显示狗狗类
+				this.current = 0
+			}
+
 			// console.log(typeof(this.current))
 			// 获取全部类别
 			this.getAllCate()
 			// 获取默认类别
-			this.getByCategory(Number(this.current) + 1)
+			this.getByCategory(Number(this.current))
 		},
 		mounted() {
 
@@ -84,7 +91,7 @@
 			sectionChange(index) {
 				this.current = index.index
 				// console.log(index)
-				this.getByCategory(index.index + 1)
+				this.getByCategory(index.index)
 			},
 			// 根据种类id筛选宠物
 			getByCategory(index) {

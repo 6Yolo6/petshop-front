@@ -1,4 +1,11 @@
 {
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+
+			"^van-(.*)": "@/node_modules/vant/weapp/dist/$1/index.vue" // 匹配node_modules内的vue文件
+		}
+	},
 	"pages": [
 		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
@@ -45,26 +52,48 @@
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
-
-		}
-
-		, {
+		}, {
 			"path": "pages/index/pet_details",
 			"style": {
 				"navigationStyle": "custom"
 			}
-
 		}, {
 			"path": "pages/index/pet_category",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "pages/index/search",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/myinfo/address/addresslist",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
 
-		}
+		}, {
+			"path": "pages/myinfo/address/editaddress",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
 
-		, {
-			"path": "pages/myinfo/my_address",
+			}
+
+		},
+		{
+			"path": "pages/myinfo/address/update",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/myinfo/favor/favor",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
@@ -86,23 +115,18 @@
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
-
 		}, {
 			"path": "pages/login/forget",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
-
-
 		}, {
 			"path": "pages/login/register",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
-
-
 		}
 	],
 	"globalStyle": {

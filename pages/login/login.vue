@@ -64,20 +64,7 @@
 		},
 		methods: {
 			isLogin() {
-				//判断缓存中是否登录过，直接登录
-				// try {
-				// 	const value = uni.getStorageSync('setUserData');
-				// 	if (value) {
-				// 		//有登录信息
-				// 		console.log("已登录用户：",value);
-				// 		this.$store.dispatch("setUserData",value); //存入状态
-				// 		uni.reLaunch({
-				// 			url: '../../../pages/index',
-				// 		});
-				// 	}
-				// } catch (e) {
-				// 	// error
-				// }
+
 			},
 			toRegister() {
 				uni.navigateTo({
@@ -110,11 +97,11 @@
 					this.user = res.data.data.user
 					uni.setStorageSync("username", this.user.username)
 					uni.setStorageSync("token", res.data.data.token)
-					// localStorage.setItem("username", user.username)
-					// localStorage.setItem("token", user.token)
 					uni.switchTab({
 						url: '/pages/myinfo/myinfo'
 					})
+
+					console.log()
 
 				}).catch(err => {
 					console.log(err)
@@ -142,7 +129,7 @@
 				uni.showToast({
 					icon: 'none',
 					position: 'bottom',
-					title: '...'
+					title: '...',
 				});
 			}
 		}
