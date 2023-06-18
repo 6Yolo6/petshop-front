@@ -21,6 +21,12 @@
 			}
 
 		}, {
+			"path": "pages/order/confirm",
+			"style": {
+				"navigationStyle": "custom"
+			}
+
+		}, {
 			"path": "pages/shop/shop",
 			"style": {
 				"navigationBarTitleText": "",

@@ -17,7 +17,7 @@
 				<view class="bottom">
 					<view class="left">
 						<view class="user-text">
-							名字{{}}
+							{{name}}
 						</view>
 						<view class="user-phone"> 171****4133 </view>
 					</view>
@@ -69,30 +69,80 @@
 			</view>
 		</view>
 		<view class="quit flex-center">
-			<view class="btn flex-center">
+			<view class="btn flex-center" v-if="this.isLogin == false" @click="login()">
+				去登录/注册
+			</view>
+			<view class="btn flex-center" v-else @click="logout()">
 				退出登录
 			</view>
 		</view>
 	</view>
 </template>
 <script>
+	import {
+		login,
+		validate
+	} from '../../api/modules/user';
 	//import {  } from "@/common/api/{$}.js";
 	export default {
 		data() {
 			return {
-				name: '',
-				status: 0
+				name: "",
+				status: 0,
+				isLogin: true,
+				isActive: false
 			};
+		},
+		onShow() {
+			this.isActive = true;
+			if (this.isActive)
+				this.validate()
+		},
+		onHide() {
+			this.isActive = false
 		},
 		mounted() {
 			// var token = this.$store.state.token;
 			// console.log(token)
+			// this.validate()
+
+			// this.name = uni.getStorageSync("username")
+			// console.log(uni.getStorageSync("username"))
+			// this.getUser()
 		},
 		methods: {
 			toOrder() {
 				uni.navigateTo({
 					url: '/pages/order/order?status=' + this.status
 				});
+			},
+			getUser() {
+
+			},
+			validate() {
+				validate().then(res => {
+					console.log(res)
+					if (res.data.statusCode == "200")
+						this.isLogin = true
+					else
+						this.isLogin = false
+					console.log("isLogin", this.isLogin)
+					this.name = uni.getStorageSync("username")
+					console.log(uni.getStorageSync("username"))
+				}).catch(error => {
+
+				})
+			},
+			login() {
+				uni.navigateTo({
+					url: '/pages/login/login'
+				});
+			},
+			logout() {
+				uni.removeStorageSync("username")
+				uni.removeStorageSync("token")
+				this.validate()
+				// this.name = uni.getStorageSync("username")
 			}
 		},
 	};

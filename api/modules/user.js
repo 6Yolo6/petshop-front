@@ -29,6 +29,10 @@ export function getUserById(id) {
 	return get(`/user/${id}`)
 }
 
+export function validate(params) {
+	return get('/user/validate', params)
+}
+
 // 删除用户信息
 export function deleteUserById(id) {
 	return delete(`/user/${id}`)
