@@ -20,7 +20,7 @@
 				<view class="bottom">
 					<view class="left">
 						<view class="user-text">
-							名字{{}}
+							{{username}}
 						</view>
 						<view class="user-phone"> 171****4133 </view>
 					</view>
@@ -80,10 +80,10 @@
 	</view>
 </template>
 <script>
-	import config from '../../uni_modules/uview-ui/libs/config/config';
 	export default {
 		data() {
 			return {
+				username: "",
 				range: [
 					{ value: 0, text: "退出登录" },
 					{ value: 1, text: "足球" },
@@ -91,9 +91,12 @@
 				],
 			};
 		},
+		onLoad() {
+			this.username = uni.getStorageSync("username")
+		},
 		mounted() {
 			// var token = ;
-			console.log(token)
+			// console.log(token)
 		},
 		methods: {
 			toAddress() {
@@ -132,6 +135,7 @@
 	}
 
 	.top {
+		margin-top: 100rpx;
 		height: 250rpx;
 		position: relative;
 

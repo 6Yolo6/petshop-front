@@ -81,7 +81,7 @@
 						pageNum: 1,
 						pageSize: 10
 					}).then((res) => {
-						// console.log(res)
+						console.log(res)
 						this.result_list = res.data.data.records
 						console.log(this.result_list)
 					}).catch((err) => {
@@ -98,11 +98,11 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.search {
 		width: 100%;
 		display: flex;
-
+		margin-top: 90rpx;
 	}
 
 	.nav {

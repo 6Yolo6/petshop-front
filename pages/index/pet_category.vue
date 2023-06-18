@@ -5,7 +5,7 @@
 			</u-navbar>
 		</view>
 		<!-- 分段器筛选 -->
-		<view><!-- 
+		<view class="category"><!-- 
 			<u-subsection :list="category_list" :current="current" :activeColor="active_color"
 				@change="sectionChange"></u-subsection> -->
 			<u-tabs :list="category_list" @click="sectionChange" :current="current" activeColor="#0000ff"></u-tabs>
@@ -64,7 +64,7 @@
 			// 进入宠物详情页
 			toDetail(id) {
 				uni.navigateTo({
-					url: '/pages/index/pet_details?' + id
+					url: '/pages/index/pet_details?id=' + id
 				});
 			},
 			// 左上角返回
@@ -112,7 +112,11 @@
 	}
 </script>
 
-<style>
+<style scoped>
+	.category {
+		margin-top: 60rpx;
+	}
+
 	.header {
 		width: 100%;
 		display: flex;

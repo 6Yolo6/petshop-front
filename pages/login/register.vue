@@ -71,6 +71,10 @@
 					password: this.passData
 				}).then(res => {
 					console.log(res)
+					let token = res.data.data.token
+					let username = res.data.data.username
+					uni.setStorageSync("token", token)
+					uni.setStorageSync("username", username)
 					uni.switchTab({
 						url: '/pages/myinfo/myinfo'
 					})
@@ -80,7 +84,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	@import url("../../components/watch-login/css/icon.css");
 	@import url("./css/main.css");
 </style>

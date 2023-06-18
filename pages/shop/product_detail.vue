@@ -35,6 +35,7 @@
 	import {
 		add
 	} from '@/api/modules/cart.js'
+	import { addFavor } from '@/api/modules/favor.js'
 	export default {
 		data() {
 			return {
@@ -75,12 +76,12 @@
 			this.getById(Number(this.$route.query.id))
 		},
 		computed: {
-			totalProductNum() {
-				let total = this.carts.reduce((total, shopCart) =>
-					total + shopCart.productNum, 0);
-				this.totalProductNum = total
-				return total
-			}
+			// totalProductNum() {
+			// 	let total = this.carts.reduce((total, shopCart) =>
+			// 		total + shopCart.productNum, 0);
+			// 	this.totalProductNum = total
+			// 	return total
+			// }
 		},
 		methods: {
 			// 根据id获取周边详情
@@ -97,6 +98,11 @@
 			// 收藏
 			favor(id) {
 				console.log("product_id", id)
+				addFavor({ favorId: id, isPet: true }).then(res => {
+					console.log(res)
+				}).catch(err => {
+
+				})
 				// this.etc.isFavor = !this.etc.isFavor
 				this.$forceUpdate()
 			},
@@ -142,7 +148,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.head {
 		width: 100%;
 		display: flex;

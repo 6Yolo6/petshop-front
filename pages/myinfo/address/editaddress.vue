@@ -132,10 +132,11 @@
 			// 判断路由栈是否存在页面
 			if (getCurrentPages().length > 1) {
 				// url中获取类别id
-				id = this.$route.query.id
-				this.getAddressById(id)
+				if (this.$route.query.type != 'add') {
+					id = this.$route.query.id
+					this.getAddressById(id)
+				}
 			}
-
 		},
 		methods: {
 			// 修改时获取收货地址信息
@@ -155,19 +156,23 @@
 				})
 			},
 			tagClick(index) {
-				// 如果未选中
+				console.log(this.tag[index].checked)
+				// 如果原本未选中
 				if (!this.tag[index].checked) {
 					for (let i in this.tag) {
 						this.tag[i].checked = false
 					}
+					this.tag[index].checked = !this.tag[index].checked
+					this.form.tag = this.tag[index].name
+				} else {
+					this.tag[index].checked = !this.tag[index].checked
+					this.form.tag = ""
 				}
-				this.tag[index].checked = !this.tag[index].checked
-				this.form.tag = this.tag[index].name
 
 			},
 			change(data) {
 				this.form.area = data.data.join(' ')
-				console.log(data.data.join(' '))
+				// console.log(data.data.join(' '))
 			},
 			// 表单提交
 			handleSubmit() {
@@ -176,20 +181,19 @@
 					updateById({
 						...this.form
 					}).then(res => {
-						console.log(res.data)
+						// console.log(res.data)
+						uni.navigateBack({
+							delta: 1
+						});
 					}).catch(err => {
 
 					})
-
 					this.form.name = ''
 					this.form.phoneNumber = ''
 					this.form.detail = ''
 					this.form.area = '请选择地区'
 					this.isDefault = false
 					this.tag = ''
-					uni.redirectTo({
-						url: '/pages/myinfo/address/addresslist',
-					});
 				}).catch(err => {
 					console.log('表单错误信息：', err);
 				})
@@ -255,9 +259,8 @@
 	.header {
 		width: 100%;
 		display: flex;
-		margin-bottom: 10px;
-		position: fixed;
-		top: 0;
+		position: absolute;
+		// top: 100px !important;
 		z-index: 1000;
 		background-color: white;
 	}
@@ -273,8 +276,8 @@
 
 
 	.form-wrapper {
-
-		margin: auto;
+		height: 100%;
+		margin-top: 200rpx;
 		padding: 0 106rpx;
 		width: 90%;
 		box-shadow: 0 1rpx 5rpx 0px rgba(0, 0, 0, 0.05);

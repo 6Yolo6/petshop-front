@@ -181,7 +181,7 @@
 	};
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.head {
 		width: 100%;
 		display: flex;

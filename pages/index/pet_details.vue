@@ -4,21 +4,36 @@
 			<uni-nav-bar shadow left-icon="left" title="宠物名" @clickLeft="back" :border="false" />
 		</view>、
 		<u-swiper :list="list1"></u-swiper>
-		<uni-card title="宠物名" :isFull="true" sub-title="品类" extra="价格">
+		<uni-card :title="pet_detail.breed" :isFull="true" :sub-title="pet_detail.name" :extra="pet_detail.price+'￥'">
 		</uni-card>
 		<view class="describle">
-			<text>这是一个通栏卡片 ，通栏没有外边距，左右会贴合父元素。</text>
+			<text>{{pet_detail.description}}</text>
 		</view>
 		<view class="goods-nav">
-			<uni-goods-nav @click="onClick" :options="options" :button-group="customButtonGroup" />
+			<uni-goods-nav @click="onClick" :options="options" :button-group="customButtonGroup"
+				@longtap="handleLongTap" />
 		</view>
 	</view>
 </template>
 
 <script>
+	import {
+		getById
+	} from '@/api/modules/pet.js'
 	export default {
 		data() {
 			return {
+				pet_detail: {
+					breed: "",
+					birthday: "",
+					age: "",
+					health: "",
+					name: "",
+					price: 0,
+					shop_id: 0,
+					videoId: 0,
+					description: "",
+				},
 				list1: [
 					'https://cdn.uviewui.com/uview/swiper/swiper1.png',
 					'https://cdn.uviewui.com/uview/swiper/swiper2.png',
@@ -34,6 +49,10 @@
 					icon: 'cart',
 					text: '购物车',
 					info: 2
+				}, {
+					icon: 'star',
+					text: '收藏',
+					info: 2
 				}],
 				customButtonGroup: [{
 					text: '立即购买',
@@ -42,7 +61,33 @@
 				}],
 			}
 		},
+		mounted() {
+			let id = this.$route.query.id
+			this.getByDetail(id)
+			console.log(id)
+		},
 		methods: {
+			handleLongTap() {
+				console.log('长安')
+			},
+			onClick(e) {
+				if (e.content.text == '收藏') {
+					this.options[2].icon = this.options[2].icon == 'star-filled' ? 'star' : 'star-filled'
+				}
+				uni.showToast({
+					title: `点击${e.content.text}`,
+					icon: 'none'
+				})
+			},
+			// 获取宠物详情
+			getByDetail(id) {
+				getById({ id: id }).then(res => {
+					this.pet_detail = res.data.data
+					console.log(res.data.data)
+				}).catch(err => {
+					console.log(err)
+				})
+			},
 			back() {
 				// 返回上一个页面
 				uni.navigateBack({
@@ -53,7 +98,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.goods-nav {
 		/* 固定在页面底部 */
 		position: fixed;

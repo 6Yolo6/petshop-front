@@ -13,7 +13,12 @@
 				<view class="address">
 					<text class="region">{{ item.area }}</text>
 					<text class="detail">{{ item.detail }}</text>
-					<u-tag :text="item.tag" class="tag" bg-color="#f93737"></u-tag>
+					<view>
+						<view v-if="item.tag!=''">
+							<u-tag :text="item.tag" class="tag" bg-color="#f93737"></u-tag>
+						</view>
+					</view>
+
 				</view>
 				<view class="line"></view>
 
@@ -51,7 +56,7 @@
 
 <script>
 	import {
-		getAddressByUserId,
+		getAddress,
 		updateDefaultById,
 		deleteById
 	} from '@/api/modules/user_address.js'
@@ -67,15 +72,12 @@
 				deleteId: -1,
 			}
 		},
-
+		// created() {
+		// 	this.getaddressList()
+		// },
 		onShow() {
-			// 获取地址数据
 			this.getaddressList()
-			this.onReorder()
-			// console.log()
-
 		},
-
 
 		methods: {
 			clickOverlay() {
@@ -95,14 +97,13 @@
 			},
 			// 获取收货地址
 			getaddressList() {
-				getAddressByUserId({
-					userId: 1
-				}).then(res => {
+				// console.log(uni.getStorageSync("token"))
+				getAddress().then(res => {
 					this.addressList = res.data.data
 					// for (let i in this.addressList) {
 					// 	console.log(this.addressList[i].isDefault)
 					// }
-					// console.log(this.addressList)
+					console.log(this.addressList)
 				}).catch(err => {
 
 				})
@@ -117,7 +118,7 @@
 			// 添加地址
 			handleCreate() {
 				uni.navigateTo({
-					url: '/pages/myinfo/address/editaddress',
+					url: '/pages/myinfo/address/editaddress?type=add',
 				});
 			},
 			// 编辑地址
@@ -142,17 +143,15 @@
 			// 设置默认地址
 			handleSetDefault(index) {
 				if (this.addressList[index].isDefault) {
-
 					for (let i in this.addressList) {
 						if (this.addressList[i].isDefault && i != index) {
 							this.updateDefaultById(this.addressList[i].id, false)
 						}
 					}
+					this.updateDefaultById(this.addressList[index].id, true)
 				} else {
 					this.updateDefaultById(this.addressList[index].id, false)
 				}
-				this.updateDefaultById(this.addressList[index].id, true)
-
 			}
 		}
 	}

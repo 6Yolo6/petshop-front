@@ -91,7 +91,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.tabs {
 		margin-top: 80rpx;
 	}

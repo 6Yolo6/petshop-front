@@ -109,6 +109,7 @@
 		width: 20px;
 	}
 
+	.card {}
 
 	.header {
 		width: 100%;
