@@ -41,7 +41,6 @@
 	import {
 		login
 	} from '@/api/modules/user.js'
-	import { setStore, removeStore } from '@/libs/storage'
 	export default {
 		data() {
 			return {
@@ -49,7 +48,8 @@
 				logoImage: '',
 				userName: '', //用户/电话
 				passData: '', //密码
-				isFocus: true // 是否聚焦
+				isFocus: true, // 是否聚焦
+				user: {},
 			};
 		},
 		components: {
@@ -86,8 +86,10 @@
 					username: this.userName,
 					password: this.passData,
 				}).then(res => {
-					let token = res.data.data.token
-					uni.setStorageSync('token', token)
+					console.log(res.data.data)
+					this.user = res.data.data.user
+					uni.setStorageSync("username", this.user.username)
+					uni.setStorageSync("token", res.data.data.token)
 					uni.switchTab({
 						url: '/pages/myinfo/myinfo'
 					})
@@ -95,7 +97,7 @@
 					console.log()
 
 				}).catch(err => {
-
+					console.log(err)
 				})
 
 			},

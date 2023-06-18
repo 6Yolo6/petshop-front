@@ -1,23 +1,24 @@
 <template>
 	<view>
-		message
+		消息通知
 	</view>
 </template>
 
 <script>
 	export default {
-		components: {},
 		data() {
 			return {
-
+				
 			}
 		},
 		methods: {
-
+			
 		}
-	}
+	} 
 </script>
 
-<style>
+<style scoped lang="scss">
+
 
 </style>
+

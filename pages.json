@@ -24,8 +24,7 @@
 		}, {
 			"path": "pages/order/order",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"navigationStyle": "custom"
 			}
 
 		}, {
@@ -38,8 +37,7 @@
 		}, {
 			"path": "pages/cart/cart",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"navigationStyle": "custom"
 			}
 
 		}, {
@@ -95,6 +93,16 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "pages/shop/product_category",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/shop/product_detail",
+			"style": {
+				"navigationStyle": "custom"
+			}
 		}, {
 			"path": "pages/login/login",
 			"style": {

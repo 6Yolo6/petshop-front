@@ -1,11 +1,8 @@
-import { getStore } from '@/libs/storage'
 import axios from 'axios'
 import qs from 'qs'
 
 const baseURL = 'http://localhost:8899/petshop'
-// 宿舍
-// const baseURL = 'http://192.168.2.205:8899/petshop'
-// const baseURL = 'http://localhost:8899/vuebackend'
+
 
 function interceptors(response) {
 	// response status = 200
@@ -22,66 +19,42 @@ function interceptors(response) {
 		return Promise.reject(result.message)
 	}
 }
+axios.interceptors.request.use(
+	config => {
+		if (uni.getStorageSync('token')) {
+			config.headers.token = uni.getStorageSync('token')
+		}
+		return config
+	},
+	error => {
+		return Promise.reject(error)
+	}
+)
+
 
 export function get(url, params) {
-	const token = uni.getStorageSync('token')
-	return new Promise((resolve, reject) => {
-		uni.request({
-			method: 'GET',
-			url: `${baseURL}/${url}`,
-			data: params,
-			header: { 'Authorization': token },
-			success: res => {
-				const result = interceptors(res)
-				resolve(result)
-			},
-			fail: err => {
-				reject(err)
-			}
-		})
+	return axios({
+		method: 'GET',
+		url: `${baseURL}/${url}`,
+		params: params,
 	})
 }
 
 export function post(url, params) {
-	const token = uni.getStorageSync('token')
-	return new Promise((resolve, reject) => {
-		uni.request({
-			method: 'POST',
-			url: `${baseURL}/${url}`,
-			data: qs.stringify(params, { allowDots: true }),
-			header: {
-				'Authorization': token,
-				'Content-Type': 'application/x-www-form-urlencoded',
-			},
-			success: res => {
-				const result = interceptors(res)
-				resolve(result)
-			},
-			fail: err => {
-				reject(err)
-			}
-		})
+	return axios({
+		method: 'POST',
+		url: `${baseURL}/${url}`,
+		data: qs.stringify(params, { allowDots: true }),
+		header: { 'Content-Type': 'application/x-www-form-urlencoded', },
 	})
 }
 
+
 export function postJson(url, params) {
-	const token = uni.getStorageSync('token')
-	return new Promise((resolve, reject) => {
-		uni.request({
-			method: 'POST',
-			url: `${baseURL}/${url}`,
-			data: params,
-			header: {
-				'Authorization': token,
-				'Content-Type': 'application/json',
-			},
-			success: res => {
-				const result = interceptors(res)
-				resolve(result)
-			},
-			fail: err => {
-				reject(err)
-			}
-		})
+	return axios({
+		method: 'POST',
+		url: `${baseURL}/${url}`,
+		data: params,
+		header: { 'Content-Type': 'application/json', },
 	})
 }

@@ -20,7 +20,7 @@
 				<view class="bottom">
 					<view class="left">
 						<view class="user-text">
-							名字
+							名字{{}}
 						</view>
 						<view class="user-phone"> 171****4133 </view>
 					</view>
@@ -62,7 +62,7 @@
 					<view class="left flex-center">
 						<u-icon class="icon" name="order" size="30px"></u-icon>
 					</view>
-					<view class="center">
+					<view class="center" @click="toOrder()">
 						<text>我的订单</text>
 					</view>
 					<view class="right flex-center">
@@ -106,8 +106,14 @@
 					type: "error",
 					message: "敬请期待"
 				})
+			},
+			toOrder() {
+				uni.navigateTo({
+					url: '/pages/order/order?status=' + this.status
+				});
 			}
 		},
+
 	};
 </script>
 <style lang="scss" scoped>

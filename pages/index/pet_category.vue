@@ -21,7 +21,9 @@
 </template>
 
 <script>
-	import { getAllCate } from '@/api/modules/pet_category.js'
+	import {
+		getAllCate
+	} from '@/api/modules/pet_category.js'
 	import {
 		getByCate
 	} from '@/api/modules/pet.js'
@@ -76,7 +78,9 @@
 					let temp_list = []
 					temp_list = res.data.data
 					for (let i in temp_list) {
-						this.category_list.push({ name: temp_list[i].name })
+						this.category_list.push({
+							name: temp_list[i].name
+						})
 					}
 				}).catch((err) => {
 					console.log('错误')
