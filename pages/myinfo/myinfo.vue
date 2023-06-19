@@ -105,10 +105,13 @@
 				})
 			},
 			toStar() {
-				this.$refs.uToast.show({
-					type: "error",
-					message: "敬请期待"
+				uni.navigateTo({
+					url: '/pages/myinfo/favor/favor'
 				})
+				// this.$refs.uToast.show({
+				// 	type: "error",
+				// 	message: "敬请期待"
+				// })
 			},
 			toOrder() {
 				uni.navigateTo({

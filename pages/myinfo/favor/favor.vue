@@ -1,22 +1,30 @@
 <template>
 	<view>
-		<view class="navbar">
-			<text class="navbar-title">用户收藏</text>
+		<view class="header">
+			<u-navbar title="我的收藏" :autoBack="true">
+			</u-navbar>
 		</view>
 
 		<!-- 页面内容 -->
 		<view class="content">
-			<view v-if="favorites.length === 0">
-				<text>暂无收藏</text>
-			</view>
-			<view v-else>
-				<!-- 商品列表 -->
-				<view v-for="(item, index) in favorites" :key="index" class="item">
-					<image :src="item.image" mode="aspectFill" class="item-image"></image>
-					<view class="item-info">
-						<text class="item-title">{{ item.title }}</text>
-						<text class="item-shop">{{ item.shop }}</text>
-						<text class="item-description">{{ truncateDescription(item.description, 50) }}</text>
+			<view class="card">
+				<uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" styleType="button"
+					activeColor="#007aff"></uni-segmented-control>
+				<view v-show="current===0">
+					<view v-for="(item,index) in favorList" :key="index">
+						<uni-card :title="item.favorName" :is-shadow="true" :sub-title="item.favorBreed"
+							:extra="''+item.favorPrice+'￥'" @click="toDetail(item.favorId,item.isPet)" class="card-item"
+							shadow="0 0 5px rgba(0, 0, 0, 0.3)">
+							<view v-slot="actions">
+								<uni-fav class="favBtn" :checked="item.checked" :circle="true" bg-color="#dd524d"
+									bg-color-checked="#007aff" fg-color="#ffffff" fg-color-checked="#ffffff"
+									@click.native.stop="favClick(item.id)"
+									:contentText="{contentDefault: '收藏',contentFav: '取消收藏'}" />
+							</view>
+						</uni-card>
+						<u-modal :show="showConform" :closeOnClickOverlay="true" :content="confirmContent"
+							:showCancelButton="true" @confirm='confirmYes(index)' @cancel="confirmNo"
+							@close="clickOverlay"></u-modal>
 					</view>
 				</view>
 			</view>
@@ -25,10 +33,82 @@
 </template>
 
 <script>
+	import {
+		getAll,
+		deleteById
+	} from '@/api/modules/favor.js'
 	export default {
 		data() {
 			return {
-				favorites: []
+				current: 0,
+				items: ['宠物', '周边'],
+				favorList: [],
+				showConform: false,
+				confirmContent: "你确定要删除吗？",
+				deleteId: 0,
+			}
+		},
+		onLoad() {
+			this.getAll()
+		},
+		mounted() {
+			// this.getAll()
+		},
+		methods: {
+			onClickItem(e) {
+				if (this.current != e.currentIndex) {
+					this.current = e.currentIndex;
+				}
+			},
+			// 点击确认
+			confirmYes() {
+				deleteById({ id: this.deleteId }).then(res => {
+					console.log(res)
+					this.getAll()
+					this.showConform = false
+				}).catch(err => {
+
+				})
+			},
+			// 点击取消
+			confirmNo() {
+				this.showConform = false
+			},
+			// 点击遮罩层
+			clickOverlay() {
+				this.showConform = false
+			},
+			// 去往收藏详情页
+			toDetail(id, isPet) {
+				if (isPet) {
+					uni.navigateTo({
+						url: '/pages/index/pet_details?id=' + id
+					});
+				} else {
+					uni.navigateTo({
+						url: '/pages/shop/product_detail?id=' + id
+					});
+				}
+			},
+			// 删除收藏
+			favClick(id) {
+				// 记录要删除的id
+				this.deleteId = id
+				// 开启提示框
+				this.showConform = true
+
+			},
+			// 获取全部收藏
+			getAll() {
+				getAll().then(res => {
+					this.favorList = res.data.data
+					for (let i in this.favorList) {
+						this.favorList[i].checked = true
+					}
+					// console.log(this.favorList)
+				}).catch(err => {
+
+				})
 			}
 		}
 		// ...
@@ -36,6 +116,26 @@
 </script>
 
 <style scoped>
+	.card {
+		margin-top: 50rpx;
+	}
+
+
+	.favBtn {
+		float: right;
+		margin-bottom: 20rpx;
+	}
+
+	.header {
+		width: 100%;
+		display: flex;
+		margin-bottom: 10px;
+		position: fixed;
+		top: 0;
+		z-index: 1000;
+		background-color: white;
+	}
+
 	.navbar {
 		height: 60px;
 		background-color: #f8f8f8;

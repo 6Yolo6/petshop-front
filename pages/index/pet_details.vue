@@ -20,10 +20,14 @@
 	import {
 		getById
 	} from '@/api/modules/pet.js'
+	import {
+		addFavor
+	} from '@/api/modules/favor.js'
 	export default {
 		data() {
 			return {
 				pet_detail: {
+					id: 0,
 					breed: "",
 					birthday: "",
 					age: "",
@@ -72,12 +76,26 @@
 			},
 			onClick(e) {
 				if (e.content.text == '收藏') {
-					this.options[2].icon = this.options[2].icon == 'star-filled' ? 'star' : 'star-filled'
+					this.changeFavor()
 				}
 				uni.showToast({
 					title: `点击${e.content.text}`,
 					icon: 'none'
 				})
+			},
+			changeFavor() {
+				if (this.options[2].icon == 'star') {
+					addFavor({
+						favorId: this.pet_detail.id,
+						isPet: true,
+					}).then(res => {
+						this.options[2].icon = 'star-filled'
+						console.log(res)
+					}).catch(err => {
+
+					})
+				}
+
 			},
 			// 获取宠物详情
 			getByDetail(id) {
