@@ -214,7 +214,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	page {
 		background: #f7f8fa;
 	}

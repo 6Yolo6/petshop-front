@@ -11,7 +11,7 @@
 		</view>
 		<view class="goods-nav">
 			<uni-goods-nav @click="onClick" :options="options" :button-group="customButtonGroup"
-				@longtap="handleLongTap" />
+				@buttonClick="buttonClick" />
 		</view>
 	</view>
 </template>
@@ -111,8 +111,15 @@
 				uni.navigateBack({
 					delta: 1, // 返回的层数，1表示返回上一个页面
 				});
+			},
+			buttonClick(e) {
+				if (e.content.text == "立即购买") {
+					uni.navigateTo({
+						url: '/pages/order/confirm?id=' + this.pet_detail.id
+					})
+				}
 			}
-		}
+		},
 	}
 </script>
 

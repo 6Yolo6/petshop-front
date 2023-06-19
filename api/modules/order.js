@@ -6,3 +6,7 @@ import {
 export function getOrder(params) {
 	return get('/order/getByStatus', params)
 }
+
+export function addOrder(params) {
+	return post('/order/add', params)
+}

@@ -8,7 +8,7 @@
 			<view class="shopCart" v-for="(shop, indexS) in carts" :key="indexS">
 				<view class="shop">
 					<view class="">
-						{{shop.shopName}}
+						{{shop.shopName}} >
 					</view>
 				</view>
 				<view class="carts-detail" v-for="(product,indexP) in shop.products" :key="indexP">
@@ -20,13 +20,14 @@
 									<text></text>
 								</label>
 							</checkbox-group>
-							<image :src="product.productImg" style="width: 150rpx;height: 140rpx;"></image>
+							<u--image :src="product.productImg" @click="toDetail(product.productId)" width="100px"
+								height="100px"></u--image>
 						</view>
-						<view class="size">
-							<text style="font-size: 25rpx;">商品名：{{product.productName}}</text>
-							<!-- <text style="font-size: 25rpx;">商店名：{{product.shopName}}</text> -->
+						<view class="size" @click.top="toDetail(product.productId)">
+							<text style="font-size: 25rpx;">{{product.productName}}</text>
+
 							<text class="goods-price">￥{{product.productPrice}}/件</text>
-							<text class="del" @click="del(product,indexP)">删除</text>
+							<text class="del" @click.stop="del(product,indexP)">删除</text>
 						</view>
 					</view>
 					<view class="detail-right">
@@ -48,7 +49,7 @@
 					总计：<text style="color: #f00;font-weight: bold;">￥ {{totalPrice}}</text>
 				</view>
 			</view>
-			<view class="end-right">
+			<view class="end-right" @click="toConfirm()">
 				结算({{totalNum}})
 			</view>
 		</view>
@@ -59,15 +60,14 @@
 	import {
 		add,
 		sub,
-		getAll,
+		getAllCart,
 		update,
 		updateAll,
-		deleteById
+		deleteByIds
 	} from '@/api/modules/cart.js'
 	export default {
 		data() {
 			return {
-				userId: 4,
 				allchecked: false,
 				carts: [],
 				totalProductNum: 0
@@ -82,7 +82,7 @@
 		},
 		methods: {
 			getAll() {
-				getAll().then(res => {
+				getAllCart().then(res => {
 					console.log(res.data)
 					this.carts = res.data.data
 					this.Allchecked()
@@ -127,8 +127,8 @@
 			},
 			del(product) {
 				// this.carts.splice(index, 1)
-				deleteById({
-					productId: product.productId
+				deleteByIds({
+					ids: product.productId
 				}).then(res => {
 					console.log(res.data)
 					this.getAll()
@@ -175,6 +175,18 @@
 				}).catch(error => {
 					console.log(error)
 				})
+			},
+			toConfirm() {
+				// console.log(this.totalPrice)
+				let price = this.totalPrice
+				uni.navigateTo({
+					url: '/pages/order/confirm'
+				})
+			},
+			toDetail(id) {
+				uni.navigateTo({
+					url: '/pages/shop/product_detail?id=' + id
+				});
 			}
 		},
 		computed: {

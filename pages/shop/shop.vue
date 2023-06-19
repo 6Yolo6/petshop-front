@@ -68,7 +68,7 @@
 			toCategory(index) {
 				console.log(index)
 				uni.navigateTo({
-					url: '/pages/shop/product_category?index=' + index
+					url: '/pages/shop/product_category?index=' + (index + 1)
 				});
 			},
 

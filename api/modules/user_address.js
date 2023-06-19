@@ -1,9 +1,16 @@
-import { get, post, postJson } from '../axios.js'
+import {
+	get,
+	post,
+	postJson
+} from '../axios.js'
 export function updateById(params) {
 	return postJson('/userAddress/updateById', params)
 }
 export function getAddress(params) {
 	return get('/userAddress/getAddress', params)
+}
+export function getDefault(params) {
+	return get('/userAddress/getDefault', params)
 }
 export function updateDefaultById(params) {
 	return post('/userAddress/updateDefaultById', params)

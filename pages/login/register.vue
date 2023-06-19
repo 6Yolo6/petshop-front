@@ -13,8 +13,12 @@
 			</view>
 			<wButton class="wbutton" text="注 册" @click.native="startReg()"></wButton>
 			<!-- 底部信息 -->
+			<view style="margin: 20px auto;">
+				已注册？<text @click="toLogin()">点击去登录</text>
+			</view>
 			<view class="footer">
-				<text @tap="isShowAgree" class="cuIcon" :class="showAgree?'cuIcon-radiobox':'cuIcon-round'"> 同意</text>
+				<text @tap="isShowAgree" class="cuIcon" :class="showAgree?'cuIcon-radiobox':'cuIcon-round'">
+					同意</text>
 				<!-- 协议地址 -->
 				<navigator url="" open-type="navigate">《协议》</navigator>
 			</view>
@@ -48,6 +52,11 @@
 				//是否选择协议
 				this.showAgree = !this.showAgree;
 			},
+			toLogin() {
+				uni.navigateTo({
+					url: '/pages/login/login'
+				});
+			},
 			startReg() {
 				//注册
 				if (this.showAgree == false) {
@@ -71,10 +80,8 @@
 					password: this.passData
 				}).then(res => {
 					console.log(res)
-					let token = res.data.data.token
-					let username = res.data.data.username
-					uni.setStorageSync("token", token)
-					uni.setStorageSync("username", username)
+					uni.setStorageSync("username", res.data.data.username)
+					uni.setStorageSync("token", res.data.data.token)
 					uni.switchTab({
 						url: '/pages/myinfo/myinfo'
 					})

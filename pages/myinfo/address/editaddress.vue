@@ -139,9 +139,14 @@
 			}
 		},
 		methods: {
+			back() {
+				// uni.$emit('refreshData')
+			},
 			// 修改时获取收货地址信息
 			getAddressById(id) {
-				getAddressById({ addressId: id }).then(res => {
+				getAddressById({
+					addressId: id
+				}).then(res => {
 					let list = res.data.data
 					this.form = list
 					// 标签选中
@@ -181,13 +186,15 @@
 					updateById({
 						...this.form
 					}).then(res => {
-						// console.log(res.data)
+						console.log(res.data)
+						// uni.redirectTo({
+						// 	url: '/pages/myinfo/address/addresslist',
+						// });
 						uni.navigateBack({
 							delta: 1
-						});
-					}).catch(err => {
-
-					})
+						})
+						uni.$emit('refreshData')
+					}).catch(err => {})
 					this.form.name = ''
 					this.form.phoneNumber = ''
 					this.form.detail = ''
@@ -246,7 +253,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	page {
 		background: #f7f8fa;
 	}

@@ -45,7 +45,9 @@
 </template>
 
 <script>
-	import { searchByKey } from '@/api/modules/search.js'
+	import {
+		searchByKey
+	} from '@/api/modules/search.js'
 	export default {
 		data() {
 			return {
@@ -53,10 +55,18 @@
 				inp_value: '',
 				tip: '请输入关键词',
 				// 选择器可选项(固定)
-				range: [
-					{ value: 0, text: "宠物" },
-					{ value: 1, text: "周边" },
-					{ value: 2, text: "店铺" },
+				range: [{
+						value: 0,
+						text: "宠物"
+					},
+					{
+						value: 1,
+						text: "周边"
+					},
+					{
+						value: 2,
+						text: "店铺"
+					},
 				],
 				result_list: [],
 			}

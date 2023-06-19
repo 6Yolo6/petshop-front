@@ -11,7 +11,9 @@
 				<wInput v-model="passData" type="password" maxlength="11" placeholder="密码"></wInput>
 			</view>
 			<wButton class="wbutton" text="登 录" @click="startLogin"></wButton>
-
+			<view style="margin: 20px auto;">
+				没有账号？<text @click="toRegister()">点击去注册</text>
+			</view>
 			<!-- 其他登录 -->
 			<view class="other_login cuIcon">
 				<view class="login_icon">
@@ -63,6 +65,11 @@
 		methods: {
 			isLogin() {
 
+			},
+			toRegister() {
+				uni.navigateTo({
+					url: '/pages/login/register'
+				});
 			},
 			startLogin() {
 				//登录

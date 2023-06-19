@@ -7,7 +7,7 @@ export function add(params) {
 	return post('/cart/add', params)
 }
 
-export function getAll(params) {
+export function getAllCart(params) {
 	return get('/cart/getAll', params)
 }
 
@@ -22,6 +22,6 @@ export function updateAll(params) {
 	return post('/cart/updateAll', params)
 }
 
-export function deleteById(params) {
-	return post('/cart/deleteById', params)
+export function deleteByIds(params) {
+	return post('/cart/deleteByIds', params)
 }
