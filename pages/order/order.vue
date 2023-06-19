@@ -26,7 +26,7 @@
 								<view class="right">{{ orderStatus(item) }}</view>
 							</view>
 						</view>
-						<view class="item" @click="toDetail(132)">
+						<view class="item" @click="toDetail(item.productId)">
 							<view class="left">
 								<u--image :src="item.src" width="90px" height="100px"></u--image>
 							</view>
@@ -133,8 +133,8 @@
 		},
 		mounted() {
 			// url中获取类别id
-			this.status = this.$route.query.status
-
+			this.status = Number(this.$route.query.status)
+			this.getOrderList(this.status)
 		},
 		methods: {
 			// 选择不同状态
@@ -160,16 +160,14 @@
 				return title[status - 1];
 			},
 			scrolltolower() {
-				let self = this;
 				//在1s后执行一次该函数
 				setTimeout(() => {
 
-					self.getOrderList(self.status)
+					this.getOrderList(this.status)
 
 				}, 1000)
 			},
 			getOrderList(status) {
-
 				getOrder().then((res) => {
 					console.log(res.data)
 					this.orderList = res.data.data

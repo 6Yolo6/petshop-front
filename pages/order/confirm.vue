@@ -18,21 +18,43 @@
 			</view>
 		</view>
 		<view class="detail">
+			<view v-if="this.isPet == 1">
+				<view class="order-page" v-if="isPet == 1">
+					<view class="pet-image-wrapper">
+						<image class="pet-image" :src="pet.img"></image>
+					</view>
+					<view class="pet-info">
+						<view class="pet-name">{{ pet.name }}</view>
+						<view class="pet-description">{{ pet.description }}</view>
+						<view class="pet-details">
+							<view>品种：{{ pet.breed }}</view>
+							<view>年龄：{{ pet.age }}</view>
+							<view>健康状况：{{ pet.health }}</view>
+						</view>
+						<view class="delivery-info">
+							<view class="delivery-title">配送方式</view>
+							<view>快递配送</view>
+							<view>预计3-5个工作日送达</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="" v-else-if="this.isPet == 0">
+				<view v-for="(shop, index) in carts" :key="index">
+					<!-- 商店名称 -->
+					<view class="shop-name">{{ shop.shopName }}</view>
+					<!-- 商品列表 -->
+					<view v-for="(product, pIndex) in shop.products" :key="pIndex" class="product-item">
+						<image :src="product.productImg" class="product-img"></image>
+						<view class="product-info">
+							<view class="product-name">{{ product.productName }}</view>
+							<view class="product-price">￥{{ product.productPrice.toFixed(2) }}</view>
 
-			<view v-for="(shop, index) in carts" :key="index">
-				<!-- 商店名称 -->
-				<view class="shop-name">{{ shop.shopName }}</view>
-				<!-- 商品列表 -->
-				<view v-for="(product, pIndex) in shop.products" :key="pIndex" class="product-item">
-					<image :src="product.productImg" class="product-img"></image>
-					<view class="product-info">
-						<view class="product-name">{{ product.productName }}</view>
-						<view class="product-price">￥{{ product.productPrice.toFixed(2) }}</view>
-
-						<view class="product-actions">
-							<view class="action-btn" @click="sub(product)">-</view>
-							<view class="product-count">{{ product.count }}</view>
-							<view class="action-btn" @click="add(product)">+</view>
+							<view class="product-actions">
+								<view class="action-btn" @click="sub(product)">-</view>
+								<view class="product-count">{{ product.count }}</view>
+								<view class="action-btn" @click="add(product)">+</view>
+							</view>
 						</view>
 					</view>
 				</view>
@@ -51,35 +73,92 @@
 	import {
 		add,
 		sub,
-		getAll,
+		getAllCart,
+		deleteByIds
 	} from '@/api/modules/cart.js'
 	import {
 		getAddress,
 		updateDefaultById,
 		getDefault
 	} from '@/api/modules/user_address.js'
+	import {
+		addOrder
+	} from '@/api/modules/order.js'
+	import {
+		addItem,
+		getByOrderIds
+	} from '@/api/modules/order_item.js'
+	import {
+		getById
+	} from '@/api/modules/pet.js'
+	import {
+		getShopIds
+	} from '@/api/modules/product.js'
 	export default {
 		data() {
 			return {
 				carts: [],
-				item: {}
+				item: {},
+				isPet: 0,
+				pet: {}
 			}
 		},
 		onLoad() {
-			this.getAll()
-			this.getDefault()
-			uni.$on('refreshData', () => {
-				this.getAll()
-				this.getDefault()
-			})
+			// console.log("是否宠物", this.isPet)
+
 		},
 		mounted() {
-			// this.getAll()
-			// this.getDefault()
+
+			// 获取当前页面栈
+			const pages = getCurrentPages();
+
+			// 获取上一个页面的实例对象
+			const prevPage = pages[pages.length - 2];
+
+			// 可以通过prevPage访问上一个页面的数据和方法
+			console.log("上一个页面", prevPage.route);
+
+			if (prevPage.route == "pages/cart/cart")
+				this.isPet = 0
+			else if (prevPage.route == "pages/index/pet_details")
+				this.isPet = 1
+			console.log("isPet", this.isPet)
+
+			this.petId = Number(this.$route.query.id)
+			console.log("petId", this.petId)
+			// 刷新数据
+			uni.$on('refreshData', () => {
+				if (this.isPet == 1) {
+					this.getPet(this.petId)
+				} else if (this.isPet == 0) {
+					this.getAll()
+				}
+				this.getDefault()
+			})
+
+			if (this.isPet == 1) { // 宠物订单
+				this.getPet(this.petId)
+			} else if (this.isPet == 0) { //周边购物车订单
+				this.getAll()
+			}
+			this.getDefault()
+
 		},
 		methods: {
+			// 获取宠物信息
+			getPet(id) {
+				getById({
+					id: id
+				}).then(res => {
+					console.log("宠物", res.data)
+					this.pet = res.data.data
+				}).catch(error => {
+					console.log(error)
+				})
+			},
+			// 获取周边购物车信息
 			getAll() {
-				getAll().then(res => {
+				getAllCart().then(res => {
 					console.log(res.data)
 					// 使用 filter 方法筛选出 checked 为 true 的对象
 					const checkedProducts = res.data.data.reduce((acc, shop) => {
@@ -153,6 +232,8 @@
 				})
 			},
 			totalNum() {
+				if (this.isPet == 1)
+					return 1
 				let totalNum = 0;
 				this.carts.map(shopCart => {
 					let products = shopCart.products;
@@ -163,6 +244,8 @@
 				return totalNum
 			},
 			totalPrice() {
+				if (this.isPet == 1)
+					return this.pet.price
 				let totalPrice = 0;
 				this.carts.map(shopCart => {
 					let products = shopCart.products;
@@ -180,18 +263,20 @@
 			},
 			// 提交订单
 			submit() {
-				const countIds = [];
-				const productIds = [];
+				const countIds = []
+				const productIds = []
+				const shopIds = []
 				// 遍历 this.carts 数组，提取 count 和 productId 属性并存入相应数组
 				this.carts.forEach(shop => {
 					shop.products.forEach(product => {
 						countIds.push(product.count);
 						productIds.push(product.productId);
+						shopIds.push(product.shopId)
 					});
 				});
 				// 打印结果
 				console.log("count", countIds); // 输出 count 数组
-				console.log("id", productIds); // 输出 productId 数组
+				console.log("productId", productIds); // 输出 productId 数组
 				uni.showModal({
 					title: '订单结算',
 					content: '是否付款',
@@ -199,10 +284,72 @@
 					success: (res) => {
 						if (res.confirm) {
 							// 付款
-							console.log('用户点击了确定');
+							addOrder({
+								sumPrice: this.totalPrice(),
+								isPay: 1,
+								addressId: this.item.id
+							}).then(res1 => {
+								console.log("订单", res1.data)
+								addItem({
+									orderId: res1.data.data.id,
+									status: 2,
+									ids: productIds.join(","),
+									nums: countIds.join(","),
+									isPet: this.isPet,
+									shopIds: shopIds.join(",")
+								}).then(res2 => {
+									console.log("订单详情", res2.data)
+									deleteByIds({
+										ids: productIds.join(",")
+									}).then(res3 => {
+										console.log("清空购物车", res3.data)
+										uni.navigateTo({
+											// url: '/pages/order/order?status=2'
+											url: '/pages/myinfo/myinfo'
+										})
+									}).catch(error3 => {
+										console.log(error3)
+									})
+								}).catch(error2 => {
+									console.log(error2)
+								})
+							}).catch(error1 => {
+								console.log(error1)
+							})
 						} else if (res.cancel) {
 							// 不付款
-							console.log('用户点击了取消');
+							addOrder({
+								sumPrice: this.totalPrice(),
+								isPay: 0,
+								addressId: this.item.id
+							}).then(res1 => {
+								console.log("订单", res1.data)
+								addItem({
+									orderId: res1.data.data.id,
+									status: 1,
+									ids: productIds.join(","),
+									nums: countIds.join(","),
+									isPet: this.isPet,
+									shopIds: shopIds.join(",")
+								}).then(res2 => {
+									console.log("订单详情", res2.data)
+									deleteByIds({
+										ids: productIds.join(",")
+									}).then(res3 => {
+										console.log("清空购物车", res3.data)
+										uni.navigateTo({
+											// url: '/pages/order/order?status=1'
+											url: '/pages/myinfo/myinfo'
+										})
+									}).catch(error3 => {
+										console.log(error3)
+									})
+								}).catch(error2 => {
+									console.log(error2)
+								})
+							}).catch(error1 => {
+								console.log(error1)
+							})
 						}
 					}
 				});
@@ -268,6 +415,11 @@
 
 	.detail {
 		margin-top: 80upx;
+
+
+
+
+
 	}
 
 	.shop-name {
@@ -333,5 +485,61 @@
 		}
 
 		.submit {}
+	}
+
+
+
+	.order-page {
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.pet-image-wrapper {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 20px;
+	}
+
+	.pet-image {
+		width: 300px;
+		height: 150px;
+		border-radius: 10px;
+	}
+
+	.pet-info {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		width: 100%;
+	}
+
+	.pet-name {
+		font-size: 24px;
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+
+	.pet-description {
+		font-size: 16px;
+		color: #999;
+		margin-bottom: 20px;
+	}
+
+	.pet-details {
+		font-size: 16px;
+		color: #666;
+		margin-bottom: 10px;
+	}
+
+	.delivery-info {
+		margin-top: 20px;
+	}
+
+	.delivery-title {
+		font-size: 18px;
+		font-weight: bold;
+		margin-bottom: 10px;
 	}
 </style>

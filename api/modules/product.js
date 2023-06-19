@@ -10,3 +10,6 @@ export function getByCategory(params) {
 export function getById(params) {
 	return get('/product/getById', params)
 }
+export function getShopIds(params) {
+	return get('/product/getShopIds', params)
+}

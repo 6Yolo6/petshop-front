@@ -8,11 +8,15 @@
 			<u-tabs :list="categoryList" @click="changeCate" :current="category" activeColor="#0000ff"></u-tabs>
 		</view>
 		<view class="content">
-			<view class="" v-for="(item, index) in productList">
-				<uni-card :title="item.name" :sub-title="item.etc.shopName" :extra="item.etc.cateName"
-					:thumbnail="item.img" @click="toDetail(item.id)">
-					<text class="uni-body">这是一个带头像和双标题的基础卡片，此示例展示了一个完整的卡片。</text>
-				</uni-card>
+			<view class="">
+				<scroll-view scroll-y="true" class="scrolly" show-scrollbar="true" @scrolltolower="scrolltolower">
+					<view class="" v-for="(item, index) in productList">
+						<uni-card :title="item.name" :sub-title="item.etc.shopName" :extra="item.etc.cateName"
+							:thumbnail="item.img" @click="toDetail(item.id)">
+							<text class="uni-body">这是一个带头像和双标题的基础卡片，此示例展示了一个完整的卡片。</text>
+						</uni-card>
+					</view>
+				</scroll-view>
 			</view>
 		</view>
 	</view>
@@ -33,7 +37,8 @@
 					name: '全部'
 				}],
 				productList: [],
-
+				pageNum: 1,
+				finish: false
 			}
 		},
 		mounted() {
@@ -64,16 +69,25 @@
 					console.log(error)
 				})
 			},
+			scrolltolower() {
+				console.log("到底部")
+				if (this.productList.length < this.total) {
+					this.pageNum += 1
+					this.getByCategory(this.category)
+				}
+			},
 			// 根据id查询周边
 			getByCategory(id) {
+				console.log("pageNum", this.pageNum)
 				getByCategory({
-					pageNum: 1,
-					pageSize: 10,
+					pageNum: this.pageNum,
+					pageSize: 8,
 					category: id
 				}).then(res => {
-					// console.log("周边", res.data)
-					this.productList = res.data.data.records
-					console.log("周边", this.productList)
+					console.log("周边", res.data)
+					this.productList.push(...res.data.data.records)
+					this.total = res.data.data.total
+					// console.log("周边", this.productList)
 				}).catch(error => {
 					console.log(error)
 				})
@@ -82,6 +96,8 @@
 			changeCate(index) {
 				this.category = index.index
 				console.log("category", index)
+				this.productList = []
+				this.pageNum = 1
 				this.getByCategory(index.index)
 			},
 			toDetail(id) {
@@ -96,6 +112,9 @@
 <style lang="scss" scoped>
 	.tabs {
 		margin-top: 80rpx;
+		// top: 35px;
+		// position: fixed;
+		// z-index: 100;
 	}
 
 
@@ -111,8 +130,11 @@
 	}
 
 	.content {
+		// margin-top: 90px;
 
-
+		.scrolly {
+			height: 1500rpx;
+		}
 
 		.uni-card {
 			.uni-card__header {

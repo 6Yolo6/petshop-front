@@ -10,7 +10,8 @@
 			<text>这是一个通栏卡片 ，通栏没有外边距，左右会贴合父元素。</text>
 		</view>
 		<view class="goods-nav">
-			<uni-goods-nav @click="onClick" :options="options" :button-group="customButtonGroup" />
+			<uni-goods-nav @click="onClick" :options="options" :button-group="customButtonGroup"
+				@buttonClick="buttonClick" />
 		</view>
 	</view>
 </template>
@@ -40,6 +41,9 @@
 					backgroundColor: 'linear-gradient(90deg, #60F3FF, #088FEB)',
 					color: '#fff'
 				}],
+				pet_detail: {
+					id: 35
+				}
 			}
 		},
 		methods: {
@@ -48,8 +52,15 @@
 				uni.navigateBack({
 					delta: 1, // 返回的层数，1表示返回上一个页面
 				});
+			},
+			buttonClick(e) {
+				if (e.content.text == "立即购买") {
+					uni.navigateTo({
+						url: '/pages/order/confirm?id=' + this.pet_detail.id
+					})
+				}
 			}
-		}
+		},
 	}
 </script>
 

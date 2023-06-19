@@ -60,10 +60,10 @@
 	import {
 		add,
 		sub,
-		getAll,
+		getAllCart,
 		update,
 		updateAll,
-		deleteById
+		deleteByIds
 	} from '@/api/modules/cart.js'
 	export default {
 		data() {
@@ -82,7 +82,7 @@
 		},
 		methods: {
 			getAll() {
-				getAll().then(res => {
+				getAllCart().then(res => {
 					console.log(res.data)
 					this.carts = res.data.data
 					this.Allchecked()
@@ -127,8 +127,8 @@
 			},
 			del(product) {
 				// this.carts.splice(index, 1)
-				deleteById({
-					productId: product.productId
+				deleteByIds({
+					ids: product.productId
 				}).then(res => {
 					console.log(res.data)
 					this.getAll()
