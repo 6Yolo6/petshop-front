@@ -1,6 +1,7 @@
 <!-- <template>
 	<view>
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<view class="page-body">
 			<view class="page-section page-section-gap map">
 				<map @tap="getMapLocation" style="width: 100%; height: 426rpx;" :latitude="reportInfo.lttd"
@@ -27,6 +28,8 @@
 			</view>
 
 =======
+=======
+>>>>>>> 0fcaefce16cf9432e6165f6682b54ea8c8e8edca
 		<view class="header">
 			<u-navbar title="购物车" :autoBack="true">
 			</u-navbar>
@@ -79,12 +82,16 @@
 			<view class="end-right" @click="toConfirm()">
 				结算({{totalNum}})
 			</view>
+<<<<<<< HEAD
+>>>>>>> 0fcaefce16cf9432e6165f6682b54ea8c8e8edca
+=======
 >>>>>>> 0fcaefce16cf9432e6165f6682b54ea8c8e8edca
 		</view>
 	</view>
 </template>
 
 <script>
+<<<<<<< HEAD
 <<<<<<< HEAD
 	import QQMapWX from '../../utils/qqmap-wx-jssdk.js'
 	const tMap = new QQMapWX({
@@ -122,6 +129,22 @@
 				carts: [],
 				totalProductNum: 0
 >>>>>>> 0fcaefce16cf9432e6165f6682b54ea8c8e8edca
+=======
+	import {
+		add,
+		sub,
+		getAllCart,
+		update,
+		updateAll,
+		deleteByIds
+	} from '@/api/modules/cart.js'
+	export default {
+		data() {
+			return {
+				allchecked: false,
+				carts: [],
+				totalProductNum: 0
+>>>>>>> 0fcaefce16cf9432e6165f6682b54ea8c8e8edca
 			}
 		},
 		onLoad: function() {
@@ -132,6 +155,7 @@
 			this.getAll()
 		},
 		methods: {
+<<<<<<< HEAD
 <<<<<<< HEAD
 			// 弹出规则提示框
 			showRules(){
@@ -601,6 +625,154 @@
 		background-color: white;
 	}
 
+=======
+			getAll() {
+				getAllCart().then(res => {
+					console.log(res.data)
+					this.carts = res.data.data
+					this.Allchecked()
+					this.totalProductNum = this.carts.reduce((total, shopCart) =>
+						total + shopCart.productNum, 0);
+					this.$store.commit('updateTotalProductNum', this.totalProductNum);
+					console.log("总数", this.totalProductNum);
+				}).catch(error => {
+					console.log(error)
+				})
+			},
+			selected(product) {
+				product.checked = !product.checked
+				update({
+					productId: product.productId
+				}).then(res => {
+					console.log(res.data)
+					this.getAll()
+					this.Allchecked()
+				}).catch(error => {
+					console.log(error)
+				})
+
+			},
+			selectcarts() {
+				this.allchecked = !this.allchecked
+				let ids = []
+				this.carts.forEach(shopCart => {
+					shopCart.products.forEach(product => {
+						const productId = product.productId.toString();
+						ids.push(productId);
+					});
+				});
+				updateAll({
+					ids: ids.join(',')
+				}).then(res => {
+					this.getAll()
+				}).catch(error => {
+
+				})
+
+			},
+			del(product) {
+				// this.carts.splice(index, 1)
+				deleteByIds({
+					ids: product.productId
+				}).then(res => {
+					console.log(res.data)
+					this.getAll()
+					uni.showToast({
+						title: "删除成功"
+					})
+				}).catch(error => {
+					console.log(error)
+				})
+			},
+			reduce(product) {
+				let count = product.count
+				if (count == 1) {
+					uni.showToast({
+						title: "该宝贝不能减少了哟~"
+					})
+				} else {
+					sub({
+						productId: product.productId
+					}).then(res => {
+						console.log(res.data)
+						this.getAll()
+					}).catch(error => {
+						console.log(error)
+					})
+				}
+			},
+			Allchecked() {
+				// 将多层嵌套的 carts 数组展开，并筛选出未勾选的产品 flatMap可以嵌套多次
+				const uncheckedProducts = this.carts.flatMap(shopCart =>
+					shopCart.products).filter(p =>
+					!p.checked);
+				this.allchecked = uncheckedProducts.length == 0; // 更新全选按钮状态
+			},
+			add(product) {
+				// let count = product.count
+				// product.count = count + 1
+				add({
+					productId: product.productId
+				}).then(res => {
+					console.log(res.data)
+					// product.count = res.data.count
+					this.getAll()
+				}).catch(error => {
+					console.log(error)
+				})
+			},
+			toConfirm() {
+				// console.log(this.totalPrice)
+				let price = this.totalPrice
+				uni.navigateTo({
+					url: '/pages/order/confirm'
+				})
+			},
+			toDetail(id) {
+				uni.navigateTo({
+					url: '/pages/shop/product_detail?id=' + id
+				});
+			}
+		},
+		computed: {
+			totalNum() {
+				let totalNum = 0;
+				this.carts.map(shopCart => {
+					let products = shopCart.products;
+					products.map(product => {
+						product.checked ? totalNum += product.count : totalNum += 0
+					});
+				});
+				return totalNum
+			},
+
+			totalPrice() {
+				let totalPrice = 0;
+				this.carts.map(shopCart => {
+					let products = shopCart.products;
+					products.map(product => {
+						product.checked ? totalPrice += product.count * product.productPrice :
+							totalPrice += 0
+					});
+				});
+				return totalPrice
+			}
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+	.header {
+		width: 100%;
+		display: flex;
+		margin-bottom: 10px;
+		position: fixed;
+		top: 0;
+		z-index: 1000;
+		background-color: white;
+	}
+
+>>>>>>> 0fcaefce16cf9432e6165f6682b54ea8c8e8edca
 	.shopCart {
 		margin-top: 90rpx;
 	}
@@ -730,6 +902,10 @@
 			color: #fff;
 		}
 	}
+<<<<<<< HEAD
 </style>
 >>>>>>> 0fcaefce16cf9432e6165f6682b54ea8c8e8edca
  -->
+=======
+</style>
+>>>>>>> 0fcaefce16cf9432e6165f6682b54ea8c8e8edca
