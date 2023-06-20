@@ -1,7 +1,10 @@
 <template>
 	<view>
-		<view class="">
-			搜索框666
+		<view class="header">
+			<u-search :clearabled="true" shape="round" :value="inp_value" :placeholder="tip" class="search"
+				bgColor="linear-gradient(to right, #70e1f5, #ffd194)" @focus="handleFocus"
+				:showAction="false"></u-search>
+			<uni-icons type="location" size="30" class="location" @click="toLocation"></uni-icons>
 		</view>
 		<view class="swiper">
 			<u-swiper :list="swapperList" @click="swiperClick" previousMargin="30" nextMargin="30" circular radius="5"
@@ -43,6 +46,8 @@
 		},
 		data() {
 			return {
+				inp_value: '',
+				tip: '请输入关键词',
 				swapperList: [
 					'https://cdn.uviewui.com/uview/swiper/swiper1.png',
 					'https://cdn.uviewui.com/uview/swiper/swiper2.png',
@@ -55,6 +60,12 @@
 			this.getAllCate()
 		},
 		methods: {
+			// 聚焦跳转到搜索页
+			handleFocus() {
+				uni.navigateTo({
+					url: '/pages/index/search'
+				});
+			},
 			//获取全部类别
 			getAllCate() {
 				getAllCate().then(res => {
@@ -77,7 +88,20 @@
 </script>
 
 <style lang="scss" scoped>
-	.swapper {}
+	.swiper {
+		margin-top: 32px;
+		margin-bottom: 15px;
+	}
+
+	.header {
+		width: 100%;
+		display: flex;
+		margin-bottom: 10px;
+		position: fixed;
+		top: 0;
+		z-index: 1000;
+		background-color: white;
+	}
 
 	.category {
 
