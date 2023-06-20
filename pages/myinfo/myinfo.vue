@@ -2,6 +2,9 @@
 	<view class="page">
 		<view class="header">
 			<u-navbar title="我的空间" :autoBack="true" leftIcon="">
+				<view slot="right">
+					<uni-data-select :localdata="range" placeholder="" class="select"></uni-data-select>
+				</view>
 			</u-navbar>
 		</view>
 		<view class="top">
@@ -17,7 +20,7 @@
 				<view class="bottom">
 					<view class="left">
 						<view class="user-text">
-							名字
+							{{name}}
 						</view>
 						<view class="user-phone"> 171****4133 </view>
 					</view>
@@ -28,10 +31,10 @@
 			</view>
 		</view>
 		<view class="list-card">
-			<view class="card">
+			<view class="card" @click="toAddress">
 				<view class="item item-bottom-solid">
 					<view class="left flex-center">
-						<image src="../../static/myIcon/qiu.png" mode="aspectFit"></image>
+						<u-icon class="icon" name="map" size="30px"></u-icon>
 					</view>
 					<view class="center">
 						<text>我的地址</text>
@@ -42,9 +45,9 @@
 				</view>
 			</view>
 			<view class="card">
-				<view class="item item-bottom-solid">
+				<view class="item item-bottom-solid" @click="toStar">
 					<view class="left flex-center">
-						<image src="../../static/myIcon/1.png" mode="aspectFit"></image>
+						<u-icon class="icon" name="star" size="30px"></u-icon>
 					</view>
 					<view class="center">
 						<text>我的收藏</text>
@@ -57,9 +60,9 @@
 			<view class="card">
 				<view class="item">
 					<view class="left flex-center">
-						<image src="../../static/myIcon/2.png" mode="aspectFit"></image>
+						<u-icon class="icon" name="order" size="30px"></u-icon>
 					</view>
-					<view class="center">
+					<view class="center" @click="toOrder()">
 						<text>我的订单</text>
 					</view>
 					<view class="right flex-center">
@@ -69,27 +72,112 @@
 			</view>
 		</view>
 		<view class="quit flex-center">
-			<view class="btn flex-center">
+			<view class="btn flex-center" v-if="this.isLogin == false" @click="login()">
+				去登录/注册
+			</view>
+			<view class="btn flex-center" v-else @click="logout()">
 				退出登录
 			</view>
 		</view>
+		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 <script>
+	import {
+		login,
+		validate
+	} from '../../api/modules/user';
 	//import {  } from "@/common/api/{$}.js";
 	export default {
 		data() {
 			return {
-				name
+				name: "",
+				status: 0,
+				isLogin: false,
+				isActive: false,
+				range: [{
+						value: 0,
+						text: "退出登录"
+					},
+					{
+						value: 1,
+						text: "足球"
+					},
+					{
+						value: 2,
+						text: "游泳"
+					},
+				],
 			};
+		},
+		onShow() {
+			this.isActive = true;
+			if (this.isActive)
+				this.validate()
+		},
+		onHide() {
+			this.isActive = false
 		},
 		mounted() {
 
 		},
-		methods: {},
+		methods: {
+			toAddress() {
+				uni.navigateTo({
+					url: '/pages/myinfo/address/addresslist'
+				})
+			},
+			toStar() {
+				uni.navigateTo({
+					url: '/pages/myinfo/favor/favor'
+				})
+				// this.$refs.uToast.show({
+				// 	type: "error",
+				// 	message: "敬请期待"
+				// })
+			},
+			toOrder() {
+				uni.navigateTo({
+					url: '/pages/order/order?status=' + this.status
+				});
+			},
+			getUser() {
+
+			},
+			validate() {
+				validate().then(res => {
+					console.log(res)
+					if (res.data.statusCode == "200")
+						this.isLogin = true
+					else
+						this.isLogin = false
+					console.log("isLogin", this.isLogin)
+					this.name = uni.getStorageSync("username")
+					console.log(uni.getStorageSync("username"))
+				}).catch(error => {
+
+				})
+			},
+			login() {
+				uni.navigateTo({
+					url: '/pages/login/login'
+				});
+			},
+			logout() {
+				uni.removeStorageSync("username")
+				uni.removeStorageSync("token")
+				this.validate()
+				// this.name = uni.getStorageSync("username")
+			}
+		},
+
 	};
 </script>
 <style lang="scss" scoped>
+	.select {
+		width: 200rpx;
+	}
+
 	.header {
 		width: 100%;
 		display: flex;
@@ -101,6 +189,7 @@
 	}
 
 	.top {
+		margin-top: 100rpx;
 		height: 250rpx;
 		position: relative;
 

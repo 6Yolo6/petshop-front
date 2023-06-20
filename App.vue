@@ -2,7 +2,13 @@
 	/* 注意要写在第一行，同时给style标签加入lang="scss"属性 */
 	@import "@/uni_modules/uview-ui/index.scss";
 	@import '//at.alicdn.com/t/c/font_4111808_8sigcajr1jk.css';
+
+	/* 这里是第一个 App.vue 中的样式代码 */
+	body {
+		background: #FFFFFF !important;
+	}
 </style>
+
 <script>
 	export default {
 		onLaunch: function() {

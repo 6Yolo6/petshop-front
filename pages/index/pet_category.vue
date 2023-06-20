@@ -5,14 +5,14 @@
 			</u-navbar>
 		</view>
 		<!-- 分段器筛选 -->
-		<view><!-- 
+		<view class="category"><!-- 
 			<u-subsection :list="category_list" :current="current" :activeColor="active_color"
 				@change="sectionChange"></u-subsection> -->
 			<u-tabs :list="category_list" @click="sectionChange" :current="current" activeColor="#0000ff"></u-tabs>
 		</view>
 		<view>
 			<view v-for="(item,index) in pet_list" :key="index">
-				<uni-card :title="item.name" :isFull="true" :sub-title="item.breed" :extra="''+item.price"
+				<uni-card :title="item.name" :isFull="true" :sub-title="item.breed" :extra="''+item.price+'￥'"
 					@click="toDetail(item.id)">
 				</uni-card>
 			</view>
@@ -21,15 +21,17 @@
 </template>
 
 <script>
-	import { getAllCate } from '@/api/modeules/pet_category.js'
+	import {
+		getAllCate
+	} from '@/api/modules/pet_category.js'
 	import {
 		getByCate
-	} from '@/api/modeules/pet.js'
+	} from '@/api/modules/pet.js'
 	export default {
 		data() {
 			return {
 				selected_value: '',
-				category_list: [],
+				category_list: [{ name: '全部' }],
 				pet_list: [],
 				inp_value: '',
 				tip: '请输入关键字',
@@ -40,13 +42,20 @@
 			}
 		},
 		onLoad() {
-			// url中获取类别id
-			this.current = this.$route.query.index
+			// 判断路由栈是否存在页面
+			if (getCurrentPages().length > 1) {
+				// url中获取类别id
+				this.current = this.$route.query.index
+			} else {
+				//默认显示狗狗类
+				this.current = 0
+			}
+
 			// console.log(typeof(this.current))
 			// 获取全部类别
 			this.getAllCate()
 			// 获取默认类别
-			this.getByCategory(Number(this.current) + 1)
+			this.getByCategory(Number(this.current))
 		},
 		mounted() {
 
@@ -55,7 +64,7 @@
 			// 进入宠物详情页
 			toDetail(id) {
 				uni.navigateTo({
-					url: '/pages/index/pet_details?' + id
+					url: '/pages/index/pet_details?id=' + id
 				});
 			},
 			// 左上角返回
@@ -69,7 +78,9 @@
 					let temp_list = []
 					temp_list = res.data.data
 					for (let i in temp_list) {
-						this.category_list.push({ name: temp_list[i].name })
+						this.category_list.push({
+							name: temp_list[i].name
+						})
 					}
 				}).catch((err) => {
 					console.log('错误')
@@ -80,7 +91,7 @@
 			sectionChange(index) {
 				this.current = index.index
 				// console.log(index)
-				this.getByCategory(index.index + 1)
+				this.getByCategory(index.index)
 			},
 			// 根据种类id筛选宠物
 			getByCategory(index) {
@@ -101,7 +112,11 @@
 	}
 </script>
 
-<style>
+<style scoped>
+	.category {
+		margin-top: 60rpx;
+	}
+
 	.header {
 		width: 100%;
 		display: flex;

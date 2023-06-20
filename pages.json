@@ -1,4 +1,11 @@
 {
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+
+			"^van-(.*)": "@/node_modules/vant/weapp/dist/$1/index.vue" // 匹配node_modules内的vue文件
+		}
+	},
 	"pages": [
 		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
@@ -17,8 +24,13 @@
 		}, {
 			"path": "pages/order/order",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/order/confirm",
+			"style": {
+				"navigationStyle": "custom"
 			}
 
 		}, {
@@ -31,8 +43,7 @@
 		}, {
 			"path": "pages/cart/cart",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"navigationStyle": "custom"
 			}
 
 		}, {
@@ -41,39 +52,89 @@
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
-
-		}
-
-		, {
+		}, {
 			"path": "pages/index/pet_details",
 			"style": {
 				"navigationStyle": "custom"
 			}
-
 		}, {
 			"path": "pages/index/pet_category",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "pages/index/search",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/myinfo/address/addresslist",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
 
+		}, {
+			"path": "pages/myinfo/address/editaddress",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+
+			}
+
+		},
+		{
+			"path": "pages/myinfo/address/update",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/myinfo/favor/favor",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/shop/product_category",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/shop/product_detail",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/login/forget",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/login/register",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
 		}
-
-	    ,{
-            "path" : "pages/myinfo/my_address",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"navigationStyle": "custom" //取消默认的原生导航栏
 	},
 	"tabBar": {
 		"borderStyle": "black",
