@@ -42,7 +42,22 @@
         "setting" : {
             "urlCheck" : true
         },
+		"permission" : {
+			    "scope.userLocation" : {
+			        "desc" : "获取位置信息"
+			    }
+			},
+			"requiredPrivateInfos" : [ "getLocation" ],
         "usingComponents" : true
     },
-    "vueVersion" : "2"
+    "vueVersion" : "2",
+    "h5" : {
+        "sdkConfigs" : {
+            "maps" : {
+                "qqmap" : {
+                    "key" : "MV5BZ-IWACB-5N7UF-JZTBP-HVKXS-OZBFQ"
+                }
+            }
+        }
+    }
 }
