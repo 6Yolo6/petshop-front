@@ -71,7 +71,7 @@
 			},
 			scrolltolower() {
 				console.log("到底部")
-				if (this.productList.length < this.total) {
+				if (this.productList.length < this.productList.total) {
 					this.pageNum += 1
 					this.getByCategory(this.category)
 				}

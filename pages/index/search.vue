@@ -30,13 +30,15 @@
 				</view>
 				<!-- 周边搜索结果 -->
 				<view v-else-if="selected_value==1">
-					<uni-card :title="item.name" :isFull="true" :sub-title="item.description"
-						:extra="''+item.price+'￥'">
+					<uni-card :title="item.name" :isFull="true" :sub-title="item.description" :extra="''+item.price+'￥'"
+						@click="toDetail(item)">
 					</uni-card>
 				</view>
 				<!-- 店铺搜索结果 -->
 				<view v-else-if="selected_value==2">
-
+					<uni-card :title="item.name" :isFull="true" :sub-title="item.description" :extra="''+item.price+'￥'"
+						@click="toDetail(item)">
+					</uni-card>
 				</view>
 			</view>
 		</view>
@@ -103,6 +105,23 @@
 						message: "请输入关键字"
 					})
 				}
+			},
+			toDetail(item) {
+				console.log("详情", item)
+				if (this.selected_value == 0) {
+					uni.navigateTo({
+						url: '/pages/index/pet_detail?id=' + item.id
+					});
+				} else if (this.selected_value == 1) {
+					uni.navigateTo({
+						url: '/pages/shop/product_detail?id=' + item.id
+					});
+				}
+				// if (selected_value == 2) {
+				// 	uni.navigateTo({
+				// 		url: '/pages/shop/product_detail?id=' + item.id
+				// 	});
+				// }
 			}
 		}
 	}

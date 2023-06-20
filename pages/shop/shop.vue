@@ -1,7 +1,10 @@
 <template>
 	<view>
-		<view class="">
-			搜索框666
+		<view class="header">
+			<u-search :clearabled="true" shape="round" :value="inp_value" :placeholder="tip" class="search"
+				bgColor="linear-gradient(to right, #70e1f5, #ffd194)" @focus="handleFocus"
+				:showAction="false"></u-search>
+			<uni-icons type="location" size="30" class="location" @click="toLocation"></uni-icons>
 		</view>
 		<view class="swiper">
 			<u-swiper :list="swapperList" @click="swiperClick" previousMargin="30" nextMargin="30" circular radius="5"
@@ -16,19 +19,21 @@
 			</u-scroll-list>
 		</view>
 		<view class="content">
-			<uni-row class="demo-uni-row">
-				<uni-col :span="12" v-for="(item, index) in 4" :index="index" :key="index">
-					<view class="demo-uni-col dark">
-						<uni-card title="基础卡片" sub-title="副标题" extra="额外信息" padding="10px 0"
-							cover="https://cbu01.alicdn.com/img/ibank/2019/352/573/10885375253_109569990.jpg"
-							class="card">
-							<text class="uni-body uni-mt-5 ">
-								卡片组件通用来显示完整独立的一段信息，同时让用户理解他的作用。例如一篇文章的预览图、作者信息、时间等，卡片通常是更复杂和更详细信息的入口点。
-							</text>
-						</uni-card>
-					</view>
-				</uni-col>
-			</uni-row>
+			<scroll-view scroll-y="true" class="scrolly" show-scrollbar="true" @scrolltolower="scrolltolower">
+				<uni-row class="demo-uni-row">
+					<uni-col :span="12" v-for="(item, index) in 4" :index="index" :key="index">
+						<view class="demo-uni-col dark">
+							<uni-card title="基础卡片" sub-title="副标题" extra="额外信息" padding="10px 0"
+								cover="https://cbu01.alicdn.com/img/ibank/2019/352/573/10885375253_109569990.jpg"
+								class="card">
+								<text class="uni-body uni-mt-5 ">
+									卡片组件通用来显示完整独立的一段信息，同时让用户理解他的作用。例如一篇文章的预览图、作者信息、时间等，卡片通常是更复杂和更详细信息的入口点。
+								</text>
+							</uni-card>
+						</view>
+					</uni-col>
+				</uni-row>
+			</scroll-view>
 		</view>
 	</view>
 </template>
@@ -48,7 +53,11 @@
 					'https://cdn.uviewui.com/uview/swiper/swiper2.png',
 					'https://cdn.uviewui.com/uview/swiper/swiper3.png',
 				],
-				categoryList: []
+				categoryList: [],
+				inp_value: "",
+				tip: '请输入关键词',
+				pageNum: 1,
+
 			}
 		},
 		mounted() {
@@ -71,12 +80,34 @@
 					url: '/pages/shop/product_category?index=' + (index + 1)
 				});
 			},
+			// 搜索框聚焦后跳转
+			handleFocus() {
+				uni.navigateTo({
+					url: '/pages/index/search'
+				});
+			},
+			scrolltolower() {
+				console.log("到底部")
+				// if (this.productList.length < this.total) {
+				// 	this.pageNum += 1
 
+				// }
+			},
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	.header {
+		width: 100%;
+		display: flex;
+		margin-bottom: 10px;
+		position: fixed;
+		top: 0;
+		z-index: 1000;
+		background-color: white;
+	}
+
 	.swapper {}
 
 	.category {
@@ -103,6 +134,9 @@
 	}
 
 	.content {
+		.scrolly {
+			height: 1070rpx;
+		}
 
 		.card {
 
