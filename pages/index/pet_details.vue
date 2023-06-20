@@ -5,6 +5,9 @@
 		</view>、
 		<u-swiper :list="list1"></u-swiper>
 		<uni-card :title="pet_detail.breed" :isFull="true" :sub-title="pet_detail.name" :extra="pet_detail.price+'￥'">
+			<view slot="actions">
+				<uni-tag text="niu" type="primary"></uni-tag>
+			</view>
 		</uni-card>
 		<view class="describle">
 			<text>{{pet_detail.description}}</text>
@@ -21,11 +24,14 @@
 		getById
 	} from '@/api/modules/pet.js'
 	import {
-		addFavor
+		addFavor,
+		deleteById,
+		findByPetId
 	} from '@/api/modules/favor.js'
 	export default {
 		data() {
 			return {
+				favorId: 0,
 				pet_detail: {
 					id: 0,
 					breed: "",
@@ -50,13 +56,8 @@
 					infoBackgroundColor: '#007aff',
 					infoColor: "#f5f5f5"
 				}, {
-					icon: 'cart',
-					text: '购物车',
-					info: 2
-				}, {
 					icon: 'star',
 					text: '收藏',
-					info: 2
 				}],
 				customButtonGroup: [{
 					text: '立即购买',
@@ -65,43 +66,83 @@
 				}],
 			}
 		},
+		onLoad(option) {
+			let id = option.id
+			// 获取宠物信息
+			this.getDetail(id)
+
+		},
 		mounted() {
-			let id = this.$route.query.id
-			this.getByDetail(id)
-			console.log(id)
+			// 获取启动参数
+			const launchOptions = uni.getLaunchOptionsSync()
+
+			console.log(launchOptions)
+
+			// console.log(id)
 		},
 		methods: {
-			handleLongTap() {
-				console.log('长安')
+			// 添加收藏
+			addFavor() {
+				addFavor({
+					favorId: this.pet_detail.id,
+					isPet: true,
+				}).then(res => {
+					// 图标变化
+					this.options[1].icon = 'star-filled'
+					// 更新收藏id
+					this.favorId = res.data.data
+					console.log(res)
+				}).catch(err => {
+
+				})
 			},
+			// 是否收藏
+			isFavor() {
+				// console.log(this.pet_detail)
+				findByPetId({ favorId: this.pet_detail.id, isPet: true }).then(res => {
+					if (res.data.message == "已收藏") {
+						// 图标变化
+						this.options[1].icon = 'star-filled'
+						// 获取收藏id
+						this.favorId = res.data.data
+					}
+				}).catch(err => {
+
+				})
+			},
+			// 点击商品导航栏左侧
 			onClick(e) {
 				if (e.content.text == '收藏') {
 					this.changeFavor()
 				}
-				uni.showToast({
-					title: `点击${e.content.text}`,
-					icon: 'none'
+			},
+			// 取消收藏
+			deleteFavor() {
+				console.log(this.favorId)
+				deleteById({ id: this.favorId }).then(res => {
+					this.options[1].icon = 'star'
+					console.log(res)
+				}).catch(err => {
+
 				})
 			},
 			changeFavor() {
-				if (this.options[2].icon == 'star') {
-					addFavor({
-						favorId: this.pet_detail.id,
-						isPet: true,
-					}).then(res => {
-						this.options[2].icon = 'star-filled'
-						console.log(res)
-					}).catch(err => {
-
-					})
+				// 未收藏
+				if (this.options[1].icon == 'star') {
+					this.addFavor()
+				} else {
+					console.log('删除')
+					this.deleteFavor()
 				}
 
 			},
-			// 获取宠物详情
-			getByDetail(id) {
+			// 获取宠物信息
+			getDetail(id) {
 				getById({ id: id }).then(res => {
 					this.pet_detail = res.data.data
-					console.log(res.data.data)
+					console.log(this.pet_detail)
+					// 判断是否收藏
+					this.isFavor()
 				}).catch(err => {
 					console.log(err)
 				})

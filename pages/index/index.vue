@@ -8,7 +8,7 @@
 		</view>
 		<!-- 轮播图 -->
 		<view class="swiper">
-			<u-swiper :list="list1" @click="swiperClick" previousMargin="30" nextMargin="30" circular radius="5"
+			<u-swiper :list="list1" previousMargin="30" nextMargin="30" circular radius="5"
 				bgColor="#ffffff"></u-swiper>
 		</view>
 		<!-- 类别显示 -->

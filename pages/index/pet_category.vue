@@ -3,13 +3,12 @@
 		<view class="header">
 			<u-navbar title="宠物分类" :autoBack="true">
 			</u-navbar>
+			<!-- 分段器筛选 -->
+			<view class="category">
+				<u-tabs :list="category_list" @click="sectionChange" :current="current" activeColor="#0000ff"></u-tabs>
+			</view>
 		</view>
-		<!-- 分段器筛选 -->
-		<view class="category"><!-- 
-			<u-subsection :list="category_list" :current="current" :activeColor="active_color"
-				@change="sectionChange"></u-subsection> -->
-			<u-tabs :list="category_list" @click="sectionChange" :current="current" activeColor="#0000ff"></u-tabs>
-		</view>
+
 		<view>
 			<view v-for="(item,index) in pet_list" :key="index">
 				<uni-card :title="item.name" :isFull="true" :sub-title="item.breed" :extra="''+item.price+'￥'"
@@ -41,21 +40,23 @@
 				active_color: '#0000ff'
 			}
 		},
-		onLoad() {
+		onLoad(option) {
 			// 判断路由栈是否存在页面
 			if (getCurrentPages().length > 1) {
-				// url中获取类别id
-				this.current = this.$route.query.index
-			} else {
-				//默认显示狗狗类
-				this.current = 0
-			}
+				// uni.$route.query.index
+				// 获取启动参数
+				// const launchOptions = uni.getLaunchOptionsSync()
+				// // 获取查询参数
+				// const query = launchOptions.query
+				//获取类别id
+				this.current = parseInt(option.index)
 
+			}
 			// console.log(typeof(this.current))
 			// 获取全部类别
 			this.getAllCate()
 			// 获取默认类别
-			this.getByCategory(Number(this.current))
+			this.getByCategory(this.current)
 		},
 		mounted() {
 
@@ -90,8 +91,8 @@
 			// 种类选择
 			sectionChange(index) {
 				this.current = index.index
-				// console.log(index)
-				this.getByCategory(index.index)
+				console.log(this.current)
+				this.getByCategory(this.current)
 			},
 			// 根据种类id筛选宠物
 			getByCategory(index) {
@@ -101,11 +102,11 @@
 					pageSize: 10
 				}).then((res) => {
 					// let temp_list = []
+					console.log(res)
 					this.pet_list = res.data.data.records
 					// this.pet_list
-					// console.log(temp_list)
 				}).catch((err) => {
-					console.log('错误')
+					console.log(err)
 				})
 			}
 		}
@@ -114,7 +115,11 @@
 
 <style scoped>
 	.category {
-		margin-top: 60rpx;
+		/* margin-top: 60rpx; */
+		position: absolute;
+		top: 60rpx;
+		z-index: 1000;
+		background-color: white;
 	}
 
 	.header {

@@ -10,7 +10,7 @@
 			<view class="card">
 				<uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" styleType="button"
 					activeColor="#007aff"></uni-segmented-control>
-				<view v-show="current===0">
+				<view>
 					<view v-for="(item,index) in favorList" :key="index">
 						<uni-card :title="item.favorName" :is-shadow="true" :sub-title="item.favorBreed"
 							:extra="''+item.favorPrice+'￥'" @click="toDetail(item.favorId,item.isPet)" class="card-item"
@@ -34,7 +34,7 @@
 
 <script>
 	import {
-		getAll,
+		getFavor,
 		deleteById
 	} from '@/api/modules/favor.js'
 	export default {
@@ -49,22 +49,37 @@
 			}
 		},
 		onLoad() {
-			this.getAll()
+			//0宠物1周边
+			if (this.current == 0) {
+				this.getFavor(true)
+			} else {
+				this.getFavor(false)
+			}
 		},
 		mounted() {
-			// this.getAll()
+			// this.getPet()
 		},
 		methods: {
 			onClickItem(e) {
 				if (this.current != e.currentIndex) {
 					this.current = e.currentIndex;
+					if (this.current == 0) {
+						this.getFavor(true)
+					} else {
+						this.getFavor(false)
+					}
 				}
+
 			},
 			// 点击确认
 			confirmYes() {
 				deleteById({ id: this.deleteId }).then(res => {
 					console.log(res)
-					this.getAll()
+					if (this.current == 0) {
+						this.getFavor(true)
+					} else {
+						this.getFavor(false)
+					}
 					this.showConform = false
 				}).catch(err => {
 
@@ -98,18 +113,19 @@
 				this.showConform = true
 
 			},
-			// 获取全部收藏
-			getAll() {
-				getAll().then(res => {
+			// 获取收藏
+			getFavor(isPet) {
+				getFavor({ isPet: isPet }).then(res => {
 					this.favorList = res.data.data
 					for (let i in this.favorList) {
 						this.favorList[i].checked = true
 					}
-					// console.log(this.favorList)
+					console.log(this.current)
+					console.log(this.favorList)
 				}).catch(err => {
 
 				})
-			}
+			},
 		}
 		// ...
 	};

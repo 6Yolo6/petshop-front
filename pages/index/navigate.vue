@@ -372,8 +372,5 @@
 		width: 300rpx;
 		font-weight: 700;
 	}
-				
-
 </style>
-
 

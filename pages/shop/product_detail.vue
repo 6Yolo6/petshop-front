@@ -9,7 +9,7 @@
 					<img class="img" :src="product.img" alt="">
 				</view>
 				<view class="favor">
-					<uni-fav :checked="product.etc.isFavor" class="favBtn" :circle="true" bg-color="#dd524d"
+					<uni-fav :checked="isFavor" class="favBtn" :circle="true" bg-color="#dd524d"
 						bg-color-checked="#007aff" fg-color="#ffffff" fg-color-checked="#ffffff"
 						@click="favor(product.id)" />
 				</view>
@@ -35,10 +35,11 @@
 	import {
 		add
 	} from '@/api/modules/cart.js'
-	import { addFavor } from '@/api/modules/favor.js'
+	import { addFavor, findByPetId, deleteById } from '@/api/modules/favor.js'
 	export default {
 		data() {
 			return {
+				favorId: 0,
 				options: [{
 					icon: 'shop',
 					text: '店铺',
@@ -52,7 +53,6 @@
 				}, {
 					icon: 'cart',
 					text: '收藏',
-					info: 2
 				}],
 				buttonGroup: [{
 						text: '加入购物车',
@@ -68,7 +68,7 @@
 				product: {},
 				userId: 4,
 				totalProductNum: 0,
-
+				isFavor: false
 
 			}
 		},
@@ -89,37 +89,64 @@
 				getById({
 					id: id
 				}).then(res => {
-					console.log(res.data)
 					this.product = res.data.data
+					this.judgeFavor(this.product.id)
+					// console.log(this.product.id)
 				}).catch(error => {
 					console.log(error)
 				})
 			},
-			// 收藏
-			favor(id) {
-				console.log("product_id", id)
-				addFavor({ favorId: id, isPet: true }).then(res => {
-					console.log(res)
+			// 判断是否收藏
+			judgeFavor(id) {
+				findByPetId({ favorId: id, isPet: false }).then(res => {
+					if (res.data.message == "已收藏") {
+						this.isFavor = true
+						this.favorId = res.data.data
+						// console.log(this.favorId)
+					}
 				}).catch(err => {
 
 				})
+			},
+			// 点击收藏
+			favor(id) {
+				// 如果已收藏
+				if (this.isFavor) {
+					deleteById({ id: this.favorId }).then(res => {
+						this.isFavor = false
+						this.favorId = res.data.data
+						console.log(res)
+					}).catch(err => {
+
+					})
+				} else {
+					addFavor({ favorId: id, isPet: false }).then(res => {
+						console.log(res)
+						this.isFavor = true
+						this.favorId = res.data.data
+					}).catch(err => {
+
+					})
+				}
 				// this.etc.isFavor = !this.etc.isFavor
 				this.$forceUpdate()
 			},
+			// 点击左下角商品导航
 			onClick(e) {
-				uni.showToast({
-					title: `点击${e.content.text}`,
-				})
+				// uni.showToast({
+				// 	title: `点击${e.content.text}`,
+				// })
 				if (e.content.text == "购物车") {
 					uni.switchTab({
 						url: '/pages/cart/cart'
 					})
 				} else if (e.content.text == "收藏") {
-					uni.switchTab({
-						url: '/pages/favor/favor'
+					uni.navigateTo({
+						url: '/pages/myinfo/favor/favor'
 					});
 				}
 			},
+			// 加入购物车
 			buttonClick(e) {
 				// console.log(e)
 				if (e.content.text == "加入购物车") {

@@ -48,6 +48,8 @@
 		},
 		data() {
 			return {
+				inp_value: '',
+				tip: '请输入关键词',
 				swapperList: [
 					'https://cdn.uviewui.com/uview/swiper/swiper1.png',
 					'https://cdn.uviewui.com/uview/swiper/swiper2.png',
@@ -64,6 +66,12 @@
 			this.getAllCate()
 		},
 		methods: {
+			// 聚焦跳转到搜索页
+			handleFocus() {
+				uni.navigateTo({
+					url: '/pages/index/search'
+				});
+			},
 			//获取全部类别
 			getAllCate() {
 				getAllCate().then(res => {
@@ -98,6 +106,11 @@
 </script>
 
 <style lang="scss" scoped>
+	.swiper {
+		margin-top: 32px;
+		margin-bottom: 15px;
+	}
+
 	.header {
 		width: 100%;
 		display: flex;
@@ -107,8 +120,6 @@
 		z-index: 1000;
 		background-color: white;
 	}
-
-	.swapper {}
 
 	.category {
 

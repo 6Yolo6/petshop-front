@@ -1,7 +1,12 @@
 import axios from 'axios'
 import qs from 'qs'
 
-const baseURL = 'http://192.168.43.156:8899/petshop'
+
+const baseURL = 'http://localhost:8899/petshop'
+// const baseURL = 'http://192.168.43.152:8899/petshop'
+// 宿舍
+// const baseURL = 'http://192.168.2.205:8899/petshop'
+
 
 export function get(url, params) {
 	const token = uni.getStorageSync('token')
