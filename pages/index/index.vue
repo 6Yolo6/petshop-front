@@ -19,6 +19,7 @@
 			</view>
 		</u-scroll-list>
 		<!-- 主页宠物推荐 -->
+
 		<uni-row class="demo-uni-row">
 			<uni-col :span="12" v-for="(item, index) in 4" :index="index" :key="index">
 				<view class="demo-uni-col dark">
@@ -99,7 +100,7 @@
 				}).catch((err) => {
 					console.log('错误')
 				})
-			}
+			},
 		}
 	}
 </script>
@@ -126,6 +127,7 @@
 		height: 100%;
 		object-fit: contain;
 	}
+
 
 
 	// 文本省略

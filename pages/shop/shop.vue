@@ -31,7 +31,9 @@
 											:src="item.img" />
 									</view>
 									<view class="content-box">
-										<text style="font-size: 12rpx;">{{ item.description }}</text>
+										<u--text style="font-size: 10rpx;" :lines="2" :text="item.description">
+										</u--text>
+										<!-- <text style="font-size: 12rpx;">{{  }}</text> -->
 									</view>
 								</view>
 							</uni-card>
@@ -92,6 +94,14 @@
 					console.log(error)
 				})
 			},
+			// 点击位置
+			toLocation() {
+				console.log('导航')
+				uni.navigateTo({
+					url: '/pages/index/navigate'
+				});
+				// this.$u.toast('暂未开放')
+			},
 			//跳转到周边分类页
 			toCategory(index) {
 				console.log(index)
@@ -115,7 +125,7 @@
 			getByCategory() {
 				getByCategory({
 					pageNum: this.pageNum,
-					pageSize: 8,
+					pageSize: 6,
 					category: 0
 				}).then(res => {
 					console.log("周边", res.data)
@@ -158,6 +168,7 @@
 			margin-top: 15rpx;
 			text-align: center;
 
+
 			.image {
 				height: 120rpx;
 				width: 120rpx;
@@ -176,7 +187,7 @@
 
 	.content {
 		.scrolly {
-			height: 1070rpx;
+			height: 1000rpx;
 		}
 
 		.card {
