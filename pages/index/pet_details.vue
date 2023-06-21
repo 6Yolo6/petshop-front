@@ -1,16 +1,22 @@
 <template>
 	<view>
 		<view class="box-bg">
-			<uni-nav-bar shadow left-icon="left" title="宠物名" @clickLeft="back" :border="false" />
+			<uni-nav-bar shadow left-icon="left" :title="pet_detail.name" @clickLeft="back" :border="false" />
 		</view>、
-		<u-swiper :list="list1"></u-swiper>
-		<uni-card :title="pet_detail.breed" :isFull="true" :sub-title="pet_detail.name" :extra="pet_detail.price+'￥'">
-			<view slot="actions">
-				<uni-tag text="niu" type="primary"></uni-tag>
+		<view class="img">
+			<image :src="pet_detail.img" mode="heightFix"></image>
+		</view>
+		<uni-card :title="pet_detail.breed" :isFull="true" :sub-title="pet_detail.health" :extra="pet_detail.price+'￥'">
+			<view slot="actions" class="info">
+				<uni-tag :text="'年龄:'+pet_detail.age" type="primary" class="tag"></uni-tag>
 			</view>
 		</uni-card>
 		<view class="describle">
-			<text>{{pet_detail.description}}</text>
+			<uni-title type="h2" title="描述" align="center"></uni-title>
+			<u--text type="info" :text="pet_detail.description"></u--text>
+		</view>
+		<view class="video">
+			<video :src="pet_detail.etc.url" object-fit="fill" style="width: 100vw;"></video>
 		</view>
 		<view class="goods-nav">
 			<uni-goods-nav @click="onClick" :options="options" :button-group="customButtonGroup"
@@ -43,6 +49,7 @@
 					shop_id: 0,
 					videoId: 0,
 					description: "",
+					etc: {},
 				},
 				list1: [
 					'https://cdn.uviewui.com/uview/swiper/swiper1.png',
@@ -165,6 +172,25 @@
 </script>
 
 <style scoped>
+	.img {
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.tag {
+		margin-right: 20rpx;
+	}
+
+	.info {
+		position: absolute;
+		top: 30rpx;
+		left: 200rpx;
+	}
+
+	.video {
+		margin-top: 200rpx;
+	}
+
 	.goods-nav {
 		/* 固定在页面底部 */
 		position: fixed;
