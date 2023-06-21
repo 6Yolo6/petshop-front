@@ -21,14 +21,19 @@
 		<view class="content">
 			<scroll-view scroll-y="true" class="scrolly" show-scrollbar="true" @scrolltolower="scrolltolower">
 				<uni-row class="demo-uni-row">
-					<uni-col :span="12" v-for="(item, index) in 4" :index="index" :key="index">
+					<uni-col :span="12" v-for="(item, index) in productList" :index="index" :key="index">
 						<view class="demo-uni-col dark">
-							<uni-card title="基础卡片" sub-title="副标题" extra="额外信息" padding="10px 0"
-								cover="https://cbu01.alicdn.com/img/ibank/2019/352/573/10885375253_109569990.jpg"
-								class="card">
-								<text class="uni-body uni-mt-5 ">
-									卡片组件通用来显示完整独立的一段信息，同时让用户理解他的作用。例如一篇文章的预览图、作者信息、时间等，卡片通常是更复杂和更详细信息的入口点。
-								</text>
+							<uni-card :isShadow="true" :title="item.name" :sub-title="item.etc.shopName" mode="basic"
+								:extra="item.price.toString()" @click="toDetail(item.id)">
+								<view>
+									<view>
+										<image style="height: 230rpx;width: 250rpx;" mode="scaleToFill"
+											:src="item.img" />
+									</view>
+									<view class="content-box">
+										<text style="font-size: 12rpx;">{{ item.description }}</text>
+									</view>
+								</view>
 							</uni-card>
 						</view>
 					</uni-col>
@@ -42,6 +47,10 @@
 	import {
 		getAllCate
 	} from '@/api/modules/product_category.js'
+	import {
+		getByCategory
+	} from '@/api/modules/product.js'
+
 	export default {
 		components: {
 
@@ -56,6 +65,7 @@
 					'https://cdn.uviewui.com/uview/swiper/swiper3.png',
 				],
 				categoryList: [],
+				productList: [],
 				inp_value: "",
 				tip: '请输入关键词',
 				pageNum: 1,
@@ -64,6 +74,7 @@
 		},
 		mounted() {
 			this.getAllCate()
+			this.getByCategory()
 		},
 		methods: {
 			// 聚焦跳转到搜索页
@@ -96,11 +107,30 @@
 			},
 			scrolltolower() {
 				console.log("到底部")
-				// if (this.productList.length < this.total) {
-				// 	this.pageNum += 1
-
-				// }
+				if (this.productList.length < this.total) {
+					this.pageNum += 1
+					this.getByCategory()
+				}
 			},
+			getByCategory() {
+				getByCategory({
+					pageNum: this.pageNum,
+					pageSize: 8,
+					category: 0
+				}).then(res => {
+					console.log("周边", res.data)
+					this.productList.push(...res.data.data.records)
+					this.total = res.data.data.total
+					console.log("全部周边", this.productList)
+				}).catch(error => {
+					console.log(error)
+				})
+			},
+			toDetail(id) {
+				uni.navigateTo({
+					url: '/pages/shop/product_detail?id=' + id
+				});
+			}
 		}
 	}
 </script>
@@ -150,6 +180,16 @@
 		}
 
 		.card {
+
+
+			.custom-cover {
+				object-fit: cover;
+				width: 200px;
+				/* 设置图片宽度 */
+				height: 300px;
+				/* 设置图片高度 */
+			}
+
 
 			uni-image {
 				width: 120px;

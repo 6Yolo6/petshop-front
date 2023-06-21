@@ -93,8 +93,8 @@
 					username: this.userName,
 					password: this.passData,
 				}).then(res => {
-					if (res.data.data.statusCode == 200) {
-						console.log(res.data.data)
+					console.log(res.data.data)
+					if (res.data.statusCode == 200) {
 						this.user = res.data.data.user
 						uni.setStorageSync("username", this.user.username)
 						uni.setStorageSync("token", res.data.data.token)

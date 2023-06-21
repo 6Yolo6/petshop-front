@@ -15,6 +15,7 @@ Vue.config.productionTip = false
 
 
 
+
 // 判断当前环境，选择不同的渲染方式
 // #ifndef VUE3
 App.mpType = 'app'
