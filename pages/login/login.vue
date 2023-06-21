@@ -94,14 +94,16 @@
 					password: this.passData,
 				}).then(res => {
 					console.log(res.data.data)
-					this.user = res.data.data.user
-					uni.setStorageSync("username", this.user.username)
-					uni.setStorageSync("token", res.data.data.token)
-					// 跳转回我的页面
-					uni.switchTab({
-						url: '/pages/myinfo/myinfo'
-					})
-					console.log()
+					if (res.data.statusCode == 200) {
+						this.user = res.data.data.user
+						uni.setStorageSync("username", this.user.username)
+						uni.setStorageSync("token", res.data.data.token)
+						// 跳转回我的页面
+						uni.switchTab({
+							url: '/pages/myinfo/myinfo'
+						})
+					}
+
 				}).catch(err => {
 					console.log(err)
 				})

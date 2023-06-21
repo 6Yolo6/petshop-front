@@ -200,7 +200,6 @@
 				});
 				return totalNum
 			},
-
 			totalPrice() {
 				let totalPrice = 0;
 				this.carts.map(shopCart => {
