@@ -69,10 +69,10 @@
 		methods: {
 			// 点击位置
 			toLocation() {
-				this.$refs.uToast.show({
-					type: "error",
-					message: "暂未开放"
-				})
+				console.log('导航')
+				uni.navigateTo({
+					url: '/pages/index/navigate'
+				});
 				// this.$u.toast('暂未开放')
 			},
 			// 搜索框聚焦后跳转

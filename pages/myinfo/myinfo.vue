@@ -2,8 +2,9 @@
 	<view class="page">
 		<view class="header">
 			<u-navbar title="我的空间" :autoBack="true" leftIcon="">
-				<view slot="right">
-					<uni-data-select :localdata="range" placeholder="" class="select"></uni-data-select>
+				<view slot="right" v-if="isLogin==true">
+					<u-button type="primary" :plain="true" text="退出登录" style="border: none;"
+						@click="logout()"></u-button>
 				</view>
 			</u-navbar>
 		</view>
@@ -22,7 +23,6 @@
 						<view class="user-text">
 							{{name}}
 						</view>
-						<view class="user-phone"> 171****4133 </view>
 					</view>
 					<view class="right flex-center">
 						<u-icon class="icon" name="arrow-right"></u-icon>
@@ -31,6 +31,19 @@
 			</view>
 		</view>
 		<view class="list-card">
+			<view class="card" @click="toDetail">
+				<view class="item item-bottom-solid">
+					<view class="left flex-center">
+						<u-icon class="icon" name="info-circle" size="30px"></u-icon>
+					</view>
+					<view class="center">
+						<text>我的信息</text>
+					</view>
+					<view class="right flex-center">
+						<u-icon class="icon" name="arrow-right"></u-icon>
+					</view>
+				</view>
+			</view>
 			<view class="card" @click="toAddress">
 				<view class="item item-bottom-solid">
 					<view class="left flex-center">
@@ -75,9 +88,6 @@
 			<view class="btn flex-center" v-if="this.isLogin == false" @click="login()">
 				去登录/注册
 			</view>
-			<view class="btn flex-center" v-else @click="logout()">
-				退出登录
-			</view>
 		</view>
 		<u-toast ref="uToast"></u-toast>
 	</view>
@@ -96,18 +106,9 @@
 				isLogin: false,
 				isActive: false,
 				range: [{
-						value: 0,
-						text: "退出登录"
-					},
-					{
-						value: 1,
-						text: "足球"
-					},
-					{
-						value: 2,
-						text: "游泳"
-					},
-				],
+					value: 0,
+					text: "我的信息"
+				}, ],
 			};
 		},
 		onShow() {
@@ -122,38 +123,60 @@
 
 		},
 		methods: {
+			onChange(e) {
+				console.log("selected:", this.selected)
+				console.log("e:", e);
+				if (e == 0) {
+
+				} else if (e == 1) {
+					this.logout()
+				}
+			},
+			// 跳转到我的地址
 			toAddress() {
 				uni.navigateTo({
 					url: '/pages/myinfo/address/addresslist'
 				})
 			},
+			// 跳转到我的收藏
 			toStar() {
-				uni.navigateTo({
-					url: '/pages/myinfo/favor/favor'
-				})
-				// this.$refs.uToast.show({
-				// 	type: "error",
-				// 	message: "敬请期待"
-				// })
+				if (this.isLogin) {
+					uni.navigateTo({
+						url: '/pages/myinfo/favor/favor'
+					})
+				}
 			},
-			toOrder() {
-				uni.navigateTo({
-					url: '/pages/order/order?status=' + this.status
-				});
-			},
-			getUser() {
+			// 跳转到我的信息
+			toDetail() {
+				if (this.isLogin) {
+					uni.navigateTo({
+						url: '/pages/myinfo/my_details/my_details'
+					})
+				}
 
 			},
+			// 跳转到我的订单
+			toOrder() {
+				if (this.isLogin) {
+					uni.navigateTo({
+						url: '/pages/order/order?status=' + this.status
+					});
+				}
+			},
+			// 验证登录状态
 			validate() {
 				validate().then(res => {
-					console.log(res)
+					// 更新登陆状态:登录或未登录
 					if (res.data.statusCode == "200")
 						this.isLogin = true
-					else
+					else {
+						this.range.push({
+							value: 1,
+							text: "退出登录"
+						})
 						this.isLogin = false
-					console.log("isLogin", this.isLogin)
+					}
 					this.name = uni.getStorageSync("username")
-					console.log(uni.getStorageSync("username"))
 				}).catch(error => {
 
 				})

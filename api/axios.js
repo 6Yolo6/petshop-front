@@ -7,6 +7,23 @@ const baseURL = 'http://localhost:8899/petshop'
 // 宿舍
 // const baseURL = 'http://192.168.2.205:8899/petshop'
 
+function interceptors(response) {
+	// response status = 200
+	const result = response.data
+	if (result.statusCode === 200) {
+		return Promise.resolve(result)
+	} else if (result.statusCode === 600) {
+		// 页面跳转
+		uni.navigateTo({
+			url: '/'
+		})
+		return Promise.reject('need login!')
+	} else if (result.statusCode === 400) {
+		return Promise.reject(result.message)
+	} else {
+		return Promise.reject(result.message)
+	}
+}
 
 export function get(url, params) {
 	const token = uni.getStorageSync('token')
@@ -158,3 +175,27 @@ export function postJson(url, params) {
 // 		},
 // 	})
 // }
+export function uploadFile(url, file, onProgress) {
+	return new Promise((resolve, reject) => {
+		uni.uploadFile({
+			url: url,
+			filePath: file.path,
+			name: 'file',
+			formData: {}, // 可以携带其他表单数据
+			header: {
+				'Content-Type': 'multipart/form-data'
+			},
+			onProgressUpdate: onProgress, // 上传进度回调
+			success: res => {
+				if (res.statusCode === 200) {
+					resolve(res.data)
+				} else {
+					reject(new Error('文件上传失败'))
+				}
+			},
+			fail: err => {
+				reject(err)
+			}
+		})
+	})
+}

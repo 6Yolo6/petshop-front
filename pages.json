@@ -58,6 +58,11 @@
 				"navigationStyle": "custom"
 			}
 		}, {
+			"path": "pages/index/navigate",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
 			"path": "pages/index/pet_category",
 			"style": {
 				"navigationBarTitleText": "",
@@ -128,7 +133,16 @@
 				"enablePullDownRefresh": false
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/myinfo/my_details/my_details",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
