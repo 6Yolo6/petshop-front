@@ -2,14 +2,15 @@
 	<view>
 		<view class="page-body">
 			<view class="page-section page-section-gap map">
-				<map @tap="getMapLocation" style="width: 100%; height: 426rpx;" :latitude="reportInfo.lttd"
-					:longitude="reportInfo.lgtd" :markers="covers">
+				<map @tap="getMapLocation" :latitude="reportInfo.lttd" :longitude="reportInfo.lgtd" :markers="covers"
+					style="width: 100%; height: 90vh;">
 				</map>
 			</view>
 			<view class="item">
 				<view class="content">
 					<view class="desc solid-bottom row-info">
-						<view class="text-black text-sm margin-top-sm overflow-2 item-content" style=" align-items: center;">
+						<view class="text-black text-sm margin-top-sm overflow-2 item-content"
+							style=" align-items: center;">
 							系统已为您匹配
 						</view>
 						<view class="uni-button-group">
@@ -20,9 +21,9 @@
 				</view>
 			</view>
 			<view class="m-footer">
-					<view @click="showRules">
-						点我了解规则
-					</view>
+				<view @click="showRules">
+					点我了解规则
+				</view>
 			</view>
 
 		</view>
@@ -37,13 +38,13 @@
 	export default {
 		data() {
 			return {
-				content:'使用小程序时，请遵守以下规则：1. 不得使用小程序进行违法活动，包括但不限于传播淫秽、暴力、恐怖等信息，侵犯他人隐私等行为。2. 不得利用小程序进行诈骗、敲诈勒索等违法行为。3. 不得利用小程序进行广告推销、垃圾信息发送等行为。4. 不得利用小程序进行恶意攻击、病毒传播等行为。5. 不得利用小程序侵犯他人知识产权等合法权益。6. 不得利用小程序进行任何影响小程序正常运行的行为。7. 遵守小程序的使用规则和相关法律法规，不得干扰、破坏小程序的正常运行。8. 如有违反以上规则，小程序有权采取相应措施，包括但不限于删除相关内容、限制使用权限、追究法律责任等。',
+				content: '使用小程序时，请遵守以下规则：1. 不得使用小程序进行违法活动，包括但不限于传播淫秽、暴力、恐怖等信息，侵犯他人隐私等行为。2. 不得利用小程序进行诈骗、敲诈勒索等违法行为。3. 不得利用小程序进行广告推销、垃圾信息发送等行为。4. 不得利用小程序进行恶意攻击、病毒传播等行为。5. 不得利用小程序侵犯他人知识产权等合法权益。6. 不得利用小程序进行任何影响小程序正常运行的行为。7. 遵守小程序的使用规则和相关法律法规，不得干扰、破坏小程序的正常运行。8. 如有违反以上规则，小程序有权采取相应措施，包括但不限于删除相关内容、限制使用权限、追究法律责任等。',
 				// 默认坐标北京
 				reportInfo: {
 					lgtd: 116.39742,
 					lttd: 39.909,
 				},
-				shop_id:'1',
+				shop_id: '1',
 				id: 0, // 使用 marker点击事件 需要填写id
 				title: 'map',
 				latitude: 39.909,
@@ -54,16 +55,15 @@
 		},
 		methods: {
 			// 弹出规则提示框
-			showRules(){
+			showRules() {
 				uni.showModal({
 					title: '请阅读以下规则',
 					content: this.content,
 					showCancel: false,
 					confirmText: '我已了解',
-					success: function(res) {
-					}
+					success: function(res) {}
 				})
-				
+
 			},
 			/**
 			 * 获取经纬度并触发回调函数
@@ -83,7 +83,7 @@
 						self.isLocated = true
 						//获取经纬度
 						self.reportInfo.lttd = res.latitude;
-						self.reportInfo.lgtd = res.longitude;		
+						self.reportInfo.lgtd = res.longitude;
 					},
 					fail(err) {
 						if (
@@ -268,18 +268,18 @@
 		onLoad() {
 			console.log("in onload")
 			uni.request({
-									url: 'http://localhost:8899/petshop/shop/get?'+'id='+this.shop_id,
-									method: 'GET',
-									data: {},
-									success: res => {
-										console.log(res.data.data);
-										this.reportInfo.lttd=Number(res.data.data.latitude);
-										this.reportInfo.lgtd=Number(res.data.data.longitude);
-									},
-									fail: () => {},
-									complete: () => {}
-								});
-								that.getAuthorize()
+				url: 'http://localhost:8899/petshop/shop/get?' + 'id=' + this.shop_id,
+				method: 'GET',
+				data: {},
+				success: res => {
+					console.log(res.data.data);
+					this.reportInfo.lttd = Number(res.data.data.latitude);
+					this.reportInfo.lgtd = Number(res.data.data.longitude);
+				},
+				fail: () => {},
+				complete: () => {}
+			});
+			that.getAuthorize()
 		},
 		onShow() {
 
@@ -290,6 +290,12 @@
 <style>
 	.map {
 		border: 9rpx solid #678D5D;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 500rpx;
+		/* width: 100%;
+		height: 50%; */
 		/* border-radius: 14rpx; */
 	}
 
@@ -304,7 +310,10 @@
 	}
 
 	.item {
-		margin-top: 84rpx;
+		position: absolute;
+		bottom: 100rpx;
+		width: 100%;
+		height: 300rpx;
 		border: 5px none #9E9E9E;
 		border-radius: 25rpx;
 		/* 		margin-left: 25rpx;
@@ -364,6 +373,8 @@
 	.m-footer {
 		margin-top: 162rpx;
 		margin-left: 482rpx;
+		position: absolute;
+		bottom: 30rpx;
 	}
 
 	.img-footer {
@@ -373,4 +384,3 @@
 		font-weight: 700;
 	}
 </style>
-

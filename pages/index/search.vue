@@ -30,8 +30,8 @@
 				</view>
 				<!-- 周边搜索结果 -->
 				<view v-else-if="selected_value==1">
-					<uni-card :title="item.name" :isFull="true" :sub-title="item.description"
-						:extra="''+item.price+'￥'">
+					<uni-card :title="item.name" :isFull="true" :sub-title="item.description" :extra="''+item.price+'￥'"
+						@click="toDetail(item)">
 					</uni-card>
 				</view>
 				<!-- 店铺搜索结果 -->
@@ -73,6 +73,8 @@
 		},
 		methods: {
 			change(value) {
+				this.inp_value = ''
+				this.result_list = []
 				console.log(value)
 			},
 			// 返回上一个页面
@@ -80,6 +82,19 @@
 				uni.navigateBack({
 					delta: 1, // 返回的层数，1表示返回上一个页面
 				});
+			},
+			toDetail(item) {
+				if (this.selected_value == 0) {
+					uni.navigateTo({
+						url: "/pages/index/pet_details?id=" + item.id
+					})
+				} else if (this.selected_value == 1) {
+					uni.navigateTo({
+						url: "/pages/shop/product_detail?id=" + item.id
+					})
+				}
+				console.log(item)
+
 			},
 			// 搜索
 			search(value) {
@@ -91,9 +106,7 @@
 						pageNum: 1,
 						pageSize: 10
 					}).then((res) => {
-						console.log(res)
 						this.result_list = res.data.data.records
-						console.log(this.result_list)
 					}).catch((err) => {
 						console.log(err)
 					})

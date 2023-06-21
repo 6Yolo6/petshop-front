@@ -37,3 +37,7 @@ export function validate(params) {
 export function deleteUserById(id) {
 	return delete(`/user/${id}`)
 }
+
+export function getByName(params) {
+	return get('/user/getByName', params)
+}

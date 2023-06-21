@@ -1,63 +1,68 @@
 {
-    "name" : "petshop",
-    "appid" : "__UNI__1EE8B03",
-    "description" : "",
-    "versionName" : "1.1.3",
-    "versionCode" : "100",
-    "transformPx" : false,
-    "compatConfig" : {
-        "MODE" : 2
-    },
-    "app-plus" : {
-        "usingComponents" : true,
-        "compilerVersion" : 3,
-        "modules" : {},
-        "distribute" : {
-            "android" : {
-                "permissions" : [
-                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
-                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
-                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
-                    "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
-                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
-                    "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
-                    "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
-                    "<uses-permission android:name=\"android.permission.CAMERA\"/>",
-                    "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
-                    "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
-                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
-                    "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
-                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
-                    "<uses-feature android:name=\"android.hardware.camera\"/>",
-                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
-                ]
-            },
-            "ios" : {},
-            "sdkConfigs" : {}
-        }
-    },
-    "quickapp" : {},
-    "mp-weixin" : {
-        "appid" : "",
-        "setting" : {
-            "urlCheck" : true
-        },
-		"permission" : {
-			    "scope.userLocation" : {
-			        "desc" : "获取位置信息"
-			    }
+	"name": "petshop",
+	"appid": "__UNI__1EE8B03",
+	"description": "",
+	"versionName": "1.1.3",
+	"versionCode": "100",
+	"transformPx": false,
+	"compatConfig": {
+		"MODE": 2
+	},
+	"app-plus": {
+		"statusbar": {
+			"immersed": false
+		},
+		"usingComponents": true,
+		"compilerVersion": 3,
+		"modules": {},
+		"distribute": {
+			"android": {
+				"permissions": [
+					"<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+					"<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+					"<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+					"<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.CAMERA\"/>",
+					"<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+					"<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+					"<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+					"<uses-feature android:name=\"android.hardware.camera\"/>",
+					"<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+				]
 			},
-			"requiredPrivateInfos" : [ "getLocation" ],
-        "usingComponents" : true
-    },
-    "vueVersion" : "2",
-    "h5" : {
-        "sdkConfigs" : {
-            "maps" : {
-                "qqmap" : {
-                    "key" : "MV5BZ-IWACB-5N7UF-JZTBP-HVKXS-OZBFQ"
-                }
-            }
-        }
-    }
+			"ios": {},
+			"sdkConfigs": {}
+		}
+	},
+	"quickapp": {},
+	"mp-weixin": {
+		"appid": "",
+		"setting": {
+			"urlCheck": true
+		},
+		"permission": {
+			"scope.userLocation": {
+				"desc": "获取位置信息"
+			}
+		},
+		"requiredPrivateInfos": ["getLocation"],
+		"usingComponents": true
+	},
+	"vueVersion": "2",
+	"h5": {
+		"sdkConfigs": {
+			"maps": {
+				"amap": {
+					"key": "b0891a08b8f96d2ad5161f9070a24c76",
+					"securityJsCode": "0dd8e0c8b75d880bf5d3899b79c36572",
+					"serviceHost": ""
+				}
+			}
+		}
+	}
 }
