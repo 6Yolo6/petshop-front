@@ -19,22 +19,36 @@
 			</view>
 		</u-scroll-list>
 		<!-- 主页宠物推荐 -->
-		<uni-row class="demo-uni-row">
-			<uni-col :span="12" v-for="(item, index) in 4" :index="index" :key="index">
-				<view class="demo-uni-col dark">
-					<uni-card title="基础卡片" sub-title="副标题" extra="额外信息" padding="10px 0"
-						cover="https://cdn.uviewui.com/uview/swiper/swiper1.png" class="card">
-						<text
-							class="uni-body uni-mt-5 ">卡片组件通用来显示完整独立的一段信息，同时让用户理解他的作用。例如一篇文章的预览图、作者信息、时间等，卡片通常是更复杂和更详细信息的入口点。</text>
-					</uni-card>
-				</view>
-			</uni-col>
-		</uni-row>
+
+		<scroll-view scroll-y="true" class="scrolly" show-scrollbar="true" @scrolltolower="scrolltolower">
+
+			<uni-row class="demo-uni-row">
+				<uni-col :span="12" v-for="(item, index) in pet_list" :index="index" :key="index">
+					<view class="demo-uni-col dark">
+						<uni-card :title="item.name" :sub-title="item.breed" :extra="item.price+'￥'" padding="10rpx"
+							class="card" :is-shadow="true" shadow="0 0 5px rgba(0, 0, 0, 0.3)"
+							@click="toDetail(item.id)">
+							<view>
+								<image :src="item.img" mode="scaleToFill" style="height: 300rpx;width: 50vw;	">
+								</image>
+							</view>
+							<u--text :lines="2" :text="item.description"></u--text>
+						</uni-card>
+					</view>
+				</uni-col>
+			</uni-row>
+		</scroll-view>
+
+
+
 		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
 <script>
+	import {
+		getByCate
+	} from '@/api/modules/pet.js'
 	import {
 		getAllCate
 	} from '@/api/modules/pet_category.js'
@@ -42,31 +56,52 @@
 		components: {},
 		data() {
 			return {
+				total: 0,
+				pageNum: 1,
+				pageSize: 6,
 				category_list: [],
 				inp_value: "",
 				tip: "请输入关键字",
+				pet_list: [],
 				list1: [
 					'https://cdn.uviewui.com/uview/swiper/swiper1.png',
 					'https://cdn.uviewui.com/uview/swiper/swiper2.png',
 					'https://cdn.uviewui.com/uview/swiper/swiper3.png',
 				],
-				list: [{
-					thumb: "https://cdn.uviewui.com/uview/goods/1.jpg"
-				}, {
-					thumb: "https://cdn.uviewui.com/uview/goods/2.jpg"
-				}, {
-					thumb: "https://cdn.uviewui.com/uview/goods/3.jpg"
-				}, {
-					thumb: "https://cdn.uviewui.com/uview/goods/4.jpg"
-				}, {
-					thumb: "https://cdn.uviewui.com/uview/goods/5.jpg"
-				}]
 			};
 		},
 		mounted() {
 			this.getAllCate()
+			this.getAllPet()
 		},
 		methods: {
+			toDetail(id) {
+				uni.navigateTo({
+					url: '/pages/index/pet_details?id=' + id
+				});
+			},
+			scrolltolower() {
+				console.log(this.pet_list.length)
+				console.log(this.total)
+				this.pageNum++
+				if (this.pet_list.length < this.total) {
+					this.getAllPet()
+				} else {
+					this.$refs.uToast.show({
+						message: '你已经划到底了'
+					})
+				}
+
+			},
+			getAllPet() {
+				getByCate({ pageNum: this.pageNum, pageSize: this.pageSize, category: 0 }).then(res => {
+					this.pet_list.push(...res.data.data.records)
+					this.total = res.data.data.total
+					console.log(res)
+				}).catch(err => {
+					console.log(err)
+				})
+			},
 			// 点击位置
 			toLocation() {
 				console.log('导航')
@@ -108,6 +143,11 @@
 	.uni-select input-text {
 		width: 20px;
 	}
+
+	.scrolly {
+		height: 1000rpx;
+	}
+
 
 	.card {}
 

@@ -2,7 +2,7 @@
 	<view class="page">
 		<view class="header">
 			<u-navbar title="我的空间" :autoBack="true" leftIcon="">
-				<view slot="right" v-if="isLogin==true">
+				<view slot="right" v-if="this.isLogin===true">
 					<u-button type="primary" :plain="true" text="退出登录" style="border: none;"
 						@click="logout()"></u-button>
 				</view>
@@ -84,8 +84,8 @@
 				</view>
 			</view>
 		</view>
-		<view class="quit flex-center">
-			<view class="btn flex-center" v-if="this.isLogin == false" @click="login()">
+		<view class="quit flex-center" v-show="isLogin==false	">
+			<view class="btn flex-center" @click="login()">
 				去登录/注册
 			</view>
 		</view>
@@ -105,11 +105,10 @@
 				status: 0,
 				isLogin: false,
 				isActive: false,
-				range: [{
-					value: 0,
-					text: "我的信息"
-				}, ],
 			};
+		},
+		onLoad() {
+
 		},
 		onShow() {
 			this.isActive = true;
@@ -134,9 +133,11 @@
 			},
 			// 跳转到我的地址
 			toAddress() {
-				uni.navigateTo({
-					url: '/pages/myinfo/address/addresslist'
-				})
+				if (this.isLogin) {
+					uni.navigateTo({
+						url: '/pages/myinfo/address/addresslist'
+					})
+				}
 			},
 			// 跳转到我的收藏
 			toStar() {
@@ -170,10 +171,6 @@
 					if (res.data.statusCode == "200")
 						this.isLogin = true
 					else {
-						this.range.push({
-							value: 1,
-							text: "退出登录"
-						})
 						this.isLogin = false
 					}
 					this.name = uni.getStorageSync("username")
@@ -187,6 +184,7 @@
 				});
 			},
 			logout() {
+				this.isLogin = true
 				uni.removeStorageSync("username")
 				uni.removeStorageSync("token")
 				this.validate()
