@@ -140,21 +140,28 @@
 			},
 			// 跳转到我的收藏
 			toStar() {
-				uni.navigateTo({
-					url: '/pages/myinfo/favor/favor'
-				})
+				if (this.isLogin) {
+					uni.navigateTo({
+						url: '/pages/myinfo/favor/favor'
+					})
+				}
 			},
 			// 跳转到我的信息
 			toDetail() {
-				uni.navigateTo({
-					url: '/pages/myinfo/my_details/my_details'
-				})
+				if (this.isLogin) {
+					uni.navigateTo({
+						url: '/pages/myinfo/my_details/my_details'
+					})
+				}
+
 			},
 			// 跳转到我的订单
 			toOrder() {
-				uni.navigateTo({
-					url: '/pages/order/order?status=' + this.status
-				});
+				if (this.isLogin) {
+					uni.navigateTo({
+						url: '/pages/order/order?status=' + this.status
+					});
+				}
 			},
 			// 验证登录状态
 			validate() {
