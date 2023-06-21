@@ -9,12 +9,9 @@
 		"MODE": 2
 	},
 	"app-plus": {
-<<<<<<< HEAD
-=======
 		"statusbar": {
 			"immersed": false
 		},
->>>>>>> 660cf0281f2dae02b9aef26cdc85ec2bd2a5317a
 		"usingComponents": true,
 		"compilerVersion": 3,
 		"modules": {},
@@ -60,15 +57,10 @@
 	"h5": {
 		"sdkConfigs": {
 			"maps": {
-<<<<<<< HEAD
-				"qqmap": {
-					"key": "MV5BZ-IWACB-5N7UF-JZTBP-HVKXS-OZBFQ"
-=======
 				"amap": {
 					"key": "b0891a08b8f96d2ad5161f9070a24c76",
 					"securityJsCode": "0dd8e0c8b75d880bf5d3899b79c36572",
 					"serviceHost": ""
->>>>>>> 660cf0281f2dae02b9aef26cdc85ec2bd2a5317a
 				}
 			}
 		}
