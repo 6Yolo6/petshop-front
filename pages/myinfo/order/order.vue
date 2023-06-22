@@ -133,8 +133,11 @@
 		},
 		mounted() {
 			// url中获取类别id
-			this.status = Number(this.$route.query.status)
-			this.getOrderList(this.status)
+			if (Number(this.$route.query.status)) {
+				this.status = Number(this.$route.query.status)
+				console.log(this.status)
+			}
+			// this.getOrderList(this.status)
 		},
 		methods: {
 			// 选择不同状态

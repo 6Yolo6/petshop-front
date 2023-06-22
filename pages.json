@@ -22,13 +22,13 @@
 			}
 
 		}, {
-			"path": "pages/order/order",
+			"path": "pages/myinfo/order/order",
 			"style": {
 				"navigationStyle": "custom"
 			}
 
 		}, {
-			"path": "pages/order/confirm",
+			"path": "pages/myinfo/order/confirm",
 			"style": {
 				"navigationStyle": "custom"
 			}
@@ -76,7 +76,7 @@
 			}
 		},
 		{
-			"path": "pages/myinfo/address/addresslist",
+			"path": "pages/myinfo/address/address",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
@@ -132,17 +132,15 @@
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "pages/myinfo/my_details/my_details",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
 		}
-	    ,{
-            "path" : "pages/myinfo/my_details/my_details",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

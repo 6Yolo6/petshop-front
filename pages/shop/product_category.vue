@@ -8,12 +8,11 @@
 			<u-tabs :list="categoryList" @click="changeCate" :current="category" activeColor="#0000ff"></u-tabs>
 		</view>
 		<view class="content">
-			<view class="">
+			<view>
 				<scroll-view scroll-y="true" class="scrolly" show-scrollbar="true" @scrolltolower="scrolltolower">
 					<view class="" v-for="(item, index) in productList">
 						<uni-card :title="item.name" :sub-title="item.etc.shopName" :extra="item.etc.cateName"
 							:thumbnail="item.img" @click="toDetail(item.id)">
-							<text class="uni-body">这是一个带头像和双标题的基础卡片，此示例展示了一个完整的卡片。</text>
 						</uni-card>
 					</view>
 				</scroll-view>

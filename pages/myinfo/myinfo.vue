@@ -31,7 +31,7 @@
 			</view>
 		</view>
 		<view class="list-card">
-			<view class="card" @click="toDetail">
+			<view class="card" @click="toPage('my_details')">
 				<view class="item item-bottom-solid">
 					<view class="left flex-center">
 						<u-icon class="icon" name="info-circle" size="30px"></u-icon>
@@ -44,7 +44,7 @@
 					</view>
 				</view>
 			</view>
-			<view class="card" @click="toAddress">
+			<view class="card" @click="toPage('address')">
 				<view class="item item-bottom-solid">
 					<view class="left flex-center">
 						<u-icon class="icon" name="map" size="30px"></u-icon>
@@ -58,7 +58,7 @@
 				</view>
 			</view>
 			<view class="card">
-				<view class="item item-bottom-solid" @click="toStar">
+				<view class="item item-bottom-solid" @click="toPage('favor')">
 					<view class="left flex-center">
 						<u-icon class="icon" name="star" size="30px"></u-icon>
 					</view>
@@ -75,7 +75,7 @@
 					<view class="left flex-center">
 						<u-icon class="icon" name="order" size="30px"></u-icon>
 					</view>
-					<view class="center" @click="toOrder()">
+					<view class="center" @click="toPage('order' )">
 						<text>我的订单</text>
 					</view>
 					<view class="right flex-center">
@@ -131,37 +131,17 @@
 					this.logout()
 				}
 			},
-			// 跳转到我的地址
-			toAddress() {
+			toPage(page) {
+				console.log('/pages/myinfo/' + page + '/' + page, page);
 				if (this.isLogin) {
 					uni.navigateTo({
-						url: '/pages/myinfo/address/addresslist'
+						url: '/pages/myinfo/' + page + '/' + page
 					})
-				}
-			},
-			// 跳转到我的收藏
-			toStar() {
-				if (this.isLogin) {
-					uni.navigateTo({
-						url: '/pages/myinfo/favor/favor'
+				} else {
+					uni.showToast({
+						icon: 'error',
+						title: "请先登录"
 					})
-				}
-			},
-			// 跳转到我的信息
-			toDetail() {
-				if (this.isLogin) {
-					uni.navigateTo({
-						url: '/pages/myinfo/my_details/my_details'
-					})
-				}
-
-			},
-			// 跳转到我的订单
-			toOrder() {
-				if (this.isLogin) {
-					uni.navigateTo({
-						url: '/pages/order/order?status=' + this.status
-					});
 				}
 			},
 			// 验证登录状态

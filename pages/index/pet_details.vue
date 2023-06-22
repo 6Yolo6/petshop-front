@@ -34,6 +34,9 @@
 		deleteById,
 		findByPetId
 	} from '@/api/modules/favor.js'
+	import {
+		validate
+	} from '../../api/modules/user';
 	export default {
 		data() {
 			return {
@@ -119,9 +122,20 @@
 			},
 			// 点击商品导航栏左侧
 			onClick(e) {
-				if (e.content.text == '收藏') {
-					this.changeFavor()
-				}
+				validate().then(res => {
+					if (res.data.statusCode == "200") {
+						if (e.content.text == '收藏') {
+							this.changeFavor()
+						}
+					} else {
+						uni.showToast({
+							icon: 'error',
+							title: "请先登录"
+						})
+					}
+				}).catch(err => {
+					console.log(err)
+				})
 			},
 			// 取消收藏
 			deleteFavor() {
@@ -161,17 +175,32 @@
 				});
 			},
 			buttonClick(e) {
-				if (e.content.text == "立即购买") {
-					uni.navigateTo({
-						url: '/pages/order/confirm?id=' + this.pet_detail.id
-					})
-				}
+				validate().then(res => {
+					if (res.data.statusCode == "200") {
+						if (e.content.text == "立即购买") {
+							uni.navigateTo({
+								url: '/pages/order/confirm?id=' + this.pet_detail.id
+							})
+						}
+					} else {
+						uni.showToast({
+							icon: 'error',
+							title: "请先登录"
+						})
+					}
+				}).catch(err => {
+					console.log(err)
+				})
 			}
 		},
 	}
 </script>
 
 <style scoped>
+	.describle {
+		margin-left: 33px;
+	}
+
 	.img {
 		margin: 0 auto;
 		text-align: center;

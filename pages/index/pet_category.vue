@@ -12,7 +12,7 @@
 		<view>
 			<view v-for="(item,index) in pet_list" :key="index">
 				<uni-card :title="item.name" :isFull="true" :sub-title="item.breed" :extra="''+item.price+'￥'"
-					@click="toDetail(item.id)">
+					@click="toDetail(item.id)" :thumbnail="item.img">
 				</uni-card>
 			</view>
 		</view>

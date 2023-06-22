@@ -188,7 +188,7 @@
 					}).then(res => {
 						console.log(res.data)
 						// uni.redirectTo({
-						// 	url: '/pages/myinfo/address/addresslist',
+						// 	url: '/pages/myinfo/address/address',
 						// });
 						uni.navigateBack({
 							delta: 1

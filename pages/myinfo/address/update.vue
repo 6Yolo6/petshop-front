@@ -161,7 +161,7 @@
 						uni.setStorageSync('savedData', updatedList);
 					}
 					uni.navigateTo({
-						url: '/pages/address/addresslist',
+						url: '/pages/address/address',
 					});
 				}).catch(err => {
 					console.log('表单错误信息：', err);

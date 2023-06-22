@@ -17,8 +17,14 @@
 			<view class="content">
 				<uni-card :title="product.name" :sub-title="product.etc.shopName" :extra="product.etc.cateName"
 					:thumbnail="toString(product.price)">
-					<text class="uni-body">{{product.description}}</text>
+					<view slot="actions" class="info">
+						<uni-tag :text="'库存:'+product.stock" type="primary" class="tag"></uni-tag>
+					</view>
 				</uni-card>
+			</view>
+			<view class="describle">
+				<uni-title type="h2" title="描述" align="center"></uni-title>
+				<u--text type="info" :text="product.description"></u--text>
 			</view>
 		</view>
 		<view class="goods-carts">
@@ -35,6 +41,9 @@
 	import {
 		add
 	} from '@/api/modules/cart.js'
+	import {
+		validate
+	} from '../../api/modules/user';
 	import { addFavor, findByPetId, deleteById } from '@/api/modules/favor.js'
 	export default {
 		data() {
@@ -91,7 +100,7 @@
 				}).then(res => {
 					this.product = res.data.data
 					this.judgeFavor(this.product.id)
-					// console.log(this.product.id)
+					console.log(res.data.data)
 				}).catch(error => {
 					console.log(error)
 				})
@@ -110,72 +119,109 @@
 			},
 			// 点击收藏
 			favor(id) {
-				// 如果已收藏
-				if (this.isFavor) {
-					deleteById({ id: this.favorId }).then(res => {
-						this.isFavor = false
-						this.favorId = res.data.data
-						console.log(res)
-					}).catch(err => {
+				validate().then(res => {
+					if (res.data.statusCode == "200") {
+						// 如果已收藏
+						if (this.isFavor) {
+							deleteById({ id: this.favorId }).then(res => {
+								this.isFavor = false
+								this.favorId = res.data.data
+								console.log(res)
+							}).catch(err => {
 
-					})
-				} else {
-					addFavor({ favorId: id, isPet: false }).then(res => {
-						console.log(res)
-						this.isFavor = true
-						this.favorId = res.data.data
-					}).catch(err => {
+							})
+						} else {
+							addFavor({ favorId: id, isPet: false }).then(res => {
+								console.log(res)
+								this.isFavor = true
+								this.favorId = res.data.data
+							}).catch(err => {
 
-					})
-				}
-				// this.etc.isFavor = !this.etc.isFavor
-				this.$forceUpdate()
+							})
+						}
+						this.$forceUpdate()
+					} else {
+						uni.showToast({
+							icon: 'error',
+							title: "请先登录"
+						})
+					}
+				}).catch(err => {
+					console.log(err)
+				})
 			},
 			// 点击左下角商品导航
 			onClick(e) {
 				// uni.showToast({
 				// 	title: `点击${e.content.text}`,
 				// })
-				if (e.content.text == "购物车") {
-					uni.switchTab({
-						url: '/pages/cart/cart'
-					})
-				} else if (e.content.text == "收藏") {
-					uni.navigateTo({
-						url: '/pages/myinfo/favor/favor'
-					});
-				}
+				validate().then(res => {
+					if (res.data.statusCode == "200") {
+						if (e.content.text == "购物车") {
+							uni.switchTab({
+								url: '/pages/cart/cart'
+							})
+						} else if (e.content.text == "收藏") {
+							uni.navigateTo({
+								url: '/pages/myinfo/favor/favor'
+							});
+						}
+					} else {
+						uni.showToast({
+							icon: 'error',
+							title: "请先登录"
+						})
+					}
+				}).catch(err => {
+					console.log(err)
+				})
 			},
 			// 加入购物车
 			buttonClick(e) {
 				// console.log(e)
-				if (e.content.text == "加入购物车") {
-					add({
-						// userId: this.userId,
-						// count: 1,
-						productId: this.product.id
-					}).then(res => {
-						console.log(res.data)
+				validate().then(res => {
+					if (res.data.statusCode == "200") {
+						if (e.content.text == "加入购物车") {
+							add({
+								// userId: this.userId,
+								// count: 1,
+								productId: this.product.id
+							}).then(res => {
+								console.log(res.data)
+								uni.showToast({
+									title: '加购成功'
+								})
+								this.totalProductNum = this.carts.reduce((total, shopCart) =>
+									total + shopCart.productNum, 0);
+								this.$store.commit('updateTotalProductNum', this.totalProductNum);
+								this.$forceUpdate()
+							}).catch(error => {
+								console.log(error)
+							})
+						} else {
+							this.options[2].info++
+						}
+					} else {
 						uni.showToast({
-							title: '加购成功'
+							icon: 'error',
+							title: "请先登录"
 						})
-						this.totalProductNum = this.carts.reduce((total, shopCart) =>
-							total + shopCart.productNum, 0);
-						this.$store.commit('updateTotalProductNum', this.totalProductNum);
-						this.$forceUpdate()
-					}).catch(error => {
-						console.log(error)
-					})
-				} else {
-					this.options[2].info++
-				}
-
+					}
+				}).catch(err => {
+					console.log(err)
+				})
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	.info {
+		position: absolute;
+		bottom: 40rpx;
+		right: 10rpx;
+	}
+
 	.head {
 		width: 100%;
 		display: flex;

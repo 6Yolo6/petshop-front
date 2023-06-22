@@ -65,6 +65,9 @@
 		updateAll,
 		deleteByIds
 	} from '@/api/modules/cart.js'
+	import {
+		validate
+	} from '../../api/modules/user';
 	export default {
 		data() {
 			return {
@@ -77,8 +80,19 @@
 
 		},
 		mounted() {
-			this.allchecked = this.Allchecked()
-			this.getAll()
+			validate().then(res => {
+				if (res.data.statusCode == "200") {
+					this.allchecked = this.Allchecked()
+					this.getAll()
+				} else {
+					uni.showToast({
+						icon: 'error',
+						title: "请先登录"
+					})
+				}
+			}).catch(err => {
+				console.log(err)
+			})
 		},
 		methods: {
 			getAll() {
@@ -179,9 +193,16 @@
 			toConfirm() {
 				// console.log(this.totalPrice)
 				let price = this.totalPrice
-				uni.navigateTo({
-					url: '/pages/order/confirm'
-				})
+				if (price == 0) {
+					uni.showToast({
+						icon: 'error',
+						title: "请先选择商品"
+					})
+				} else {
+					uni.navigateTo({
+						url: '/pages/myinfo/order/confirm'
+					})
+				}
 			},
 			toDetail(id) {
 				uni.navigateTo({

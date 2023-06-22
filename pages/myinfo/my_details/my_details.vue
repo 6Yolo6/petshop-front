@@ -107,10 +107,6 @@
 </template>
 
 <script>
-	const sexArray = ['保密', '男', '女']
-	const jobArray = ['农民', 'it', '教师']
-	const emotionArray = ['保密', '未婚', '已婚']
-	// import simpleAddress from '@/components/other-author-dev/simple-address/simple-address.nvue'
 	import pickerAddress from '@/components/pickerAddress/pickerAddress.vue'
 	import {
 		getByName
@@ -118,7 +114,6 @@
 	export default {
 		components: {
 			pickerAddress
-
 		},
 		data() {
 			return {

@@ -12,7 +12,7 @@
 				</view>
 				<view class="address">
 					<text class="region">{{ item.area }}</text>
-					<text class="detail">{{ item.detail }}</text>
+					<text class="addressDetail">{{ item.detail }}</text>
 					<u-tag :text="item.tag" class="tag" bg-color="#f93737"></u-tag>
 				</view>
 			</view>
@@ -258,7 +258,7 @@
 			},
 			handleUpdate() {
 				uni.navigateTo({
-					url: '/pages/myinfo/address/addresslist',
+					url: '/pages/myinfo/address/address',
 				});
 			},
 			// 提交订单
@@ -303,8 +303,7 @@
 										ids: productIds.join(",")
 									}).then(res3 => {
 										console.log("清空购物车", res3.data)
-										uni.navigateTo({
-											// url: '/pages/order/order?status=2'
+										uni.switchTab({
 											url: '/pages/myinfo/myinfo'
 										})
 									}).catch(error3 => {
@@ -337,8 +336,7 @@
 										ids: productIds.join(",")
 									}).then(res3 => {
 										console.log("清空购物车", res3.data)
-										uni.navigateTo({
-											// url: '/pages/order/order?status=1'
+										uni.switchTab({
 											url: '/pages/myinfo/myinfo'
 										})
 									}).catch(error3 => {
@@ -412,6 +410,7 @@
 	.confirm {
 		padding: 20rpx;
 	}
+
 
 	.detail {
 		margin-top: 80upx;
