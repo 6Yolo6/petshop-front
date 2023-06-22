@@ -6,7 +6,7 @@
 		<view class="detail">
 			<view class="top">
 				<view class="image">
-					<img class="img" :src="product.img" alt="">
+					<img class="img" :src="product.img" mode="basic" alt="">
 				</view>
 				<view class="favor">
 					<uni-fav :checked="isFavor" class="favBtn" :circle="true" bg-color="#dd524d"
@@ -107,7 +107,10 @@
 			},
 			// 判断是否收藏
 			judgeFavor(id) {
-				findByPetId({ favorId: id, isPet: false }).then(res => {
+				findByPetId({
+					favorId: id,
+					isPet: false
+				}).then(res => {
 					if (res.data.message == "已收藏") {
 						this.isFavor = true
 						this.favorId = res.data.data

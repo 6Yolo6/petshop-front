@@ -31,6 +31,9 @@
 </template>
 
 <script>
+	import {
+		getShopLocation
+	} from '@/api/modules/shop.js'
 	import QQMapWX from '../../utils/qqmap-wx-jssdk.js'
 	const tMap = new QQMapWX({
 		key: 'your key'
@@ -41,14 +44,14 @@
 				content: '使用小程序时，请遵守以下规则：1. 不得使用小程序进行违法活动，包括但不限于传播淫秽、暴力、恐怖等信息，侵犯他人隐私等行为。2. 不得利用小程序进行诈骗、敲诈勒索等违法行为。3. 不得利用小程序进行广告推销、垃圾信息发送等行为。4. 不得利用小程序进行恶意攻击、病毒传播等行为。5. 不得利用小程序侵犯他人知识产权等合法权益。6. 不得利用小程序进行任何影响小程序正常运行的行为。7. 遵守小程序的使用规则和相关法律法规，不得干扰、破坏小程序的正常运行。8. 如有违反以上规则，小程序有权采取相应措施，包括但不限于删除相关内容、限制使用权限、追究法律责任等。',
 				// 默认坐标北京
 				reportInfo: {
-					lgtd: 116.39742,
-					lttd: 39.909,
+					lgtd: 118.09796969360355,
+					lttd: 24.6045978364279,
 				},
 				shop_id: '1',
 				id: 0, // 使用 marker点击事件 需要填写id
 				title: 'map',
-				latitude: 39.909,
-				longitude: 116.39742,
+				latitude: 24.6045978364279,
+				longitude: 118.09796969360355,
 				covers: [], //存放标记点数组
 				isLocated: false,
 			}
@@ -267,19 +270,12 @@
 		},
 		onLoad() {
 			console.log("in onload")
-			uni.request({
-				url: 'http://localhost:8899/petshop/shop/get?' + 'id=' + this.shop_id,
-				method: 'GET',
-				data: {},
-				success: res => {
-					console.log(res.data.data);
-					this.reportInfo.lttd = Number(res.data.data.latitude);
-					this.reportInfo.lgtd = Number(res.data.data.longitude);
-				},
-				fail: () => {},
-				complete: () => {}
-			});
-			that.getAuthorize()
+			getShopLocation().then(res => {
+				console.log(res.data.data)
+				this.reportInfo.lttd = Number(res.data.data.latitude)
+				this.reportInfo.lgtd = Number(res.data.data.longitude)
+				this.getAuthorize()
+			})
 		},
 		onShow() {
 

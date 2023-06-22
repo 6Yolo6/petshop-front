@@ -19,9 +19,7 @@
 			</view>
 		</u-scroll-list>
 		<!-- 主页宠物推荐 -->
-
 		<scroll-view scroll-y="true" class="scrolly" show-scrollbar="true" @scrolltolower="scrolltolower">
-
 			<uni-row class="demo-uni-row">
 				<uni-col :span="12" v-for="(item, index) in pet_list" :index="index" :key="index">
 					<view class="demo-uni-col dark">
@@ -38,9 +36,6 @@
 				</uni-col>
 			</uni-row>
 		</scroll-view>
-
-
-
 		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
@@ -94,7 +89,11 @@
 
 			},
 			getAllPet() {
-				getByCate({ pageNum: this.pageNum, pageSize: this.pageSize, category: 0 }).then(res => {
+				getByCate({
+					pageNum: this.pageNum,
+					pageSize: this.pageSize,
+					category: 0
+				}).then(res => {
 					this.pet_list.push(...res.data.data.records)
 					this.total = res.data.data.total
 					console.log(res)
@@ -134,7 +133,7 @@
 				}).catch((err) => {
 					console.log('错误')
 				})
-			}
+			},
 		}
 	}
 </script>
@@ -166,6 +165,7 @@
 		height: 100%;
 		object-fit: contain;
 	}
+
 
 
 	// 文本省略
