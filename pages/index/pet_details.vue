@@ -16,7 +16,7 @@
 			<u--text type="info" :text="pet_detail.description"></u--text>
 		</view>
 		<view class="video">
-			<video :src="pet_detail.etc.url" object-fit="fill" style="width: 100vw;"></video>
+			<video :src="pet_detail.etc.video.videoUrl" object-fit="fill" style="width: 100vw;"></video>
 		</view>
 		<view class="goods-nav">
 			<uni-goods-nav @click="onClick" :options="options" :button-group="customButtonGroup"
@@ -109,7 +109,10 @@
 			// 是否收藏
 			isFavor() {
 				// console.log(this.pet_detail)
-				findByPetId({ favorId: this.pet_detail.id, isPet: true }).then(res => {
+				findByPetId({
+					favorId: this.pet_detail.id,
+					isPet: true
+				}).then(res => {
 					if (res.data.message == "已收藏") {
 						// 图标变化
 						this.options[1].icon = 'star-filled'
@@ -140,7 +143,9 @@
 			// 取消收藏
 			deleteFavor() {
 				console.log(this.favorId)
-				deleteById({ id: this.favorId }).then(res => {
+				deleteById({
+					id: this.favorId
+				}).then(res => {
 					this.options[1].icon = 'star'
 					console.log(res)
 				}).catch(err => {
@@ -159,7 +164,9 @@
 			},
 			// 获取宠物信息
 			getDetail(id) {
-				getById({ id: id }).then(res => {
+				getById({
+					id: id
+				}).then(res => {
 					this.pet_detail = res.data.data
 					console.log(this.pet_detail)
 					// 判断是否收藏
@@ -176,10 +183,10 @@
 			},
 			buttonClick(e) {
 				validate().then(res => {
-					if (res.data.statusCode == "200") {
+					if (res.statusCode == "200") {
 						if (e.content.text == "立即购买") {
 							uni.navigateTo({
-								url: '/pages/order/confirm?id=' + this.pet_detail.id
+								url: '/pages/myinfo/order/confirm?id=' + this.pet_detail.id
 							})
 						}
 					} else {

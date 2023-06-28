@@ -85,19 +85,7 @@
 					delta: 1, // 返回的层数，1表示返回上一个页面
 				});
 			},
-			toDetail(item) {
-				if (this.selected_value == 0) {
-					uni.navigateTo({
-						url: "/pages/index/pet_details?id=" + item.id
-					})
-				} else if (this.selected_value == 1) {
-					uni.navigateTo({
-						url: "/pages/shop/product_detail?id=" + item.id
-					})
-				}
-				console.log(item)
 
-			},
 			// 搜索
 			search(value) {
 				console.log("查找")
@@ -123,7 +111,7 @@
 				console.log("详情", item)
 				if (this.selected_value == 0) {
 					uni.navigateTo({
-						url: '/pages/index/pet_detail?id=' + item.id
+						url: '/pages/index/pet_details?id=' + item.id
 					});
 				} else if (this.selected_value == 1) {
 					uni.navigateTo({

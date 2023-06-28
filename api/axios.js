@@ -5,7 +5,8 @@ import qs from 'qs'
 // const baseURL = 'http://localhost:8899/petshop'
 // const baseURL = 'http://192.168.43.152:8899/petshop'
 
-const baseURL = 'http://10.22.155.237:8899/petshop'
+// const baseURL = 'http://10.22.155.237:8899/petshop'
+const baseURL = 'http://47.115.231.72:8899/petshop'
 
 function interceptors(response) {
 	// response status = 200
@@ -19,6 +20,16 @@ function interceptors(response) {
 		})
 		return Promise.reject('need login!')
 	} else if (result.statusCode === 400) {
+		console.log("result", result)
+		if (result.message == "Token无效，请重新登录") {
+			uni.showToast({
+				icon: 'error',
+				title: "token过期请先登录"
+			})
+			uni.navigateTo({
+				url: '/pages/login/login'
+			})
+		}
 		return Promise.reject(result.message)
 	} else {
 		return Promise.reject(result.message)
