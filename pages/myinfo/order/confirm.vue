@@ -266,7 +266,7 @@
 				const countIds = []
 				const productIds = []
 				const shopIds = []
-				// 遍历 this.carts 数组，提取 count 和 productId 属性并存入相应数组
+				// 遍历 this.carts 数组，提取 count 和 productId 和 shopId 属性并存入相应数组
 				this.carts.forEach(shop => {
 					shop.products.forEach(product => {
 						countIds.push(product.count);
