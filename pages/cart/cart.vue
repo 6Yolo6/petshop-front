@@ -73,28 +73,37 @@
 			return {
 				allchecked: false,
 				carts: [],
-				totalProductNum: 0
+				totalProductNum: 0,
+				isActive: false,
 			}
 		},
-		onLoad: function() {
-
+		onShow() {
+			this.isActive = true;
+			if (this.isActive)
+				this.validate()
+		},
+		onHide() {
+			this.isActive = false
 		},
 		mounted() {
-			validate().then(res => {
-				if (res.data.statusCode == "200") {
-					this.allchecked = this.Allchecked()
-					this.getAll()
-				} else {
-					uni.showToast({
-						icon: 'error',
-						title: "请先登录"
-					})
-				}
-			}).catch(err => {
-				console.log(err)
-			})
+
 		},
 		methods: {
+			validate() {
+				validate().then(res => {
+					if (res.data.statusCode == "200") {
+						this.allchecked = this.Allchecked()
+						this.getAll()
+					} else {
+						uni.showToast({
+							icon: 'error',
+							title: "请先登录"
+						})
+					}
+				}).catch(err => {
+					console.log(err)
+				})
+			},
 			getAll() {
 				getAllCart().then(res => {
 					console.log(res.data)

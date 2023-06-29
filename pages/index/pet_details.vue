@@ -183,7 +183,8 @@
 			},
 			buttonClick(e) {
 				validate().then(res => {
-					if (res.statusCode == "200") {
+					console.log(res)
+					if (res.data.statusCode == "200") {
 						if (e.content.text == "立即购买") {
 							uni.navigateTo({
 								url: '/pages/myinfo/order/confirm?id=' + this.pet_detail.id
