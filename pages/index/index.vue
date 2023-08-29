@@ -105,7 +105,7 @@
 			toLocation() {
 				console.log('导航')
 				uni.navigateTo({
-					url: '/pages/index/navigate'
+					url: '/pages/index/map'
 				});
 				// this.$u.toast('暂未开放')
 			},
