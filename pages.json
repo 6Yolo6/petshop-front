@@ -41,6 +41,12 @@
 			}
 
 		}, {
+			"path": "pages/shop/shop_detail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
 			"path": "pages/cart/cart",
 			"style": {
 				"navigationStyle": "custom"
@@ -59,6 +65,11 @@
 			}
 		}, {
 			"path": "pages/index/navigate",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/index/map",
 			"style": {
 				"navigationStyle": "custom"
 			}
