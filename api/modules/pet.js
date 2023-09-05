@@ -6,6 +6,6 @@ import {
 export function getByCate(params) {
 	return get('/pet/getByCategory', params)
 }
-export function getById(params) {
+export function getPetById(params) {
 	return get('/pet/getById', params)
 }

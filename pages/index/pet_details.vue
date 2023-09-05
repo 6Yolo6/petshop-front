@@ -27,7 +27,7 @@
 
 <script>
 	import {
-		getById
+		getPetById
 	} from '@/api/modules/pet.js'
 	import {
 		addFavor,
@@ -164,7 +164,7 @@
 			},
 			// 获取宠物信息
 			getDetail(id) {
-				getById({
+				getPetById({
 					id: id
 				}).then(res => {
 					this.pet_detail = res.data.data

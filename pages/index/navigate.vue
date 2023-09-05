@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
 	<view>
 		<view class="page-body">
 			<view class="page-section page-section-gap map">
@@ -379,4 +379,4 @@
 		width: 300rpx;
 		font-weight: 700;
 	}
-</style>
+</style> -->
