@@ -36,7 +36,7 @@
 
 <script>
 	import {
-		getById
+		getProById
 	} from '@/api/modules/product.js'
 	import {
 		add
@@ -44,7 +44,11 @@
 	import {
 		validate
 	} from '../../api/modules/user';
-	import { addFavor, findByPetId, deleteById } from '@/api/modules/favor.js'
+	import {
+		addFavor,
+		findByPetId,
+		deleteById
+	} from '@/api/modules/favor.js'
 	export default {
 		data() {
 			return {
@@ -95,7 +99,7 @@
 		methods: {
 			// 根据id获取周边详情
 			getById(id) {
-				getById({
+				getProById({
 					id: id
 				}).then(res => {
 					this.product = res.data.data
@@ -126,7 +130,9 @@
 					if (res.data.statusCode == "200") {
 						// 如果已收藏
 						if (this.isFavor) {
-							deleteById({ id: this.favorId }).then(res => {
+							deleteById({
+								id: this.favorId
+							}).then(res => {
 								this.isFavor = false
 								this.favorId = res.data.data
 								console.log(res)
@@ -134,7 +140,10 @@
 
 							})
 						} else {
-							addFavor({ favorId: id, isPet: false }).then(res => {
+							addFavor({
+								favorId: id,
+								isPet: false
+							}).then(res => {
 								console.log(res)
 								this.isFavor = true
 								this.favorId = res.data.data
@@ -201,8 +210,10 @@
 							}).catch(error => {
 								console.log(error)
 							})
-						} else {
-							this.options[2].info++
+						} else if (e.content.text == "立即购买") {
+							uni.navigateTo({
+								url: '/pages/myinfo/order/confirm?id=' + this.product.id
+							})
 						}
 					} else {
 						uni.showToast({

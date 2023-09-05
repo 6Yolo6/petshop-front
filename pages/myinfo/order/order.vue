@@ -12,7 +12,12 @@
 		<view class="order-content">
 			<scroll-view scroll-y style="height: 100%;width: 100%;" @scrolltolower="scrolltolower">
 				<view class="page-box">
-					<view class="order" v-for="(item,index) in orderList">
+					<view class="order" v-for="(shop, indexS) in orders" :key="indexS">
+						<view class="shop">
+							<view class="">
+								{{shop.shopName}} >
+							</view>
+						</view>
 						<view class="top">
 							<view class="no">
 								<view class="index">订单编号: {{item.no}}</view>
@@ -49,8 +54,8 @@
 							<view class="total">
 								共{{item.total}}件商品 合计:
 								<text class="total-price">
-									￥{{item.price}}.
-									<text class="decimal">{{item.decimal}}</text>
+									￥{{item.price}}
+									<!-- <text class="decimal">{{item.decimal}}</text> -->
 								</text>
 							</view>
 						</view>
@@ -90,7 +95,7 @@
 				}, {
 					name: '已取消'
 				}],
-				orderList: [{
+				orders: [{
 						shopName: "小王的店",
 						title: "荣耀30 Pro 50倍远摄麒麟990 5G 4000万超感光...",
 						time: "2021-12-10",

@@ -90,14 +90,41 @@
 			},
 			navigate() {
 				console.log(1111)
-				uni.openLocation({
-					latitude: this.markers[this.selectStore].latitude,
-					longitude: this.markers[this.selectStore].longitude,
-					success: function() {
-						console.log('success');
-					},
+				// uni.openLocation({
+				// 	latitude: this.markers[this.selectStore].latitude,
+				// 	longitude: this.markers[this.selectStore].longitude,
+				// 	success: function() {
+				// 		console.log('success');
+				// 	},
 
-				});
+				// });
+				let that = this
+				//调出地图传入目的地 ltt lgt
+				uni.getLocation({
+					success: (res) => {
+						uni.openLocation({
+							latitude: Number(this.markers[this.selectStore].latitude),
+							longitude: Number(this.markers[this.selectStore].longitude),
+							success: function() {
+								console.log('success');
+							},
+							fail: function() {
+								uni.showModal({
+									title: '错误',
+									content: '请检查定位是否打开',
+									showCancel: false,
+									success: function(res) {
+										if (res.confirm) {
+											console.log('用户点击确定');
+										} else if (res.cancel) {
+											console.log('用户点击取消');
+										}
+									}
+								})
+							}
+						});
+					}
+				})
 			},
 			getMyLocation() {
 				uni.getLocation({

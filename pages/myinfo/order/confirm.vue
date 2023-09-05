@@ -39,6 +39,22 @@
 					</view>
 				</view>
 			</view>
+			<!-- 			<view class="" v-else-if="this.isPro == 1">
+				<view class="shop-name">{{ pro.etc.shopName }}</view>
+				<view class="product-item">
+					<image :src="pro.img" class="product-img"></image>
+					<view class="product-info">
+						<view class="product-name">{{ pro.name }}</view>
+						<view class="product-price">￥{{ pro.price.toFixed(2) }}</view>
+
+						<view class="product-actions">
+							<view class="action-btn" @click="subPro()">-</view>
+							<view class="product-count">{{ pro.count }}</view>
+							<view class="action-btn" @click="addPro()">+</view>
+						</view>
+					</view>
+				</view>
+			</view> -->
 			<view class="" v-else-if="this.isPet == 0">
 				<view v-for="(shop, index) in carts" :key="index">
 					<!-- 商店名称 -->
@@ -59,8 +75,12 @@
 					</view>
 				</view>
 			</view>
+
 		</view>
 		<view class="bottom">
+			<!-- 			<view class="shop-total" v-if="this.isPro == 1">
+				共1件 合计: ¥{{ this.pro.price }}
+			</view> -->
 			<view class="shop-total">共{{ totalNum() }}件 合计: ¥{{ totalPrice() }}</view>
 			<view class="submit">
 				<u-button type="primary" shape="circle" text="" @click="submit()">提交订单</u-button>
@@ -89,10 +109,12 @@
 		getByOrderIds
 	} from '@/api/modules/order_item.js'
 	import {
-		getById
+		getPetById
 	} from '@/api/modules/pet.js'
 	import {
-		getShopIds
+		getShopIds,
+		getProById,
+		modifyStock
 	} from '@/api/modules/product.js'
 	export default {
 		data() {
@@ -100,7 +122,10 @@
 				carts: [],
 				item: {},
 				isPet: 0,
-				pet: {}
+				isPro: 0,
+				Id: 0,
+				pet: {},
+				inputObject: {}
 			}
 		},
 		onLoad() {
@@ -118,40 +143,73 @@
 			// 可以通过prevPage访问上一个页面的数据和方法
 			console.log("上一个页面", prevPage.route);
 
-			if (prevPage.route == "pages/cart/cart")
+			if (prevPage.route == "pages/cart/cart") {
 				this.isPet = 0
-			else if (prevPage.route == "pages/index/pet_details")
+				this.isPro = 0
+			} else if (prevPage.route == "pages/index/pet_details")
 				this.isPet = 1
+			else if (prevPage.route == "pages/shop/product_detail")
+				this.isPro = 1
 			console.log("isPet", this.isPet)
-
-			this.petId = Number(this.$route.query.id)
-			console.log("petId", this.petId)
+			console.log("isPro", this.isPro)
+			this.Id = Number(this.$route.query.id)
 			// 刷新数据
 			uni.$on('refreshData', () => {
-				if (this.isPet == 1) {
-					this.getPet(this.petId)
-				} else if (this.isPet == 0) {
+				if (this.isPet == 1)
+					this.getPet(this.Id)
+				if (this.isPro == 1)
+					this.getPro(this.Id)
+				if (this.isPet == 0 && this.isPro == 0)
 					this.getAll()
-				}
 				this.getDefault()
 			})
 
-			if (this.isPet == 1) { // 宠物订单
-				this.getPet(this.petId)
-			} else if (this.isPet == 0) { //周边购物车订单
+			if (this.isPet == 1) // 宠物订单
+				this.getPet(this.Id)
+			if (this.isPro == 1) // 立即购买订单
+				this.getPro(this.Id)
+			if (this.isPet == 0 && this.isPro == 0) // 购物车订单
 				this.getAll()
-			}
 			this.getDefault()
 
 		},
 		methods: {
 			// 获取宠物信息
 			getPet(id) {
-				getById({
+				getPetById({
 					id: id
 				}).then(res => {
 					console.log("宠物", res.data)
 					this.pet = res.data.data
+				}).catch(error => {
+					console.log(error)
+				})
+			},
+			// 立即购买
+			getPro(id) {
+				console.log(6666777)
+				getProById({
+					id: id
+				}).then(res => {
+					console.log("产品", res.data)
+					this.inputObject = res.data.data
+					this.carts = [{
+						"shopName": this.inputObject.etc.shopName,
+						"products": [{
+							"id": this.inputObject.id,
+							"etc": null,
+							"userId": null, // 
+							"productId": this.inputObject.id,
+							"count": 1, // 
+							"checked": true, // 
+							"productName": this.inputObject.name,
+							"shopId": this.inputObject.shopId,
+							"shopName": this.inputObject.etc.shopName,
+							"productPrice": this.inputObject.price,
+							"productImg": this.inputObject.img
+						}],
+						"productNum": 1
+					}];
 				}).catch(error => {
 					console.log(error)
 				})
@@ -202,34 +260,51 @@
 				})
 			},
 			sub(product) {
+				let id = product.productId
 				let count = product.count
 				if (count == 1) {
 					uni.showToast({
 						title: "该宝贝不能减少了哟~"
 					})
 				} else {
-					sub({
-						productId: product.productId
+					if (this.isPro == 1) {
+						this.carts[0].products[0].count--;
+					} else {
+						sub({
+							productId: id
+						}).then(res => {
+							console.log(res.data)
+							if (this.isPro == 1)
+								this.getPro(id)
+							else
+								this.getAll()
+						}).catch(error => {
+							console.log(error)
+						})
+					}
+				}
+			},
+			add(product) {
+				let id = product.productId
+				// let count = product.count
+				// product.count = count + 1
+				if (this.isPro == 1) {
+					this.carts[0].products[0].count++;
+				} else {
+					add({
+						productId: id
 					}).then(res => {
 						console.log(res.data)
-						this.getAll()
+						// product.count = res.data.count
+						if (this.isPro == 1)
+							this.getPro(id)
+						else
+							this.getAll()
 					}).catch(error => {
 						console.log(error)
 					})
 				}
-			},
-			add(product) {
-				// let count = product.count
-				// product.count = count + 1
-				add({
-					productId: product.productId
-				}).then(res => {
-					console.log(res.data)
-					// product.count = res.data.count
-					this.getAll()
-				}).catch(error => {
-					console.log(error)
-				})
+
 			},
 			totalNum() {
 				if (this.isPet == 1)
@@ -284,6 +359,7 @@
 					success: (res) => {
 						if (res.confirm) {
 							// 付款
+
 							addOrder({
 								sumPrice: this.totalPrice(),
 								isPay: 1,
@@ -299,15 +375,25 @@
 									shopIds: shopIds.join(",")
 								}).then(res2 => {
 									console.log("订单详情", res2.data)
-									deleteByIds({
-										ids: productIds.join(",")
-									}).then(res3 => {
-										console.log("清空购物车", res3.data)
-										uni.switchTab({
-											url: '/pages/myinfo/myinfo'
-										})
-									}).catch(error3 => {
-										console.log(error3)
+									modifyStock({
+										ids: productIds.join(","),
+										stock: -1
+									}).then(s => {
+										console.log("库存", s.data)
+										if (this.isPro == 0) {
+											deleteByIds({
+												ids: productIds.join(",")
+											}).then(res3 => {
+												console.log("清空购物车", res3.data)
+												uni.switchTab({
+													url: '/pages/myinfo/myinfo'
+												})
+											}).catch(error3 => {
+												console.log(error3)
+											})
+										}
+									}).catch(errors => {
+										console.log(errors)
 									})
 								}).catch(error2 => {
 									console.log(error2)
@@ -332,15 +418,25 @@
 									shopIds: shopIds.join(",")
 								}).then(res2 => {
 									console.log("订单详情", res2.data)
-									deleteByIds({
-										ids: productIds.join(",")
-									}).then(res3 => {
-										console.log("清空购物车", res3.data)
-										uni.switchTab({
-											url: '/pages/myinfo/myinfo'
-										})
-									}).catch(error3 => {
-										console.log(error3)
+									modifyStock({
+										ids: productIds.join(","),
+										stock: -1
+									}).then(s => {
+										console.log("库存", s.data)
+										if (this.isPro == 0) {
+											deleteByIds({
+												ids: productIds.join(",")
+											}).then(res3 => {
+												console.log("清空购物车", res3.data)
+												uni.switchTab({
+													url: '/pages/myinfo/myinfo'
+												})
+											}).catch(error3 => {
+												console.log(error3)
+											})
+										}
+									}).catch(errors => {
+										console.log(errors)
 									})
 								}).catch(error2 => {
 									console.log(error2)
