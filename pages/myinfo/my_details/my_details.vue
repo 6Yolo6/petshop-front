@@ -64,31 +64,35 @@
 				<!-- 为uni-list-item增加了插槽 -->
 				<template v-slot:footer>
 					<!-- <input ref="usernameInput" class="text-right" type="text " value="" v-model="detail.username" /> -->
-					<text class="iconfont icon-bianji1 ml-2">{{detail.avatar}}</text>
+					<u-upload @afterRead="afterRead" @delete="deletePic" name="1" :maxCount="1"
+						class="iconfont icon-bianji1 ml-2" :previewFullImage="true"></u-upload>
+					<u--image :showLoading="true" :src="detail.avatar" width="80px" height="80px"
+						@click="click"></u--image>
+					<!-- <text class="iconfont icon-bianji1 ml-2">{{detail.avatar}}</text> -->
 				</template>
 			</uni-list-item>
 			<uni-list-item title="用户名" @click="changeUsername" class="item">
 				<template v-slot:footer>
 					<!-- <input ref="usernameInput" class="text-right" type="text " value="" v-model="detail.username" /> -->
-					<text class="iconfont icon-bianji1 ml-2">{{detail.username}}</text>
+					<text class="text-right">{{detail.username}}</text>
 				</template>
 			</uni-list-item>
 			<uni-list-item title="性别" @click="changeSex" class="item">
 				<template v-slot:footer>
+					<u-picker :show="showGender" :columns="columns" defaultIndex="0"
+						@confirm="confirmGender"></u-picker>
+					<!-- <u-button @click="showGender = true" width="100rpx">打开</u-button> -->
 					<!-- <input ref="usernameInput" class="text-right" type="text " value="" v-model="detail.username" /> -->
-					<text class="iconfont icon-bianji1 ml-2">{{detail.sex}}</text>
+					<text class="iconfont icon-bianji1 ml-2 text-right">{{detail.sex}}</text>
 				</template>
 			</uni-list-item>
 
-			<!-- picker日期表单,不用导入调用的是各个平台的原生日期渲染 -->
-			<picker mode="date" :value="birthday" @change="onDateChange" class="item">
-				<uni-list-item title="创建时间">
-					<template v-slot:footer>
-						<!-- <input ref="usernameInput" class="text-right" type="text " value="" v-model="detail.username" /> -->
-						<text class="iconfont icon-bianji1 ml-2">{{detail.createTime}}</text>
-					</template>
-				</uni-list-item>
-			</picker>
+			<uni-list-item title="创建时间" class="item">
+				<template v-slot:footer>
+					<!-- <input ref="usernameInput" class="text-right" type="text " value="" v-model="detail.username" /> -->
+					<text class="iconfont icon-bianji1 ml-2">{{detail.createTime}}</text>
+				</template>
+			</uni-list-item>
 
 
 			<uni-list-item title="邮箱 " @click='changeEmotion' class="item">
@@ -97,9 +101,10 @@
 					<text class="iconfont icon-bianji1 ml-2">{{detail.email}}</text>
 				</template>
 			</uni-list-item>
-			<view class="save">
-				<button class="bg-main text-white" style="border-radius: 50rpx;border: 0;" type="primary">保存</button>
-			</view>
+			<!-- 			<view class="save">
+				<button class="bg-main text-white" style="border-radius: 50rpx;border: 0;"
+					type="primary">{{state}}</button>
+			</view> -->
 		</view>
 
 		<pickerAddress></pickerAddress>
@@ -109,7 +114,8 @@
 <script>
 	import pickerAddress from '@/components/pickerAddress/pickerAddress.vue'
 	import {
-		getByName
+		getByName,
+		updateAvatar
 	} from '../../../api/modules/user';
 	export default {
 		components: {
@@ -117,16 +123,14 @@
 		},
 		data() {
 			return {
+				columns: [
+					['女', '男']
+				],
+				showGender: false,
+				fileList1: [],
 				detail: {},
-				userpic: "/static/default.jpg",
-				username: "不吃苹果",
-				sex: 0,
-				emotion: 0,
-				job: "保密",
-				birthday: "2019-01-01",
-				cityPickerValueDefault: [0, 0, 1],
-				pickerText: '',
-				address: '河南省-郑州市-中原区'
+				state: '修改',
+				asyncResult: null, // 用于存储异步操作的结果
 			}
 		},
 		mounted() {
@@ -134,17 +138,25 @@
 			this.getDetail()
 		},
 		computed: {
-			sexText() {
-				return sexArray[this.sex]
-			},
-			emotionText() {
-				return emotionArray[this.emotion]
+			resultFromAsync() {
+				// 在这里引用异步操作的结果
+				return this.asyncResult;
 			},
 
 
 		},
 		methods: {
+			// 确认性别
+			confirmGender() {
+
+			},
+			// 修改性别
+			changeSex() {
+				this.showGender = true
+			},
+			// 初始化页面信息
 			getDetail() {
+
 				getByName({ username: this.username }).then(res => {
 					this.detail = res.data.data
 
@@ -152,6 +164,61 @@
 					console.log(this.detail)
 				}).catch(err => {
 					console.log(err)
+				})
+			},
+			// 删除图片
+			deletePic(event) {
+				this[`fileList${event.name}`].splice(event.index, 1)
+			},
+			// 新增图片
+			async afterRead(event) {
+				if (event.file instanceof File) {
+					console.log(yes)
+				}
+				// 当设置 multiple 为 true 时, file 为数组格式，否则为对象格式
+				let lists = [].concat(event.file)
+				let fileListLen = this[`fileList${event.name}`].length
+				lists.map((item) => {
+					this[`fileList${event.name}`].push({
+						...item,
+						status: 'uploading',
+						message: '上传中'
+					})
+				})
+				for (let i = 0; i < lists.length; i++) {
+					const result = await this.uploadFilePromise(lists[i].url)
+					let item = this[`fileList${event.name}`][fileListLen]
+					this[`fileList${event.name}`].splice(fileListLen, 1, Object.assign(item, {
+						status: 'success',
+						message: '',
+						url: result
+					}))
+					fileListLen++
+				}
+			},
+			// updateAvatar(file) {
+			// 	console.log(this.detail.id)
+			// 	updateAvatar(file, { userId: this.detail.id }).then(res => {
+			// 		console.log(res)
+			// 	})
+			// },
+			uploadFilePromise(url) {
+				return new Promise((resolve, reject) => {
+					let a = uni.uploadFile({
+						url: 'http://localhost:8899/petshop/user/updateAvatar', // 仅为示例，非真实的接口地址
+						filePath: url,
+						name: 'file',
+						formData: {
+							userId: this.detail.id
+						},
+						success: (res) => {
+							console.log(res)
+							this.getDetail()
+							setTimeout(() => {
+								resolve(res.data.data)
+							}, 1000)
+						}
+					});
 				})
 			},
 			changeUserpic() {
@@ -165,64 +232,7 @@
 					}
 				})
 			},
-			// 修改昵称 不用理会
-			changeUsername() {
-				// this.$nextTick(function(){
 
-				// 	console.log(this.$refs.usernameInput)
-				// })
-				// console.log('zzzzz')
-				// this.$refs.username_input.focus()
-
-			},
-			// 修改性别
-			changeSex() {
-				// 显示操作菜单
-				uni.showActionSheet({
-					itemList: sexArray,
-					success: (res) => {
-						this.sex = res.tapIndex
-					}
-				})
-			},
-			// 修改已婚未婚
-			changeEmotion() {
-				uni.showActionSheet({
-					itemList: emotionArray,
-					success: (res) => {
-						this.emotion = res.tapIndex
-					}
-				})
-			},
-			// 修改职业
-			changeJob() {
-				uni.showActionSheet({
-					itemList: jobArray,
-					success: (res) => {
-						this.job = jobArray[res.tapIndex]
-					}
-				})
-			},
-			// 修改日期
-			onDateChange(e) {
-				// console.log(e.detail)
-				this.birthday = e.detail.value
-			},
-			// 三级联动
-			onConfirm(e) {
-				// console.log(JSON.stringify(e))
-				this.address = e.label
-			},
-			// 调用该三级联动组件
-			openAddres2() {
-				// 根据 label 获取
-				var index = this.$refs.simpleAddress.queryIndex(this.address.split('-'), 'label');
-				// console.log(index);
-				// 设置默认打开的地址
-				this.cityPickerValueDefault = index.index;
-				// 打开三级联动事件
-				this.$refs.simpleAddress.open();
-			},
 
 		}
 	}

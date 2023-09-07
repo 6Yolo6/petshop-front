@@ -2,11 +2,12 @@ import axios from 'axios'
 import qs from 'qs'
 
 
+// 本地
 const baseURL = 'http://localhost:8899/petshop'
 // const baseURL = 'http://192.168.43.152:8899/petshop'
-
+// yf
+// const baseURL = 'http://192.168.2.205:8899/petshop'
 // const baseURL = 'http://10.22.155.237:8899/petshop'
-// const baseURL = 'http://47.115.231.72:8899/petshop'
 
 function interceptors(response) {
 	// response status = 200
@@ -15,20 +16,16 @@ function interceptors(response) {
 		return Promise.resolve(result)
 	} else if (result.statusCode === 600) {
 		// 页面跳转
-		uni.navigateTo({
-			url: '/'
-		})
+		uni.navigateTo({ url: '/' })
 		return Promise.reject('need login!')
 	} else if (result.statusCode === 400) {
-		console.log("result", result)
-		if (result.message == "Token无效，请重新登录") {
+		console.log('result', result)
+		if (result.message == 'Token无效，请重新登录') {
 			uni.showToast({
 				icon: 'error',
-				title: "token过期请先登录"
+				title: 'token过期请先登录'
 			})
-			uni.navigateTo({
-				url: '/pages/login/login'
-			})
+			uni.navigateTo({ url: '/pages/login/login' })
 		}
 		return Promise.reject(result.message)
 	} else {
@@ -43,9 +40,7 @@ export function get(url, params) {
 			method: 'GET',
 			url: `${baseURL}/${url}`,
 			data: params,
-			header: {
-				'token': token
-			},
+			header: { 'token': token },
 			success: res => {
 				resolve(res)
 			},
@@ -62,9 +57,7 @@ export function post(url, params) {
 		uni.request({
 			method: 'POST',
 			url: `${baseURL}/${url}`,
-			data: qs.stringify(params, {
-				allowDots: true
-			}),
+			data: qs.stringify(params, { allowDots: true }),
 			header: {
 				'token': token,
 				'Content-Type': 'application/x-www-form-urlencoded',
@@ -99,7 +92,32 @@ export function postJson(url, params) {
 		})
 	})
 }
-
+export function uploadFile(url, file, params) {
+	const token = uni.getStorageSync('token')
+	return new Promise((resolve, reject) => {
+		uni.uploadFile({
+			url: `${baseURL}/${url}`,
+			filePath: file.url,
+			name: 'file',
+			// 可以携带其他表单数据
+			formData: { ...params },
+			header: {
+				'token': token,
+				'Content-Type': 'multipart/form-data',
+			},
+			success: res => {
+				if (res.statusCode === 200) {
+					resolve(res.data)
+				} else {
+					reject(new Error('文件上传失败'))
+				}
+			},
+			fail: err => {
+				reject(err)
+			}
+		})
+	})
+}
 // function interceptors(response) {
 // 	// response status = 200
 // 	const result = response.data
@@ -186,27 +204,3 @@ export function postJson(url, params) {
 // 		},
 // 	})
 // }
-export function uploadFile(url, file, onProgress) {
-	return new Promise((resolve, reject) => {
-		uni.uploadFile({
-			url: url,
-			filePath: file.path,
-			name: 'file',
-			formData: {}, // 可以携带其他表单数据
-			header: {
-				'Content-Type': 'multipart/form-data'
-			},
-			onProgressUpdate: onProgress, // 上传进度回调
-			success: res => {
-				if (res.statusCode === 200) {
-					resolve(res.data)
-				} else {
-					reject(new Error('文件上传失败'))
-				}
-			},
-			fail: err => {
-				reject(err)
-			}
-		})
-	})
-}
