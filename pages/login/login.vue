@@ -1,5 +1,9 @@
 <template>
+
 	<view class="login">
+		<view class="head">
+			<u-navbar :autoBack="true"></u-navbar>
+		</view>
 		<view class="content">
 			<!-- 头部logo -->
 			<view class="header">

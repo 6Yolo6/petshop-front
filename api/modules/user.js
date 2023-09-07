@@ -1,7 +1,8 @@
 import {
 	get,
 	post,
-	postJson
+	postJson,
+	uploadFile
 } from '../axios.js'
 
 // 用户注册
@@ -17,6 +18,11 @@ export function login(user) {
 // 用户退出
 export function logout() {
 	return post('/user/logout')
+}
+
+// 用户修改头像
+export function updateAvatar(file, params) {
+	return uploadFile('/user/updateAvatar', file, params)
 }
 
 // 修改用户信息
