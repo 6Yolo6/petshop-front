@@ -20,7 +20,7 @@
 				</view>
 				<view class="bottom">
 					<view class="left">
-						<view class="user-text">
+						<view class="user-text" v-if="this.isLogin===true">
 							{{name}}
 						</view>
 					</view>

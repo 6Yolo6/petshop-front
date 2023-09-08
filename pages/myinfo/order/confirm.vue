@@ -342,13 +342,19 @@
 				const productIds = []
 				const shopIds = []
 				// 遍历 this.carts 数组，提取 count 和 productId 和 shopId 属性并存入相应数组
-				this.carts.forEach(shop => {
-					shop.products.forEach(product => {
-						countIds.push(product.count);
-						productIds.push(product.productId);
-						shopIds.push(product.shopId)
-					});
-				});
+				if (this.isPet == 0 && this.isPro == 0) {
+					this.carts.forEach(shop => {
+						shop.products.forEach(product => {
+							countIds.push(product.count)
+							productIds.push(product.productId)
+							shopIds.push(product.shopId)
+						})
+					})
+				} else if (this.isPet == 1) {
+					countIds.push(1)
+					productIds.push(this.pet.id)
+					shopIds.push(this.pet.shopId)
+				}
 				// 打印结果
 				console.log("count", countIds); // 输出 count 数组
 				console.log("productId", productIds); // 输出 productId 数组
@@ -375,26 +381,33 @@
 									shopIds: shopIds.join(",")
 								}).then(res2 => {
 									console.log("订单详情", res2.data)
-									modifyStock({
-										ids: productIds.join(","),
-										stock: -1
-									}).then(s => {
-										console.log("库存", s.data)
-										if (this.isPro == 0) {
-											deleteByIds({
-												ids: productIds.join(",")
-											}).then(res3 => {
-												console.log("清空购物车", res3.data)
-												uni.switchTab({
-													url: '/pages/myinfo/myinfo'
+									if (this.isPet == 1) {
+										uni.switchTab({
+											url: '/pages/myinfo/order/order'
+										})
+									} else {
+										modifyStock({
+											ids: productIds.join(","),
+											stock: -1
+										}).then(s => {
+											console.log("库存", s.data)
+											if (this.isPro == 0) {
+												deleteByIds({
+													ids: productIds.join(",")
+												}).then(res3 => {
+													console.log("清空购物车", res3
+														.data)
+													uni.switchTab({
+														url: '/pages/myinfo/order/order'
+													})
+												}).catch(error3 => {
+													console.log(error3)
 												})
-											}).catch(error3 => {
-												console.log(error3)
-											})
-										}
-									}).catch(errors => {
-										console.log(errors)
-									})
+											}
+										}).catch(errors => {
+											console.log(errors)
+										})
+									}
 								}).catch(error2 => {
 									console.log(error2)
 								})
@@ -418,26 +431,33 @@
 									shopIds: shopIds.join(",")
 								}).then(res2 => {
 									console.log("订单详情", res2.data)
-									modifyStock({
-										ids: productIds.join(","),
-										stock: -1
-									}).then(s => {
-										console.log("库存", s.data)
-										if (this.isPro == 0) {
-											deleteByIds({
-												ids: productIds.join(",")
-											}).then(res3 => {
-												console.log("清空购物车", res3.data)
-												uni.switchTab({
-													url: '/pages/myinfo/myinfo'
+									if (this.isPet == 1) {
+										uni.switchTab({
+											url: '/pages/myinfo/order/order'
+										})
+									} else {
+										modifyStock({
+											ids: productIds.join(","),
+											stock: -1
+										}).then(s => {
+											console.log("库存", s.data)
+											if (this.isPro == 0) {
+												deleteByIds({
+													ids: productIds.join(",")
+												}).then(res3 => {
+													console.log("清空购物车", res3
+														.data)
+													uni.switchTab({
+														url: '/pages/myinfo/order/order'
+													})
+												}).catch(error3 => {
+													console.log(error3)
 												})
-											}).catch(error3 => {
-												console.log(error3)
-											})
-										}
-									}).catch(errors => {
-										console.log(errors)
-									})
+											}
+										}).catch(errors => {
+											console.log(errors)
+										})
+									}
 								}).catch(error2 => {
 									console.log(error2)
 								})
