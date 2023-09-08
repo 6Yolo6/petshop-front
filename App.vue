@@ -38,10 +38,10 @@
 
 			// 在这里添加第二个 App.vue 中的代码
 			setTimeout(() => {
-				uni.setTabBarBadge({
-					index: 2,
-					text: this.$store.getters.getTotalProductNum
-				});
+				// uni.setTabBarBadge({
+				// 	index: 2,
+				// 	text: this.$store.getters.getTotalProductNum
+				// });
 				uni.showTabBarRedDot({
 					index: 3
 				});

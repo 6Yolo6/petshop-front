@@ -3,8 +3,8 @@ import {
 	post,
 	postJson
 } from '../axios.js'
-export function getByOrderIds(params) {
-	return get('/orderItem/getByOrderIds', params)
+export function getDetail(params) {
+	return get('/orderItem/getDetail', params)
 }
 
 export function addItem(params) {
