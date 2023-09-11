@@ -10,3 +10,7 @@ export function getOrder(params) {
 export function addOrder(params) {
 	return post('/order/add', params)
 }
+
+export function cancelOrder(params) {
+	return post('/order/cancel', params)
+}
