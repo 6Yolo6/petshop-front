@@ -1,0 +1,136 @@
+<template>
+	<view>
+		<view class="header">
+			<u-navbar title="评论" @rightClick="rightClick" :autoBack="true">
+			</u-navbar>
+		</view>
+		<view class="shop">
+			<u-cell-group>
+				<u-cell value="内容">
+					<view slot="title" class="u-slot-title">
+						<u--image :showLoading="true" src="https://cdn.uviewui.com/uview/album/1.jpg" width="80px"
+							height="80px" shape="square" radius="5" class="shop-info"></u--image>
+						<text class="shop-info" style="position: absolute;top: 40%;left: 30%;">店铺名字</text>
+
+					</view>
+					<view slot="value">
+						<text class="shop-name">店铺评分:{{shopRate}}</text>
+						<u-rate count="5" v-model="shopRate" :allowHalf="true" :readonly="true"></u-rate>
+					</view>
+				</u-cell>
+			</u-cell-group>
+		</view>
+		<u-line dashed length="90%" margin="20rpx 20rpx 20rpx 20rpx" color="red"></u-line>
+		<view class="review">
+			<u-list @scrolltolower="scrolltolower">
+				<u-list-item v-for="(item, index) in reviewList" :key="index" height="60px">
+					<u-cell>
+						<view slot="title">
+							<u--text type="info" :text="item.etc.username" class="commentator-info"></u--text>
+							<u--text type="success" :text="'（已购）'+item.etc.productName+'×'+item.etc.count"
+								class="commentator-info"></u--text>
+							<u--text :lines="2" :text="item.comment" class="commentator-info"></u--text>
+						</view>
+						<u-avatar slot="icon" shape="square" size="50" :src="item.etc.avatar"
+							customStyle="margin: -3px 5px -3px 0"></u-avatar>
+						<view slot="value">
+							<u-rate count="5" :value="item.rate" :allowHalf="true" :readonly="true"></u-rate>
+							<u--text type="warning" text="删除" style="position: absolute;left: 85%;"
+								@click="deleteReview(item.id)"></u--text>
+						</view>
+					</u-cell>
+				</u-list-item>
+			</u-list>
+		</view>
+	</view>
+</template>
+
+<script>
+	import {
+		getByShopId
+	} from '@/api/modules/review.js'
+	export default {
+		data() {
+			return {
+				shopRate: 0,
+				value: 2.0,
+				reviewList: [],
+				indexList: [],
+				urls: [
+					'https://cdn.uviewui.com/uview/album/1.jpg',
+					'https://cdn.uviewui.com/uview/album/2.jpg',
+					'https://cdn.uviewui.com/uview/album/3.jpg',
+					'https://cdn.uviewui.com/uview/album/4.jpg',
+					'https://cdn.uviewui.com/uview/album/5.jpg',
+					'https://cdn.uviewui.com/uview/album/6.jpg',
+					'https://cdn.uviewui.com/uview/album/7.jpg',
+					'https://cdn.uviewui.com/uview/album/8.jpg',
+					'https://cdn.uviewui.com/uview/album/9.jpg',
+					'https://cdn.uviewui.com/uview/album/10.jpg',
+				]
+			}
+		},
+		onLoad() {
+			this.loadmore()
+			this.getReview()
+		},
+		methods: {
+			//获取商店评论
+			getReview() {
+				getByShopId({ shopId: 2 }).then(res => {
+					this.reviewList = res.data.data
+					let sum = 0
+					for (let i in this.reviewList) {
+						sum += this.reviewList[i].rate
+						console.log(sum)
+					}
+					//保留一位小数
+					this.shopRate = (sum / this.reviewList.length).toFixed(1)
+					console.log(this.reviewList)
+				})
+			},
+			//删除评论
+			deleteReview() {
+
+			},
+			loadmore() {
+				for (let i = 0; i < 30; i++) {
+					this.indexList.push({
+						url: this.urls[uni.$u.random(0, this.urls.length - 1)]
+					})
+				}
+			}
+		}
+	}
+</script>
+
+<style scoped>
+	.shop-info {
+		display: inline-block;
+		width: 50%;
+		/* 使两个元素平分容器的宽度 */
+		/* text-align: center; */
+		justify-content: space-between;
+		/* 文字居中 */
+		align-items: center;
+	}
+
+	.header {
+		position: flex;
+		top: 88px;
+	}
+
+	.shop {
+		margin-top: 88rpx;
+	}
+
+	.shop-name {
+		margin-right: 40rpx;
+	}
+
+	.commentator-info {
+		display: block;
+	}
+
+	.review {}
+</style>
