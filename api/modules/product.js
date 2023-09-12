@@ -10,10 +10,13 @@ export function getByCategory(params) {
 export function getProById(params) {
 	return get('/product/getById', params)
 }
+export function getProByIds(params) {
+	return get('/product/getByIds', params)
+}
 export function getShopIds(params) {
 	return get('/product/getShopIds', params)
 }
 
 export function modifyStock(params) {
-	return get('/product/modifyStockByIds', params)
+	return post('/product/modifyStockByIds', params)
 }

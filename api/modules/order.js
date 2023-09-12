@@ -4,9 +4,13 @@ import {
 	postJson
 } from '../axios.js'
 export function getOrder(params) {
-	return get('/order/getByStatus', params)
+	return get('/order/getByUserId', params)
 }
 
 export function addOrder(params) {
 	return post('/order/add', params)
+}
+
+export function cancelOrder(params) {
+	return post('/order/cancel', params)
 }
