@@ -4,9 +4,12 @@
 			<u-navbar title="个人中心" :autoBack="true"></u-navbar>
 		</view>
 
+
 		<view class="tabs">
-			<u-tabs :list="statusList" :current="status" @click="changeStatus">
-			</u-tabs>
+			<u-sticky bgColor="#fff">
+				<u-tabs :list="statusList" :scrollable="true" :current="status" @click="changeStatus">
+				</u-tabs>
+			</u-sticky>
 		</view>
 
 		<view class="order-content">
@@ -22,55 +25,89 @@
 							<u-icon name="arrow-right" color="rgb(203,203,203)" :size="15"></u-icon>
 						</view>
 						<view class="detail" v-for="(pro, indexP) in shop.details" :key="indexP">
-							<view class="top">
-								<view class="right">{{ orderStatus(pro) }}</view>
-							</view>
-							<view class="item" @click="toDetail(pro.productId)">
-								<view class="left">
-									<u--image :src="pro.img" width="90px" height="100px"></u--image>
+							<view class="">
+								<view class="top">
+									<view class="right">{{ orderStatus(pro) }}</view>
 								</view>
-								<view class="content">
-									<view class="pro-name">{{pro.name}}</view>
-									<view>
-										<uni-text class="orange-text">7天无理由退货</uni-text>
+								<view class="item" @click="toDetail(pro)">
+									<view class="left">
+										<u--image :src="pro.img" width="90px" height="100px"></u--image>
+									</view>
+									<view class="content">
+										<view class="pro-name">{{pro.name}}</view>
+										<view>
+											<uni-text class="orange-text">7天无理由退货</uni-text>
+										</view>
+									</view>
+									<view class="right">
+										<view class="price">
+											￥{{pro.price}}
+										</view>
+										<view class="count">
+											X{{pro.count}}
+										</view>
 									</view>
 								</view>
-								<view class="right">
-									<view class="price">
-										￥{{pro.price}}
+								<view class="orderAction">
+									<view class="left">
+										<u-button v-if="pro.status == 1" type="primary" shape="circle" text="取消订单"
+											@click="cancelOrder(pro.orderId)"></u-button>
+										<u-button v-if="pro.status == 2 || pro.status == 3 || pro.status == 4"
+											type="primary" shape="circle" text="申请退款"
+											@click="refundOrder(pro)"></u-button>
 									</view>
-									<view class="count">
-										X{{pro.count}}
-									</view>
-								</view>
-							</view>
-							<view class="orderAction">
-								<view class="left">
-									<u-button v-if="pro.status == 2" type="primary" shape="circle"
-										text="取消订单"></u-button>
-								</view>
-								<view class="right">
-									<u-button type="primary" shape="circle">{{orderAction(pro.status)}}</u-button>
-								</view>
-							</view>
-							<view class="" v-if="indexS === orderNo.shopDetails.length - 1">
-								<view class="bottom">
-									<view v-if="pro.status == 1" class="cancel">
-										<span style="color: red;">剩余时间</span>
-										<template>
-											<u-count-down :time="time(pro)" @finish="finish(pro)"
-												format="HH:mm:ss"></u-count-down>
-										</template>
+									<view class="right">
+										<u-button type="primary" shape="circle"
+											@click="action(pro)">{{orderAction(pro.status)}}</u-button>
 									</view>
 								</view>
-								<view class="total">
-									<text class="total-price">
-										合计:￥{{pro.etc.totalPrice}}
-									</text>
+								<view class="" v-if="indexS === orderNo.shopDetails.length - 1">
+									<view class="bottom">
+										<view v-if="pro.status == 1" class="cancel">
+											<span style="color: red;">剩余时间</span>
+											<template>
+												<u-count-down :time="time(pro)" @finish="finish(pro)"
+													format="HH:mm:ss"></u-count-down>
+											</template>
+										</view>
+										<view class="cancelOrder">
+											<template>
+												<view class="cancel">
+													<u-action-sheet round :closeOnClickOverlay="true"
+														:title="reason(pro.status)" :show="show" @close="close()">
+														<slot>
+															<u-button class="confirmCancel" type="primary"
+																shape="circle" text="提交"
+																@click="cancelORrefund(pro)"></u-button>
+															<u--textarea class="reason" v-model="Reason"
+																placeholder="请输入理由" count height="200"></u--textarea>
+														</slot>
+													</u-action-sheet>
+													<view class="comment">
+														<u-action-sheet round :closeOnClickOverlay="true" title="评价"
+															:show="showRate" @close="close()">
+															<slot>
+																<u-button class="confirmComment" type="primary"
+																	shape="circle" text="提交"
+																	@click="comment(pro)"></u-button>
+																<u--textarea class="rate" v-model="content"
+																	placeholder="请输入评价" count
+																	height="200"></u--textarea>
+															</slot>
+														</u-action-sheet>
+													</view>
+												</view>
+											</template>
+										</view>
+									</view>
+									<view class="total">
+										<text class="total-price">
+											合计:￥{{pro.etc.totalPrice}}
+										</text>
+									</view>
 								</view>
 							</view>
 						</view>
-
 					</view>
 				</view>
 			</view>
@@ -80,10 +117,14 @@
 
 <script>
 	import {
-		getOrder
+		getOrder,
+		cancelOrder,
+		refundOrder
 	} from '@/api/modules/order.js'
 	import {
-		getDetail
+		getDetail,
+		updateDetail,
+		applyRefund
 	} from '@/api/modules/order_item.js'
 	import {
 		getProByIds
@@ -118,10 +159,21 @@
 				}, {
 					name: '待评价'
 				}, {
+					name: '已评价'
+				}, {
 					name: '已取消'
+				}, {
+					name: '退款'
 				}],
 				orders: [],
 				status: 0,
+				show: false,
+				flag: false, //取消or退款
+				showRate: false,
+				rate: 0,
+				content: '',
+				Reason: '',
+				orderId: 0
 			}
 		},
 		mounted() {
@@ -141,27 +193,25 @@
 			},
 			// 订单状态显示
 			orderStatus(item) {
-				let title = ['等待买家付款', '买家已付款', '卖家已发货', '交易成功'];
-				if (item.status == 5) {
+				let title = ['等待买家付款', '买家已付款', '卖家已发货', '交易成功', '交易结束'];
+				if (item.status == 6) {
 					if (item.etc.cancelReason == "超时自动取消")
 						return '超时取消'
 					else
 						return '交易关闭'
+				}
+				if (item.status == 7) {
+					if (item.refundStatus == 0)
+						return '待审核'
+					else if (item.refundStatus == 1)
+						return '退款成功'
 				} else
-					return title[item.status - 1];
+					return title[item.status - 1]
 			},
 			// 订单处理
 			orderAction(status) {
-				let title = ['继续付款', '催发货', '确认收货', '评价', '删除订单'];
-				return title[status - 1];
-			},
-			scrolltolower() {
-				//在1s后执行一次该函数
-				// setTimeout(() => {
-
-				// 	this.getOrderList(this.status)
-
-				// }, 1000)
+				let title = ['继续付款', '催发货', '确认收货', '评价', '删除订单']
+				return title[status - 1]
 			},
 			// 自动取消时间
 			time(pro) {
@@ -174,6 +224,106 @@
 					title: '订单' + pro.etc.no + '超时自动取消'
 				})
 				this.getOrderList(0)
+			},
+			close() {
+				this.show = false
+				this.showRate = false
+			},
+			// 评价
+			comment(pro) {
+				updateDetail({
+					orderId: pro.orderId,
+					productId: pro.productId,
+					status: status
+				}).then(res1 => {
+					console.log(res1.data)
+					self.satus = status + 1
+					self.getOrderList(status + 1)
+				})
+			},
+			reason(status) {
+				if (status == 1)
+					return '取消理由'
+				else if (status == 2 || status == 3 || status == 4)
+					return '退款理由'
+			},
+			// 取消订单
+			cancelOrder(orderId) {
+				console.log("取消")
+				this.show = true
+				this.flag = true //取消订单
+				this.orderId = orderId
+			},
+			cancelORrefund(pro) {
+				if (this.flag == true) { //取消
+					cancelOrder({
+						orderId: this.orderId,
+						reason: this.Reason
+					}).then(res => {
+						console.log('取消', res.data)
+						uni.showToast({
+							title: '取消成功',
+						})
+						this.show = false
+						this.getOrderList(5)
+						this.status = 5
+					}).catch(err => {
+						console.log(err)
+					})
+				} else { // 退款
+					applyRefund({
+						orderId: pro.orderId,
+						status: pro.status,
+						proId: pro.productId,
+						isPet: pro.isPet,
+						reason: this.Reason
+					}).then(res => {
+						console.log('退款', res.data)
+						uni.showToast({
+							title: '申请退款成功'
+						})
+						this.show = false
+						this.getOrderList(7)
+						this.status = 7
+					})
+				}
+			},
+			// 退款
+			refundOrder(pro) {
+				this.show = true
+				this.flag = false //申请退款
+			},
+			action(pro) {
+				let status = pro.status
+				if (status != 2) {
+					let self = this
+					uni.showModal({
+						title: this.orderAction(status),
+						content: '是否继续',
+						success: function(res) {
+							if (res.confirm) {
+								console.log('用户点击确定');
+								// 执行确认后的操作
+
+								updateDetail({
+									orderId: pro.orderId,
+									productId: pro.productId,
+									status: status
+								}).then(res1 => {
+									console.log(res1.data)
+									self.satus = status + 1
+									self.getOrderList(status + 1)
+								})
+
+							} else if (res.cancel) {
+								console.log('用户点击取消');
+								// 执行取消后的操作
+							}
+						}
+					})
+				} else if (status == 4) { //评价
+					this.showRate = true
+				}
 			},
 			// 获取订单
 			getOrderList(status) {
@@ -308,13 +458,12 @@
 
 	.tabs {
 		margin-top: 82rpx;
-		width: 100%;
-		display: flex;
+		// display: flex;
 		margin-bottom: 10px;
 		position: fixed;
-		top: 0;
+		// top: 0;
 		z-index: 1000;
-		background-color: white;
+		// background-color: white;
 	}
 
 	.order-content {
@@ -431,8 +580,22 @@
 						padding: 0 10rpx;
 						justify-content: space-between;
 
-						.cancel {
-							float: left;
+						.cancelOrder {
+
+							.cancel {
+								display: block;
+
+								.confirmCancel {
+									width: 120rpx;
+									position: absolute;
+									left: 560rpx;
+									top: 6rpx;
+								}
+
+								.reason {
+									text-align: left;
+								}
+							}
 						}
 					}
 
