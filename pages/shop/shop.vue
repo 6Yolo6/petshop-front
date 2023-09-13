@@ -24,11 +24,13 @@
 					<uni-col :span="12" v-for="(item, index) in productList" :index="index" :key="index">
 						<view class="demo-uni-col dark">
 							<uni-card :isShadow="true" :title="item.name" :sub-title="item.etc.shopName" mode="basic"
-								:extra="item.price.toString()" @click="toDetail(item.id)">
+								:extra="item.price.toString()" @click="toDetail(item.id)" is-full
+								shadow="0 0 5px rgba(0, 0, 0, 0.3)">
 								<view>
 									<view>
-										<image style="height: 230rpx;width: 250rpx;" mode="scaleToFill"
-											:src="item.img" />
+										<u--image :src="item.img" mode="aspectFit" width="100%" height="160rpx"
+											radius="10">
+										</u--image>
 									</view>
 									<view class="content-box">
 										<u--text style="font-size: 10rpx;" :lines="2" :text="item.description">
@@ -193,32 +195,13 @@
 		.card {
 
 
-			.custom-cover {
-				object-fit: cover;
-				width: 200px;
-				/* 设置图片宽度 */
-				height: 300px;
-				/* 设置图片高度 */
-			}
 
 
 			uni-image {
 				width: 120px;
 			}
 
-			text {
-				text-overflow: -o-ellipsis-lastline;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				/* 使用WebKit引擎的盒子布局模型 */
-				display: -webkit-box;
-				/* 设置显示的行数为3行 */
-				-webkit-line-clamp: 3;
-				/* 设置显示的行数为3行 */
-				line-clamp: 3;
-				/* 设置盒子内文本垂直排列 */
-				-webkit-box-orient: vertical;
-			}
+
 		}
 	}
 </style>
