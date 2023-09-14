@@ -21,6 +21,7 @@
 			</u-cell-group>
 		</view>
 		<u-line dashed length="90%" margin="20rpx 20rpx 20rpx 20rpx" color="red"></u-line>
+		<u-toast ref="uToast"></u-toast>
 		<view v-if="isEmpty" class="empty">
 			评价空空如也
 		</view>
@@ -31,14 +32,15 @@
 						<view slot="title">
 							<u--text type="info" :text="item.etc.username" class="commentator-info"></u--text>
 							<u--text type="success" :text="'（已购）'+item.etc.productName+'×'+item.etc.count"
-								class="commentator-info"></u--text>
+								class="commentator-info"
+								@click="toProduct({productId:item.orderItemId,isPet:item.isPet})"></u--text>
 							<u--text :lines="2" :text="item.comment" class="commentator-info"></u--text>
 						</view>
 						<u-avatar slot="icon" shape="square" size="50" :src="item.etc.avatar"
 							customStyle="margin: -3px 5px -3px 0"></u-avatar>
 						<view slot="value">
 							<u-rate count="5" :value="item.rate" :allowHalf="true" :readonly="true"></u-rate>
-							<u--text type="warning" text="删除" style="position: absolute;left: 85%;"
+							<u--text v-if="item.isMe" type="warning" text="删除" style="position: absolute;left: 85%;"
 								@click="deleteReview(item.id)"></u--text>
 						</view>
 					</u-cell>
@@ -55,7 +57,12 @@
 	import {
 		getById
 	} from '@/api/modules/shop.js'
-
+	import {
+		getId
+	} from '@/api/modules/user.js'
+	import {
+		checkStock
+	} from '@/api/modules/product.js'
 	export default {
 		data() {
 			return {
@@ -74,36 +81,74 @@
 					this.productId = event.id
 					this.reviewType = "商品"
 				}
-				console.log(event.shopId)
 				this.getShop(event.shopId)
 				this.getReview(event.shopId)
 
 			}
 		},
 		methods: {
+			//跳转到商品详情
+			toProduct(params) {
+				console.log("product", params.productId)
+				if (params.isPet == 1) {
+					// uni.navigateTo({
+					// 	url: '/pages/index/pet_details?id=' + params.productId
+					// })
+					this.$refs.uToast.show({
+						type: 'error',
+						title: '失败主题',
+						message: "商品消失了",
+						iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
+					})
+				} else {
+					checkStock({ productId: params.productId }).then(res => {
+						console.log(res.data.message)
+						if (res.data.message == "库存充足") {
+							uni.navigateTo({
+								url: '/pages/shop/product_detail?id=' + params.productId
+							})
+						} else {
+							this.$refs.uToast.show({
+								type: 'error',
+								title: '失败主题',
+								message: "商品消失了",
+								iconUrl: 'https://cdn.uviewui.com/uview/demo/toast/error.png'
+							})
+						}
+					})
+				}
+			},
 			//获取商店评论
 			getReview(shopId) {
 				getByShopId({ shopId: shopId, productId: this.productId }).then(res => {
 					this.reviewList = res.data.data
-					if (this.reviewList.length > 0) {
-						this.isEmpty = false
-						let sum = 0
-						for (let i in this.reviewList) {
-							sum += this.reviewList[i].rate
-							console.log(sum)
+					let myId = 0
+					getId().then(res => {
+						myId = res.data.data
+						if (this.reviewList.length > 0) {
+							this.isEmpty = false
+							let sum = 0
+							for (let i in this.reviewList) {
+								// 自己的评论可以删除
+								if (myId == this.reviewList[i].userId) {
+									this.reviewList[i].isMe = true
+								} else {
+									this.reviewList[i].isMe = false
+								}
+								sum += this.reviewList[i].rate
+							}
+							//保留一位小数
+							this.shopRate = (sum / this.reviewList.length).toFixed(1)
 						}
-						//保留一位小数
-						this.shopRate = (sum / this.reviewList.length).toFixed(1)
-					}
-
-					console.log(this.reviewList)
+						console.log("reviewList", this.reviewList)
+					})
 				})
 			},
 			//获取商店信息
 			getShop(id) {
 				getById({ id: id }).then(res => {
 					this.shopName = res.data.data.name
-					console.log()
+					// console.log()
 
 				}).catch(err => {
 					console.log(err)

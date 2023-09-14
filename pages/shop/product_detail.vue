@@ -88,6 +88,7 @@
 		},
 		mounted() {
 			this.getById(Number(this.$route.query.id))
+			console.log("id", Number(this.$route.query.id))
 		},
 		computed: {
 			// totalProductNum() {

@@ -87,6 +87,8 @@
 														<u-action-sheet round :closeOnClickOverlay="true" title="评价"
 															:show="showRate" @close="close()">
 															<slot>
+																<u-rate count="5" v-model="rate"
+																	class="rateIcon"></u-rate>
 																<u-button class="confirmComment" type="primary"
 																	shape="circle" text="提交"
 																	@click="comment(pro)"></u-button>
@@ -129,7 +131,9 @@
 	import {
 		getProByIds
 	} from '@/api/modules/product.js'
-
+	import {
+		add
+	} from '@/api/modules/review.js'
 
 	// 自定义比较函数，用于按照 createTime 进行降序排序
 	function compareOrders(order1, order2) {
@@ -173,7 +177,7 @@
 				rate: 0,
 				content: '',
 				Reason: '',
-				orderId: 0
+				orderId: 0,
 			}
 		},
 		mounted() {
@@ -231,14 +235,19 @@
 			},
 			// 评价
 			comment(pro) {
-				updateDetail({
+				console.log(pro)
+				console.log("rate", this.rate)
+				console.log("orderId", pro.orderId)
+				add({
+					shopId: pro.shopId,
+					comment: this.content,
+					rate: this.rate,
+					orderItemId: pro.id,
+					isPet: pro.isPet == true ? 1 : 0,
 					orderId: pro.orderId,
-					productId: pro.productId,
-					status: status
-				}).then(res1 => {
-					console.log(res1.data)
-					self.satus = status + 1
-					self.getOrderList(status + 1)
+				}).then(res => {
+					console.log(res.data)
+
 				})
 			},
 			reason(status) {
@@ -295,7 +304,9 @@
 			},
 			action(pro) {
 				let status = pro.status
-				if (status != 2) {
+				if (status == 4) { //评价
+					this.showRate = true
+				} else if (status != 2) {
 					let self = this
 					uni.showModal({
 						title: this.orderAction(status),
@@ -321,8 +332,6 @@
 							}
 						}
 					})
-				} else if (status == 4) { //评价
-					this.showRate = true
 				}
 			},
 			// 获取订单
@@ -456,6 +465,12 @@
 
 	}
 
+	.rateIcon {
+		position: absolute;
+		top: 60rpx;
+		left: 35%;
+	}
+
 	.tabs {
 		margin-top: 82rpx;
 		// display: flex;
@@ -586,6 +601,13 @@
 								display: block;
 
 								.confirmCancel {
+									width: 120rpx;
+									position: absolute;
+									left: 560rpx;
+									top: 6rpx;
+								}
+
+								.confirmComment {
 									width: 120rpx;
 									position: absolute;
 									left: 560rpx;
