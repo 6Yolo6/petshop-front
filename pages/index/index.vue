@@ -12,12 +12,14 @@
 				bgColor="#ffffff"></u-swiper>
 		</view>
 		<!-- 类别显示 -->
-		<u-scroll-list>
-			<view v-for="(item, index) in category_list" :key="index" class="categories">
-				<image :src="item.img" class="category" @click="clickCategory(index)"></image>
-				<h3 class="category-name">{{item.name}}</h3>
-			</view>
-		</u-scroll-list>
+		<view>
+			<u-scroll-list>
+				<view v-for="(item, index) in category_list" :key="index" class="categories">
+					<image :src="item.img" class="category" @click="clickCategory(index)"></image>
+					<h3 class="category-name">{{item.name}}</h3>
+				</view>
+			</u-scroll-list>
+		</view>
 		<!-- 主页宠物推荐 -->
 		<scroll-view scroll-y="true" class="scrolly" show-scrollbar="true" @scrolltolower="scrolltolower">
 			<uni-row class="demo-uni-row">
@@ -94,6 +96,7 @@
 				}).then(res => {
 					this.pet_list.push(...res.data.data.records)
 					this.total = res.data.data.total
+					console.log(this.pet_list)
 				}).catch(err => {
 					console.log(err)
 				})
@@ -169,9 +172,9 @@
 	}
 
 	.categories {
-		height: 100%;
 		min-width: 20%;
 		margin: 10px;
+		height: 170rpx;
 	}
 
 	uni-image {
@@ -185,6 +188,7 @@
 	.category {
 		border-radius: 50%;
 		width: 100%;
+		height: 130rpx;
 	}
 
 	.search {

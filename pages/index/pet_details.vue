@@ -28,7 +28,8 @@
 
 <script>
 	import {
-		getPetById
+		getPetById,
+		addVisit
 	} from '@/api/modules/pet.js'
 	import {
 		addFavor,
@@ -38,6 +39,11 @@
 	import {
 		validate
 	} from '../../api/modules/user';
+	import {
+		getStore
+	} from '../../libs/storage.js';
+
+
 	export default {
 		data() {
 			return {
@@ -163,16 +169,25 @@
 				}
 
 			},
+			//增加浏览量
+			addVisit(id) {
+				addVisit({
+					id: id
+				}).then(res => {
+					console.log(res)
+				})
+			},
 			// 获取宠物信息
 			getDetail(id) {
 				getPetById({
 					id: id
 				}).then(res => {
 					this.pet_detail = res.data.data
-					console.log(this.pet_detail)
-					console.log(888)
+					this.addVisit(this.pet_detail.id)
 					// 判断是否收藏
-					this.isFavor()
+					if (uni.getStorageSync('username')) {
+						this.isFavor()
+					}
 				}).catch(err => {
 					console.log(err)
 				})

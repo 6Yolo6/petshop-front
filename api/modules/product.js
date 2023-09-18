@@ -24,3 +24,6 @@ export function modifyStock(params) {
 export function checkStock(params) {
 	return get('/product/checkStock', params)
 }
+export function addVisit(params) {
+	return post('/product/addVisit', params)
+}

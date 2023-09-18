@@ -37,7 +37,8 @@
 
 <script>
 	import {
-		getProById
+		getProById,
+		addVisit
 	} from '@/api/modules/product.js'
 	import {
 		add
@@ -99,6 +100,13 @@
 			// }
 		},
 		methods: {
+			//添加访问量
+			addVisit(id) {
+				console.log(id)
+				addVisit({ productId: id }).then(res => {
+					console.log(res)
+				})
+			},
 			// 导航到商品评价
 			toReview() {
 				uni.navigateTo({
@@ -107,11 +115,13 @@
 			},
 			// 根据id获取周边详情
 			getById(id) {
+				this.addVisit(id)
 				getProById({
 					id: id
 				}).then(res => {
 					this.product = res.data.data
 					this.judgeFavor(this.product.id)
+					console.log(11)
 					console.log(res.data.data)
 				}).catch(error => {
 					console.log(error)

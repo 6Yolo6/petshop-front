@@ -52,7 +52,8 @@
 		getAllCate
 	} from '@/api/modules/product_category.js'
 	import {
-		getByCategory
+		getByCategory,
+
 	} from '@/api/modules/product.js'
 
 	export default {
@@ -81,6 +82,7 @@
 			this.getByCategory()
 		},
 		methods: {
+
 			// 聚焦跳转到搜索页
 			handleFocus() {
 				uni.navigateTo({
@@ -130,10 +132,10 @@
 					pageSize: 6,
 					category: 0
 				}).then(res => {
-					console.log("周边", res.data)
+					// console.log("周边", res.data)
 					this.productList.push(...res.data.data.records)
 					this.total = res.data.data.total
-					console.log("全部周边", this.productList)
+					// console.log("全部周边", this.productList)
 				}).catch(error => {
 					console.log(error)
 				})

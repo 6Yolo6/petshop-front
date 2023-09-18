@@ -16,27 +16,23 @@ function interceptors(response) {
 		return Promise.resolve(result)
 	} else if (result.statusCode === 600) {
 		// Page redirection in Uniapp
-		uni.navigateTo({
-			url: '/'
-		})
+		uni.navigateTo({ url: '/' })
 		return Promise.reject('need login!')
 	} else if (result.statusCode === 400) {
-		console.log("result", result)
-		if (result.message === "Token无效，请重新登录") {
+		console.log('result', result)
+		if (result.message === 'Token无效，请重新登录') {
 			// Show a toast message
 			uni.showToast({
 				icon: 'none', // Use 'none' for no icon, or you can use 'success' or 'loading' as well
-				title: "token过期请先登录"
+				title: 'token过期请先登录'
 			})
 
 			// Navigate to the login page
-			uni.navigateTo({
-				url: '/pages/login/login'
-			})
+			uni.navigateTo({ url: '/pages/login/login' })
 		}
-		return Promise.reject(result.message);
+		return Promise.reject(result.message)
 	} else {
-		return Promise.reject(result.message);
+		return Promise.reject(result.message)
 	}
 }
 
@@ -51,19 +47,17 @@ export function get(url, params) {
 			data: params,
 			header: { 'token': token },
 			success: res => {
-				console.log("成功", res)
-				if (res.data.statusCode == "400") {
-					if (res.data.message == "Token无效，请重新登录") {
+				// console.log("成功", res)
+				if (res.data.statusCode == '400') {
+					if (res.data.message == 'Token无效，请重新登录') {
 						// Show a toast message
 						uni.showToast({
 							icon: 'error',
-							title: "token过期请先登录"
-						});
+							title: 'token过期请先登录'
+						})
 
 						// Navigate to the login page
-						uni.navigateTo({
-							url: '/pages/login/login'
-						});
+						uni.navigateTo({ url: '/pages/login/login' })
 					}
 					// return Promise.reject(res.data.message);
 				}

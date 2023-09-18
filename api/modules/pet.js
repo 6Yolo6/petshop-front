@@ -9,3 +9,6 @@ export function getByCate(params) {
 export function getPetById(params) {
 	return get('/pet/getById', params)
 }
+export function addVisit(params) {
+	return post('/pet/addVisit', params)
+}
