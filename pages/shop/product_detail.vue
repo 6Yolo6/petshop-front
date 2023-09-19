@@ -1,7 +1,8 @@
 <template>
 	<view>
 		<view class="head">
-			<u-navbar :title="product.name" :autoBack="true"></u-navbar>
+			<u-navbar :title="product.name" :autoBack="true" rightText="评价" @rightClick="toReview()"
+				style="font-weight: bold;"></u-navbar>
 		</view>
 		<view class="detail">
 			<view class="top">
@@ -24,7 +25,7 @@
 			</view>
 			<view class="describle">
 				<uni-title type="h2" title="描述" align="center"></uni-title>
-				<u--text type="info" :text="product.description"></u--text>
+				<u--text type="info" :text="product.description" class="description" line="10"></u--text>
 			</view>
 		</view>
 		<view class="goods-carts">
@@ -36,7 +37,8 @@
 
 <script>
 	import {
-		getProById
+		getProById,
+		addVisit
 	} from '@/api/modules/product.js'
 	import {
 		add
@@ -87,6 +89,7 @@
 		},
 		mounted() {
 			this.getById(Number(this.$route.query.id))
+			console.log("id", Number(this.$route.query.id))
 		},
 		computed: {
 			// totalProductNum() {
@@ -97,13 +100,28 @@
 			// }
 		},
 		methods: {
+			//添加访问量
+			addVisit(id) {
+				console.log(id)
+				addVisit({ productId: id }).then(res => {
+					console.log(res)
+				})
+			},
+			// 导航到商品评价
+			toReview() {
+				uni.navigateTo({
+					url: '/pages/shop/shop_review?shopId=' + this.product.shopId + '&id=' + this.product.id
+				});
+			},
 			// 根据id获取周边详情
 			getById(id) {
+				this.addVisit(id)
 				getProById({
 					id: id
 				}).then(res => {
 					this.product = res.data.data
 					this.judgeFavor(this.product.id)
+					console.log(11)
 					console.log(res.data.data)
 				}).catch(error => {
 					console.log(error)
@@ -230,6 +248,10 @@
 </script>
 
 <style lang="scss" scoped>
+	.describle {
+		margin-left: 33px;
+	}
+
 	.info {
 		position: absolute;
 		bottom: 40rpx;

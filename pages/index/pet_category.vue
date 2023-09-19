@@ -9,7 +9,7 @@
 			</view>
 		</view>
 
-		<view>
+		<view class="list">
 			<view v-for="(item,index) in pet_list" :key="index">
 				<uni-card :title="item.name" :isFull="true" :sub-title="item.breed" :extra="''+item.price+'￥'"
 					@click="toDetail(item.id)" :thumbnail="item.img">
@@ -130,6 +130,10 @@
 		top: 0;
 		z-index: 1000;
 		background-color: white;
+	}
+
+	.list {
+		margin-top: 150rpx;
 	}
 
 	.select {

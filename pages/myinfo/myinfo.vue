@@ -15,7 +15,8 @@
 			<view class="card">
 				<view class="top">
 					<view class="userImage">
-						<u--image src="https://cdn.uviewui.com/uview/album/1.jpg"></u--image>
+						<u--image :src="detail.avatar" mode="scaleToFill" shape="circle" width="200rpx"
+							height="200rpx"></u--image>
 					</view>
 				</view>
 				<view class="bottom">
@@ -95,12 +96,14 @@
 <script>
 	import {
 		login,
-		validate
+		validate,
+		getByName
 	} from '../../api/modules/user';
 	//import {  } from "@/common/api/{$}.js";
 	export default {
 		data() {
 			return {
+				detail: { avatar: '' },
 				name: "",
 				status: 0,
 				isLogin: false,
@@ -112,8 +115,9 @@
 		},
 		onShow() {
 			this.isActive = true;
-			if (this.isActive)
+			if (this.isActive) {
 				this.validate()
+			}
 		},
 		onHide() {
 			this.isActive = false
@@ -122,17 +126,29 @@
 
 		},
 		methods: {
-			onChange(e) {
-				console.log("selected:", this.selected)
-				console.log("e:", e);
-				if (e == 0) {
+			// onChange(e) {
+			// 	console.log("selected:", this.selected)
+			// 	console.log("e:", e);
+			// 	if (e == 0) {
 
-				} else if (e == 1) {
-					this.logout()
-				}
+			// 	} else if (e == 1) {
+			// 		this.logout()
+			// 	}
+			// },
+			// 初始化个人信息
+			getDetail() {
+				console.log(this.name)
+				getByName({ username: this.name }).then(res => {
+					this.detail = res.data.data
+
+					console.log(res)
+				}).catch(err => {
+					console.log(err)
+				})
 			},
+			// 页面跳转
 			toPage(page) {
-				console.log('/pages/myinfo/' + page + '/' + page, page);
+				// console.log('/pages/myinfo/' + page + '/' + page, page);
 				if (this.isLogin) {
 					uni.navigateTo({
 						url: '/pages/myinfo/' + page + '/' + page
@@ -148,12 +164,14 @@
 			validate() {
 				validate().then(res => {
 					// 更新登陆状态:登录或未登录
-					if (res.data.statusCode == "200")
+					if (res.data.statusCode == "200") {
 						this.isLogin = true
-					else {
+						this.name = uni.getStorageSync("username")
+						this.getDetail()
+					} else {
 						this.isLogin = false
+
 					}
-					this.name = uni.getStorageSync("username")
 				}).catch(error => {
 
 				})
@@ -228,11 +246,12 @@
 					position: absolute;
 					bottom: 24%;
 					left: 10%;
-					width: 150rpx;
-					height: 150rpx;
-					overflow: hidden;
+					// width: 150rpx;
+					// height: 150rpx;
+					// overflow: hidden;
 					border-radius: 50%;
 					border: 2px solid white;
+					// width: 50rpx !important;
 				}
 			}
 

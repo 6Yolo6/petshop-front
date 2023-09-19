@@ -4,7 +4,7 @@
 		<view class="content">
 			<!-- 头部logo -->
 			<view class="header">
-				<image :src="logoImage"></image>
+				<u-navbar :autoBack="true"></u-navbar>
 			</view>
 			<!-- 主体 -->
 			<view class="main">

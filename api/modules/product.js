@@ -20,3 +20,10 @@ export function getShopIds(params) {
 export function modifyStock(params) {
 	return post('/product/modifyStockByIds', params)
 }
+
+export function checkStock(params) {
+	return get('/product/checkStock', params)
+}
+export function addVisit(params) {
+	return post('/product/addVisit', params)
+}

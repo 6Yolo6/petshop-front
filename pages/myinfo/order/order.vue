@@ -50,7 +50,6 @@
 								</view>
 								<view class="orderAction">
 									<view class="left">
-
 										<u-button v-if="pro.refundStatus == 0">
 											<uni-text class="orange-text">已申请退款</uni-text>
 										</u-button>
@@ -84,6 +83,7 @@
 												<u-action-sheet round :closeOnClickOverlay="true" title="评价"
 													:show="showRate" @close="close()">
 													<slot>
+														<u-rate count="5" v-model="rate" class="rateIcon"></u-rate>
 														<u-button class="confirmComment" type="primary" shape="circle"
 															text="提交" @click="comment(pro)"></u-button>
 														<u--textarea class="rate" v-model="content" placeholder="请输入评价"
@@ -103,7 +103,6 @@
 													format="HH:mm:ss"></u-count-down>
 											</template>
 										</view>
-
 									</view>
 									<view class="total">
 										<text class="total-price">
@@ -134,7 +133,9 @@
 	import {
 		getProOrPetByIds
 	} from '@/api/modules/product.js'
-
+	import {
+		add
+	} from '@/api/modules/review.js'
 
 	// 自定义比较函数，用于按照 createTime 进行降序排序
 	function compareOrders(order1, order2) {
@@ -237,14 +238,19 @@
 			},
 			// 评价
 			comment(pro) {
-				updateDetail({
+				console.log(pro)
+				console.log("rate", this.rate)
+				console.log("orderId", pro.orderId)
+				add({
+					shopId: pro.shopId,
+					comment: this.content,
+					rate: this.rate,
+					orderItemId: pro.id,
+					isPet: pro.isPet == true ? 1 : 0,
 					orderId: pro.orderId,
-					productId: pro.productId,
-					status: status
-				}).then(res1 => {
-					console.log(res1.data)
-					self.satus = status + 1
-					self.getOrderList(status + 1)
+				}).then(res => {
+					console.log(res.data)
+
 				})
 			},
 			reason(status) {
@@ -304,7 +310,9 @@
 			},
 			action(pro) {
 				let status = pro.status
-				if (status != 2) {
+				if (status == 4) { //评价
+					this.showRate = true
+				} else if (status != 2) {
 					let self = this
 					uni.showModal({
 						title: this.orderAction(status),
@@ -465,6 +473,12 @@
 
 	}
 
+	.rateIcon {
+		position: absolute;
+		top: 60rpx;
+		left: 35%;
+	}
+
 	.tabs {
 		margin-top: 82rpx;
 		// display: flex;
@@ -595,6 +609,13 @@
 								top: 6rpx;
 							}
 
+							.confirmComment {
+								width: 120rpx;
+								position: absolute;
+								left: 560rpx;
+								top: 6rpx;
+							}
+
 							.reason {
 								text-align: left;
 							}
@@ -606,8 +627,6 @@
 						margin-bottom: 30rpx;
 						padding: 0 10rpx;
 						justify-content: space-between;
-
-
 					}
 
 					.total {
@@ -621,7 +640,6 @@
 						}
 					}
 				}
-
 
 			}
 		}
