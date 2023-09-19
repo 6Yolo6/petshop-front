@@ -10,8 +10,8 @@ export function getByCategory(params) {
 export function getProById(params) {
 	return get('/product/getById', params)
 }
-export function getProByIds(params) {
-	return get('/product/getByIds', params)
+export function getProOrPetByIds(params) {
+	return get('/product/getProOrPetByIds', params)
 }
 export function getShopIds(params) {
 	return get('/product/getShopIds', params)
