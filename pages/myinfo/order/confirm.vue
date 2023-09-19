@@ -341,13 +341,15 @@
 				const countIds = []
 				const productIds = []
 				const shopIds = []
+				const isPets = []
 				// 遍历 this.carts 数组，提取 count 和 productId 和 shopId 属性并存入相应数组
-				if (this.isPet == 0 && this.isPro == 0) {
+				if (this.isPet == 0) {
 					this.carts.forEach(shop => {
 						shop.products.forEach(product => {
 							countIds.push(product.count)
 							productIds.push(product.productId)
 							shopIds.push(product.shopId)
+							isPets.push(0)
 						})
 					})
 				} else if (this.isPet == 1) {
@@ -382,26 +384,31 @@
 								}).then(res2 => {
 									console.log("订单详情", res2.data)
 									if (this.isPet == 1) {
-										uni.switchTab({
+										uni.navigateTo({
 											url: '/pages/myinfo/order/order'
 										})
 									} else {
 										modifyStock({
 											ids: productIds.join(","),
-											stock: -1
-										}).then(s => {
-											console.log("库存", s.data)
+											isPets: isPets.join(","),
+											counts: countIds.join(",")
+										}).then(res3 => {
+											console.log("库存", res3.data)
 											if (this.isPro == 0) {
 												deleteByIds({
 													ids: productIds.join(",")
 												}).then(res3 => {
 													console.log("清空购物车", res3
 														.data)
-													uni.switchTab({
+													uni.navigateTo({
 														url: '/pages/myinfo/order/order'
 													})
 												}).catch(error3 => {
 													console.log(error3)
+												})
+											} else {
+												uni.navigateTo({
+													url: '/pages/myinfo/order/order'
 												})
 											}
 										}).catch(errors => {
@@ -432,13 +439,14 @@
 								}).then(res2 => {
 									console.log("订单详情", res2.data)
 									if (this.isPet == 1) {
-										uni.switchTab({
+										uni.navigateTo({
 											url: '/pages/myinfo/order/order'
 										})
 									} else {
 										modifyStock({
 											ids: productIds.join(","),
-											stock: -1
+											isPets: isPets.join(","),
+											counts: countIds.join(",")
 										}).then(s => {
 											console.log("库存", s.data)
 											if (this.isPro == 0) {
@@ -447,11 +455,15 @@
 												}).then(res3 => {
 													console.log("清空购物车", res3
 														.data)
-													uni.switchTab({
+													uni.navigateTo({
 														url: '/pages/myinfo/order/order'
 													})
 												}).catch(error3 => {
 													console.log(error3)
+												})
+											} else {
+												uni.navigateTo({
+													url: '/pages/myinfo/order/order'
 												})
 											}
 										}).catch(errors => {
