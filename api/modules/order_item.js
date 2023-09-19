@@ -14,7 +14,7 @@ export function updateDetail(params) {
 	return post('/orderItem/update', params)
 }
 export function refundDetail(params) {
-	return post('/orderItem/refund', params)
+	return post('/orderItem/checkRefund', params)
 }
 export function applyRefund(params) {
 	return post('/orderItem/applyRefund', params)
