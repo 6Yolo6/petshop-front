@@ -1,33 +1,35 @@
 <template>
 	<view>
 		<view class="header">
-			<u-navbar title="购物车" :autoBack="true">
+			<u-navbar title="购物车" :autoBack="true" bgColor="lightyellow">
 			</u-navbar>
 		</view>
-		<view>
-			<view class="shopCart" v-for="(shop, indexS) in carts" :key="indexS">
-				<view class="shop">
-					<view class="">
-						{{shop.shopName}} >
+		<view style="background-color:aliceblue;">
+			<view  v-for="(shop, indexS) in carts" :key="indexS" style="margin-bottom: 1px; background-color: #FFFFFF; margin-top: 90rpx;">
+				<view >
+					
+					<view style="display: flex;line-height: 28upx;align-items: center;background-color: bisque;" @click="toShop(shop.products[0].shopId)">					
+				<image src="../../static/tabbar/cart.png" mode="scaleToFill" style="vertical-align: middle; width: 20px; height: 20px;"></image>
+									{{shop.shopName}} >
 					</view>
 				</view>
-				<view class="carts-detail" v-for="(product,indexP) in shop.products" :key="indexP">
+				<view class="carts-detail" v-for="(product,indexP) in shop.products" :key="indexP" >
 					<view class="detail-left">
 						<view class="goods-left">
 							<checkbox-group @change="selected(product)">
 								<label>
-									<checkbox class="selected" color="#555555" :checked="product.checked" />
-									<text></text>
+									<checkbox shape="circle"  class="selected" color="#555555" :checked="product.checked" />
+
 								</label>
 							</checkbox-group>
-							<u--image :src="product.productImg" @click="toDetail(product.productId)" width="100px"
-								height="100px"></u--image>
+							<u--image :src="product.productImg" @click="toDetail(product.productId)" width="80px"
+								height="80px"></u--image>
 						</view>
 						<view class="size" @click.top="toDetail(product.productId)">
-							<text style="font-size: 25rpx;">{{product.productName}}</text>
-
+							<text style="font-size: 35rpx;">{{product.productName}}</text>
+							<text class="del" @click.stop="del(product,indexP)"><uni-icons type="trash"/></text>
 							<text class="goods-price">￥{{product.productPrice}}/件</text>
-							<text class="del" @click.stop="del(product,indexP)">删除</text>
+	
 						</view>
 					</view>
 					<view class="detail-right">
@@ -217,7 +219,12 @@
 				uni.navigateTo({
 					url: '/pages/shop/product_detail?id=' + id
 				});
-			}
+			},
+			toShop(id){
+				uni.navigateTo({
+					url: '/pages/shop/shop_detail?id=' + id
+				});
+			},
 		},
 		computed: {
 			totalNum() {
@@ -257,28 +264,30 @@
 	}
 
 	.shopCart {
-		margin-top: 90rpx;
+		margin-top: 120rpx;
 	}
 
 	.shop {
-		margin-left: 30rpx;
+		margin-left: 10rpx;
 	}
 
 	.carts {
-		line-height: 80rpx;
+		line-height: 60rpx;
 		background-color: #FFFFFF;
+		
 
 		&-detail {
 
 			display: flex;
-			padding: 30rpx 15rpx 30rpx 30rpx;
-			background-color: #efffff;
+			padding: 20rpx 15rpx 20rpx 10rpx;
+			background-color: lightblue;
 			justify-content: space-between;
 			border-bottom: 5rpx solid #F1F1F1;
 			align-items: center;
 
 			.detail-left {
 				display: flex;
+				border-radius: 11px;
 
 				.goods-left {
 					display: flex;
@@ -302,17 +311,17 @@
 			.detail-right {
 				text {
 					width: 50rpx;
-					line-height: 50rpx;
+					line-height: 45rpx;
 					text-align: center;
 					display: inline-block;
 					background-color: #F7F7F7;
 					margin-right: 10rpx;
+					margin-top: 50px;
+					
 				}
 
 				.add {
-					color: #FA4305;
 					border-radius: 10rpx 30rpx 30rpx 10rpx;
-					margin-right: 20rpx;
 				}
 
 				.subtract {
@@ -323,11 +332,24 @@
 	}
 
 	.del {
-		margin-left: 100px;
-		background-color: red;
-		color: #FFFFFF;
-		border-radius: 3px;
-		padding: 0 5px;
+		// display: flex;
+		// margin-left: 100px;
+		// margin-top: 10px;
+		// background-color: red;
+		// color: #FFFFFF;
+		// border-radius: 11px;
+		// padding: 0 7px;
+			display: flex; 
+		    position: relative;
+		    bottom: 40px;
+		    left: 100px;
+		    z-index: 100;
+		    margin-left: 100px;
+		    margin-top: 10px;
+		    background-color: red;
+		    color: #FFFFFF;
+		    border-radius: 11px;
+		    padding: 0 7px;
 	}
 
 	.empty {

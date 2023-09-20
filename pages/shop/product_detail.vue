@@ -17,7 +17,7 @@
 			</view>
 			<view class="content">
 				<uni-card :title="product.name" :sub-title="product.etc.shopName" :extra="product.etc.cateName"
-					:thumbnail="toString(product.price)">
+					:thumbnail="toString(product.price)" @click="toDetail(product.id)">
 					<view slot="actions" class="info">
 						<uni-tag :text="'库存:'+product.stock" type="primary" class="tag"></uni-tag>
 					</view>
@@ -32,7 +32,7 @@
 			<uni-goods-nav :options="options" :fill="true" :button-group="buttonGroup" @click="onClick"
 				@buttonClick="buttonClick" />
 		</view>
-	</view>
+	</view> 
 </template>
 
 <script>
@@ -89,6 +89,7 @@
 		},
 		mounted() {
 			this.getById(Number(this.$route.query.id))
+			console.log("商品",this.product)
 			console.log("id", Number(this.$route.query.id))
 		},
 		computed: {
@@ -100,6 +101,11 @@
 			// }
 		},
 		methods: {
+			toDetail(id) {
+				uni.navigateTo({
+					url: '/pages/shop/shop_detail?id=' + this.product.shopId
+				});
+			},
 			//添加访问量
 			addVisit(id) {
 				console.log(id)
@@ -121,8 +127,8 @@
 				}).then(res => {
 					this.product = res.data.data
 					this.judgeFavor(this.product.id)
+					console.log("信息",res.data.data)
 					console.log(11)
-					console.log(res.data.data)
 				}).catch(error => {
 					console.log(error)
 				})
