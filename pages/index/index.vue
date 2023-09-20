@@ -12,23 +12,25 @@
 				bgColor="#ffffff"></u-swiper>
 		</view>
 		<!-- 类别显示 -->
-		<u-scroll-list>
-			<view v-for="(item, index) in category_list" :key="index" class="categories">
-				<image :src="item.img" class="category" @click="clickCategory(index)"></image>
-				<h3 class="category-name">{{item.name}}</h3>
-			</view>
-		</u-scroll-list>
+		<view>
+			<u-scroll-list>
+				<view v-for="(item, index) in category_list" :key="index" class="categories">
+					<image :src="item.img" class="category" @click="clickCategory(index)"></image>
+					<h3 class="category-name">{{item.name}}</h3>
+				</view>
+			</u-scroll-list>
+		</view>
 		<!-- 主页宠物推荐 -->
 		<scroll-view scroll-y="true" class="scrolly" show-scrollbar="true" @scrolltolower="scrolltolower">
 			<uni-row class="demo-uni-row">
 				<uni-col :span="12" v-for="(item, index) in pet_list" :index="index" :key="index">
 					<view class="demo-uni-col dark">
 						<uni-card :title="item.name" :sub-title="item.breed" :extra="item.price+'￥'" padding="10rpx"
-							class="card" :is-shadow="true" shadow="0 0 5px rgba(0, 0, 0, 0.3)"
-							@click="toDetail(item.id)">
+							class="card" is-shadow shadow="0 0 5px rgba(0, 0, 0, 0.3)" @click="toDetail(item.id)"
+							is-full>
 							<view>
-								<image :src="item.img" mode="scaleToFill" style="height: 300rpx;width: 50vw;	">
-								</image>
+								<u--image :src="item.img" mode="aspectFit" width="100%" height="160rpx" radius="10">
+								</u--image>
 							</view>
 							<u--text :lines="2" :text="item.description"></u--text>
 						</uni-card>
@@ -76,8 +78,6 @@
 				});
 			},
 			scrolltolower() {
-				console.log(this.pet_list.length)
-				console.log(this.total)
 				this.pageNum++
 				if (this.pet_list.length < this.total) {
 					this.getAllPet()
@@ -96,7 +96,7 @@
 				}).then(res => {
 					this.pet_list.push(...res.data.data.records)
 					this.total = res.data.data.total
-					console.log(res)
+					console.log(this.pet_list)
 				}).catch(err => {
 					console.log(err)
 				})
@@ -148,7 +148,10 @@
 	}
 
 
-	.card {}
+	.card {
+		height: 400rpx;
+		border-radius: 15%;
+	}
 
 	.header {
 		width: 100%;
@@ -160,29 +163,8 @@
 		background-color: white;
 	}
 
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-	}
 
 
-
-	// 文本省略
-	text {
-		/* 使用省略号来表示文本截断部分（适用于Opera浏览器） */
-		text-overflow: -o-ellipsis-lastline;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		/* 使用WebKit引擎的盒子布局模型 */
-		display: -webkit-box;
-		/* 设置显示的行数为3行 */
-		-webkit-line-clamp: 3;
-		/* 设置显示的行数为3行 */
-		line-clamp: 3;
-		/* 设置盒子内文本垂直排列 */
-		-webkit-box-orient: vertical;
-	}
 
 	.swiper {
 		margin-top: 32px;
@@ -190,9 +172,9 @@
 	}
 
 	.categories {
-		height: 100%;
 		min-width: 20%;
 		margin: 10px;
+		height: 170rpx;
 	}
 
 	uni-image {
@@ -206,6 +188,7 @@
 	.category {
 		border-radius: 50%;
 		width: 100%;
+		height: 130rpx;
 	}
 
 	.search {

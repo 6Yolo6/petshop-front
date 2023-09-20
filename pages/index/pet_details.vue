@@ -1,7 +1,8 @@
 <template>
 	<view>
 		<view class="box-bg">
-			<uni-nav-bar shadow left-icon="left" :title="pet_detail.name" @clickLeft="back" :border="false" />
+			<uni-nav-bar shadow left-icon="left" :title="pet_detail.name" @clickLeft="back" :border="false"
+				rightText="评价" @clickRight="toReview(pet_detail.shopId)" />
 		</view>、
 		<view class="img">
 			<image :src="pet_detail.img" mode="heightFix"></image>
@@ -16,7 +17,7 @@
 			<u--text type="info" :text="pet_detail.description"></u--text>
 		</view>
 		<view class="video">
-			<video :src="pet_detail.etc.video.videoUrl" object-fit="fill" style="width: 100vw;"></video>
+			<video :src="pet_detail.etc.url" object-fit="fill" style="width: 100vw;"></video>
 		</view>
 		<view class="goods-nav">
 			<uni-goods-nav @click="onClick" :options="options" :button-group="customButtonGroup"
@@ -27,7 +28,8 @@
 
 <script>
 	import {
-		getPetById
+		getPetById,
+		addVisit
 	} from '@/api/modules/pet.js'
 	import {
 		addFavor,
@@ -37,6 +39,11 @@
 	import {
 		validate
 	} from '../../api/modules/user';
+	import {
+		getStore
+	} from '../../libs/storage.js';
+
+
 	export default {
 		data() {
 			return {
@@ -162,18 +169,34 @@
 				}
 
 			},
+			//增加浏览量
+			addVisit(id) {
+				addVisit({
+					id: id
+				}).then(res => {
+					console.log(res)
+				})
+			},
 			// 获取宠物信息
 			getDetail(id) {
 				getPetById({
 					id: id
 				}).then(res => {
 					this.pet_detail = res.data.data
-					console.log(this.pet_detail)
+					this.addVisit(this.pet_detail.id)
 					// 判断是否收藏
-					this.isFavor()
+					if (uni.getStorageSync('username')) {
+						this.isFavor()
+					}
 				}).catch(err => {
 					console.log(err)
 				})
+			},
+			// 前往店铺评价
+			toReview(shopId) {
+				uni.navigateTo({
+					url: '/pages/shop/shop_review?shopId=' + shopId
+				});
 			},
 			back() {
 				// 返回上一个页面
@@ -234,6 +257,7 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
+		z-index: 1000;
 	}
 
 	.describle {

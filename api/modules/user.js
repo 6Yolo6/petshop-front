@@ -47,3 +47,7 @@ export function deleteUserById(id) {
 export function getByName(params) {
 	return get('/user/getByName', params)
 }
+
+export function getId(params) {
+	return get('/user/getId', params)
+}

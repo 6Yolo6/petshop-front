@@ -10,3 +10,7 @@ export function getShopLocation(params) {
 export function getList(params) {
 	return get('/shop/getList', params)
 }
+
+export function getById(params) {
+	return get('/shop/getById', params)
+}

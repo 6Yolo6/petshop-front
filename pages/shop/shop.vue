@@ -24,11 +24,13 @@
 					<uni-col :span="12" v-for="(item, index) in productList" :index="index" :key="index">
 						<view class="demo-uni-col dark">
 							<uni-card :isShadow="true" :title="item.name" :sub-title="item.etc.shopName" mode="basic"
-								:extra="item.price.toString()" @click="toDetail(item.id)">
+								:extra="item.price.toString()" @click="toDetail(item.id)" is-full
+								shadow="0 0 5px rgba(0, 0, 0, 0.3)">
 								<view>
 									<view>
-										<image style="height: 230rpx;width: 250rpx;" mode="scaleToFill"
-											:src="item.img" />
+										<u--image :src="item.img" mode="aspectFit" width="100%" height="160rpx"
+											radius="10">
+										</u--image>
 									</view>
 									<view class="content-box">
 										<u--text style="font-size: 10rpx;" :lines="2" :text="item.description">
@@ -50,7 +52,8 @@
 		getAllCate
 	} from '@/api/modules/product_category.js'
 	import {
-		getByCategory
+		getByCategory,
+
 	} from '@/api/modules/product.js'
 
 	export default {
@@ -79,6 +82,7 @@
 			this.getByCategory()
 		},
 		methods: {
+
 			// 聚焦跳转到搜索页
 			handleFocus() {
 				uni.navigateTo({
@@ -128,10 +132,10 @@
 					pageSize: 6,
 					category: 0
 				}).then(res => {
-					console.log("周边", res.data)
+					// console.log("周边", res.data)
 					this.productList.push(...res.data.data.records)
 					this.total = res.data.data.total
-					console.log("全部周边", this.productList)
+					// console.log("全部周边", this.productList)
 				}).catch(error => {
 					console.log(error)
 				})
@@ -193,32 +197,13 @@
 		.card {
 
 
-			.custom-cover {
-				object-fit: cover;
-				width: 200px;
-				/* 设置图片宽度 */
-				height: 300px;
-				/* 设置图片高度 */
-			}
 
 
 			uni-image {
 				width: 120px;
 			}
 
-			text {
-				text-overflow: -o-ellipsis-lastline;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				/* 使用WebKit引擎的盒子布局模型 */
-				display: -webkit-box;
-				/* 设置显示的行数为3行 */
-				-webkit-line-clamp: 3;
-				/* 设置显示的行数为3行 */
-				line-clamp: 3;
-				/* 设置盒子内文本垂直排列 */
-				-webkit-box-orient: vertical;
-			}
+
 		}
 	}
 </style>

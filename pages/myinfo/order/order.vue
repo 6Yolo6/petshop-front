@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<view class="head">
-			<u-navbar title="个人中心" :autoBack="true"></u-navbar>
+			<u-navbar title="我的订单" :autoBack="true"></u-navbar>
 		</view>
 
 
@@ -50,16 +50,49 @@
 								</view>
 								<view class="orderAction">
 									<view class="left">
+										<u-button v-if="pro.refundStatus == 0">
+											<uni-text class="orange-text">已申请退款</uni-text>
+										</u-button>
+										<u-button v-else-if="pro.refundStatus == 2">
+											<uni-text class="orange-text">退款未通过</uni-text>
+										</u-button>
 										<u-button v-if="pro.status == 1" type="primary" shape="circle" text="取消订单"
 											@click="cancelOrder(pro.orderId)"></u-button>
-										<u-button v-if="pro.status == 2 || pro.status == 3 || pro.status == 4"
-											type="primary" shape="circle" text="申请退款"
-											@click="refundOrder(pro)"></u-button>
+										<u-button v-else-if="pro.status == 2 || pro.status == 3 || pro.status == 4"
+											type="primary" shape="circle" text="申请退款" @click="refundOrder(pro)">
+										</u-button>
 									</view>
 									<view class="right">
 										<u-button type="primary" shape="circle"
 											@click="action(pro)">{{orderAction(pro.status)}}</u-button>
 									</view>
+								</view>
+								<view class="cancelOrder">
+									<template>
+										<view class="cancel">
+											<u-action-sheet round :closeOnClickOverlay="true"
+												:title="reason(pro.status)" :show="show" @close="close()">
+												<slot>
+													<u-button class="confirmCancel" type="primary" shape="circle"
+														text="提交" @click="cancelORrefund()"></u-button>
+													<u--textarea class="reason" v-model="Reason" placeholder="请输入理由"
+														count height="200"></u--textarea>
+												</slot>
+											</u-action-sheet>
+											<view class="comment">
+												<u-action-sheet round :closeOnClickOverlay="true" title="评价"
+													:show="showRate" @close="close()">
+													<slot>
+														<u-rate count="5" v-model="rate" class="rateIcon"></u-rate>
+														<u-button class="confirmComment" type="primary" shape="circle"
+															text="提交" @click="comment(pro)"></u-button>
+														<u--textarea class="rate" v-model="content" placeholder="请输入评价"
+															count height="200"></u--textarea>
+													</slot>
+												</u-action-sheet>
+											</view>
+										</view>
+									</template>
 								</view>
 								<view class="" v-if="indexS === orderNo.shopDetails.length - 1">
 									<view class="bottom">
@@ -68,35 +101,6 @@
 											<template>
 												<u-count-down :time="time(pro)" @finish="finish(pro)"
 													format="HH:mm:ss"></u-count-down>
-											</template>
-										</view>
-										<view class="cancelOrder">
-											<template>
-												<view class="cancel">
-													<u-action-sheet round :closeOnClickOverlay="true"
-														:title="reason(pro.status)" :show="show" @close="close()">
-														<slot>
-															<u-button class="confirmCancel" type="primary"
-																shape="circle" text="提交"
-																@click="cancelORrefund(pro)"></u-button>
-															<u--textarea class="reason" v-model="Reason"
-																placeholder="请输入理由" count height="200"></u--textarea>
-														</slot>
-													</u-action-sheet>
-													<view class="comment">
-														<u-action-sheet round :closeOnClickOverlay="true" title="评价"
-															:show="showRate" @close="close()">
-															<slot>
-																<u-button class="confirmComment" type="primary"
-																	shape="circle" text="提交"
-																	@click="comment(pro)"></u-button>
-																<u--textarea class="rate" v-model="content"
-																	placeholder="请输入评价" count
-																	height="200"></u--textarea>
-															</slot>
-														</u-action-sheet>
-													</view>
-												</view>
 											</template>
 										</view>
 									</view>
@@ -127,9 +131,11 @@
 		applyRefund
 	} from '@/api/modules/order_item.js'
 	import {
-		getProByIds
+		getProOrPetByIds
 	} from '@/api/modules/product.js'
-
+	import {
+		add
+	} from '@/api/modules/review.js'
 
 	// 自定义比较函数，用于按照 createTime 进行降序排序
 	function compareOrders(order1, order2) {
@@ -173,7 +179,8 @@
 				rate: 0,
 				content: '',
 				Reason: '',
-				orderId: 0
+				orderId: 0,
+				product: {}
 			}
 		},
 		mounted() {
@@ -231,14 +238,19 @@
 			},
 			// 评价
 			comment(pro) {
-				updateDetail({
+				console.log(pro)
+				console.log("rate", this.rate)
+				console.log("orderId", pro.orderId)
+				add({
+					shopId: pro.shopId,
+					comment: this.content,
+					rate: this.rate,
+					orderItemId: pro.id,
+					isPet: pro.isPet == true ? 1 : 0,
 					orderId: pro.orderId,
-					productId: pro.productId,
-					status: status
-				}).then(res1 => {
-					console.log(res1.data)
-					self.satus = status + 1
-					self.getOrderList(status + 1)
+				}).then(res => {
+					console.log(res.data)
+
 				})
 			},
 			reason(status) {
@@ -254,7 +266,8 @@
 				this.flag = true //取消订单
 				this.orderId = orderId
 			},
-			cancelORrefund(pro) {
+			cancelORrefund() {
+				console.log('申请退款', this.product)
 				if (this.flag == true) { //取消
 					cancelOrder({
 						orderId: this.orderId,
@@ -265,17 +278,16 @@
 							title: '取消成功',
 						})
 						this.show = false
-						this.getOrderList(5)
-						this.status = 5
+						this.getOrderList(6)
+						this.status = 6
 					}).catch(err => {
 						console.log(err)
 					})
 				} else { // 退款
 					applyRefund({
-						orderId: pro.orderId,
-						status: pro.status,
-						proId: pro.productId,
-						isPet: pro.isPet,
+						orderId: this.product.orderId,
+						proId: this.product.productId,
+						isPet: this.product.isPet,
 						reason: this.Reason
 					}).then(res => {
 						console.log('退款', res.data)
@@ -292,10 +304,15 @@
 			refundOrder(pro) {
 				this.show = true
 				this.flag = false //申请退款
+
+				this.product = pro
+				console.log('产品', this.product)
 			},
 			action(pro) {
 				let status = pro.status
-				if (status != 2) {
+				if (status == 4) { //评价
+					this.showRate = true
+				} else if (status != 2) {
 					let self = this
 					uni.showModal({
 						title: this.orderAction(status),
@@ -321,122 +338,122 @@
 							}
 						}
 					})
-				} else if (status == 4) { //评价
-					this.showRate = true
 				}
 			},
 			// 获取订单
 			getOrderList(status) {
 				getOrder().then(res => {
 					console.log("用户订单", res.data)
-					let orderIds = [];
-					res.data.data.forEach(i => {
-						orderIds.push(i.id)
-					})
-					getDetail({
-						orderIds: orderIds.join(","),
-						status: status
-					}).then(res1 => {
-						let pros = []
-						let orderDetails = res1.data.data
-						if (orderDetails != null) {
-							orderDetails.sort(compareOrders)
-						} else {
-							this.orders = null
-							console.log(this.orders)
-							return
-						}
-						let proIds = []
-						let isPet = []
-						// 拿出ids和isPet
-						orderDetails.forEach(i => {
-							proIds.push(i.productId)
-							isPet.push(i.isPet == true ? 1 : 0)
+					if (res.data.data != null) {
+						let orderIds = [];
+						res.data.data.forEach(i => {
+							orderIds.push(i.id)
 						})
-						getProByIds({
-							ids: proIds.join(","),
-							isPet: isPet.join(",")
-						}).then(res2 => {
-							console.log("产品数组", res2.data)
-							let products = res2.data.data
-							const mergedArray = orderDetails.map((item1) => {
-								const matchingItem2 = products.find((item2) => item2
-									.id ===
-									item1.productId);
-								if (matchingItem2) {
-									// 合并 etc 属性，追加而不是覆盖
+						getDetail({
+							orderIds: orderIds.join(","),
+							status: status
+						}).then(res1 => {
+							let pros = []
+							let orderDetails = res1.data.data
+							if (orderDetails != null) {
+								orderDetails.sort(compareOrders)
+							} else {
+								this.orders = null
+								console.log(this.orders)
+								return
+							}
+							let proIds = []
+							let isPet = []
+							// 拿出ids和isPet
+							orderDetails.forEach(i => {
+								proIds.push(i.productId)
+								isPet.push(i.isPet == true ? 1 : 0)
+							})
+							getProOrPetByIds({
+								ids: proIds.join(","),
+								isPet: isPet.join(",")
+							}).then(res2 => {
+								console.log("产品数组", res2.data)
+								let products = res2.data.data
+								const mergedArray = orderDetails.map((item1) => {
+									const matchingItem2 = products.find((item2) => item2
+										.id ===
+										item1.productId);
+									if (matchingItem2) {
+										// 合并 etc 属性，追加而不是覆盖
+										return {
+											...item1,
+											...matchingItem2,
+											etc: {
+												...item1.etc,
+												...matchingItem2.etc,
+											}
+										};
+									} else {
+										return item1;
+									}
+								});
+
+								console.log("合并详情与产品", mergedArray);
+
+								const groupedOrders = {};
+
+								// 遍历订单数组
+								mergedArray.forEach(order => {
+									const orderNo = order.etc.no; // 获取订单编号
+									const shopName = order.etc.shopName; // 获取店铺名称
+
+									// 如果订单编号不存在于结果中，创建一个新的订单组
+									if (!groupedOrders[orderNo]) {
+										groupedOrders[orderNo] = {
+											orderNo: orderNo,
+											shopDetails: [] // 创建一个空的店铺详情数组
+										};
+									}
+
+									// 查找是否存在相同的店铺名称
+									const shopIndex = groupedOrders[orderNo].shopDetails
+										.findIndex(
+											shop => shop.shopName === shopName
+										);
+
+									// 如果店铺名称不存在于店铺详情中，创建一个新的店铺详情组
+									if (shopIndex === -1) {
+										groupedOrders[orderNo].shopDetails.push({
+											shopName: shopName,
+											details: [] // 创建一个空的产品数组
+										});
+									}
+
+									// 再次查找新添加的店铺名称的索引
+									const newShopIndex = groupedOrders[orderNo].shopDetails
+										.findIndex(
+											shop => shop.shopName === shopName
+										);
+
+									// 将产品添加到对应的店铺详情的产品数组中
+									groupedOrders[orderNo].shopDetails[newShopIndex]
+										.details
+										.push(order);
+								});
+
+								// 将结果从对象形式转换为数组形式
+								const result = Object.values(groupedOrders).map(orderGroup => {
 									return {
-										...item1,
-										...matchingItem2,
-										etc: {
-											...item1.etc,
-											...matchingItem2.etc,
-										}
+										orderNo: orderGroup.orderNo,
+										shopDetails: orderGroup.shopDetails
 									};
-								} else {
-									return item1;
-								}
-							});
+								});
 
-							console.log("合并详情与产品", mergedArray);
-
-							const groupedOrders = {};
-
-							// 遍历订单数组
-							mergedArray.forEach(order => {
-								const orderNo = order.etc.no; // 获取订单编号
-								const shopName = order.etc.shopName; // 获取店铺名称
-
-								// 如果订单编号不存在于结果中，创建一个新的订单组
-								if (!groupedOrders[orderNo]) {
-									groupedOrders[orderNo] = {
-										orderNo: orderNo,
-										shopDetails: [] // 创建一个空的店铺详情数组
-									};
-								}
-
-								// 查找是否存在相同的店铺名称
-								const shopIndex = groupedOrders[orderNo].shopDetails
-									.findIndex(
-										shop => shop.shopName === shopName
-									);
-
-								// 如果店铺名称不存在于店铺详情中，创建一个新的店铺详情组
-								if (shopIndex === -1) {
-									groupedOrders[orderNo].shopDetails.push({
-										shopName: shopName,
-										details: [] // 创建一个空的产品数组
-									});
-								}
-
-								// 再次查找新添加的店铺名称的索引
-								const newShopIndex = groupedOrders[orderNo].shopDetails
-									.findIndex(
-										shop => shop.shopName === shopName
-									);
-
-								// 将产品添加到对应的店铺详情的产品数组中
-								groupedOrders[orderNo].shopDetails[newShopIndex]
-									.details
-									.push(order);
-							});
-
-							// 将结果从对象形式转换为数组形式
-							const result = Object.values(groupedOrders).map(orderGroup => {
-								return {
-									orderNo: orderGroup.orderNo,
-									shopDetails: orderGroup.shopDetails
-								};
-							});
-
-							console.log("最终订单", result)
-							this.orders = result
-						}).catch(error2 => {
-							console.log(error2)
+								console.log("最终订单", result)
+								this.orders = result
+							}).catch(error2 => {
+								console.log(error2)
+							})
+						}).catch(error1 => {
+							console.log(error1)
 						})
-					}).catch(error1 => {
-						console.log(error1)
-					})
+					}
 				}).catch(error => {
 					console.log(error)
 				})
@@ -454,6 +471,12 @@
 		z-index: 1000;
 		background-color: white;
 
+	}
+
+	.rateIcon {
+		position: absolute;
+		top: 60rpx;
+		left: 35%;
 	}
 
 	.tabs {
@@ -574,29 +597,36 @@
 						}
 					}
 
+					.cancelOrder {
+
+						.cancel {
+							display: block;
+
+							.confirmCancel {
+								width: 120rpx;
+								position: absolute;
+								left: 560rpx;
+								top: 6rpx;
+							}
+
+							.confirmComment {
+								width: 120rpx;
+								position: absolute;
+								left: 560rpx;
+								top: 6rpx;
+							}
+
+							.reason {
+								text-align: left;
+							}
+						}
+					}
+
 					.bottom {
 						display: block;
 						margin-bottom: 30rpx;
 						padding: 0 10rpx;
 						justify-content: space-between;
-
-						.cancelOrder {
-
-							.cancel {
-								display: block;
-
-								.confirmCancel {
-									width: 120rpx;
-									position: absolute;
-									left: 560rpx;
-									top: 6rpx;
-								}
-
-								.reason {
-									text-align: left;
-								}
-							}
-						}
 					}
 
 					.total {
@@ -610,7 +640,6 @@
 						}
 					}
 				}
-
 
 			}
 		}
