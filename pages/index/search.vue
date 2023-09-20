@@ -118,11 +118,11 @@
 						url: '/pages/shop/product_detail?id=' + item.id
 					});
 				}
-				// if (selected_value == 2) {
-				// 	uni.navigateTo({
-				// 		url: '/pages/shop/product_detail?id=' + item.id
-				// 	});
-				// }
+				  else{
+					uni.navigateTo({
+						url: '/pages/shop/shop_detail?id=' + item.id
+					});
+				}
 			}
 		}
 	}

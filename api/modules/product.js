@@ -6,7 +6,9 @@ import {
 export function getByCategory(params) {
 	return get('/product/getByCategory', params)
 }
-
+export function getByShop(params) {
+	return get('/product/getByShop', params)
+}
 export function getProById(params) {
 	return get('/product/getById', params)
 }
