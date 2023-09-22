@@ -14,9 +14,11 @@
 		<!-- 类别显示 -->
 		<view>
 			<u-scroll-list>
-				<view v-for="(item, index) in category_list" :key="index" class="categories">
+				<view v-for="(item, index) in category_list" :key="index" style="margin-left: 28rpx;
+			margin-top: 15rpx;
+			text-align: center;">
 					<image :src="item.img" class="category" @click="clickCategory(index)"></image>
-					<h3 class="category-name">{{item.name}}</h3>
+					<text class="category-name">{{item.name}}</text>
 				</view>
 			</u-scroll-list>
 		</view>
@@ -150,7 +152,7 @@
 
 	.card {
 		height: 400rpx;
-		border-radius: 15%;
+
 	}
 
 	.header {
@@ -183,12 +185,14 @@
 
 	.category-name {
 		text-align: center;
+		margin-left: 12px;
 	}
 
 	.category {
+		height: 120rpx;
+		width: 120rpx;
 		border-radius: 50%;
-		width: 100%;
-		height: 130rpx;
+		overflow: hidden;
 	}
 
 	.search {

@@ -1,7 +1,7 @@
 <template>
 	<view class="confirm">
 		<view class="head">
-			<u-navbar title="确定订单" :autoBack="true">
+			<u-navbar title="确定订单" :autoBack="true" bg-color="orangered">
 			</u-navbar>
 		</view>
 		<view class="address-list" @click="handleUpdate()">
@@ -13,11 +13,11 @@
 				<view class="address">
 					<text class="region">{{ item.area }}</text>
 					<text class="addressDetail">{{ item.detail }}</text>
-					<u-tag :text="item.tag" class="tag" bg-color="#f93737"></u-tag>
+					<u-tag :text="item.tag" class="tag" bg-color="lightblue"></u-tag>
 				</view>
 			</view>
 		</view>
-		<view class="detail">
+		<view class="detail" style="background-color: blanchedalmond;">
 			<view v-if="this.isPet == 1">
 				<view class="order-page" v-if="isPet == 1">
 					<view class="pet-image-wrapper">
@@ -35,6 +35,9 @@
 							<view class="delivery-title">配送方式</view>
 							<view>快递配送</view>
 							<view>预计3-5个工作日送达</view>
+						</view>
+						<view>
+							
 						</view>
 					</view>
 				</view>
@@ -58,7 +61,10 @@
 			<view class="" v-else-if="this.isPet == 0">
 				<view v-for="(shop, index) in carts" :key="index">
 					<!-- 商店名称 -->
-					<view class="shop-name">{{ shop.shopName }}</view>
+					<view style="display: flex;line-height: 28upx;align-items: center;background-color: bisque;" @click="toShop(shop.products[0].shopId)">
+					<image src="../../../static/tabbar/cart.png" mode="scaleToFill" style="vertical-align: middle; width: 20px; height: 20px;"></image>
+										{{shop.shopName}} >
+						</view>
 					<!-- 商品列表 -->
 					<view v-for="(product, pIndex) in shop.products" :key="pIndex" class="product-item">
 						<image :src="product.productImg" class="product-img"></image>
@@ -83,7 +89,7 @@
 			</view> -->
 			<view class="shop-total">共{{ totalNum() }}件 合计: ¥{{ totalPrice() }}</view>
 			<view class="submit">
-				<u-button type="primary" shape="circle" text="" @click="submit()">提交订单</u-button>
+				<u-button type="primary"  text="" @click="submit()">提交订单</u-button>
 			</view>
 		</view>
 	</view>
@@ -174,6 +180,14 @@
 
 		},
 		methods: {
+			
+			//跳转商店
+			toShop(id){
+				uni.navigateTo({
+					url: '/pages/shop/shop_detail?id=' + id
+				});
+			},
+			
 			// 获取宠物信息
 			getPet(id) {
 				getPetById({
@@ -502,18 +516,19 @@
 	.address-list {
 		border-radius: 50%;
 		padding-top: 20rpx;
-		margin: 20rpx;
-		// padding-bottom: 120rpx;
+		padding:25px 0px 0px 0px;
+
+		
 	}
 
 	// 项目内容
 	.address-item {
 		margin: 20rpx auto 20rpx auto;
 		padding: 30rpx 40rpx;
-		width: 94%;
+		width: 120%;
 		box-shadow: 0 1rpx 5rpx 0px rgba(0, 0, 0, 0.05);
 		border-radius: 16rpx;
-		background: linear-gradient(to right, #FFD2D2, #ff8c8c);
+		background: lightgray;
 	}
 
 	.contacts {
@@ -536,17 +551,12 @@
 	}
 
 	.confirm {
-		padding: 20rpx;
+
 	}
 
 
 	.detail {
-		margin-top: 80upx;
-
-
-
-
-
+border-radius: 16rpx;
 	}
 
 	.shop-name {
@@ -595,23 +605,31 @@
 		font-size: 26rpx;
 		padding: 5rpx 10rpx;
 		border: 1rpx solid #999;
-		margin-left: 10rpx;
+		margin-left: 5rpx;
 		cursor: pointer;
 	}
 
 	.bottom {
-		position: fixed;
-		display: inline-flex;
-		bottom: 40rpx;
-		right: 40rpx;
-
+		display: flex;
+		line-height: 50rpx;
+		flex: 0 0 100rpx;
+		background-color: lightyellow;
 		.shop-total {
+			display: flex;
+			float: left;
+			margin-top: 10px;
 			font-size: 28rpx;
 			font-weight: bold;
-			margin-top: 20rpx;
+			color: red;
+			
 		}
 
-		.submit {}
+		.submit {
+			display: flex;
+			width: 235px;
+			flex: 1;
+			text-align: right;
+		}
 	}
 
 
@@ -630,9 +648,9 @@
 	}
 
 	.pet-image {
-		width: 300px;
-		height: 150px;
-		border-radius: 10px;
+flex: 1;
+text-align: right;
+margin-right: 20upx;
 	}
 
 	.pet-info {
